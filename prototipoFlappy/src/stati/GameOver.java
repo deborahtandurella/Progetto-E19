@@ -48,7 +48,7 @@ public class GameOver extends BasicGameState implements ComponentListener {
     public void componentActivated(AbstractComponent source)  {
         if (source == gameOverButton ) {
             try{
-                stateBasedGame.getState(1).init(container,stateBasedGame);
+                stateBasedGame.getState(0).init(container,stateBasedGame);
             } catch (SlickException e){
                 e.printStackTrace();
             }

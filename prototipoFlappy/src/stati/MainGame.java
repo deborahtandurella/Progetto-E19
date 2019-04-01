@@ -20,6 +20,8 @@ public class MainGame extends BasicGameState {
     private ArrayList<Pipe> pipes;
     private int score;
     private TrueTypeFont font;
+    private Music flap;
+    private Music gameOverTheme;
 //    private int angle;
 
     @Override
@@ -40,6 +42,8 @@ public class MainGame extends BasicGameState {
         font= new TrueTypeFont(font1, true);
         gameSpeed=0.7f;
         score=0;
+        flap = new Music("res/flap.ogg");
+        gameOverTheme = new Music("res/gameOver.ogg");
 //        angle=0;
     }
 
@@ -74,6 +78,7 @@ public class MainGame extends BasicGameState {
 
             }
             if (pipe.collides(bird.getShape())){
+                gameOverTheme.play(1.0f,0.4f);
                 stateBasedGame.enterState(2);
             }
         }
@@ -86,6 +91,7 @@ public class MainGame extends BasicGameState {
 
     public void keyPressed(int key, char c){
         if (key== Input.KEY_SPACE){
+            flap.play(1.0f,1.0f);
             bird.jump();
         }
         if (key== Input.KEY_LCONTROL){
