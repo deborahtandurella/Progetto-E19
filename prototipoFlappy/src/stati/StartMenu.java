@@ -49,12 +49,12 @@ public class StartMenu extends BasicGameState implements ComponentListener {
     public void componentActivated(AbstractComponent source) {
         if (source == playButton ) {
             try {
-                stateBasedGame.getState(1).init(container,stateBasedGame);
                 stateBasedGame.getState(2).init(container,stateBasedGame);
+                stateBasedGame.getState(3).init(container,stateBasedGame);
             } catch (SlickException e) {
                 e.printStackTrace();
             }
-            stateBasedGame.enterState(1);
+            stateBasedGame.enterState(3);
         }
     }
 }

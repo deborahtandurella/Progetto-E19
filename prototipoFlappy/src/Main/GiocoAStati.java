@@ -5,6 +5,7 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+import stati.DifficultyMenu;
 import stati.GameOver;
 import stati.MainGame;
 import stati.StartMenu;
@@ -16,6 +17,7 @@ public class GiocoAStati extends StateBasedGame {
     private static final int STARTMENU = 0;
     private static final int MAINGAME = 1;
     private static final int GAMEOVER = 2;
+    private static final int DIFFICULTY = 3;
 
     public GiocoAStati() {
         super("FLAPPY BIRD");
@@ -26,6 +28,7 @@ public class GiocoAStati extends StateBasedGame {
         this.addState(new StartMenu());
         this.addState(new MainGame());
         this.addState(new GameOver());
+        this.addState(new DifficultyMenu());
     }
 
     public static void main(String[] argv) {

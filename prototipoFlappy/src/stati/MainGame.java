@@ -16,12 +16,12 @@ public class MainGame extends BasicGameState {
     private Bird bird;
     private EnemyBird enemyBird;
     private Image background;
-    private float gameSpeed;
     private ArrayList<Pipe> pipes;
     private int score;
     private TrueTypeFont font;
     private Music flap;
     private Music gameOverTheme;
+    private float gameSpeed;
 //    private int angle;
 
     @Override
@@ -40,10 +40,10 @@ public class MainGame extends BasicGameState {
         pipes.add(new Pipe(container, container.getWidth()*3f/2 + Pipe.WIDTH_PROPORION*container.getWidth()/2, container.getHeight()/2f));
         java.awt.Font font1= new java.awt.Font("Verdana", java.awt.Font.BOLD, 32);
         font= new TrueTypeFont(font1, true);
-        gameSpeed=0.7f;
         score=0;
         flap = new Music("res/flap.ogg");
         gameOverTheme = new Music("res/gameOver.ogg");
+        gameSpeed = DifficultyMenu.getGameSpeed();
 //        angle=0;
     }
 
@@ -98,6 +98,5 @@ public class MainGame extends BasicGameState {
             enemyBird.jump();
         }
     }
-
 
 }

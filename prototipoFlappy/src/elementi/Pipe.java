@@ -83,4 +83,5 @@ public class Pipe implements DrawableElement, SolidElement {
     public void setPassed(boolean passed) {
         this.passed = passed;
     }
+
 }
