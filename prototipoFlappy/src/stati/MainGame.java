@@ -33,7 +33,7 @@ public class MainGame extends BasicGameState {
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.container= gameContainer;
         pipes= new ArrayList<>();
-        background= new Image("res/bg.jpeg");
+        background= new Image("res/mountains04-512-x-256_full.png");
         bird= new Bird(container);
         enemyBird= new EnemyBird(container);
         pipes.add(new Pipe(container, container.getWidth(), container.getHeight()/2f));
@@ -51,7 +51,7 @@ public class MainGame extends BasicGameState {
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
 //        graphics.rotate(gameContainer.getWidth()/2f, gameContainer.getHeight()/2f, angle);
 
-        background.draw(0,0, container.getWidth(), container.getHeight());
+        background.draw(0,0, container.getWidth()*3, container.getHeight());
         bird.render(gameContainer, graphics);
         enemyBird.render(gameContainer, graphics);
         for(Pipe pipe: pipes)
