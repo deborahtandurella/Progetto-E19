@@ -15,6 +15,8 @@ public class SpriteDrawer{
     private Image heartImage;
     private Image lowerPipeImage;
     private Image upperPipeImage;
+    private Image backgroundSingle;
+    private Image backgroundMulti;
     private SpriteSheet coinSheet;
     private Animation coinAnimation;
     private SpriteSheet heartSheet;
@@ -25,7 +27,9 @@ public class SpriteDrawer{
     public SpriteDrawer(int screenWidth, int screenHeight){
         this.screenWidth = screenWidth;
         this.screenHeight = screenHeight;
+        System.out.println(screenWidth + " " + screenHeight);
         try {
+            backgroundSingle = new Image("res/cimitero.png").getScaledCopy(screenWidth/2,screenHeight);
             birdImage = new Image("res/bird.png").getScaledCopy((int)BIRD_SIZE*screenWidth, (int)BIRD_SIZE*screenHeight);
             heartImage = new Image("res/heart_full.png").getScaledCopy((int)HEART_SIZE*screenWidth, (int)HEART_SIZE*screenHeight);
             coinImage = new Image("res/onecoin.png").getScaledCopy((int)COIN_SIZE*screenWidth, (int)COIN_SIZE*screenHeight);
@@ -41,6 +45,9 @@ public class SpriteDrawer{
         } catch (SlickException e) {
             e.printStackTrace();
         }
+    }
+    public void drawBackgroundSingle(Graphics graphics){
+        graphics.drawImage(backgroundSingle,screenWidth/4,0);
     }
 
     public void drawBird(Bird bird, Graphics graphics){

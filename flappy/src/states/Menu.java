@@ -1,5 +1,6 @@
 package states;
 
+import graphics.SpriteDrawer;
 import org.newdawn.slick.*;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.ComponentListener;
@@ -13,10 +14,10 @@ public class Menu extends BasicGameState implements ComponentListener {
     private static final int ID = 0;
 
     private GameContainer container;
-    private Image background;
     private Image play;
     private StateBasedGame stateBasedGame;
     private MouseOverArea playButton;
+    private SpriteDrawer drawer;
 
 
     @Override
@@ -28,14 +29,14 @@ public class Menu extends BasicGameState implements ComponentListener {
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.container= gameContainer;
         this.stateBasedGame= stateBasedGame;
-        background= new Image("res/cimitero.png");
+        drawer = new SpriteDrawer(gameContainer.getWidth(),gameContainer.getHeight());
         play = new Image("res/play.png").getScaledCopy(150, 70);
         playButton = new MouseOverArea(container, play, 300, 250, 200, 70, this);
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
-        background.draw(200,0, container.getWidth()/2, container.getHeight());
+        drawer.drawBackgroundSingle(graphics);
         playButton.render(gameContainer, graphics);
     }
 
