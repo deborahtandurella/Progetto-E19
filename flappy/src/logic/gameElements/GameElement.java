@@ -12,6 +12,7 @@ public abstract class GameElement implements SolidElement{
     public GameElement(double x, double y){
         this.x= x;
         this.y= y;
+        hitbox= new Hitbox();
     }
 
     public double getX(){
@@ -30,7 +31,9 @@ public abstract class GameElement implements SolidElement{
     }
 
     public abstract void update(int delta);
-
+    public void addHitboxShape(Shape shape){
+        hitbox.addShape(shape);
+    }
     @Override
     public boolean collide(Hitbox otherHitbox) {
         return hitbox.collides(otherHitbox);
