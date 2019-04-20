@@ -3,7 +3,6 @@ package logic.SinglePlayer;
 public class Player {
 
     private int hearts;
-
     public Player() {
         this.hearts = 3;
     }

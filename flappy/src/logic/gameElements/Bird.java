@@ -4,15 +4,15 @@ import org.newdawn.slick.geom.Shape;
 
 import java.util.ArrayList;
 
+import static logic.GameConstants.ACCELERATION_Y;
+import static logic.GameConstants.JUMP_SPEED;
+
+
 public class Bird extends GameElement implements SolidElement{
     private double speedY;
-    private static double ACCELERATION_Y;
-    private static double JUMP_SPEED;
-    public static final double BIRD_SIZE = 0.15;
 
     public Bird(double x, double y){
         super(x, y);
-
     }
 
     @Override

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class Heart extends GameElement implements SolidElement {
     private final double speedX;
-    public static final double HEART_SIZE = 0.1;
 
     public Heart(double x, double y, double speedX){
         super(x,y);
