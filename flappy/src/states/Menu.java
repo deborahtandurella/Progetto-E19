@@ -28,14 +28,14 @@ public class Menu extends BasicGameState implements ComponentListener {
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.container= gameContainer;
         this.stateBasedGame= stateBasedGame;
-        background= new Image("res/forest02-512-x-256_full.png");
+        background= new Image("res/cimitero.png");
         play = new Image("res/play.png").getScaledCopy(150, 70);
-        playButton = new MouseOverArea(container, play, 150, 250, 150, 70, this);
+        playButton = new MouseOverArea(container, play, 300, 250, 200, 70, this);
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
-        background.draw(0,0, container.getWidth(), container.getHeight());
+        background.draw(200,0, container.getWidth()/2, container.getHeight());
         playButton.render(gameContainer, graphics);
     }
 
