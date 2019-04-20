@@ -2,13 +2,22 @@ package logic.SinglePlayer;
 
 public class Player {
 
-    private int nHearts;
-    private int nCoins;
-    private boolean immunity;
+    private int hearts;
 
-    public Player(){
-        this.nHearts = 3;
-        this.nCoins = 0;
-        this.immunity = false;
+    public Player() {
+        this.hearts = 3;
     }
+
+    public void loseHeart() {
+        this.hearts--;
+    }
+
+    public void addHeart() {
+        this.hearts++;
+    }
+
+    public int getHearts(){
+        return hearts;
+    }
+
 }
