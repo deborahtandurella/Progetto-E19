@@ -1,11 +1,7 @@
 package logic.gameElements;
 
-import org.newdawn.slick.geom.Shape;
-
-import java.util.ArrayList;
-
-import static logic.GameConstants.ACCELERATION_Y;
-import static logic.GameConstants.JUMP_SPEED;
+import static logic.gameConstants.GameConstants.ACCELERATION_Y;
+import static logic.gameConstants.GameConstants.JUMP_SPEED;
 
 
 public class Bird extends GameElement implements SolidElement{

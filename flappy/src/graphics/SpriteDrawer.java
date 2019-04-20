@@ -5,9 +5,10 @@ import logic.gameElements.Coin;
 import logic.gameElements.Heart;
 import org.newdawn.slick.*;
 
-import static logic.gameElements.Bird.BIRD_SIZE;
-import static logic.gameElements.Coin.COIN_SIZE;
-import static logic.gameElements.Heart.HEART_SIZE;
+import static logic.gameConstants.GameConstants.BIRD_SIZE;
+import static logic.gameConstants.GameConstants.COIN_SIZE;
+import static logic.gameConstants.GameConstants.HEART_SIZE;
+
 
 public class SpriteDrawer{
     private Image bird;

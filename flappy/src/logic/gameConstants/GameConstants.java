@@ -1,4 +1,4 @@
-package logic;
+package logic.gameConstants;
 
 public class GameConstants {
     public static double ACCELERATION_Y;
