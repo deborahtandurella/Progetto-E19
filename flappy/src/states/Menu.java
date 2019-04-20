@@ -1,5 +1,6 @@
 package states;
 
+import gameMusic.MusicPlayer;
 import graphics.SpriteDrawer;
 import org.newdawn.slick.*;
 import org.newdawn.slick.gui.AbstractComponent;
@@ -14,10 +15,13 @@ public class Menu extends BasicGameState implements ComponentListener {
     private static final int ID = 0;
 
     private GameContainer container;
-    private Image play;
+    private Image single;
+    private Image multi;
     private StateBasedGame stateBasedGame;
-    private MouseOverArea playButton;
+    private MouseOverArea singleButton;
+    private MouseOverArea multiButton;
     private SpriteDrawer drawer;
+    private MusicPlayer musicPlayer;
 
 
     @Override
@@ -29,29 +33,36 @@ public class Menu extends BasicGameState implements ComponentListener {
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.container= gameContainer;
         this.stateBasedGame= stateBasedGame;
+        musicPlayer = new MusicPlayer();
         drawer = new SpriteDrawer(gameContainer.getWidth(),gameContainer.getHeight());
-        play = new Image("res/play.png").getScaledCopy(150, 70);
-        playButton = new MouseOverArea(container, play, 300, 250, 200, 70, this);
+        single = new Image("res/play.png").getScaledCopy(150, 70);
+        singleButton = new MouseOverArea(container, single, 300, 150, 200, 70, this);
+        multi = new Image("res/play.png").getScaledCopy(150, 70);
+        multiButton = new MouseOverArea(container, multi, 300, 350, 200, 70, this);
+        musicPlayer.BackgroudMusic();
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         drawer.drawBackgroundSingle(graphics);
-        playButton.render(gameContainer, graphics);
+        singleButton.render(gameContainer, graphics);
+        multiButton.render(gameContainer, graphics);
     }
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException { }
     public void componentActivated(AbstractComponent source) {
-        if (source == playButton ) {
+        if (source == singleButton ) {
             stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
+        }
+        if (source == multiButton ) {
+            stateBasedGame.enterState(4, new FadeOutTransition(), new FadeInTransition());
         }
     }
 
     public void keyPressed(int key, char c){
         if( key == Input.KEY_ESCAPE){
             System.exit(0);
-
         }
     }
 }

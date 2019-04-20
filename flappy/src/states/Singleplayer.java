@@ -62,4 +62,11 @@ public class Singleplayer extends BasicGameState {
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
 
     }
+
+    public void keyPressed(int key, char c){
+        if( key == Input.KEY_ESCAPE){
+            System.exit(0);
+
+        }
+    }
 }
