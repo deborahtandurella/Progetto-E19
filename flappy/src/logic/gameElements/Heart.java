@@ -14,7 +14,7 @@ public class Heart extends GameElement implements SolidElement {
 
     @Override
     public void update(int delta) {
-        setX(getX() - speedX);
+        setX(getX() - speedX*delta);
     }
 
 
