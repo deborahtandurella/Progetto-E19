@@ -11,7 +11,7 @@ public class Multiplayer extends BasicGameState {
 
     @Override
     public int getID() {
-        return 0;
+        return 6;
     }
 
     @Override

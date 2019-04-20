@@ -11,7 +11,7 @@ public class SingleplayerReplayMenu extends BasicGameState {
 
     @Override
     public int getID() {
-        return 0;
+        return 3;
     }
 
     @Override

@@ -11,7 +11,7 @@ public class MultiplayerLoading extends BasicGameState {
 
     @Override
     public int getID() {
-        return 0;
+        return 5;
     }
 
     @Override
