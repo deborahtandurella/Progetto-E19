@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Coin extends GameElement implements SolidElement {
     private final double speedX;
-    private static final double SIZE = 0.1;
+    public static final double COIN_SIZE = 0.1;
 
    public Coin(double x, double y, double speedX){
        super(x,y);

@@ -1,7 +1,13 @@
 package graphics;
 
 import logic.gameElements.Bird;
+import logic.gameElements.Coin;
+import logic.gameElements.Heart;
 import org.newdawn.slick.*;
+
+import static logic.gameElements.Bird.BIRD_SIZE;
+import static logic.gameElements.Coin.COIN_SIZE;
+import static logic.gameElements.Heart.HEART_SIZE;
 
 public class SpriteDrawer{
     private Image bird;
@@ -29,12 +35,15 @@ public class SpriteDrawer{
         }
     }
 
-
-
-
-
     public void drawBird(Bird bird, Graphics graphics){
-        graphics.drawImage(bird.getX(), bird.getY(),);
+        this.bird.draw((float)bird.getX(),(float)bird.getY(),(float)BIRD_SIZE,(float)BIRD_SIZE);
+    }
 
+    public void drawCoin(Coin coin, Graphics graphics){
+        this.coin.draw((float)coin.getX(),(float)coin.getY(),(float)COIN_SIZE,(float)COIN_SIZE);
+    }
+
+    public void drawHeart(Heart heart, Graphics graphics){
+        this.heart.draw((float)heart.getX(),(float)heart.getY(),(float)HEART_SIZE,(float)HEART_SIZE);
     }
 }

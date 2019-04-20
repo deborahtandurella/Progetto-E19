@@ -8,7 +8,7 @@ public class Bird extends GameElement implements SolidElement{
     private double speedY;
     private static double ACCELERATION_Y;
     private static double JUMP_SPEED;
-    private static final double SIZE = 0.15;
+    public static final double BIRD_SIZE = 0.15;
 
     public Bird(double x, double y){
         super(x, y);
