@@ -17,9 +17,5 @@ public class Heart extends GameElement implements SolidElement {
         setX(getX() - speedX);
     }
 
-    @Override
-    public boolean collide(ArrayList<Shape> shape) {
-        return false;
-    }
 
 }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public abstract class GameElement implements SolidElement{
     private double x;
     private double y;
-    protected ArrayList<Shape> shape;
+    private Hitbox hitbox;
 
     public GameElement(double x, double y){
         this.x= x;
@@ -21,24 +21,18 @@ public abstract class GameElement implements SolidElement{
         return this.y;
     }
     public void setX(double x){
+        hitbox.shift(x-getX(), 0);
         this.x = x;
     }
     public void setY(double y){
+        hitbox.shift(0, y-getY());
         this.y = y;
     }
 
     public abstract void update(int delta);
 
     @Override
-    public boolean collide(ArrayList<Shape> otherShape) {
-        for(Shape myShape: shape){
-            for(Shape yourShape: otherShape){
-                if (myShape.intersects(yourShape)){
-                    return true;
-                }
-            }
-
-        }
-        return false;
+    public boolean collide(Hitbox otherHitbox) {
+        return hitbox.collides(otherHitbox);
     }
 }
