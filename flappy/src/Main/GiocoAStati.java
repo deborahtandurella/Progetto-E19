@@ -38,11 +38,10 @@ public class GiocoAStati extends StateBasedGame {
 
         try {
             AppGameContainer container = new AppGameContainer(new GiocoAStati());
-            container.setTargetFrameRate(250);
-            //              container.setDisplayMode(Display.getDisplayMode().getWidth(),Display.getDisplayMode().getHeight(),false);
-            container.setDisplayMode(450,650,false);
-            System.err.println(Display.getDisplayMode().getHeight());
-            System.err.println(Display.getDisplayMode().getWidth());
+            container.setSmoothDeltas(false);
+            container.setTargetFrameRate(125);
+            container.setVSync(false);
+            container.setDisplayMode(800,600,true);
             container.start();
         } catch (SlickException e) {
             e.printStackTrace();
