@@ -5,12 +5,7 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
-import stati.DifficultyMenu;
-import stati.GameOver;
-import stati.MainGame;
-import stati.StartMenu;
-
-import java.io.File;
+import states.*;
 
 public class GiocoAStati extends StateBasedGame {
 
@@ -29,10 +24,14 @@ public class GiocoAStati extends StateBasedGame {
 
     @Override
     public void initStatesList(GameContainer gameContainer)  {
-        this.addState(new StartMenu());
-        this.addState(new MainGame());
-        this.addState(new GameOver());
+        this.addState(new Menu());
         this.addState(new DifficultyMenu());
+        this.addState(new Singleplayer());
+        this.addState(new SingleplayerReplayMenu());
+        this.addState(new MultiplayerMenu());
+        this.addState(new MultiplayerLoading());
+        this.addState(new Multiplayer());
+        this.addState(new MultiplayerReplayMenu());
     }
 
     public static void main(String[] argv) {

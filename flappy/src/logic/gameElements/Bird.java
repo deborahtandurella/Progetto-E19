@@ -11,6 +11,7 @@ public class Bird extends GameElement implements SolidElement{
 
     public Bird(double x, double y){
         super(x, y);
+
     }
 
     @Override
@@ -26,9 +27,4 @@ public class Bird extends GameElement implements SolidElement{
 
     }
 
-
-    @Override
-    public Shape getShape() {
-        return null;
-    }
 }

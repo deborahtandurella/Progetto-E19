@@ -12,12 +12,13 @@ public class Heart extends GameElement implements SolidElement {
    }
 
     @Override
+    public void update(int delta) {
+
+    }
+
+    @Override
     public boolean collide(ArrayList<Shape> shape) {
         return false;
     }
 
-    @Override
-    public Shape getShape() {
-        return null;
-    }
 }
