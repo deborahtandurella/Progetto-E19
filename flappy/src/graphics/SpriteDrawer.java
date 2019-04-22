@@ -66,7 +66,6 @@ public class SpriteDrawer{
     public void drawPipe(float x, float y, Graphics graphics){
         graphics.drawImage(upperPipeImage,offset + x*screenWidth,  y*screenHeight - (float)PIPE_HEIGHT*screenHeight - 0.5f*((float)PIPE_FREE_SPACE)*screenHeight);
         graphics.drawImage(lowerPipeImage, offset + x*screenWidth, y*screenHeight + 0.5f*((float)PIPE_FREE_SPACE)*screenHeight);
-        System.out.println((y + 0.5f*((float)PIPE_FREE_SPACE)*screenHeight));
 
     }
 }
