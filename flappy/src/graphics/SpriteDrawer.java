@@ -23,13 +23,15 @@ public class SpriteDrawer{
     private Animation heartAnimation;
     private int screenWidth;
     private int screenHeight;
+    private int offset;
 
-    public SpriteDrawer(int screenWidth, int screenHeight){
+    public SpriteDrawer(int screenWidth, int screenHeight, int offset){
         this.screenWidth = screenWidth;
         this.screenHeight = screenHeight;
+        this.offset = offset;
         System.out.println(screenWidth + " " + screenHeight);
         try {
-            backgroundSingle = new Image("res/cimitero.png").getScaledCopy(screenWidth/2,screenHeight);
+            backgroundSingle = new Image("res/cimitero.png").getScaledCopy(screenWidth,screenHeight);
             birdImage = new Image("res/bird.png").getScaledCopy((int)(BIRD_SIZE*screenWidth), (int)(BIRD_SIZE*screenHeight));
             heartImage = new Image("res/heart_full.png").getScaledCopy((int) (HEART_SIZE*screenWidth), (int)(HEART_SIZE*screenHeight));
             coinImage = new Image("res/onecoin.png").getScaledCopy((int)(COIN_SIZE*screenWidth), (int)(COIN_SIZE*screenHeight));
@@ -47,25 +49,25 @@ public class SpriteDrawer{
         }
     }
     public void drawBackgroundSingle(Graphics graphics){
-        graphics.drawImage(backgroundSingle,screenWidth/4f,0);
+        graphics.drawImage(backgroundSingle,offset,0);
     }
 
     public void drawBird(float x, float y, Graphics graphics){
-        graphics.drawImage(birdImage, x*screenWidth, y*screenHeight);
+        graphics.drawImage(birdImage, offset + x*screenWidth, y*screenHeight);
         System.out.println( "uccello disegnato a x:" + x*screenWidth + " y: " + y*screenHeight + " larghezza: " + birdImage.getWidth() + " altezzata: " + birdImage.getHeight());
     }
 
     public void drawCoin(float x, float y, Graphics graphics){
-        graphics.drawImage(coinImage,x*screenWidth, y*screenHeight);
+        graphics.drawImage(coinImage,offset + x*screenWidth, y*screenHeight);
     }
 
     public void drawHeart(float x, float y, Graphics graphics){
-        graphics.drawImage(heartImage,x*screenWidth, y*screenHeight );
+        graphics.drawImage(heartImage,offset + x*screenWidth, y*screenHeight );
     }
 
     public void drawPipe(float x, float y, Graphics graphics){
-        graphics.drawImage(lowerPipeImage,x*screenWidth, y*screenHeight);
-        graphics.drawImage(upperPipeImage, x*screenWidth, y*screenHeight);
+        graphics.drawImage(lowerPipeImage,offset + x*screenWidth, y*screenHeight);
+        graphics.drawImage(upperPipeImage, offset + x*screenWidth, y*screenHeight);
     }
 }
 

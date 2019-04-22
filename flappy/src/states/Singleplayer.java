@@ -45,7 +45,7 @@ public class Singleplayer extends BasicGameState {
         java.awt.Font font1= new java.awt.Font("Verdana", java.awt.Font.BOLD, 32);
         font= new TrueTypeFont(font1, true);
         score=0;
-        spriteDrawer = new SpriteDrawer(gameContainer.getWidth(), gameContainer.getHeight());
+        spriteDrawer = new SpriteDrawer(gameContainer.getWidth()/2, gameContainer.getHeight(), gameContainer.getWidth()/4);
         //gameSpeed = DifficultyMenu.getGameSpeed();
         //mancano gli heart da far spawnare, gameSpeed da definire (dev'essere passata dal gioco(?))
     }
