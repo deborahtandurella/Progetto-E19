@@ -47,7 +47,7 @@ public class SpriteDrawer{
         }
     }
     public void drawBackgroundSingle(Graphics graphics){
-        graphics.drawImage(backgroundSingle,screenWidth/4,0);
+        graphics.drawImage(backgroundSingle,screenWidth/4f,0);
     }
 
     public void drawBird(Bird bird, Graphics graphics){
