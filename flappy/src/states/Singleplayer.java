@@ -12,6 +12,9 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import java.util.ArrayList;
+import java.util.Random;
+
+import static logic.gameConstants.GameConstants.PIPE_WIDTH;
 
 public class Singleplayer extends BasicGameState {
     private static final int ID = 2;
@@ -41,7 +44,7 @@ public class Singleplayer extends BasicGameState {
         pipes= new ArrayList<>();
         bird= new Bird(0.2, 0.5);
         pipes.add(new Pipe(1, 0.5, GameConstants.PIPE_SPEED));
-        pipes.add(new Pipe( 1.5 + GameConstants.PIPE_WIDTH/2, 0.5, GameConstants.PIPE_SPEED));
+        pipes.add(new Pipe( 1.5 + PIPE_WIDTH/2, 0.5, GameConstants.PIPE_SPEED));
         java.awt.Font font1= new java.awt.Font("Verdana", java.awt.Font.BOLD, 32);
         font= new TrueTypeFont(font1, true);
         score=0;
@@ -64,8 +67,14 @@ public class Singleplayer extends BasicGameState {
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
         bird.update(i);
-        for(Pipe pipe : pipes)
+        for(Pipe pipe : pipes) {
             pipe.update(i);
+            if (pipe.getX()<0- PIPE_WIDTH) {
+                pipe.setX(1);
+                pipe.setY(0.25 + (new Random()).nextFloat() * 0.5);
+            }
+        }
+
 
     }
 
