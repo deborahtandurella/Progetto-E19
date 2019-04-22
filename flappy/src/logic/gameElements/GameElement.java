@@ -34,8 +34,17 @@ public abstract class GameElement implements SolidElement{
     public void addHitboxShape(Shape shape){
         hitbox.addShape(shape);
     }
+    public void shiftHitbox(double deltaX, double deltaY){
+        hitbox.shift(deltaX, deltaY);
+    }
+
     @Override
-    public boolean collide(Hitbox otherHitbox) {
-        return hitbox.collides(otherHitbox);
+    public Hitbox getHitbox() {
+        return hitbox;
+    }
+
+    @Override
+    public boolean collide(SolidElement other) {
+        return hitbox.collides(other.getHitbox());
     }
 }
