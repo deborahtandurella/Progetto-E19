@@ -1,18 +1,18 @@
 package states;
 
+import gameMusic.MusicPlayer;
 import graphics.SpriteDrawer;
 import logic.SinglePlayer.Player;
-import logic.gameConstants.GameConstants;
 import logic.gameElements.Bird;
-import logic.gameConstants.GameConstants.*;
 import logic.gameElements.Heart;
 import logic.gameElements.MovingPipe;
 import logic.gameElements.Pipe;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -26,18 +26,15 @@ public class Singleplayer extends BasicGameState {
     private GameContainer container;
     private Bird bird;
     private Heart heart;
-    private Image background;
-    private int score;
     private Player player;
     private List<Pipe> pipes;
-    private TrueTypeFont font;
-    private Music flap;
-    private Music gameOverTheme;
     private double gameSpeed;
     private SpriteDrawer spriteDrawer;
     private Random random;
     private int pipeDecider;
-
+    private MusicPlayer musicPlayer;
+    private boolean immunity;
+    private long immunityTimer;
 
     @Override
     public int getID() {
@@ -47,6 +44,8 @@ public class Singleplayer extends BasicGameState {
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.container= gameContainer;
+        player = new Player();
+        immunity = false;
 
         random = new Random();
         pipeDecider = random.nextInt(11);
@@ -54,9 +53,7 @@ public class Singleplayer extends BasicGameState {
         bird= new Bird(0.2, 0.5);
         pipes.add(new Pipe(1, 0.5, PIPE_SPEED));
         pipes.add(new Pipe( 1.5 + PIPE_WIDTH/2, 0.5, PIPE_SPEED));
-        java.awt.Font font1= new java.awt.Font("Verdana", java.awt.Font.BOLD, 32);
-        font= new TrueTypeFont(font1, true);
-        score=0;
+        musicPlayer = new MusicPlayer();
         spriteDrawer = new SpriteDrawer(gameContainer.getWidth()/2, gameContainer.getHeight(), gameContainer.getWidth()/4);
         //gameSpeed = DifficultyMenu.getGameSpeed();
         //mancano gli heart da far spawnare, gameSpeed da definire (dev'essere passata dal gioco(?))
@@ -76,11 +73,28 @@ public class Singleplayer extends BasicGameState {
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
         bird.update(i);
+        if(System.currentTimeMillis()-immunityTimer>3000){
+            immunity = false;
+            spriteDrawer.setBirdAlpha(1f);
+        }
         for(Pipe pipe : pipes) {
             pipe.update(i);
 
-            if(pipe.collide(bird))
-                System.out.println("COLLISIONE!");
+            if(pipe.collide(bird)&&immunity == false){
+                player.loseHeart();
+                if(player.getHearts()==0){
+                    try {
+                        stateBasedGame.getState(3).init(container,stateBasedGame);
+                    } catch (SlickException e) {
+                        e.printStackTrace();
+                    }
+                    musicPlayer.gameOverMusic();
+                    stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
+                }
+                immunity = true;
+                spriteDrawer.setBirdAlpha(0.5f);
+                immunityTimer = System.currentTimeMillis();
+            }
             if (pipe.getX()<0- PIPE_WIDTH) {
                 pipes.remove(pipe);
                 random = new Random();
@@ -101,12 +115,12 @@ public class Singleplayer extends BasicGameState {
 
     public void keyPressed(int key, char c){
         if( key == Input.KEY_SPACE) {
+            musicPlayer.flapMusic();
             bird.jump();
 
         }
         if( key == Input.KEY_ESCAPE){
             System.exit(0);
-
         }
     }
 }

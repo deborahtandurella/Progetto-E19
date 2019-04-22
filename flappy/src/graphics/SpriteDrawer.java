@@ -68,6 +68,10 @@ public class SpriteDrawer{
         graphics.drawImage(lowerPipeImage, offset + x*screenWidth, y*screenHeight + 0.5f*((float)PIPE_FREE_SPACE)*screenHeight);
 
     }
+
+    public void setBirdAlpha(float alpha){
+        birdImage.setAlpha(alpha);
+    }
 }
 
         /* PIPE
