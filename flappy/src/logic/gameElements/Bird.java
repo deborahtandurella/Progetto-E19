@@ -1,7 +1,8 @@
 package logic.gameElements;
 
-import static logic.gameConstants.GameConstants.ACCELERATION_Y;
-import static logic.gameConstants.GameConstants.JUMP_SPEED;
+import org.newdawn.slick.geom.Ellipse;
+
+import static logic.gameConstants.GameConstants.*;
 
 
 public class Bird extends GameElement implements SolidElement{
@@ -9,11 +10,13 @@ public class Bird extends GameElement implements SolidElement{
 
     public Bird(double x, double y){
         super(x, y);
+        addHitboxShape(new Ellipse((float)x+(float)BIRD_WIDTH/2f, (float)y+(float)BIRD_HEIGHT/2f, (float)BIRD_WIDTH/2*0.9f, (float)BIRD_HEIGHT/2*0.9f));
     }
 
     @Override
     public void update(int delta) {
         speedY+=delta*ACCELERATION_Y;
+        shiftHitbox(0, speedY*delta);
         setY(getY()+speedY*delta);
         if (getY()>1){
             jump();
