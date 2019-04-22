@@ -1,5 +1,6 @@
 package Main;
 
+import graphics.SpriteDrawer;
 import org.lwjgl.opengl.Display;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
