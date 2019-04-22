@@ -40,8 +40,8 @@ public class Singleplayer extends BasicGameState {
         this.container= gameContainer;
         pipes= new ArrayList<>();
         bird= new Bird(0.2, 0.5);
-        pipes.add(new Pipe(1, 0.5, gameSpeed));
-        pipes.add(new Pipe( 1.5 + GameConstants.PIPE_WIDTH/2, 0.5, gameSpeed));
+        pipes.add(new Pipe(1, 0.5, GameConstants.PIPE_SPEED));
+        pipes.add(new Pipe( 1.5 + GameConstants.PIPE_WIDTH/2, 0.5, GameConstants.PIPE_SPEED));
         java.awt.Font font1= new java.awt.Font("Verdana", java.awt.Font.BOLD, 32);
         font= new TrueTypeFont(font1, true);
         score=0;
@@ -52,13 +52,21 @@ public class Singleplayer extends BasicGameState {
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
+
         spriteDrawer.drawBackgroundSingle(graphics);
         spriteDrawer.drawBird((float) bird.getX(), (float) bird.getY(), graphics);
+        for(Pipe pipe : pipes)
+            spriteDrawer.drawPipe((float) pipe.getX(), (float) pipe.getY(), graphics);
+        container.getGraphics().setWorldClip(container.getWidth()/4f, 0, container.getWidth()/2f, container.getHeight());
+
     }
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
         bird.update(i);
+        for(Pipe pipe : pipes)
+            pipe.update(i);
+
     }
 
     public void keyPressed(int key, char c){
