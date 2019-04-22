@@ -50,21 +50,21 @@ public class SpriteDrawer{
         graphics.drawImage(backgroundSingle,screenWidth/4f,0);
     }
 
-    public void drawBird(Bird bird, Graphics graphics){
-        graphics.drawImage(birdImage, (float)bird.getX(),(float)bird.getY());
+    public void drawBird(float x, float y, Graphics graphics){
+        graphics.drawImage(birdImage, x, y);
     }
 
-    public void drawCoin(Coin coin, Graphics graphics){
-        graphics.drawImage(coinImage, (float)coin.getX(),(float)coin.getY());
+    public void drawCoin(float x, float y, Graphics graphics){
+        graphics.drawImage(coinImage, x, y);
     }
 
-    public void drawHeart(Heart heart, Graphics graphics){
-        graphics.drawImage(heartImage, (float)heart.getX(),(float)heart.getY());
+    public void drawHeart(float x, float y, Graphics graphics){
+        graphics.drawImage(heartImage, x, y );
     }
 
-    public void drawPipe(Pipe pipe, Graphics graphics){
-        graphics.drawImage(lowerPipeImage, (float)pipe.getX(), (float)pipe.getY());
-        graphics.drawImage(upperPipeImage, (float)pipe.getX(), (float)pipe.getY());
+    public void drawPipe(float x, float y, Graphics graphics){
+        graphics.drawImage(lowerPipeImage, x, y);
+        graphics.drawImage(upperPipeImage, x, y);
     }
 }
 
