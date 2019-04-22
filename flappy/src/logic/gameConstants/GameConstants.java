@@ -12,6 +12,6 @@ public class GameConstants {
     public static final double PIPE_WIDTH = 1/6d;
     public static final double PIPE_HEIGHT= 0.846;
     public static double PIPE_SPEED = 0.00052f;
-
+    public static double PIPE_VERTICAL_SPEED = 0.00018f;
 
 }

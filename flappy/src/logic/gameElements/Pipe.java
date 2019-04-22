@@ -29,4 +29,7 @@ public class Pipe extends GameElement implements SolidElement {
         setX(getX() - speedX*delta);
     }
 
+    public double getSpeedX() {
+        return speedX;
+    }
 }
