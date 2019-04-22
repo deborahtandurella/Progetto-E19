@@ -34,7 +34,7 @@ public class DifficultyMenu extends BasicGameState implements ComponentListener 
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        drawer = new SpriteDrawer(gameContainer.getWidth(),gameContainer.getHeight(),gameContainer.getWidth()/4);
+        drawer = new SpriteDrawer(gameContainer.getWidth(),gameContainer.getHeight(),0);
         this.container= gameContainer;
         this.stateBasedGame= stateBasedGame;
         easy = new Image("res/startE.png").getScaledCopy(250, 70);
