@@ -51,20 +51,21 @@ public class SpriteDrawer{
     }
 
     public void drawBird(float x, float y, Graphics graphics){
-        graphics.drawImage(birdImage, x, y);
+        graphics.drawImage(birdImage, x*screenWidth, y*screenHeight);
+        System.out.println( "uccello disegnato a x:" + x*screenWidth + " y: " + y*screenHeight);
     }
 
     public void drawCoin(float x, float y, Graphics graphics){
-        graphics.drawImage(coinImage, x, y);
+        graphics.drawImage(coinImage,x*screenWidth, y*screenHeight);
     }
 
     public void drawHeart(float x, float y, Graphics graphics){
-        graphics.drawImage(heartImage, x, y );
+        graphics.drawImage(heartImage,x*screenWidth, y*screenHeight );
     }
 
     public void drawPipe(float x, float y, Graphics graphics){
-        graphics.drawImage(lowerPipeImage, x, y);
-        graphics.drawImage(upperPipeImage, x, y);
+        graphics.drawImage(lowerPipeImage,x*screenWidth, y*screenHeight);
+        graphics.drawImage(upperPipeImage, x*screenWidth, y*screenHeight);
     }
 }
 
