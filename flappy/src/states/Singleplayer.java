@@ -12,8 +12,11 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
 
+import static logic.gameConstants.GameConstants.PIPE_SPEED;
 import static logic.gameConstants.GameConstants.PIPE_WIDTH;
 
 public class Singleplayer extends BasicGameState {
@@ -24,7 +27,7 @@ public class Singleplayer extends BasicGameState {
     private Image background;
     private int score;
     private Player player;
-    private ArrayList<Pipe> pipes;
+    private List<Pipe> pipes;
     private TrueTypeFont font;
     private Music flap;
     private Music gameOverTheme;
@@ -41,10 +44,10 @@ public class Singleplayer extends BasicGameState {
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.container= gameContainer;
-        pipes= new ArrayList<>();
+        pipes= new CopyOnWriteArrayList<Pipe>();
         bird= new Bird(0.2, 0.5);
-        pipes.add(new Pipe(1, 0.5, GameConstants.PIPE_SPEED));
-        pipes.add(new Pipe( 1.5 + PIPE_WIDTH/2, 0.5, GameConstants.PIPE_SPEED));
+        pipes.add(new Pipe(1, 0.5, PIPE_SPEED));
+        pipes.add(new Pipe( 1.5 + PIPE_WIDTH/2, 0.5, PIPE_SPEED));
         java.awt.Font font1= new java.awt.Font("Verdana", java.awt.Font.BOLD, 32);
         font= new TrueTypeFont(font1, true);
         score=0;
@@ -69,13 +72,16 @@ public class Singleplayer extends BasicGameState {
         bird.update(i);
         for(Pipe pipe : pipes) {
             pipe.update(i);
-            if (pipe.getX()<0- PIPE_WIDTH) {
-                pipe.setX(1);
-                pipe.setY(0.25 + (new Random()).nextFloat() * 0.5);
-            }
+
             if(pipe.collide(bird))
                 System.out.println("COLLISIONE!");
+            if (pipe.getX()<0- PIPE_WIDTH) {
+                pipes.remove(pipe);
+                pipes.add(new Pipe(1, 0.25 + (new Random()).nextFloat() * 0.5, PIPE_SPEED));
+            }
         }
+
+
 
 
     }
