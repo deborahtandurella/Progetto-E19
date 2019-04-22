@@ -73,6 +73,8 @@ public class Singleplayer extends BasicGameState {
                 pipe.setX(1);
                 pipe.setY(0.25 + (new Random()).nextFloat() * 0.5);
             }
+            if(pipe.collide(bird))
+                System.out.println("COLLISIONE!");
         }
 
 

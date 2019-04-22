@@ -16,7 +16,6 @@ public class Bird extends GameElement implements SolidElement{
     @Override
     public void update(int delta) {
         speedY+=delta*ACCELERATION_Y;
-        shiftHitbox(0, speedY*delta);
         setY(getY()+speedY*delta);
         if (getY()>1){
             jump();

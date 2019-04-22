@@ -18,14 +18,13 @@ public class Pipe extends GameElement implements SolidElement {
         this.speedX = speedX;
         setX(x);
         setY(centerY);
-        addHitboxShape(new Rectangle((float) x, (float)(x+PIPE_WIDTH), (float) (centerY-PIPE_HEIGHT-PIPE_FREE_SPACE/2d), (float) PIPE_HEIGHT));
-        addHitboxShape(new Rectangle((float) x, (float)(x+PIPE_WIDTH), (float) (centerY+PIPE_FREE_SPACE/2d), (float) (PIPE_HEIGHT + PIPE_FREE_SPACE/2)));
+        addHitboxShape(new Rectangle((float) x, (float) (centerY-PIPE_HEIGHT-PIPE_FREE_SPACE/2d), (float)PIPE_WIDTH, (float) PIPE_HEIGHT));
+        addHitboxShape(new Rectangle((float) x, (float) (centerY+PIPE_FREE_SPACE/2d),  (float)PIPE_WIDTH, (float) PIPE_HEIGHT));
 
     }
 
     @Override
     public void update(int delta) {
-        shiftHitbox(-speedX*delta, 0);
         setX(getX() - speedX*delta);
     }
 
