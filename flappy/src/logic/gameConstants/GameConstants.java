@@ -10,6 +10,8 @@ public class GameConstants {
     public static final double HEART_SIZE = 0.1;
     public static final double PIPE_FREE_SPACE = 0.35;
     public static final double PIPE_WIDTH = 1/6d;
-    public static final double PIPE_WIDTH_HEIGHT_PROPORTION= 320/63d;
+    public static final double PIPE_HEIGHT= 0.846;
+    public static double PIPE_SPEED = 0.00065f;
+
 
 }

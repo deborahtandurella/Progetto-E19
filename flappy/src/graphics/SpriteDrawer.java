@@ -29,13 +29,12 @@ public class SpriteDrawer{
         this.screenWidth = screenWidth;
         this.screenHeight = screenHeight;
         this.offset = offset;
-        System.out.println(screenWidth + " " + screenHeight);
         try {
             backgroundSingle = new Image("res/cimitero.png").getScaledCopy(screenWidth,screenHeight);
             birdImage = new Image("res/bird.png").getScaledCopy((int)(BIRD_WIDTH*screenWidth), (int)(BIRD_HEIGHT*screenHeight));
             heartImage = new Image("res/heart_full.png").getScaledCopy((int) (HEART_SIZE*screenWidth), (int)(HEART_SIZE*screenHeight));
             coinImage = new Image("res/onecoin.png").getScaledCopy((int)(COIN_SIZE*screenWidth), (int)(COIN_SIZE*screenHeight));
-            lowerPipeImage= new Image("res/pipe.png").getScaledCopy((int)(PIPE_WIDTH*screenWidth), (int)(PIPE_WIDTH*PIPE_WIDTH_HEIGHT_PROPORTION*screenHeight));
+            lowerPipeImage= new Image("res/pipe.png").getScaledCopy((int)(PIPE_WIDTH*screenWidth), (int)(PIPE_HEIGHT*screenHeight));
             upperPipeImage= lowerPipeImage.getFlippedCopy(false, true);
 
             coinSheet = new SpriteSheet("res/Coin.png",32,32);
@@ -65,8 +64,10 @@ public class SpriteDrawer{
     }
 
     public void drawPipe(float x, float y, Graphics graphics){
-        graphics.drawImage(lowerPipeImage,offset + x*screenWidth, y*screenHeight);
-        graphics.drawImage(upperPipeImage, offset + x*screenWidth, y*screenHeight);
+        graphics.drawImage(upperPipeImage,offset + x*screenWidth,  y*screenHeight - (float)PIPE_HEIGHT*screenHeight - 0.5f*((float)PIPE_FREE_SPACE)*screenHeight);
+        graphics.drawImage(lowerPipeImage, offset + x*screenWidth, y*screenHeight + 0.5f*((float)PIPE_FREE_SPACE)*screenHeight);
+        System.out.println((y + 0.5f*((float)PIPE_FREE_SPACE)*screenHeight));
+
     }
 }
 
