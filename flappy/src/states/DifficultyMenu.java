@@ -7,6 +7,8 @@ import org.newdawn.slick.gui.ComponentListener;
 import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class DifficultyMenu extends BasicGameState implements ComponentListener {
     private static final int ID = 1;
@@ -72,7 +74,7 @@ public class DifficultyMenu extends BasicGameState implements ComponentListener 
             } catch (SlickException e) {
                 e.printStackTrace();
             }
-            stateBasedGame.enterState(2);
+            stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
         }
         if(source == mediumButton ){
             try {
@@ -80,7 +82,7 @@ public class DifficultyMenu extends BasicGameState implements ComponentListener 
             } catch (SlickException e) {
                 e.printStackTrace();
             }
-            stateBasedGame.enterState(2);
+            stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
         }
         if(source == hardButton ){
             gameSpeed = 0.9f;
@@ -89,7 +91,7 @@ public class DifficultyMenu extends BasicGameState implements ComponentListener 
             } catch (SlickException e) {
                 e.printStackTrace();
             }
-            stateBasedGame.enterState(2);
+            stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
         }
     }
 }

@@ -54,7 +54,6 @@ public class SpriteDrawer{
 
     public void drawBird(float x, float y, Graphics graphics){
         graphics.drawImage(birdImage, offset + x*screenWidth, y*screenHeight);
-        System.out.println( "uccello disegnato a x:" + x*screenWidth + " y: " + y*screenHeight + " larghezza: " + birdImage.getWidth() + " altezzata: " + birdImage.getHeight());
     }
 
     public void drawCoin(float x, float y, Graphics graphics){
