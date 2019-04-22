@@ -6,6 +6,7 @@ import logic.gameConstants.GameConstants;
 import logic.gameElements.Bird;
 import logic.gameConstants.GameConstants.*;
 import logic.gameElements.Heart;
+import logic.gameElements.MovingPipe;
 import logic.gameElements.Pipe;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
@@ -17,6 +18,7 @@ import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import static logic.gameConstants.GameConstants.PIPE_SPEED;
+import static logic.gameConstants.GameConstants.PIPE_VERTICAL_SPEED;
 import static logic.gameConstants.GameConstants.PIPE_WIDTH;
 
 public class Singleplayer extends BasicGameState {
@@ -33,7 +35,8 @@ public class Singleplayer extends BasicGameState {
     private Music gameOverTheme;
     private double gameSpeed;
     private SpriteDrawer spriteDrawer;
-
+    private Random random;
+    private int pipeDecider;
 
 
     @Override
@@ -44,7 +47,10 @@ public class Singleplayer extends BasicGameState {
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.container= gameContainer;
-        pipes= new CopyOnWriteArrayList<Pipe>();
+
+        random = new Random();
+        pipeDecider = random.nextInt(11);
+        pipes= new CopyOnWriteArrayList<>();
         bird= new Bird(0.2, 0.5);
         pipes.add(new Pipe(1, 0.5, PIPE_SPEED));
         pipes.add(new Pipe( 1.5 + PIPE_WIDTH/2, 0.5, PIPE_SPEED));
@@ -77,7 +83,14 @@ public class Singleplayer extends BasicGameState {
                 System.out.println("COLLISIONE!");
             if (pipe.getX()<0- PIPE_WIDTH) {
                 pipes.remove(pipe);
-                pipes.add(new Pipe(1, 0.25 + (new Random()).nextFloat() * 0.5, PIPE_SPEED));
+                random = new Random();
+                pipeDecider = random.nextInt(11);
+                if(pipeDecider>8){
+                    pipes.add(new MovingPipe(1,0.25 + (new Random()).nextFloat() * 0.5, PIPE_SPEED,PIPE_VERTICAL_SPEED));
+                    pipeDecider=0;
+                }else{
+                    pipes.add(new Pipe(1, 0.25 + (new Random()).nextFloat() * 0.5, PIPE_SPEED));
+                }
             }
         }
 
