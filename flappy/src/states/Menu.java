@@ -39,7 +39,7 @@ public class Menu extends BasicGameState implements ComponentListener {
         singleButton = new MouseOverArea(container, single, 300, 150, 200, 70, this);
         multi = new Image("res/play.png").getScaledCopy(150, 70);
         multiButton = new MouseOverArea(container, multi, 300, 350, 200, 70, this);
-        musicPlayer.BackgroudMusic();
+        musicPlayer.backgroudMusic();
     }
 
     @Override

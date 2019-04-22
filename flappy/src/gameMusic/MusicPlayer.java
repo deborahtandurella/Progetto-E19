@@ -18,15 +18,15 @@ public class MusicPlayer {
         }
     }
 
-    public void FlapMusic(){
+    public void flapMusic(){
         flap.play(1.0f,1.0f);
     }
 
-    public void GameOverMusic(){
+    public void gameOverMusic(){
         gameOverTheme.play(1.0f,1.0f);
     }
 
-    public void BackgroudMusic(){
+    public void backgroudMusic(){
         backgroundTheme.loop(1.0f,1.0f);
     }
 }
