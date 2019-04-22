@@ -34,7 +34,7 @@ public class Menu extends BasicGameState implements ComponentListener {
         this.container= gameContainer;
         this.stateBasedGame= stateBasedGame;
         musicPlayer = new MusicPlayer();
-        drawer = new SpriteDrawer(gameContainer.getWidth(),gameContainer.getHeight());
+        drawer = new SpriteDrawer(gameContainer.getWidth(),gameContainer.getHeight(),gameContainer.getWidth()/4);
         single = new Image("res/play.png").getScaledCopy(150, 70);
         singleButton = new MouseOverArea(container, single, 300, 150, 200, 70, this);
         multi = new Image("res/play.png").getScaledCopy(150, 70);
@@ -53,9 +53,19 @@ public class Menu extends BasicGameState implements ComponentListener {
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException { }
     public void componentActivated(AbstractComponent source) {
         if (source == singleButton ) {
+            try {
+                stateBasedGame.getState(1).init(container,stateBasedGame);
+            } catch (SlickException e) {
+                e.printStackTrace();
+            }
             stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
         }
         if (source == multiButton ) {
+            try {
+                stateBasedGame.getState(4).init(container,stateBasedGame);
+            } catch (SlickException e) {
+                e.printStackTrace();
+            }
             stateBasedGame.enterState(4, new FadeOutTransition(), new FadeInTransition());
         }
     }
