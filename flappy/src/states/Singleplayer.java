@@ -7,6 +7,7 @@ import logic.gameElements.Bird;
 import logic.gameElements.Heart;
 import logic.gameElements.MovingPipe;
 import logic.gameElements.Pipe;
+import org.lwjgl.Sys;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -17,9 +18,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import static logic.gameConstants.GameConstants.PIPE_SPEED;
-import static logic.gameConstants.GameConstants.PIPE_VERTICAL_SPEED;
-import static logic.gameConstants.GameConstants.PIPE_WIDTH;
+import static logic.gameConstants.GameConstants.*;
 
 public class Singleplayer extends BasicGameState {
     private static final int ID = 2;
@@ -28,10 +27,12 @@ public class Singleplayer extends BasicGameState {
     private Heart heart;
     private Player player;
     private List<Pipe> pipes;
+    private List<Heart> hearts;
     private double gameSpeed;
     private SpriteDrawer spriteDrawer;
     private Random random;
     private int pipeDecider;
+    private int lifeSpawner;
     private MusicPlayer musicPlayer;
     private boolean immunity;
     private long immunityTimer;
@@ -49,7 +50,9 @@ public class Singleplayer extends BasicGameState {
 
         random = new Random();
         pipeDecider = random.nextInt(11);
+        lifeSpawner = random.nextInt(16);
         pipes= new CopyOnWriteArrayList<>();
+        hearts= new CopyOnWriteArrayList<>();
         bird= new Bird(0.2, 0.5);
         pipes.add(new Pipe(1, 0.5, PIPE_SPEED));
         pipes.add(new Pipe( 1.5 + PIPE_WIDTH/2, 0.5, PIPE_SPEED));
@@ -64,8 +67,13 @@ public class Singleplayer extends BasicGameState {
 
         spriteDrawer.drawBackgroundSingle(graphics);
         spriteDrawer.drawBird((float) bird.getX(), (float) bird.getY(), graphics);
-        for(Pipe pipe : pipes)
+        for(Pipe pipe : pipes) {
             spriteDrawer.drawPipe((float) pipe.getX(), (float) pipe.getY(), graphics);
+        }
+        for(Heart heart : hearts) {
+            spriteDrawer.drawHeart((float) heart.getX(), (float) heart.getY(), graphics);
+        }
+        spriteDrawer.drawLives(player,graphics);
         container.getGraphics().setWorldClip(container.getWidth()/4f, 0, container.getWidth()/2f, container.getHeight());
 
     }
@@ -73,6 +81,16 @@ public class Singleplayer extends BasicGameState {
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
         bird.update(i);
+        for(Heart heart:hearts){
+            heart.update(i);
+            if(heart.collide(bird)){
+                player.addHeart();
+                hearts.remove(heart);
+            }
+            if(heart.getX()<0-HEART_SIZE){
+                hearts.remove(heart);
+            }
+        }
         if(System.currentTimeMillis()-immunityTimer>3000){
             immunity = false;
             spriteDrawer.setBirdAlpha(1f);
@@ -99,11 +117,17 @@ public class Singleplayer extends BasicGameState {
                 pipes.remove(pipe);
                 random = new Random();
                 pipeDecider = random.nextInt(11);
+                lifeSpawner = random.nextInt(16);
                 if(pipeDecider>8){
                     pipes.add(new MovingPipe(1,0.25 + (new Random()).nextFloat() * 0.5, PIPE_SPEED,PIPE_VERTICAL_SPEED));
                     pipeDecider=0;
                 }else{
                     pipes.add(new Pipe(1, 0.25 + (new Random()).nextFloat() * 0.5, PIPE_SPEED));
+                }
+                if(lifeSpawner>13){
+                    hearts.add(new Heart(1+2*PIPE_WIDTH, 0.25 + (new Random()).nextFloat() * 0.5, PIPE_SPEED));
+                    System.out.println("CUORE CREATO");
+                    lifeSpawner = 0;
                 }
             }
         }

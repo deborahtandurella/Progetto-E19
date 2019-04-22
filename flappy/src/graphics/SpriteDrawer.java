@@ -1,5 +1,6 @@
 package graphics;
 
+import logic.SinglePlayer.Player;
 import logic.gameElements.Bird;
 import logic.gameElements.Coin;
 import logic.gameElements.Heart;
@@ -24,6 +25,8 @@ public class SpriteDrawer{
     private int screenWidth;
     private int screenHeight;
     private int offset;
+    private int lives;
+    private int lifeBias;
 
     public SpriteDrawer(int screenWidth, int screenHeight, int offset){
         this.screenWidth = screenWidth;
@@ -53,6 +56,15 @@ public class SpriteDrawer{
 
     public void drawBird(float x, float y, Graphics graphics){
         graphics.drawImage(birdImage, offset + x*screenWidth, y*screenHeight);
+    }
+
+    public void drawLives(Player player, Graphics graphics){
+        lives = player.getHearts();
+        lifeBias = screenWidth/15;
+        for(int i = 0; i<lives;i++){
+            graphics.drawImage(heartImage,offset + lifeBias,40);
+            lifeBias += screenWidth/15;
+        }
     }
 
     public void drawCoin(float x, float y, Graphics graphics){

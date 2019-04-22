@@ -12,7 +12,7 @@ public class Player {
     }
 
     public void addHeart() {
-        if(hearts<3){
+        if(hearts<5){
             this.hearts++;
         }
     }

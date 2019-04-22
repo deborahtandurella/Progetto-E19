@@ -42,7 +42,7 @@ public class GiocoAStati extends StateBasedGame {
             container.setSmoothDeltas(false);
             container.setTargetFrameRate(125);
             container.setVSync(false);
-            container.setDisplayMode(800,600,true);
+            container.setDisplayMode(800,600,false);
             container.start();
         } catch (SlickException e) {
             e.printStackTrace();
