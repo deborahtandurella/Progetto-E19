@@ -12,7 +12,6 @@ public class MovingPipe extends Pipe {
     public MovingPipe(double x, double centerY, double speedX,double speedY) {
         super(x, centerY, speedX);
         this.speedY = speedY;
-        this.centerY = centerY;
         random = new Random();
         upwards = random.nextBoolean();
     }
