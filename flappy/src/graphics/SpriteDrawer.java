@@ -32,7 +32,7 @@ public class SpriteDrawer{
         System.out.println(screenWidth + " " + screenHeight);
         try {
             backgroundSingle = new Image("res/cimitero.png").getScaledCopy(screenWidth,screenHeight);
-            birdImage = new Image("res/bird.png").getScaledCopy((int)(BIRD_SIZE*screenWidth), (int)(BIRD_SIZE*screenWidth));
+            birdImage = new Image("res/bird.png").getScaledCopy((int)(BIRD_WIDTH*screenWidth), (int)(BIRD_HEIGHT*screenHeight));
             heartImage = new Image("res/heart_full.png").getScaledCopy((int) (HEART_SIZE*screenWidth), (int)(HEART_SIZE*screenHeight));
             coinImage = new Image("res/onecoin.png").getScaledCopy((int)(COIN_SIZE*screenWidth), (int)(COIN_SIZE*screenHeight));
             lowerPipeImage= new Image("res/pipe.png").getScaledCopy((int)(PIPE_WIDTH*screenWidth), (int)(PIPE_WIDTH*PIPE_WIDTH_HEIGHT_PROPORTION*screenHeight));
