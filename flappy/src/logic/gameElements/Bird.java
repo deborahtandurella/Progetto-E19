@@ -18,6 +18,7 @@ public class Bird extends GameElement implements SolidElement{
         if (getY()>1){
             jump();
         }
+
     }
     public void jump(){
         speedY = - JUMP_SPEED;
