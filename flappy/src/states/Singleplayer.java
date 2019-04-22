@@ -39,23 +39,21 @@ public class Singleplayer extends BasicGameState {
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.container= gameContainer;
         pipes= new ArrayList<>();
-        background= new Image("res/mountains04-512-x-256_full.png");
         bird= new Bird(0.2, 0.5);
         pipes.add(new Pipe(1, 0.5, gameSpeed));
         pipes.add(new Pipe( 1.5 + GameConstants.PIPE_WIDTH/2, 0.5, gameSpeed));
         java.awt.Font font1= new java.awt.Font("Verdana", java.awt.Font.BOLD, 32);
         font= new TrueTypeFont(font1, true);
         score=0;
-        flap = new Music("res/flap.ogg");
-        gameOverTheme = new Music("res/gameOver.ogg");
+        spriteDrawer = new SpriteDrawer(gameContainer.getWidth(), gameContainer.getHeight());
         //gameSpeed = DifficultyMenu.getGameSpeed();
         //mancano gli heart da far spawnare, gameSpeed da definire (dev'essere passata dal gioco(?))
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
-        background.draw(0,0, container.getWidth()*3, container.getHeight());
-        spriteDrawer.drawBird(bird, graphics);
+        spriteDrawer.drawBackgroundSingle(graphics);
+        spriteDrawer.drawBird((float) bird.getX(), (float) bird.getY(), graphics);
     }
 
     @Override
