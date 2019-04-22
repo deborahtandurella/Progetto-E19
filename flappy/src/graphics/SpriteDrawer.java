@@ -32,7 +32,7 @@ public class SpriteDrawer{
         System.out.println(screenWidth + " " + screenHeight);
         try {
             backgroundSingle = new Image("res/cimitero.png").getScaledCopy(screenWidth,screenHeight);
-            birdImage = new Image("res/bird.png").getScaledCopy((int)(BIRD_SIZE*screenWidth), (int)(BIRD_SIZE*screenHeight));
+            birdImage = new Image("res/bird.png").getScaledCopy((int)(BIRD_SIZE*screenWidth), (int)(BIRD_SIZE*screenWidth));
             heartImage = new Image("res/heart_full.png").getScaledCopy((int) (HEART_SIZE*screenWidth), (int)(HEART_SIZE*screenHeight));
             coinImage = new Image("res/onecoin.png").getScaledCopy((int)(COIN_SIZE*screenWidth), (int)(COIN_SIZE*screenHeight));
             lowerPipeImage= new Image("res/pipe.png").getScaledCopy((int)(PIPE_WIDTH*screenWidth), (int)(PIPE_WIDTH*PIPE_WIDTH_HEIGHT_PROPORTION*screenHeight));
@@ -54,7 +54,6 @@ public class SpriteDrawer{
 
     public void drawBird(float x, float y, Graphics graphics){
         graphics.drawImage(birdImage, offset + x*screenWidth, y*screenHeight);
-        System.out.println( "uccello disegnato a x:" + x*screenWidth + " y: " + y*screenHeight + " larghezza: " + birdImage.getWidth() + " altezzata: " + birdImage.getHeight());
     }
 
     public void drawCoin(float x, float y, Graphics graphics){
