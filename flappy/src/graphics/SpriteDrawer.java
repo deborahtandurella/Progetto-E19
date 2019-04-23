@@ -43,7 +43,7 @@ public class SpriteDrawer{
             coinSheet = new SpriteSheet("res/Coin.png",32,32);
             coinAnimation = new Animation(coinSheet,100);
 
-            heartSheet = new SpriteSheet("res/Items_Heart.png", 32, 32);
+            heartSheet = new SpriteSheet("res/Items_Heart.png", 16, 16);
             heartAnimation = new Animation(heartSheet, 100);
 
         } catch (SlickException e) {
@@ -72,7 +72,7 @@ public class SpriteDrawer{
     }
 
     public void drawHeart(float x, float y, Graphics graphics){
-        graphics.drawImage(heartImage,offset + x*screenWidth, y*screenHeight );
+        graphics.drawAnimation(heartAnimation,offset + x*screenWidth, y*screenHeight );
     }
 
     public void drawPipe(float x, float y, Graphics graphics){
