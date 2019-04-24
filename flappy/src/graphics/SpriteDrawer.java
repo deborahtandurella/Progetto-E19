@@ -20,6 +20,8 @@ public class SpriteDrawer{
     private Image backgroundMulti;
     private SpriteSheet coinSheet;
     private Animation coinAnimation;
+    private SpriteSheet birdSheet;
+    private Animation birdAnimation;
     private SpriteSheet heartSheet;
     private Animation heartAnimation;
     private int screenWidth;
@@ -43,6 +45,9 @@ public class SpriteDrawer{
             coinSheet = new SpriteSheet("res/Coin.png",32,32);
             coinAnimation = new Animation(coinSheet,100);
 
+            birdSheet = new SpriteSheet("res/piccioneSheet.png",20,17);
+            birdAnimation = new Animation(birdSheet,100);
+
             heartSheet = new SpriteSheet("res/Items_Heart.png", 16, 16);
             heartAnimation = new Animation(heartSheet, 100);
 
@@ -55,7 +60,7 @@ public class SpriteDrawer{
     }
 
     public void drawBird(float x, float y, Graphics graphics){
-        graphics.drawImage(birdImage, offset + x*screenWidth, y*screenHeight);
+        graphics.drawAnimation(birdAnimation, offset + x*screenWidth, y*screenHeight);
     }
 
     public void drawLives(Player player, Graphics graphics){

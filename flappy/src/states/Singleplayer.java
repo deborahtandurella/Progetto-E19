@@ -126,7 +126,6 @@ public class Singleplayer extends BasicGameState {
                 }
                 if(lifeSpawner>13){
                     hearts.add(new Heart(1+2*PIPE_WIDTH, 0.25 + (new Random()).nextFloat() * 0.5, PIPE_SPEED));
-                    System.out.println("CUORE CREATO");
                     lifeSpawner = 0;
                 }
             }
