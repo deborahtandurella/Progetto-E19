@@ -36,6 +36,8 @@ public class Singleplayer extends BasicGameState {
     private MusicPlayer musicPlayer;
     private boolean immunity;
     private long immunityTimer;
+    private TrueTypeFont font;
+    private int score;
 
     @Override
     public int getID() {
@@ -47,7 +49,6 @@ public class Singleplayer extends BasicGameState {
         this.container= gameContainer;
         player = new Player();
         immunity = false;
-
         random = new Random();
         pipeDecider = random.nextInt(11);
         lifeSpawner = random.nextInt(16);
@@ -58,8 +59,9 @@ public class Singleplayer extends BasicGameState {
         pipes.add(new Pipe( 1.5 + PIPE_WIDTH/2, 0.5, PIPE_SPEED));
         musicPlayer = new MusicPlayer();
         spriteDrawer = new SpriteDrawer(gameContainer.getWidth()/2, gameContainer.getHeight(), gameContainer.getWidth()/4);
-        //gameSpeed = DifficultyMenu.getGameSpeed();
-        //mancano gli heart da far spawnare, gameSpeed da definire (dev'essere passata dal gioco(?))
+        java.awt.Font font1= new java.awt.Font("Verdana", java.awt.Font.BOLD, 32);
+        font= new TrueTypeFont(font1, true);
+        score=0;
     }
 
     @Override
@@ -76,6 +78,7 @@ public class Singleplayer extends BasicGameState {
         spriteDrawer.drawLives(player,graphics);
         container.getGraphics().setWorldClip(container.getWidth()/4f, 0, container.getWidth()/2f, container.getHeight());
 
+        font.drawString(gameContainer.getWidth()/2,200,String.valueOf(score));
     }
 
     @Override
@@ -97,6 +100,11 @@ public class Singleplayer extends BasicGameState {
         }
         for(Pipe pipe : pipes) {
             pipe.update(i);
+            if(pipe.getX()<bird.getX()&&!pipe.isPassed()){
+                score++;
+                pipe.setPassed(true);
+
+            }
 
             if(pipe.collide(bird)&&immunity == false){
                 player.loseHeart();
