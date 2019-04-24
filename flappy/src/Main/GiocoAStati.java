@@ -2,6 +2,7 @@ package Main;
 
 import graphics.SpriteDrawer;
 import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.DisplayMode;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
@@ -42,9 +43,15 @@ public class GiocoAStati extends StateBasedGame {
             container.setSmoothDeltas(false);
             container.setTargetFrameRate(125);
             container.setVSync(false);
-            container.setDisplayMode(800,600,false);
+            DisplayMode[] modes = Display.getAvailableDisplayModes();
+
+            DisplayMode bestMode = DisplayModeManager.getBiggestWithRatio(1366, 768);
+            System.err.println(bestMode.getWidth() + "x" + bestMode.getHeight());
+            container.setDisplayMode(bestMode.getWidth(),bestMode.getHeight(),true);
             container.start();
         } catch (SlickException e) {
+            e.printStackTrace();
+        } catch (Exception e){
             e.printStackTrace();
         }
     }
