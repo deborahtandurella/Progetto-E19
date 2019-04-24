@@ -68,7 +68,7 @@ public class SpriteDrawer{
     }
 
     public void drawCoin(float x, float y, Graphics graphics){
-        graphics.drawImage(coinImage,offset + x*screenWidth, y*screenHeight);
+        coinAnimation.draw(offset + x*screenWidth, y*screenHeight, (float) COIN_SIZE*screenWidth, (float) COIN_SIZE*screenHeight);
     }
 
     public void drawHeart(float x, float y, Graphics graphics){
