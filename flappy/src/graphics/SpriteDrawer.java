@@ -72,7 +72,7 @@ public class SpriteDrawer{
     }
 
     public void drawHeart(float x, float y, Graphics graphics){
-        graphics.drawAnimation(heartAnimation,offset + x*screenWidth, y*screenHeight );
+        heartAnimation.draw(offset + x*screenWidth, y*screenHeight, (float) HEART_SIZE*screenWidth, (float) HEART_SIZE*screenHeight);
     }
 
     public void drawPipe(float x, float y, Graphics graphics){
