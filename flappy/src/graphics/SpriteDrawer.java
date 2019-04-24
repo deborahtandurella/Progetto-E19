@@ -60,7 +60,7 @@ public class SpriteDrawer{
     }
 
     public void drawBird(float x, float y, Graphics graphics){
-        graphics.drawAnimation(birdAnimation, offset + x*screenWidth, y*screenHeight);
+        birdAnimation.draw(offset + x*screenWidth, y*screenHeight, (float) BIRD_WIDTH*screenWidth, (float) BIRD_HEIGHT*screenHeight);
     }
 
     public void drawLives(Player player, Graphics graphics){
