@@ -1,6 +1,5 @@
 package Main;
 
-import graphics.SpriteDrawer;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.newdawn.slick.AppGameContainer;
@@ -29,7 +28,7 @@ public class GiocoAStati extends StateBasedGame {
         this.addState(new Menu());
         this.addState(new DifficultyMenu());
         this.addState(new Singleplayer());
-        this.addState(new SingleplayerReplayMenu());
+        this.addState(new SingleplayerReplayMenuState());
         this.addState(new MultiplayerMenu());
         this.addState(new MultiplayerLoading());
         this.addState(new Multiplayer());

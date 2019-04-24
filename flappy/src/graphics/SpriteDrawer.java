@@ -45,8 +45,8 @@ public class SpriteDrawer{
             coinSheet = new SpriteSheet("res/Coin.png",32,32);
             coinAnimation = new Animation(coinSheet,100);
 
-            birdSheet = new SpriteSheet("res/birds.png",170,165);
-            birdAnimation = new Animation(birdSheet,70);
+            birdSheet = new SpriteSheet("res/piccioneSheet.png",20,17);
+            birdAnimation = new Animation(birdSheet,100);
 
             heartSheet = new SpriteSheet("res/Items_Heart.png", 16, 16);
             heartAnimation = new Animation(heartSheet, 100);
