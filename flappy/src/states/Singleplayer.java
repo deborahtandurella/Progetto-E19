@@ -38,6 +38,8 @@ public class Singleplayer extends BasicGameState {
     private long immunityTimer;
     private TrueTypeFont font;
     private int score;
+    private int c;
+    int d;
 
     @Override
     public int getID() {
@@ -62,6 +64,9 @@ public class Singleplayer extends BasicGameState {
         java.awt.Font font1= new java.awt.Font("Verdana", java.awt.Font.BOLD, 32);
         font= new TrueTypeFont(font1, true);
         score=0;
+        c = 2;
+        d = 4;
+
     }
 
     @Override
@@ -70,8 +75,10 @@ public class Singleplayer extends BasicGameState {
         spriteDrawer.drawBackgroundSingle(graphics);
         if(!immunity)
             spriteDrawer.setBirdAlpha(1);
-        else
-            spriteDrawer.setBirdAlpha(0.5f);
+        else {
+
+            spriteDrawer.setBirdAlpha(0.1f*d);
+        }
         spriteDrawer.drawBird((float) bird.getX(), (float) bird.getY(), graphics);
         for(Pipe pipe : pipes) {
             spriteDrawer.drawPipe((float) pipe.getX(), (float) pipe.getY(), graphics);
@@ -100,6 +107,13 @@ public class Singleplayer extends BasicGameState {
         if(System.currentTimeMillis()-immunityTimer>3000){
             immunity = false;
             spriteDrawer.setBirdAlpha(1f);
+        }
+        c += 2;
+        if( c == 100){
+            c = 2;
+            d +=5;
+        if(d >10)
+            d = 5;
         }
         for(Pipe pipe : pipes) {
             pipe.update(i);
