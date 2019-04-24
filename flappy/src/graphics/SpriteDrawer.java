@@ -46,10 +46,10 @@ public class SpriteDrawer{
             coinAnimation = new Animation(coinSheet,100);
 
             birdSheet = new SpriteSheet("res/piccioneSheet.png",20,17);
-            birdAnimation = new Animation(birdSheet,100);
+            birdAnimation = new Animation(birdSheet,200);
 
             heartSheet = new SpriteSheet("res/Items_Heart.png", 16, 16);
-            heartAnimation = new Animation(heartSheet, 100);
+            heartAnimation = new Animation(heartSheet, 200);
 
         } catch (SlickException e) {
             e.printStackTrace();
