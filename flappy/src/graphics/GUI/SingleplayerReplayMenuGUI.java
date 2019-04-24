@@ -15,9 +15,9 @@ public class SingleplayerReplayMenuGUI extends AbstractMenuGUI {
         super(container);
         this.state=state;
         Image yesImage = new Image("res/play.png").getScaledCopy(150,70);
-        yesButton = new MouseOverArea(container, yesImage, 300, 150, 200, 70, this);
+        yesButton = new MouseOverArea(container, yesImage, container.getWidth()/2 - 100, container.getHeight()/3, 200, 70, this);
         Image noImage = new Image("res/play.png").getScaledCopy(150,70);
-        noButton = new MouseOverArea(container, noImage, 300, 350, 200, 70, this);
+        noButton = new MouseOverArea(container, noImage, container.getWidth()/2 - 100, container.getHeight()/2, 200, 70, this);
     }
 
     public void render(){

@@ -36,9 +36,9 @@ public class Menu extends BasicGameState implements ComponentListener {
         musicPlayer = new MusicPlayer();
         drawer = new SpriteDrawer(gameContainer.getWidth(),gameContainer.getHeight(),0);
         single = new Image("res/play.png").getScaledCopy(150, 70);
-        singleButton = new MouseOverArea(container, single, 300, 150, 200, 70, this);
+        singleButton = new MouseOverArea(container, single,  container.getWidth()/2 -100, 150, 200, 70, this);
         multi = new Image("res/play.png").getScaledCopy(150, 70);
-        multiButton = new MouseOverArea(container, multi, 300, 350, 200, 70, this);
+        multiButton = new MouseOverArea(container, multi,  container.getWidth()/2 -100, 350, 200, 70, this);
         musicPlayer.backgroudMusic();
     }
 

@@ -38,11 +38,11 @@ public class DifficultyMenu extends BasicGameState implements ComponentListener 
         this.container= gameContainer;
         this.stateBasedGame= stateBasedGame;
         easy = new Image("res/startE.png").getScaledCopy(250, 70);
-        easyButton = new MouseOverArea(container, easy, 275, 200, 250, 70, this);
+        easyButton = new MouseOverArea(container, easy, container.getWidth()/2 -100, 200, 250, 70, this);
         medium = new Image("res/startM.png").getScaledCopy(250, 70);
-        mediumButton = new MouseOverArea(container, medium, 275, 350, 250, 70, this);
+        mediumButton = new MouseOverArea(container, medium,  container.getWidth()/2 -100, 350, 250, 70, this);
         hard = new Image("res/startH.png").getScaledCopy(250, 70);
-        hardButton = new MouseOverArea(container, hard, 275, 500, 250, 70, this);
+        hardButton = new MouseOverArea(container, hard,  container.getWidth()/2 -100, 500, 250, 70, this);
         gameSpeed=0.7f;
     }
 
