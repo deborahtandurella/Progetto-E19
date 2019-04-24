@@ -68,6 +68,10 @@ public class Singleplayer extends BasicGameState {
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
 
         spriteDrawer.drawBackgroundSingle(graphics);
+        if(!immunity)
+            spriteDrawer.setBirdAlpha(1);
+        else
+            spriteDrawer.setBirdAlpha(0.5f);
         spriteDrawer.drawBird((float) bird.getX(), (float) bird.getY(), graphics);
         for(Pipe pipe : pipes) {
             spriteDrawer.drawPipe((float) pipe.getX(), (float) pipe.getY(), graphics);
@@ -77,7 +81,6 @@ public class Singleplayer extends BasicGameState {
         }
         spriteDrawer.drawLives(player,graphics);
         container.getGraphics().setWorldClip(container.getWidth()/4f, 0, container.getWidth()/2f, container.getHeight());
-
         font.drawString(gameContainer.getWidth()/2,200,String.valueOf(score));
     }
 

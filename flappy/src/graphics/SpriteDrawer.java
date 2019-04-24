@@ -87,7 +87,7 @@ public class SpriteDrawer{
     }
 
     public void setBirdAlpha(float alpha){
-        birdImage.setAlpha(alpha);
+        birdAnimation.getCurrentFrame().setAlpha(alpha);
     }
 }
 
