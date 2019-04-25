@@ -40,7 +40,8 @@ public class Singleplayer extends BasicGameState {
     private TrueTypeFont font;
     private int score;
     private int c;
-    int d;
+    private int d;
+    private Screen screen;
 
     @Override
     public int getID() {
@@ -61,10 +62,11 @@ public class Singleplayer extends BasicGameState {
         pipes.add(new Pipe(1, 0.5, PIPE_SPEED));
         pipes.add(new Pipe( 1.5 + PIPE_WIDTH/2, 0.5, PIPE_SPEED));
         musicPlayer = new MusicPlayer();
-        spriteDrawer = new SpriteDrawer(new Screen(gameContainer.getWidth()/2,
+        screen= new Screen(gameContainer.getWidth()/2,
                 gameContainer.getHeight(),
                 gameContainer.getWidth()/4,
-                0));
+                0);
+        spriteDrawer = new SpriteDrawer(screen);
         java.awt.Font font1= new java.awt.Font("Verdana", java.awt.Font.BOLD, 32);
         font= new TrueTypeFont(font1, true);
         score=0;
@@ -91,8 +93,8 @@ public class Singleplayer extends BasicGameState {
             spriteDrawer.drawHeart((float) heart.getX(), (float) heart.getY(), graphics);
         }
         spriteDrawer.drawLives(player,graphics);
-        container.getGraphics().setWorldClip(container.getWidth()/4f, 0, container.getWidth()/2f, container.getHeight());
-        font.drawString(gameContainer.getWidth()/2f- font.getWidth(String.valueOf(score))/2f,200,String.valueOf(score));
+        container.getGraphics().setWorldClip(screen.getOffsetX(), screen.getOffsetY(), screen.getWidth(), screen.getHeight());
+        font.drawString(screen.getWidth()/2f + screen.getOffsetX()- font.getWidth(String.valueOf(score))/2f,screen.getHeight()/3f,String.valueOf(score));
     }
 
     @Override
@@ -151,6 +153,8 @@ public class Singleplayer extends BasicGameState {
                     pipes.add(new MovingPipe(1,0.25 + (new Random()).nextFloat() * 0.5, PIPE_SPEED,PIPE_VERTICAL_SPEED));
                     pipeDecider=0;
                 }else{
+                    pipes.add(new Pipe(1,0.25 + (new Random()).nextFloat() * 0.5, PIPE_SPEED));
+
                 }
                 if(lifeSpawner>13){
                     hearts.add(new Heart(1+2*PIPE_WIDTH, 0.25 + (new Random()).nextFloat() * 0.5, PIPE_SPEED));
