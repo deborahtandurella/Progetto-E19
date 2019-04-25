@@ -1,5 +1,6 @@
 package graphics.GUI;
 
+import graphics.Screen;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -12,13 +13,13 @@ public class MenuGUI extends AbstractMenuGUI {
     private MouseOverArea singleButton;
     private MouseOverArea multiButton;
 
-    public MenuGUI(GameContainer container, Menu state) throws SlickException {
+    public MenuGUI(GameContainer container, Menu state, Screen screen) throws SlickException {
         super(container);
         this.state = state;
-        Image single = new Image("res/play.png").getScaledCopy(150, 70);
-        singleButton = new MouseOverArea(container, single,  container.getWidth()/2 -100, 150, 200, 70, this);
-        Image multi = new Image("res/play.png").getScaledCopy(150, 70);
-        multiButton = new MouseOverArea(container, multi,  container.getWidth()/2 -100, 350, 200, 70, this);
+        Image single = new Image("res/play.png");
+        singleButton = new Button(container,screen, single,  0.3, this);
+        Image multi = new Image("res/play.png");
+        multiButton = new Button(container,screen, single,  0.5, this);
     }
 
     public void render(){

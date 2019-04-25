@@ -1,5 +1,6 @@
 package graphics.GUI;
 
+import graphics.Screen;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -11,13 +12,13 @@ public class SingleplayerReplayMenuGUI extends AbstractMenuGUI {
     private MouseOverArea yesButton;
     private MouseOverArea noButton;
     private SingleplayerReplayMenuState state;
-    public SingleplayerReplayMenuGUI(GameContainer container, SingleplayerReplayMenuState state) throws SlickException {
+    public SingleplayerReplayMenuGUI(GameContainer container, SingleplayerReplayMenuState state, Screen screen) throws SlickException {
         super(container);
         this.state=state;
-        Image yesImage = new Image("res/play.png").getScaledCopy(150,70);
-        yesButton = new MouseOverArea(container, yesImage, container.getWidth()/2 - 100, container.getHeight()/3, 200, 70, this);
-        Image noImage = new Image("res/play.png").getScaledCopy(150,70);
-        noButton = new MouseOverArea(container, noImage, container.getWidth()/2 - 100, container.getHeight()/2, 200, 70, this);
+        Image yesImage = new Image("res/play.png");
+        yesButton = new Button(container,screen, yesImage,  0.3, this);
+        Image noImage = new Image("res/play.png");
+        noButton = new Button(container,screen, noImage,  0.5, this);
     }
 
     public void render(){

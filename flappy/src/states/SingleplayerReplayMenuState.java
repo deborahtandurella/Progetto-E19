@@ -18,6 +18,7 @@ public class SingleplayerReplayMenuState extends BasicGameState  {
     private StateBasedGame stateBasedGame;
     private SpriteDrawer drawer;
     private SingleplayerReplayMenuGUI gui;
+    private Screen screen;
 
     @Override
     public int getID() {
@@ -28,8 +29,9 @@ public class SingleplayerReplayMenuState extends BasicGameState  {
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.container = gameContainer;
         this.stateBasedGame = stateBasedGame;
-        drawer = new SpriteDrawer(new Screen(gameContainer.getWidth()/2, gameContainer.getHeight(), gameContainer.getWidth()/4, 0));
-        gui= new SingleplayerReplayMenuGUI(gameContainer, this);
+        screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
+        drawer = new SpriteDrawer(screen);
+        gui= new SingleplayerReplayMenuGUI(gameContainer, this, screen);
     }
 
     @Override

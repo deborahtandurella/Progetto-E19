@@ -25,6 +25,7 @@ public class Menu extends BasicGameState{
     private SpriteDrawer drawer;
     private MusicPlayer musicPlayer;
     private MenuGUI gui;
+    private Screen screen;
 
 
     @Override
@@ -37,8 +38,10 @@ public class Menu extends BasicGameState{
         this.container= gameContainer;
         this.stateBasedGame= stateBasedGame;
         musicPlayer = new MusicPlayer();
-        gui = new MenuGUI(gameContainer,this);
-        drawer = new SpriteDrawer(new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0));
+        screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
+        drawer = new SpriteDrawer(screen);
+        gui = new MenuGUI(gameContainer, this, screen);
+
         musicPlayer.backgroudMusic();
     }
 
