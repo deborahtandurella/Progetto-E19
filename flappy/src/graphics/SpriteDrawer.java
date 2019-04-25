@@ -45,7 +45,7 @@ public class SpriteDrawer{
             coinSheet = new SpriteSheet("res/Coin.png",32,32);
             coinAnimation = new Animation(coinSheet,100);
 
-            birdSheet = new SpriteSheet("res/piccioneSheet.png",20,17);
+            birdSheet = new SpriteSheet("res/piccioneSheet.png",160,136);
             birdAnimation = new Animation(birdSheet,200);
 
             heartSheet = new SpriteSheet("res/Items_Heart.png", 16, 16);
@@ -60,9 +60,9 @@ public class SpriteDrawer{
     }
 
     public void drawBird(float x, float y, Graphics graphics, double speedY){
-        birdAnimation.getCurrentFrame().setRotation( (float) 180*( (float) Math.atan2(speedY, JUMP_SPEED))/((float)Math.PI)) ;
-        birdAnimation.getCurrentFrame().setCenterOfRotation( (float)(BIRD_WIDTH*screenWidth)/2f,  (float)(BIRD_HEIGHT*screenHeight)/2f);
-        birdAnimation.draw(offset + x*screenWidth, y*screenHeight, (float) BIRD_WIDTH*screenWidth, (float) BIRD_HEIGHT*screenHeight);
+        birdImage.setRotation( (float) 180*( (float) Math.atan2(speedY, JUMP_SPEED))/((float)Math.PI)) ;
+        birdImage.setCenterOfRotation( (float)(BIRD_WIDTH*screenWidth)/2f,  (float)(BIRD_HEIGHT*screenHeight)/2f);
+        birdImage.draw(offset + x*screenWidth, y*screenHeight, (float) BIRD_WIDTH*screenWidth, (float) BIRD_HEIGHT*screenHeight);
 
     }
 

@@ -14,11 +14,7 @@ public class SingleplayerReplayMenuState extends BasicGameState  {
 
     private GameContainer container;
     private Image gameOver;
-    private Image yes;
-    private Image no;
     private StateBasedGame stateBasedGame;
-    private MouseOverArea yesButton;
-    private MouseOverArea noButton;
     private SpriteDrawer drawer;
     private SingleplayerReplayMenuGUI gui;
 

@@ -46,7 +46,7 @@ public class GiocoAStati extends StateBasedGame {
 
             DisplayMode bestMode = DisplayModeManager.getBiggestWithRatio(4, 3);
             System.err.println(bestMode.getWidth() + "x" + bestMode.getHeight());
-            container.setDisplayMode(bestMode.getWidth(),bestMode.getHeight(),true);
+            container.setDisplayMode(800,600,true);
             container.start();
         } catch (SlickException e) {
             e.printStackTrace();
