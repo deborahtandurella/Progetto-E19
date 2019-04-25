@@ -1,6 +1,7 @@
 package states;
 
 import graphics.GUI.SingleplayerReplayMenuGUI;
+import graphics.Screen;
 import graphics.SpriteDrawer;
 import org.newdawn.slick.*;
 import org.newdawn.slick.gui.MouseOverArea;
@@ -27,7 +28,7 @@ public class SingleplayerReplayMenuState extends BasicGameState  {
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.container = gameContainer;
         this.stateBasedGame = stateBasedGame;
-        drawer = new SpriteDrawer(container.getWidth()/2,container.getHeight(),container.getWidth()/4);
+        drawer = new SpriteDrawer(new Screen(gameContainer.getWidth()/2, gameContainer.getHeight(), gameContainer.getWidth()/4, 0));
         gui= new SingleplayerReplayMenuGUI(gameContainer, this);
     }
 

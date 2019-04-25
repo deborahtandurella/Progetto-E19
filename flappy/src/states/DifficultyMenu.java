@@ -1,5 +1,6 @@
 package states;
 
+import graphics.Screen;
 import graphics.SpriteDrawer;
 import org.newdawn.slick.*;
 import org.newdawn.slick.gui.AbstractComponent;
@@ -34,7 +35,7 @@ public class DifficultyMenu extends BasicGameState implements ComponentListener 
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        drawer = new SpriteDrawer(gameContainer.getWidth(),gameContainer.getHeight(),0);
+        drawer = new SpriteDrawer(new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0));
         this.container= gameContainer;
         this.stateBasedGame= stateBasedGame;
         easy = new Image("res/startE.png").getScaledCopy(250, 70);

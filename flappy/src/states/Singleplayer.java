@@ -1,6 +1,7 @@
 package states;
 
 import gameMusic.MusicPlayer;
+import graphics.Screen;
 import graphics.SpriteDrawer;
 import logic.SinglePlayer.Player;
 import logic.gameElements.Bird;
@@ -60,7 +61,10 @@ public class Singleplayer extends BasicGameState {
         pipes.add(new Pipe(1, 0.5, PIPE_SPEED));
         pipes.add(new Pipe( 1.5 + PIPE_WIDTH/2, 0.5, PIPE_SPEED));
         musicPlayer = new MusicPlayer();
-        spriteDrawer = new SpriteDrawer(gameContainer.getWidth()/2, gameContainer.getHeight(), gameContainer.getWidth()/4);
+        spriteDrawer = new SpriteDrawer(new Screen(gameContainer.getWidth()/2,
+                gameContainer.getHeight(),
+                gameContainer.getWidth()/4,
+                0));
         java.awt.Font font1= new java.awt.Font("Verdana", java.awt.Font.BOLD, 32);
         font= new TrueTypeFont(font1, true);
         score=0;
@@ -147,7 +151,6 @@ public class Singleplayer extends BasicGameState {
                     pipes.add(new MovingPipe(1,0.25 + (new Random()).nextFloat() * 0.5, PIPE_SPEED,PIPE_VERTICAL_SPEED));
                     pipeDecider=0;
                 }else{
-                    pipes.add(new Pipe(1, 0.25 + (new Random()).nextFloat() * 0.5, PIPE_SPEED));
                 }
                 if(lifeSpawner>13){
                     hearts.add(new Heart(1+2*PIPE_WIDTH, 0.25 + (new Random()).nextFloat() * 0.5, PIPE_SPEED));

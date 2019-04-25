@@ -2,6 +2,7 @@ package states;
 
 import gameMusic.MusicPlayer;
 import graphics.GUI.MenuGUI;
+import graphics.Screen;
 import graphics.SpriteDrawer;
 import org.newdawn.slick.*;
 import org.newdawn.slick.gui.AbstractComponent;
@@ -37,7 +38,7 @@ public class Menu extends BasicGameState{
         this.stateBasedGame= stateBasedGame;
         musicPlayer = new MusicPlayer();
         gui = new MenuGUI(gameContainer,this);
-        drawer = new SpriteDrawer(gameContainer.getWidth(),gameContainer.getHeight(),0);
+        drawer = new SpriteDrawer(new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0));
         musicPlayer.backgroudMusic();
     }
 
