@@ -27,4 +27,7 @@ public class Bird extends GameElement implements SolidElement{
 
     }
 
+    public double getSpeedY() {
+        return speedY;
+    }
 }

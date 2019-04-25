@@ -79,7 +79,7 @@ public class Singleplayer extends BasicGameState {
 
             spriteDrawer.setBirdAlpha(0.1f*d);
         }
-        spriteDrawer.drawBird((float) bird.getX(), (float) bird.getY(), graphics);
+        spriteDrawer.drawBird((float) bird.getX(), (float) bird.getY(), graphics, bird.getSpeedY());
         for(Pipe pipe : pipes) {
             spriteDrawer.drawPipe((float) pipe.getX(), (float) pipe.getY(), graphics);
         }
@@ -112,8 +112,8 @@ public class Singleplayer extends BasicGameState {
         if( c == 100){
             c = 2;
             d +=5;
-        if(d >10)
-            d = 5;
+            if(d >10)
+                d = 5;
         }
         for(Pipe pipe : pipes) {
             pipe.update(i);

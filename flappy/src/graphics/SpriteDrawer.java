@@ -59,8 +59,11 @@ public class SpriteDrawer{
         graphics.drawImage(backgroundSingle,offset,0);
     }
 
-    public void drawBird(float x, float y, Graphics graphics){
+    public void drawBird(float x, float y, Graphics graphics, double speedY){
+        birdAnimation.getCurrentFrame().setRotation( (float) 180*( (float) Math.atan2(speedY, JUMP_SPEED))/((float)Math.PI)) ;
+        birdAnimation.getCurrentFrame().setCenterOfRotation( (float)(BIRD_WIDTH*screenWidth)/2f,  (float)(BIRD_HEIGHT*screenHeight)/2f);
         birdAnimation.draw(offset + x*screenWidth, y*screenHeight, (float) BIRD_WIDTH*screenWidth, (float) BIRD_HEIGHT*screenHeight);
+
     }
 
     public void drawLives(Player player, Graphics graphics){
