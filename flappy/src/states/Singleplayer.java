@@ -88,7 +88,7 @@ public class Singleplayer extends BasicGameState {
         }
         spriteDrawer.drawLives(player,graphics);
         container.getGraphics().setWorldClip(container.getWidth()/4f, 0, container.getWidth()/2f, container.getHeight());
-        font.drawString(gameContainer.getWidth()/2,200,String.valueOf(score));
+        font.drawString(gameContainer.getWidth()/2f- font.getWidth(String.valueOf(score))/2f,200,String.valueOf(score));
     }
 
     @Override
