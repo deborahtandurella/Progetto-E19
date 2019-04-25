@@ -17,11 +17,7 @@ public class Menu extends BasicGameState{
     private static final int ID = 0;
 
     private GameContainer container;
-    private Image single;
-    private Image multi;
     private StateBasedGame stateBasedGame;
-    private MouseOverArea singleButton;
-    private MouseOverArea multiButton;
     private SpriteDrawer drawer;
     private MusicPlayer musicPlayer;
     private MenuGUI gui;

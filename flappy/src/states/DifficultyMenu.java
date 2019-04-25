@@ -1,28 +1,23 @@
 package states;
 
+import graphics.GUI.DifficultyMenuGUI;
 import graphics.Screen;
 import graphics.SpriteDrawer;
 import org.newdawn.slick.*;
-import org.newdawn.slick.gui.AbstractComponent;
-import org.newdawn.slick.gui.ComponentListener;
+
 import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
-public class DifficultyMenu extends BasicGameState implements ComponentListener {
+public class DifficultyMenu extends BasicGameState{
     private static final int ID = 1;
     private GameContainer container;
-    private Image background;
-    private Image easy;
-    private Image medium;
-    private Image hard;
     private StateBasedGame stateBasedGame;
-    private MouseOverArea easyButton;
-    private MouseOverArea mediumButton;
-    private MouseOverArea hardButton;
     private static float gameSpeed;
+    private DifficultyMenuGUI gui;
+    private Screen screen;
 
 
 
@@ -38,21 +33,15 @@ public class DifficultyMenu extends BasicGameState implements ComponentListener 
         drawer = new SpriteDrawer(new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0));
         this.container= gameContainer;
         this.stateBasedGame= stateBasedGame;
-        easy = new Image("res/startE.png").getScaledCopy(250, 70);
-        easyButton = new MouseOverArea(container, easy, container.getWidth()/2 -100, 200, 250, 70, this);
-        medium = new Image("res/startM.png").getScaledCopy(250, 70);
-        mediumButton = new MouseOverArea(container, medium,  container.getWidth()/2 -100, 350, 250, 70, this);
-        hard = new Image("res/startH.png").getScaledCopy(250, 70);
-        hardButton = new MouseOverArea(container, hard,  container.getWidth()/2 -100, 500, 250, 70, this);
+        screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
+        gui = new DifficultyMenuGUI(container,this,screen);
         gameSpeed=0.7f;
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         drawer.drawBackgroundSingle(graphics);
-        easyButton.render(gameContainer, graphics);
-        mediumButton.render(gameContainer, graphics);
-        hardButton.render(gameContainer, graphics);
+        gui.render();
     }
 
     @Override
@@ -67,32 +56,30 @@ public class DifficultyMenu extends BasicGameState implements ComponentListener 
         }
     }
 
-    public void componentActivated(AbstractComponent source) {
-        if(source == easyButton ){
-            gameSpeed = 0.5f;
-            try {
-                stateBasedGame.getState(2).init(container,stateBasedGame);
-            } catch (SlickException e) {
-                e.printStackTrace();
-            }
-            stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
+    public void easy(){
+        try {
+            stateBasedGame.getState(2).init(container,stateBasedGame);
+        } catch (SlickException e) {
+            e.printStackTrace();
         }
-        if(source == mediumButton ){
-            try {
-                stateBasedGame.getState(2).init(container,stateBasedGame);
-            } catch (SlickException e) {
-                e.printStackTrace();
-            }
-            stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
+    }
+
+    public void medium(){
+        try {
+            stateBasedGame.getState(2).init(container,stateBasedGame);
+        } catch (SlickException e) {
+            e.printStackTrace();
         }
-        if(source == hardButton ){
-            gameSpeed = 0.9f;
-            try {
-                stateBasedGame.getState(2).init(container,stateBasedGame);
-            } catch (SlickException e) {
-                e.printStackTrace();
-            }
-            stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
+    }
+
+    public void hard(){
+        try {
+            stateBasedGame.getState(2).init(container,stateBasedGame);
+        } catch (SlickException e) {
+            e.printStackTrace();
         }
+        stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
     }
 }

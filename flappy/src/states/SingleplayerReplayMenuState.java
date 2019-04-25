@@ -14,7 +14,6 @@ public class SingleplayerReplayMenuState extends BasicGameState  {
     private static final int ID = 3;
 
     private GameContainer container;
-    private Image gameOver;
     private StateBasedGame stateBasedGame;
     private SpriteDrawer drawer;
     private SingleplayerReplayMenuGUI gui;

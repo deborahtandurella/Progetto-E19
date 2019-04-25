@@ -19,7 +19,7 @@ public class MenuGUI extends AbstractMenuGUI {
         Image single = new Image("res/play.png");
         singleButton = new Button(container,screen, single,  0.3, this);
         Image multi = new Image("res/play.png");
-        multiButton = new Button(container,screen, single,  0.5, this);
+        multiButton = new Button(container,screen, multi,  0.5, this);
     }
 
     public void render(){
