@@ -114,13 +114,6 @@ public class Singleplayer extends BasicGameState {
             immunity = false;
             spriteDrawer.setBirdAlpha(1f);
         }
-        c += 2;
-        if( c == 100){
-            c = 2;
-            d +=5;
-            if(d >10)
-                d = 5;
-        }
         for(Pipe pipe : pipes) {
             pipe.update(i);
             if(pipe.getX()<bird.getX()&&!pipe.isPassed()){

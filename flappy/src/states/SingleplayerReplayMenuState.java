@@ -31,6 +31,7 @@ public class SingleplayerReplayMenuState extends BasicGameState  {
         screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
         drawer = new SpriteDrawer(screen);
         gui= new SingleplayerReplayMenuGUI(gameContainer, this, screen);
+        container.getGraphics().clearWorldClip();
     }
 
     @Override
