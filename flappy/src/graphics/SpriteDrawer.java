@@ -92,17 +92,11 @@ public class SpriteDrawer{
     }
 
     public void setBirdAlpha(float alpha){
-        birdAnimation.getCurrentFrame().setAlpha(alpha);
+        birdAnimation.getImage(0).setAlpha(alpha);
+        birdAnimation.getImage(1).setAlpha(alpha);
+        birdAnimation.getImage(2).setAlpha(alpha);
     }
 }
-
-        /* PIPE
-        width= WIDTH_PROPORION * container.getWidth();
-         height= width* WIDTH_HEIGHT_PROPORTION;
-         x=sfasamento;
-         y=center;
-         upperShape= new Rectangle(x, y-height-0.5f*FREE_SPACE_PROPORTION*container.getHeight(), width, height);
-         lowerShape= new Rectangle(x, y+0.5f*FREE_SPACE_PROPORTION*container.getHeight(), width, height);*/
 
         /* PIPE
         width= WIDTH_PROPORION * container.getWidth();

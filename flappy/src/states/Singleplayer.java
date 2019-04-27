@@ -39,9 +39,9 @@ public class Singleplayer extends BasicGameState {
     private long immunityTimer;
     private TrueTypeFont font;
     private int score;
-    private int c;
-    private int d;
     private Screen screen;
+    private boolean gameover;
+    private boolean changeState;
 
     @Override
     public int getID() {
@@ -51,6 +51,8 @@ public class Singleplayer extends BasicGameState {
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.container= gameContainer;
+        gameover = false;
+        changeState = false;
         player = new Player();
         immunity = false;
         random = new Random();
@@ -70,20 +72,15 @@ public class Singleplayer extends BasicGameState {
         java.awt.Font font1= new java.awt.Font("Verdana", java.awt.Font.BOLD, 32);
         font= new TrueTypeFont(font1, true);
         score=0;
-        c = 2;
-        d = 4;
-
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
-
         spriteDrawer.drawBackgroundSingle(graphics);
-        if(!immunity)
-            spriteDrawer.setBirdAlpha(1);
-        else {
-
-            spriteDrawer.setBirdAlpha(0.1f*d);
+        setClip(graphics);
+        if(gameover){
+            removeClip(graphics);
+            changeState = true;
         }
         spriteDrawer.drawBird((float) bird.getX(), (float) bird.getY(), graphics, bird.getSpeedY());
         for(Pipe pipe : pipes) {
@@ -93,12 +90,20 @@ public class Singleplayer extends BasicGameState {
             spriteDrawer.drawHeart((float) heart.getX(), (float) heart.getY(), graphics);
         }
         spriteDrawer.drawLives(player,graphics);
-        container.getGraphics().setWorldClip(screen.getOffsetX(), screen.getOffsetY(), screen.getWidth(), screen.getHeight());
         font.drawString(screen.getWidth()/2f + screen.getOffsetX()- font.getWidth(String.valueOf(score))/2f,screen.getHeight()/3f,String.valueOf(score));
     }
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
+        if(changeState){
+            try {
+                stateBasedGame.getState(3).init(container,stateBasedGame);
+            } catch (SlickException e) {
+                e.printStackTrace();
+            }
+            musicPlayer.gameOverMusic();
+            stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
+        }
         bird.update(i);
         for(Heart heart:hearts){
             heart.update(i);
@@ -125,13 +130,7 @@ public class Singleplayer extends BasicGameState {
             if(pipe.collide(bird)&&immunity == false){
                 player.loseHeart();
                 if(player.getHearts()==0){
-                    try {
-                        stateBasedGame.getState(3).init(container,stateBasedGame);
-                    } catch (SlickException e) {
-                        e.printStackTrace();
-                    }
-                    musicPlayer.gameOverMusic();
-                    stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
+                    gameover = true;
                 }
                 immunity = true;
                 spriteDrawer.setBirdAlpha(0.5f);
@@ -170,5 +169,13 @@ public class Singleplayer extends BasicGameState {
         if( key == Input.KEY_ESCAPE){
             System.exit(0);
         }
+    }
+
+    public void setClip(Graphics graphics){
+        graphics.setWorldClip(screen.getOffsetX(), screen.getOffsetY(), screen.getWidth(), screen.getHeight());
+    }
+
+    public void removeClip(Graphics graphics){
+        graphics.clearWorldClip();
     }
 }
