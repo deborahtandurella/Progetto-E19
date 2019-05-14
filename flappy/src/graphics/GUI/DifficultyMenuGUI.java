@@ -17,11 +17,11 @@ public class DifficultyMenuGUI extends AbstractMenuGUI {
     public DifficultyMenuGUI(GameContainer container, DifficultyMenu state, Screen screen) throws SlickException {
         super(container);
         this.state = state;
-        Image easy = new Image("res/startE.png").getScaledCopy(250, 70);
+        Image easy = new Image("res/easybutton.png").getScaledCopy(250, 70);
         easyButton = new Button(container,screen, easy,  0.3, this);
-        Image medium = new Image("res/startM.png").getScaledCopy(250, 70);
+        Image medium = new Image("res/mediumbutton.png").getScaledCopy(250, 70);
         mediumButton = new Button(container,screen, medium,  0.5, this);
-        Image hard = new Image("res/startH.png").getScaledCopy(250, 70);
+        Image hard = new Image("res/hardbutton.png").getScaledCopy(250, 70);
         hardButton = new Button(container,screen, hard,  0.7, this);
     }
 

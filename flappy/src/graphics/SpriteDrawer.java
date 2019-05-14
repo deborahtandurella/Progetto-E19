@@ -17,7 +17,6 @@ public class SpriteDrawer{
     private Image lowerPipeImage;
     private Image upperPipeImage;
     private Image backgroundSingle;
-    private Image backgroundMulti;
     private SpriteSheet coinSheet;
     private Animation coinAnimation;
     private SpriteSheet birdSheet;
@@ -92,16 +91,8 @@ public class SpriteDrawer{
     }
 
     public void setBirdAlpha(float alpha){
-        birdAnimation.getImage(0).setAlpha(alpha);
-        birdAnimation.getImage(1).setAlpha(alpha);
-        birdAnimation.getImage(2).setAlpha(alpha);
+        for (int i = 0; i<birdAnimation.getFrameCount();i++){
+            birdAnimation.getImage(i).setAlpha(alpha);
+        }
     }
 }
-
-        /* PIPE
-        width= WIDTH_PROPORION * container.getWidth();
-         height= width* WIDTH_HEIGHT_PROPORTION;
-         x=sfasamento;
-         y=center;
-         upperShape= new Rectangle(x, y-height-0.5f*FREE_SPACE_PROPORTION*container.getHeight(), width, height);
-         lowerShape= new Rectangle(x, y+0.5f*FREE_SPACE_PROPORTION*container.getHeight(), width, height);*/

@@ -36,6 +36,7 @@ public class SingleplayerReplayMenuState extends BasicGameState  {
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
+        graphics.clearWorldClip();
         drawer.drawBackgroundSingle(graphics);
         gui.render();
     }

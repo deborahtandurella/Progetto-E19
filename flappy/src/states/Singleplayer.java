@@ -8,7 +8,6 @@ import logic.gameElements.Bird;
 import logic.gameElements.Heart;
 import logic.gameElements.MovingPipe;
 import logic.gameElements.Pipe;
-import org.lwjgl.Sys;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -40,8 +39,6 @@ public class Singleplayer extends BasicGameState {
     private TrueTypeFont font;
     private int score;
     private Screen screen;
-    private boolean gameover;
-    private boolean changeState;
 
     @Override
     public int getID() {
@@ -51,8 +48,6 @@ public class Singleplayer extends BasicGameState {
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.container= gameContainer;
-        gameover = false;
-        changeState = false;
         player = new Player();
         immunity = false;
         random = new Random();
@@ -78,10 +73,7 @@ public class Singleplayer extends BasicGameState {
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         spriteDrawer.drawBackgroundSingle(graphics);
         setClip(graphics);
-        if(gameover){
-            removeClip(graphics);
-            changeState = true;
-        }
+
         spriteDrawer.drawBird((float) bird.getX(), (float) bird.getY(), graphics, bird.getSpeedY());
         for(Pipe pipe : pipes) {
             spriteDrawer.drawPipe((float) pipe.getX(), (float) pipe.getY(), graphics);
@@ -95,15 +87,7 @@ public class Singleplayer extends BasicGameState {
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
-        if(changeState){
-            try {
-                stateBasedGame.getState(3).init(container,stateBasedGame);
-            } catch (SlickException e) {
-                e.printStackTrace();
-            }
-            musicPlayer.gameOverMusic();
-            stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
-        }
+
         bird.update(i);
         for(Heart heart:hearts){
             heart.update(i);
@@ -130,7 +114,13 @@ public class Singleplayer extends BasicGameState {
             if(pipe.collide(bird)&&immunity == false){
                 player.loseHeart();
                 if(player.getHearts()==0){
-                    gameover = true;
+                    try {
+                        stateBasedGame.getState(3).init(container,stateBasedGame);
+                    } catch (SlickException e) {
+                        e.printStackTrace();
+                    }
+                    musicPlayer.gameOverMusic();
+                    stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
                 }
                 immunity = true;
                 spriteDrawer.setBirdAlpha(0.5f);

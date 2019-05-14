@@ -16,9 +16,9 @@ public class MenuGUI extends AbstractMenuGUI {
     public MenuGUI(GameContainer container, Menu state, Screen screen) throws SlickException {
         super(container);
         this.state = state;
-        Image single = new Image("res/play.png");
+        Image single = new Image("res/singleplayerbutton.png");
         singleButton = new Button(container,screen, single,  0.3, this);
-        Image multi = new Image("res/play.png");
+        Image multi = new Image("res/multiplayerbutton.png");
         multiButton = new Button(container,screen, multi,  0.5, this);
     }
 

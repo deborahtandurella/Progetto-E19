@@ -63,7 +63,7 @@ public class DifficultyMenu extends BasicGameState implements ComponentListener 
     @Override
     public void componentActivated(AbstractComponent source) {
         if(source == easyButton ){
-            gameSpeed = 0.4f;
+            gameSpeed = 0.5f;
             try {
                 stateBasedGame.getState(1).init(container,stateBasedGame);
             } catch (SlickException e) {
