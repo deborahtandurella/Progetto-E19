@@ -4,10 +4,7 @@ import gameMusic.MusicPlayer;
 import graphics.Screen;
 import graphics.SpriteDrawer;
 import logic.SinglePlayer.Player;
-import logic.gameElements.Bird;
-import logic.gameElements.Heart;
-import logic.gameElements.MovingPipe;
-import logic.gameElements.Pipe;
+import logic.gameElements.*;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -24,15 +21,16 @@ public class Singleplayer extends BasicGameState {
     private static final int ID = 2;
     private GameContainer container;
     private Bird bird;
-    private Heart heart;
     private Player player;
     private List<Pipe> pipes;
     private List<Heart> hearts;
+    private List<Rocket> rockets;
     private double gameSpeed;
     private SpriteDrawer spriteDrawer;
     private Random random;
     private int pipeDecider;
     private int lifeSpawner;
+    private int rocketSpawner;
     private MusicPlayer musicPlayer;
     private boolean immunity;
     private long immunityTimer;
@@ -53,8 +51,10 @@ public class Singleplayer extends BasicGameState {
         random = new Random();
         pipeDecider = random.nextInt(11);
         lifeSpawner = random.nextInt(16);
+        rocketSpawner = random.nextInt(16);
         pipes= new CopyOnWriteArrayList<>();
         hearts= new CopyOnWriteArrayList<>();
+        rockets= new CopyOnWriteArrayList<>();
         bird= new Bird(0.2, 0.5);
         pipes.add(new Pipe(1, 0.5, PIPE_SPEED));
         pipes.add(new Pipe( 1.5 + PIPE_WIDTH/2, 0.5, PIPE_SPEED));
@@ -81,6 +81,9 @@ public class Singleplayer extends BasicGameState {
         for(Heart heart : hearts) {
             spriteDrawer.drawHeart((float) heart.getX(), (float) heart.getY(), graphics);
         }
+        for(Rocket rocket : rockets) {
+            spriteDrawer.drawRocket((float) rocket.getX(), (float) rocket.getY(), graphics);
+        }
         spriteDrawer.drawLives(player,graphics);
         font.drawString(screen.getWidth()/2f + screen.getOffsetX()- font.getWidth(String.valueOf(score))/2f,screen.getHeight()/3f,String.valueOf(score));
     }
@@ -97,6 +100,28 @@ public class Singleplayer extends BasicGameState {
             }
             if(heart.getX()<0-HEART_SIZE){
                 hearts.remove(heart);
+            }
+        }
+        for(Rocket rocket:rockets){
+            rocket.update(i);
+            if(rocket.collide(bird)&&immunity == false){
+                player.loseHeart();
+                rockets.remove(rocket);
+                if(player.getHearts()==0){
+                    try {
+                        stateBasedGame.getState(3).init(container,stateBasedGame);
+                    } catch (SlickException e) {
+                        e.printStackTrace();
+                    }
+                    musicPlayer.gameOverMusic();
+                    stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
+                }
+                immunity = true;
+                spriteDrawer.setBirdAlpha(0.5f);
+                immunityTimer = System.currentTimeMillis();
+            }
+            if(rocket.getX()<0-ROCKET_SIZE){
+                rockets.remove(rocket);
             }
         }
         if(System.currentTimeMillis()-immunityTimer>3000){
@@ -131,6 +156,11 @@ public class Singleplayer extends BasicGameState {
                 random = new Random();
                 pipeDecider = random.nextInt(11);
                 lifeSpawner = random.nextInt(16);
+                rocketSpawner = random.nextInt(16);
+                if(rocketSpawner>10){
+                    rockets.add(new Rocket(1+2*PIPE_WIDTH, 0.25 + (new Random()).nextFloat() * 0.5, PIPE_SPEED*1.5));
+                    rocketSpawner = 0;
+                }
                 if(pipeDecider>8){
                     pipes.add(new MovingPipe(1,0.25 + (new Random()).nextFloat() * 0.5, PIPE_SPEED,PIPE_VERTICAL_SPEED));
                     pipeDecider=0;
@@ -165,7 +195,4 @@ public class Singleplayer extends BasicGameState {
         graphics.setWorldClip(screen.getOffsetX(), screen.getOffsetY(), screen.getWidth(), screen.getHeight());
     }
 
-    public void removeClip(Graphics graphics){
-        graphics.clearWorldClip();
-    }
 }

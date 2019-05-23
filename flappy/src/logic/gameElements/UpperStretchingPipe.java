@@ -6,13 +6,14 @@ import static logic.gameConstants.GameConstants.PIPE_FREE_SPACE;
 import static logic.gameConstants.GameConstants.PIPE_HEIGHT;
 import static logic.gameConstants.GameConstants.PIPE_WIDTH;
 
-public class StretchingPipe extends GameElement implements SolidElement{
+public class UpperStretchingPipe extends GameElement implements SolidElement{
     private final double speedX;
     private double speedY;
     private boolean passed;
     private double pipeSpace = PIPE_FREE_SPACE;
 
-    public StretchingPipe(double x, double centerY, double speedX, double speedY){
+
+    public UpperStretchingPipe(double x, double centerY, double speedX, double speedY){
         super(x, centerY);
         this.speedX = speedX;
         this.speedY = speedY;
@@ -26,6 +27,7 @@ public class StretchingPipe extends GameElement implements SolidElement{
     @Override
     public void update(int delta) {
         setX(getX() - speedX*delta);
+
     }
 
     public void setPassed(boolean passed){

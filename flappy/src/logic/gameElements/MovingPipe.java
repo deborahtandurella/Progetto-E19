@@ -5,7 +5,6 @@ import java.util.Random;
 public class MovingPipe extends Pipe {
 
     private double speedY;
-    private double centerY;
     private boolean upwards;
     private Random random;
 

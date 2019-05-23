@@ -8,6 +8,7 @@ public class GameConstants {
 
     public static final double COIN_SIZE = 0.05;
     public static final double HEART_SIZE = 0.05;
+    public static final double ROCKET_SIZE = 0.2;
 
     public static final double PIPE_FREE_SPACE = 0.35;
     public static final double PIPE_WIDTH = 1/6d;
