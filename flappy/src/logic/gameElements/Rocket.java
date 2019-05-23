@@ -1,6 +1,9 @@
 package logic.gameElements;
 
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.TriangleMesh;
 import org.newdawn.slick.geom.Ellipse;
+import org.newdawn.slick.geom.Rectangle;
 
 import static logic.gameConstants.GameConstants.HEART_SIZE;
 import static logic.gameConstants.GameConstants.ROCKET_SIZE;
@@ -10,7 +13,7 @@ public class Rocket extends GameElement implements SolidElement{
 
     public Rocket(double x, double y, double speedX){
         super(x,y);
-        addHitboxShape(new Ellipse( (float)(x+ROCKET_SIZE/8), (float)(y+ROCKET_SIZE/8), (float) (ROCKET_SIZE/8), (float)(ROCKET_SIZE/8)));
+        addHitboxShape(new Rectangle( (float)(x+ROCKET_SIZE/8), (float)(y+ROCKET_SIZE/5), (float) (ROCKET_SIZE/8), (float)(ROCKET_SIZE/5)) );
         this.speedX = speedX;
     }
 
