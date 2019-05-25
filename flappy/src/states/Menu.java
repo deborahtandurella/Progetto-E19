@@ -38,7 +38,7 @@ public class Menu extends BasicGameState{
         drawer = new SpriteDrawer(screen);
         gui = new MenuGUI(gameContainer, this, screen);
 
-        musicPlayer.backgroudMusic();
+        musicPlayer.backgroundMusic();
     }
 
     @Override
