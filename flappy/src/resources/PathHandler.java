@@ -12,13 +12,11 @@ public class PathHandler {
     private String key;
     private String line;
     private StringTokenizer st;
-    private boolean loop;
     private String path;
 
     public PathHandler() throws FileNotFoundException {
         fileReader = new FileReader("res/path_list.txt");
         bufferedReader =new BufferedReader(fileReader);
-        loop = true;
     }
 
     public String getPath(PathKeys key) throws IOException {
@@ -29,11 +27,11 @@ public class PathHandler {
 
             if(st.nextElement().equals(this.key)){
                 path = st.nextToken();
-                break;
+                return path;
             }
             if(line==null)
-                break;
+                throw new InvalidKeyException();
         }
-        return path;
+
     }
 }
