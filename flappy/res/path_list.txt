@@ -1,0 +1,4 @@
+BIRD,res/piccioneSheet.png
+HEARTH,res/Items_Heart.png
+
+//TODO AGGIUNGERE PATH E RELATIVI ENUM
