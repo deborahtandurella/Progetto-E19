@@ -105,6 +105,7 @@ public class Singleplayer extends BasicGameState {
         for(Rocket rocket:rockets){
             rocket.update(i);
             if(rocket.collide(bird)&&immunity == false){
+                musicPlayer.explosionMusic();
                 player.loseHeart();
                 rockets.remove(rocket);
                 if(player.getHearts()==0){
