@@ -18,9 +18,6 @@ public class Hitbox {
         return this.shapes;
     }
     public boolean collides(Hitbox other){
-        if(other.getShapes()==null||this.shapes==null){
-            return false;
-        }
         for(Shape myShape: this.shapes){
             for(Shape otherShape: other.getShapes()){
                 if(myShape.intersects(otherShape)){
