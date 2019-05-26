@@ -6,7 +6,7 @@ import graphics.Screen;
 import org.newdawn.slick.Graphics;
 
 public abstract class GameElementGraphicComponent implements GraphicComponent {
-    private LogicComponent logicComponent;
+    private GameElementLogicComponent logicComponent;
     private Graphics graphics;
     private Screen screen;
     @Override
@@ -16,11 +16,11 @@ public abstract class GameElementGraphicComponent implements GraphicComponent {
         this.screen=screen;
     }
 
-    public void setLogicComponent(LogicComponent logicComponent) {
+    public void setLogicComponent(GameElementLogicComponent logicComponent) {
         this.logicComponent = logicComponent;
     }
 
-    public LogicComponent getLogicComponent() {
+    public GameElementLogicComponent getLogicComponent() {
         return logicComponent;
     }
 
