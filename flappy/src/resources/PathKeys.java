@@ -1,5 +1,5 @@
 package resources;
 
 public enum PathKeys {
-    BIRD,HEARTH;
+    BIRD,HEARTH, PIPE;
 }
