@@ -15,7 +15,7 @@ public class BirdLogicComponent extends SolidGameElementLogicComponent {
 
     @Override
     public void update(int delta) {
-        setSpeedY(getSpeedX() + delta * ACCELERATION_Y);
+        setSpeedY(getSpeedY() + delta * ACCELERATION_Y);
         setY(getY() + getSpeedY() * delta);
         if (getY() > 1){
             jump();
