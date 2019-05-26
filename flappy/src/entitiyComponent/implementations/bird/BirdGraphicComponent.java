@@ -11,7 +11,6 @@ import static logic.gameConstants.GameConstants.*;
 public class BirdGraphicComponent extends GameElementGraphicComponent
 {
     private Image birdImage;
-    private BirdLogicComponent logicComponent;
 
     public BirdGraphicComponent(Graphics graphics, Screen screen) {
         super(graphics, screen);
@@ -24,12 +23,15 @@ public class BirdGraphicComponent extends GameElementGraphicComponent
 
     @Override
     public void render() {
-        birdImage.setRotation( (float) 180*( (float) Math.atan2(logicComponent.getSpeedY(), JUMP_SPEED))/((float)Math.PI)) ;
+        birdImage.setRotation( (float) 180*( (float) Math.atan2(getLogic().getSpeedY(), JUMP_SPEED))/((float)Math.PI)) ;
         birdImage.setCenterOfRotation( (float)(BIRD_WIDTH*getScreen().getWidth())/2f,  (float)(BIRD_HEIGHT*getScreen().getHeight())/2f);
-        birdImage.draw( (float) (getScreen().getOffsetX()+ logicComponent.getX()*getScreen().getWidth()),
-                (float) logicComponent.getY()*getScreen().getHeight()+ getScreen().getOffsetY(),
+        birdImage.draw( (float) (getScreen().getOffsetX()+ getLogic().getX()*getScreen().getWidth()),
+                (float) getLogic().getY()*getScreen().getHeight()+ getScreen().getOffsetY(),
                 (float) BIRD_WIDTH*getScreen().getWidth(),
                 (float) BIRD_HEIGHT*getScreen().getHeight()+ getScreen().getOffsetY());
+    }
+    private BirdLogicComponent getLogic(){
+        return (BirdLogicComponent) getLogicComponent();
     }
 }
 
