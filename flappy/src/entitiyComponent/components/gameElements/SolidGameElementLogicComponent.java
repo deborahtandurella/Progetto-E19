@@ -21,7 +21,6 @@ public abstract class SolidGameElementLogicComponent extends GameElementLogicCom
         hitbox.shift(0, y-getY());
     }
 
-    public abstract void update(int delta);
     public void addHitboxShape(Shape shape){
         hitbox.addShape(shape);
     }
