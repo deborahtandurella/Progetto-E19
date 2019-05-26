@@ -9,23 +9,36 @@ import java.util.StringTokenizer;
 public class PathHandler {
     private FileReader fileReader;
     private BufferedReader bufferedReader;
-    private String key;
-    private String line;
-    private StringTokenizer st;
-    private String path;
+    private static String path= "res/path_list.txt";
+    private static PathHandler instance;
 
-    public PathHandler() throws FileNotFoundException {
-        fileReader = new FileReader("res/path_list.txt");
+    private PathHandler() throws FileNotFoundException {
+        fileReader = new FileReader(path);
         bufferedReader =new BufferedReader(fileReader);
     }
+    public static synchronized PathHandler getInstance(){
+        if (instance == null)
+            try {
+                instance= new PathHandler();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        return instance;
+    }
 
+    private void reload() throws IOException{
+        fileReader.reset();
+        bufferedReader = new BufferedReader(fileReader);
+    }
     public String getPath(PathKeys key) throws IOException {
-        this.key = key.toString();
+        reload();
+        String line;
+        StringTokenizer st;
         while(true) {
             line=bufferedReader.readLine();
             st = new StringTokenizer(line,",");
 
-            if(st.nextElement().equals(this.key)){
+            if(st.nextElement().equals(key.toString())){
                 path = st.nextToken();
                 return path;
             }
