@@ -1,6 +1,8 @@
 package graphics;
 
 
+import org.newdawn.slick.Image;
+
 /**
  * Questa classe rappresenta uno schermo di gioco
  *
@@ -36,5 +38,15 @@ public class Screen {
 
     public int getOffsetY() {
         return offsetY;
+    }
+
+    public void drawImage(Image image, float x, float y, float imageWidth, float imageHeight){
+        image.draw(offsetX + x*width, offsetY + y*width,
+                imageWidth*width, imageHeight * height);
+    }
+    public void drawRotatedImage(Image image, float x, float y, float imageWidth, float imageHeight, float rotation){
+        image.setRotation(rotation);
+        image.setCenterOfRotation(imageWidth*width/2f, imageHeight*height/2f);
+        drawImage(image, x, y, imageWidth, imageHeight);
     }
 }
