@@ -27,4 +27,14 @@ public abstract class Entity {
     public void setLogicComponent(LogicComponent logicComponent) {
         this.logicComponent = logicComponent;
     }
+    public void update(int delta){
+        if (logicComponent != null) {
+            logicComponent.update(delta);
+        }
+    }
+    public void render(){
+        if (graphicComponent != null) {
+            graphicComponent.render();
+        }
+    }
 }
