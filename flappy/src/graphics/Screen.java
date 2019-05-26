@@ -41,7 +41,7 @@ public class Screen {
     }
 
     public void drawImage(Image image, float x, float y, float imageWidth, float imageHeight){
-        image.draw(offsetX + x*width, offsetY + y*width,
+        image.draw(offsetX + x*width, offsetY + y*height,
                 imageWidth*width, imageHeight * height);
     }
     public void drawRotatedImage(Image image, float x, float y, float imageWidth, float imageHeight, float rotation){
