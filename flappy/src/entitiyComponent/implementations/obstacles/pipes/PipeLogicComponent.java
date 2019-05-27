@@ -9,13 +9,10 @@ import static logic.gameConstants.GameConstants.PIPE_HEIGHT;
 import static logic.gameConstants.GameConstants.PIPE_WIDTH;
 
 public class PipeLogicComponent extends ObstacleLogicComponent {
-    private boolean passed;
-
     public PipeLogicComponent(double x, double centerY, double speedX) {
         super(x, centerY, speedX, 0);
         addHitboxShape(new Rectangle((float) x, (float) (centerY-PIPE_HEIGHT-PIPE_FREE_SPACE/2d), (float)PIPE_WIDTH, (float) PIPE_HEIGHT));
         addHitboxShape(new Rectangle((float) x, (float) (centerY+PIPE_FREE_SPACE/2d),  (float)PIPE_WIDTH, (float) PIPE_HEIGHT));
-        passed = false;
     }
 
     @Override
@@ -31,12 +28,4 @@ public class PipeLogicComponent extends ObstacleLogicComponent {
         return false;
     }
 
-
-    public boolean isPassed() {
-        return passed;
-    }
-
-    public void setPassed(boolean passed) {
-        this.passed = passed;
-    }
 }
