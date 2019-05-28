@@ -13,8 +13,8 @@ public class MenuGUI extends AbstractMenuGUI {
     private MouseOverArea singleButton;
     private MouseOverArea multiButton;
 
-    public MenuGUI(GameContainer container, Menu state, Screen screen) throws SlickException {
-        super(container);
+    public MenuGUI(GameContainer container, Screen screen, Menu state) throws SlickException {
+        super(container, screen);
         this.state = state;
         Image single = new Image("res/singleplayerbutton.png");
         singleButton = new Button(container,screen, single,  0.3, this);
@@ -23,8 +23,8 @@ public class MenuGUI extends AbstractMenuGUI {
     }
 
     public void render(){
-        singleButton.render(container,container.getGraphics());
-        multiButton.render(container,container.getGraphics());
+        singleButton.render(getContainer(),getContainer().getGraphics());
+        multiButton.render(getContainer(),getContainer().getGraphics());
     }
 
     @Override

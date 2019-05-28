@@ -34,7 +34,7 @@ public class DifficultyMenu extends BasicGameState{
         this.container= gameContainer;
         this.stateBasedGame= stateBasedGame;
         screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
-        gui = new DifficultyMenuGUI(container,this,screen);
+        gui = new DifficultyMenuGUI(container,screen,this);
         gameSpeed=0.7f;
     }
 

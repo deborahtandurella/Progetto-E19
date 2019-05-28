@@ -14,11 +14,11 @@ public class DifficultyMenuGUI extends AbstractMenuGUI {
     private MouseOverArea mediumButton;
     private MouseOverArea hardButton;
 
-    public DifficultyMenuGUI(GameContainer container, DifficultyMenu state, Screen screen) throws SlickException {
-        super(container);
+    public DifficultyMenuGUI(GameContainer container, Screen screen, DifficultyMenu state) throws SlickException {
+        super(container, screen);
         this.state = state;
         Image easy = new Image("res/easybutton.png").getScaledCopy(250, 70);
-        easyButton = new Button(container,screen, easy,  0.3, this);
+        easyButton = new Button(container, screen, easy,  0.3, this);
         Image medium = new Image("res/mediumbutton.png").getScaledCopy(250, 70);
         mediumButton = new Button(container,screen, medium,  0.5, this);
         Image hard = new Image("res/hardbutton.png").getScaledCopy(250, 70);
@@ -27,9 +27,9 @@ public class DifficultyMenuGUI extends AbstractMenuGUI {
 
     @Override
     public void render() {
-        easyButton.render(container,container.getGraphics());
-        mediumButton.render(container,container.getGraphics());
-        hardButton.render(container,container.getGraphics());
+        easyButton.render(getContainer(),getContainer().getGraphics());
+        mediumButton.render(getContainer(),getContainer().getGraphics());
+        hardButton.render(getContainer(),getContainer().getGraphics());
     }
 
     @Override

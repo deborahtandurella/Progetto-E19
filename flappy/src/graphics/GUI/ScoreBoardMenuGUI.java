@@ -26,7 +26,7 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
 
 
     public ScoreBoardMenuGUI(GameContainer container, ScoreBoardState state, Screen screen) throws SlickException {
-        super(container);
+        super(container, screen);
         this.state = state;
         Image ok = new Image("res/Images/okbutton.png").getScaledCopy(30,30);
         okButton = new Button(container, screen, ok, 0.3, this);
@@ -43,9 +43,9 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
 
     @Override
     public void render() {
-        okButton.render(container, container.getGraphics());
-        nameField.render(container, container.getGraphics());
-        uniFontMessage.drawString(15*container.getWidth()/100f, 25*container.getHeight()/100f, nameString);
+        okButton.render(getContainer(), getContainer().getGraphics());
+        nameField.render(getContainer(), getContainer().getGraphics());
+        uniFontMessage.drawString(15*getContainer().getWidth()/100f, 25*getContainer().getHeight()/100f, nameString);
 
     }
 
