@@ -12,7 +12,6 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class SingleplayerReplayMenuState extends BasicGameState  {
     private static final int ID = 3;
-
     private GameContainer container;
     private StateBasedGame stateBasedGame;
     private SpriteDrawer drawer;

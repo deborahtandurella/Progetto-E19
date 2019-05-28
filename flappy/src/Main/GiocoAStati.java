@@ -1,5 +1,6 @@
 package Main;
 
+import logic.SinglePlayer.Record;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.newdawn.slick.AppGameContainer;
@@ -18,6 +19,7 @@ public class GiocoAStati extends StateBasedGame {
     private static final int MULTI_LOADING = 5;
     private static final int MULTIPLAYER = 6;
     private static final int MULTI_REPLAY_MENU = 7;
+    private static final int SCORE_BOARD_MENU = 8;
 
     public GiocoAStati() {
         super("Flappy Bird");
@@ -25,14 +27,17 @@ public class GiocoAStati extends StateBasedGame {
 
     @Override
     public void initStatesList(GameContainer gameContainer)  {
+        Record record = new Record();
+
         this.addState(new Menu());
         this.addState(new DifficultyMenu());
-        this.addState(new Singleplayer());
+        this.addState(new Singleplayer(record));
         this.addState(new SingleplayerReplayMenuState());
         this.addState(new MultiplayerMenu());
         this.addState(new MultiplayerLoading());
         this.addState(new Multiplayer());
         this.addState(new MultiplayerReplayMenu());
+        this.addState(new ScoreBoardState(record));
     }
 
     public static void main(String[] argv) {

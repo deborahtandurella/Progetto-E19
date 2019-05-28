@@ -3,7 +3,6 @@ package logic.SinglePlayer;
 public class Player {
 
     private int hearts;
-    private String playerName;
     private int score;
 
     public Player() {
@@ -12,19 +11,7 @@ public class Player {
     }
 
     public void addScore(){
-        this.score++;
-    }
-
-    public void setName(String name){
-        this.playerName = name;
-    }
-
-    public String getName(){
-        return playerName;
-    }
-
-    public void setScore(int score){
-        this.score = score;
+        score++;
     }
 
     public int getScore(){

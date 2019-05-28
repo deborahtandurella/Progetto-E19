@@ -9,9 +9,11 @@ import org.newdawn.slick.gui.MouseOverArea;
 import states.SingleplayerReplayMenuState;
 
 public class SingleplayerReplayMenuGUI extends AbstractMenuGUI {
+
     private MouseOverArea yesButton;
     private MouseOverArea noButton;
     private SingleplayerReplayMenuState state;
+
     public SingleplayerReplayMenuGUI(GameContainer container, SingleplayerReplayMenuState state, Screen screen) throws SlickException {
         super(container);
         this.state=state;

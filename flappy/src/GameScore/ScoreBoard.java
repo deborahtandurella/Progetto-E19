@@ -2,6 +2,7 @@ package GameScore;
 
 import jdk.internal.util.xml.impl.Input;
 import logic.SinglePlayer.Player;
+import logic.SinglePlayer.Record;
 
 import java.io.*;
 import java.util.HashMap;
@@ -9,35 +10,35 @@ import java.util.Scanner;
 
 public class ScoreBoard {
 
-  private Player[] players;
+  private Record[] records;
   private ScoreFacade scoreFacade;
   private final int nPlayers = 10;
 
   public ScoreBoard() throws IOException {
-      this.players = new Player[nPlayers];
+      this.records = new Record[nPlayers];
       this.scoreFacade = new ScoreFacade();
-      scoreFacade.readScoreBoard(players, nPlayers);
+      scoreFacade.readScoreBoard(records, nPlayers);
   }
 
-  public void compareScore(Player p) throws IOException {
+  public void compareScore(Record p) throws IOException {
 
     for(int i=0; i<nPlayers; i++){
-      if( p.getScore() > players[i].getScore()){
+      if( p.getScore() > records[i].getScore()){
         shiftPlayers(i);
         Scanner s = new Scanner(System.in);
-        p.setName("io");
-        players[i].setName(p.getName());
-        players[i].setScore(p.getScore());
-        scoreFacade.writePlayers(players, nPlayers);
+        p.setName("qwertyuiop");
+        records[i].setName(p.getName());
+        records[i].setScore(p.getScore());
+        scoreFacade.writePlayers(records, nPlayers);
         break;
       }
     }  }
 
-  public void shiftPlayers(int i){
+  private void shiftPlayers(int i){
 
     for(int j=nPlayers-1; j>i; j--){
-      players[j].setScore(players[j-1].getScore());
-      players[j].setName(players[j-1].getName());
+      records[j].setScore(records[j-1].getScore());
+      records[j].setName(records[j-1].getName());
     }
 
   }

@@ -5,6 +5,7 @@ import gameMusic.MusicPlayer;
 import graphics.Screen;
 import graphics.SpriteDrawer;
 import logic.SinglePlayer.Player;
+import logic.SinglePlayer.Record;
 import logic.gameElements.*;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
@@ -39,6 +40,7 @@ public class Singleplayer extends BasicGameState {
     private long immunityTimer;
     private TrueTypeFont font;
     //private int score;
+    private Record record;
     private Screen screen;
     private ScoreBoard scoreboard;
 
@@ -47,7 +49,11 @@ public class Singleplayer extends BasicGameState {
         return 2;
     }
 
-    @Override
+    public Singleplayer(Record record){
+        super();
+        this.record = record;
+    }
+
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.container= gameContainer;
         try {
@@ -56,6 +62,7 @@ public class Singleplayer extends BasicGameState {
             e.printStackTrace();
         }
         player = new Player();
+        record = new Record();
         immunity = false;
         random = new Random();
         pipeDecider = random.nextInt(11);
@@ -125,7 +132,7 @@ public class Singleplayer extends BasicGameState {
                         e.printStackTrace();
                     }
                     musicPlayer.gameOverMusic();
-                    stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
+                    stateBasedGame.enterState(8, new FadeOutTransition(), new FadeInTransition());
                 }
                 immunity = true;
                 spriteDrawer.setBirdAlpha(0.5f);
@@ -152,14 +159,14 @@ public class Singleplayer extends BasicGameState {
                 player.loseHeart();
                 if(player.getHearts()==0){
                     try {
-                        stateBasedGame.getState(3).init(container,stateBasedGame);
+                        stateBasedGame.getState(8).init(container,stateBasedGame);
                     } catch (SlickException e) {
                         e.printStackTrace();
                     }
                     musicPlayer.gameOverMusic();
                     try {
-                        scoreboard.compareScore(player);
-                        stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
+                        scoreboard.compareScore(record);
+                        stateBasedGame.enterState(8, new FadeOutTransition(), new FadeInTransition());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
