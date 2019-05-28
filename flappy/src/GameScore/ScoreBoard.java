@@ -33,15 +33,6 @@ public class ScoreBoard {
 
   }
 
-    public void loadRecord(){}
-    public boolean isRecord(int score){
-      return false;
-  }
-    public void saveRecord(int score){
-      String player;
-
-    }
-
   public void compareScore(Player p) throws IOException {
     System.out.println(players[0].getName() + players[0].getScore());
     System.out.println(p.getScore());
@@ -49,7 +40,7 @@ public class ScoreBoard {
       if( p.getScore() > players[i].getScore()){
         shiftPlayers(i);
         Scanner s = new Scanner(System.in);
-        p.setName("jedtdthf");
+        p.setName("io");
         players[i].setName(p.getName());
         players[i].setScore(p.getScore());
         writePlayers();
@@ -59,10 +50,11 @@ public class ScoreBoard {
 
   public void shiftPlayers(int i){
 
-    for(int j=9; j<i; j--){
+    for(int j=9; j>i; j--){
       players[j].setScore(players[j-1].getScore());
       players[j].setName(players[j-1].getName());
     }
+
   }
 
   public void writePlayers() throws IOException {
