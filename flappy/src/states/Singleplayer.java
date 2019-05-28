@@ -1,5 +1,6 @@
 package states;
 
+import GameScore.ScoreBoard;
 import gameMusic.MusicPlayer;
 import graphics.Screen;
 import graphics.SpriteDrawer;
@@ -10,7 +11,9 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
+import org.newdawn.slick.state.transition.Transition;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -35,8 +38,9 @@ public class Singleplayer extends BasicGameState {
     private boolean immunity;
     private long immunityTimer;
     private TrueTypeFont font;
-    private int score;
+    //private int score;
     private Screen screen;
+    private ScoreBoard scoreboard;
 
     @Override
     public int getID() {
@@ -46,6 +50,11 @@ public class Singleplayer extends BasicGameState {
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.container= gameContainer;
+        try {
+            scoreboard = new ScoreBoard();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         player = new Player();
         immunity = false;
         random = new Random();
@@ -66,7 +75,7 @@ public class Singleplayer extends BasicGameState {
         spriteDrawer = new SpriteDrawer(screen);
         java.awt.Font font1= new java.awt.Font("Verdana", java.awt.Font.BOLD, 32);
         font= new TrueTypeFont(font1, true);
-        score=0;
+        //score=0;
     }
 
     @Override
@@ -85,7 +94,8 @@ public class Singleplayer extends BasicGameState {
             spriteDrawer.drawRocket((float) rocket.getX(), (float) rocket.getY(), graphics);
         }
         spriteDrawer.drawLives(player,graphics);
-        font.drawString(screen.getWidth()/2f + screen.getOffsetX()- font.getWidth(String.valueOf(score))/2f,screen.getHeight()/3f,String.valueOf(score));
+        font.drawString(screen.getWidth()/2f + screen.getOffsetX()- font.getWidth(String.valueOf(player.getScore()))/2f,screen.getHeight()/3f,String.valueOf(player.getScore()));
+        //font.drawString(screen.getWidth()/2f + screen.getOffsetX()- font.getWidth(String.valueOf(score))/2f,screen.getHeight()/3f,String.valueOf(score));
     }
 
     @Override
@@ -132,7 +142,8 @@ public class Singleplayer extends BasicGameState {
         for(Pipe pipe : pipes) {
             pipe.update(i);
             if(pipe.getX()<bird.getX()&&!pipe.isPassed()){
-                score++;
+                //score++;
+                player.addScore();
                 pipe.setPassed(true);
 
             }
@@ -146,7 +157,13 @@ public class Singleplayer extends BasicGameState {
                         e.printStackTrace();
                     }
                     musicPlayer.gameOverMusic();
-                    stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
+                    try {
+                        scoreboard.compareScore(player);
+                        stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
                 }
                 immunity = true;
                 spriteDrawer.setBirdAlpha(0.5f);
@@ -195,5 +212,6 @@ public class Singleplayer extends BasicGameState {
     public void setClip(Graphics graphics){
         graphics.setWorldClip(screen.getOffsetX(), screen.getOffsetY(), screen.getWidth(), screen.getHeight());
     }
+
 
 }
