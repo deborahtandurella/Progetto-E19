@@ -58,7 +58,7 @@ public class MenuGUI extends AbstractMenuGUI {
     public void componentActivated(AbstractComponent source) {
         if (source == singleButton ) {
 
-            if(nameField.getText() == ""){
+            if(nameField.getText().equals("")){
                 error = true;
                 errorMessage = "Inserisci il tuo nickname!";
 
