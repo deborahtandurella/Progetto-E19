@@ -22,6 +22,8 @@ public class MenuGUI extends AbstractMenuGUI {
     private UnicodeFont uniFontMessage;
     private Font font = new Font("Verdana", Font.BOLD, 38);
     private TrueTypeFont ttf = new TrueTypeFont(font, true);
+    private String errorMessage;
+    private boolean error = false;
 
     public MenuGUI(GameContainer container, Screen screen, Menu state) throws SlickException {
         super(container, screen);
@@ -38,20 +40,32 @@ public class MenuGUI extends AbstractMenuGUI {
         uniFontMessage.addAsciiGlyphs();
         uniFontMessage.loadGlyphs();
         nameString = "NICKNAME:";
+
     }
 
     public void render(){
         singleButton.render(getContainer(),getContainer().getGraphics());
         multiButton.render(getContainer(),getContainer().getGraphics());
-
         nameField.render(getContainer(), getContainer().getGraphics());
         uniFontMessage.drawString(41*getContainer().getWidth()/100f, 7*getContainer().getHeight()/100f, nameString);
+        if (error) {
+            uniFontMessage.drawString((getContainer().getWidth() - uniFontMessage.getWidth(errorMessage))/2f,
+                    20*getContainer().getHeight()/100f, errorMessage, Color.red);
+        }
     }
 
     @Override
     public void componentActivated(AbstractComponent source) {
         if (source == singleButton ) {
-            state.single();
+
+            if(nameField.getText() == ""){
+                error = true;
+                errorMessage = "Inserisci il tuo nickname!";
+
+            }  else
+                state.single();
+
+
         }
         if(source == multiButton){
             state.multi();
