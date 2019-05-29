@@ -8,6 +8,7 @@ import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.gui.TextField;
+import org.newdawn.slick.state.StateBasedGame;
 import states.ScoreBoardState;
 import java.awt.Font;
 
@@ -18,8 +19,6 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
     private MouseOverArea okButton;
     private TextField nameField;
     private String nameString;
-    private Font fontTitle;
-    private Font fontMessage;
     private UnicodeFont uniFontMessage;
     private Font font = new Font("Verdana", Font.BOLD, 32);
     private TrueTypeFont ttf = new TrueTypeFont(font, true);
@@ -38,6 +37,7 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
         uniFontMessage.addAsciiGlyphs();
         uniFontMessage.loadGlyphs();
         nameString = "NAME:";
+
     }
 
     @Override
@@ -47,6 +47,8 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
         uniFontMessage.drawString(27*getContainer().getWidth()/100f, 25*getContainer().getHeight()/100f, nameString);
 
     }
+
+
 
     @Override
     public void componentActivated(AbstractComponent source) {

@@ -38,6 +38,7 @@ public class GiocoAStati extends StateBasedGame {
         this.addState(new Multiplayer());
         this.addState(new MultiplayerReplayMenu());
         this.addState(new ScoreBoardState(record));
+
     }
 
     public static void main(String[] argv) {

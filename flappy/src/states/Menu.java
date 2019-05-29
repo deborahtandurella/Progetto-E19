@@ -8,6 +8,7 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.ComponentListener;
 import org.newdawn.slick.gui.MouseOverArea;
+import org.newdawn.slick.gui.TextField;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
@@ -22,7 +23,6 @@ public class Menu extends BasicGameState{
     private MusicPlayer musicPlayer;
     private MenuGUI gui;
     private Screen screen;
-
 
     @Override
     public int getID() {
