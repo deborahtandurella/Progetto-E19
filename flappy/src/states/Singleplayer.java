@@ -164,6 +164,8 @@ public class Singleplayer extends BasicGameState {
                         e.printStackTrace();
                     }
                     musicPlayer.gameOverMusic();
+                    record.setRecord(player);
+
                     try {
                         if(scoreboard.compareScore(record)){
                             System.out.println("ecfienfc");
