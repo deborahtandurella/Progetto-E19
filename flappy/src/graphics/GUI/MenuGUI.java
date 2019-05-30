@@ -26,18 +26,22 @@ public class MenuGUI extends AbstractMenuGUI {
     private String errorMessage;
     private boolean error = false;
     private Record record;
+    private int buttonWidth;
+    private int buttonHeight;
 
     public MenuGUI(GameContainer container, Screen screen, Menu state, Record record) throws SlickException {
         super(container, screen);
         this.state = state;
         this.record = record;
+        buttonHeight = container.getHeight()/7;
+        buttonWidth = container.getWidth()/3;
         Image single = new Image("res/Images/single.png");
         singleButton = new Button(container,screen, single,  0.3, this);
         Image multi = new Image("res/Images/multi.png");
         multiButton = new Button(container,screen, multi,  0.5, this);
-        nameField = new TextField(container, ttf, 34*container.getWidth()/100, 14*container.getHeight()/100, 450, 60);
-        nameField.setBackgroundColor(Color.white);
-        nameField.setTextColor(Color.black);
+        nameField = new TextField(container, ttf, container.getWidth()/2 - buttonWidth/2, container.getHeight() - 6*buttonHeight, buttonWidth, buttonHeight/2);
+        nameField.setBackgroundColor(Color.blue);
+        nameField.setTextColor(Color.red);
         uniFontMessage = new UnicodeFont(font);
         uniFontMessage.getEffects().add(new ColorEffect(java.awt.Color.white));
         uniFontMessage.addAsciiGlyphs();
@@ -50,9 +54,9 @@ public class MenuGUI extends AbstractMenuGUI {
         multiButton.render(getContainer(),getContainer().getGraphics());
         if(record.getLogin()){
         nameField.render(getContainer(), getContainer().getGraphics());
-        uniFontMessage.drawString(41*getContainer().getWidth()/100f, 7*getContainer().getHeight()/100f, nameString);
+        uniFontMessage.drawString(getContainer().getWidth()/2 - uniFontMessage.getWidth(nameString)/2, 7*getContainer().getHeight()/100f, nameString);
         if (error) {
-            uniFontMessage.drawString((getContainer().getWidth() - uniFontMessage.getWidth(errorMessage))/2f,
+            uniFontMessage.drawString(getContainer().getWidth()/2 - uniFontMessage.getWidth(errorMessage)/2,
                     20*getContainer().getHeight()/100f, errorMessage, Color.red);
         }}
     }

@@ -13,17 +13,21 @@ public class DifficultyMenuGUI extends AbstractMenuGUI {
     private MouseOverArea easyButton;
     private MouseOverArea mediumButton;
     private MouseOverArea hardButton;
+    private int buttonWidth;
+    private int buttonHeight;
 
     public DifficultyMenuGUI(GameContainer container, Screen screen, DifficultyMenu state) throws SlickException {
         super(container, screen);
         this.state = state;
 
-        Image easy = new Image("res/Images/easy.png").getScaledCopy(450,140);
-        easyButton = new MouseOverArea(container, easy, 35*container.getWidth()/100, 20*container.getHeight()/100, 450, 140, this);
-        Image medium = new Image("res/Images/medium.png").getScaledCopy(450,140);
-        mediumButton = new MouseOverArea(container, medium, 35*container.getWidth()/100, 40*container.getHeight()/100, 450, 140, this);
-        Image hard = new Image("res/Images/hard.png").getScaledCopy(450,140);
-        hardButton = new MouseOverArea(container, hard, 35*container.getWidth()/100, 60*container.getHeight()/100, 450, 140, this);
+        buttonHeight = container.getHeight()/7;
+        buttonWidth = container.getWidth()/3;
+        Image easy = new Image("res/Images/easy.png").getScaledCopy(buttonWidth,buttonHeight);
+        easyButton = new MouseOverArea(container, easy, container.getWidth()/2 - buttonWidth/2, container.getHeight() - 5*buttonHeight, buttonWidth, buttonHeight, this);
+        Image medium = new Image("res/Images/medium.png").getScaledCopy(buttonWidth,buttonHeight);
+        mediumButton = new MouseOverArea(container, medium, (container.getWidth()-buttonWidth)/2, container.getHeight() - 35*buttonHeight/10, buttonWidth, buttonHeight, this);
+        Image hard = new Image("res/Images/hard.png").getScaledCopy(buttonWidth,buttonHeight);
+        hardButton = new MouseOverArea(container, hard, (container.getWidth()-buttonWidth)/2, container.getHeight() - 2*buttonHeight, buttonWidth, buttonHeight, this);
 
 
         /*Image easy = new Image("res/Images/easy.png").getScaledCopy(250, 50);
