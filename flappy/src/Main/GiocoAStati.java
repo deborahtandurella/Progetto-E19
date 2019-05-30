@@ -29,7 +29,7 @@ public class GiocoAStati extends StateBasedGame {
     public void initStatesList(GameContainer gameContainer)  {
         Record record = new Record();
 
-        this.addState(new Menu());
+        this.addState(new Menu(record));
         this.addState(new DifficultyMenu());
         this.addState(new Singleplayer(record));
         this.addState(new SingleplayerReplayMenuState());

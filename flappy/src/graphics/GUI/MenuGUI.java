@@ -1,6 +1,7 @@
 package graphics.GUI;
 
 import graphics.Screen;
+import logic.SinglePlayer.Record;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
@@ -24,10 +25,12 @@ public class MenuGUI extends AbstractMenuGUI {
     private TrueTypeFont ttf = new TrueTypeFont(font, true);
     private String errorMessage;
     private boolean error = false;
+    private Record record;
 
-    public MenuGUI(GameContainer container, Screen screen, Menu state) throws SlickException {
+    public MenuGUI(GameContainer container, Screen screen, Menu state, Record record) throws SlickException {
         super(container, screen);
         this.state = state;
+        this.record = record;
         Image single = new Image("res/Images/single.png");
         singleButton = new Button(container,screen, single,  0.3, this);
         Image multi = new Image("res/Images/multi.png");
@@ -45,12 +48,13 @@ public class MenuGUI extends AbstractMenuGUI {
     public void render(){
         singleButton.render(getContainer(),getContainer().getGraphics());
         multiButton.render(getContainer(),getContainer().getGraphics());
+        if(record.getLogin()){
         nameField.render(getContainer(), getContainer().getGraphics());
         uniFontMessage.drawString(41*getContainer().getWidth()/100f, 7*getContainer().getHeight()/100f, nameString);
         if (error) {
             uniFontMessage.drawString((getContainer().getWidth() - uniFontMessage.getWidth(errorMessage))/2f,
                     20*getContainer().getHeight()/100f, errorMessage, Color.red);
-        }
+        }}
     }
 
     @Override
@@ -61,8 +65,11 @@ public class MenuGUI extends AbstractMenuGUI {
                 error = true;
                 errorMessage = "Inserisci il tuo nickname!";
 
-            }  else
+            }  else{
+                record.setLogin(false);
                 state.single();
+            }
+
 
 
         }

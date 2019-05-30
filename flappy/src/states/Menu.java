@@ -4,6 +4,7 @@ import gameMusic.MusicPlayer;
 import graphics.GUI.MenuGUI;
 import graphics.Screen;
 import graphics.SpriteDrawer;
+import logic.SinglePlayer.Record;
 import org.newdawn.slick.*;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.ComponentListener;
@@ -23,7 +24,12 @@ public class Menu extends BasicGameState{
     private MusicPlayer musicPlayer;
     private MenuGUI gui;
     private Screen screen;
+    private Record record;
 
+    public Menu(Record record){
+        super();
+        this.record = record;
+    }
     @Override
     public int getID() {
         return ID;
@@ -36,8 +42,7 @@ public class Menu extends BasicGameState{
         musicPlayer = new MusicPlayer();
         screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
         drawer = new SpriteDrawer(screen);
-        gui = new MenuGUI(gameContainer, screen, this);
-
+        gui = new MenuGUI(gameContainer, screen, this, record);
         musicPlayer.backgroundMusic();
     }
 
