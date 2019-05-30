@@ -165,8 +165,12 @@ public class Singleplayer extends BasicGameState {
                     }
                     musicPlayer.gameOverMusic();
                     try {
-                        scoreboard.compareScore(record);
-                        stateBasedGame.enterState(8, new FadeOutTransition(), new FadeInTransition());
+                        if(scoreboard.compareScore(record)){
+                            stateBasedGame.enterState(8, new FadeOutTransition(), new FadeInTransition());
+                        }
+                        else {
+                            stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

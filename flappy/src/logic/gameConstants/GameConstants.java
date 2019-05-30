@@ -16,4 +16,14 @@ public class GameConstants {
     public static final double PIPE_SPEED = 0.00052f;
     public static final double PIPE_VERTICAL_SPEED = 0.00018f;
 
+    public static final int MENU = 0;
+    public static final int DIFFICULTY_MENU = 1;
+    public static final int SINGLEPLAYER = 2;
+    public static final int SINGLE_REPLAY_MENU = 3;
+    public static final int MULTI_MENU = 4;
+    public static final int MULTI_LOADING = 5;
+    public static final int MULTIPLAYER = 6;
+    public static final int MULTI_REPLAY_MENU = 7;
+    public static final int SCORE_BOARD_MENU = 8;
+
 }

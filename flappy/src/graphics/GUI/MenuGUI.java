@@ -40,7 +40,6 @@ public class MenuGUI extends AbstractMenuGUI {
         uniFontMessage.addAsciiGlyphs();
         uniFontMessage.loadGlyphs();
         nameString = "NICKNAME:";
-
     }
 
     public void render(){
