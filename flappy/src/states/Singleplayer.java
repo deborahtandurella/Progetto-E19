@@ -166,6 +166,8 @@ public class Singleplayer extends BasicGameState {
                     musicPlayer.gameOverMusic();
                     try {
                         if(scoreboard.compareScore(record)){
+                            System.out.println("ecfienfc");
+                            //entra nello stato 8 solo se batti il primo record
                             stateBasedGame.enterState(8, new FadeOutTransition(), new FadeInTransition());
                         }
                         else {

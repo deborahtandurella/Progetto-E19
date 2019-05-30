@@ -27,24 +27,14 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
     public ScoreBoardMenuGUI(GameContainer container, ScoreBoardState state, Screen screen) throws SlickException {
         super(container, screen);
         this.state = state;
-        Image ok = new Image("res/Images/okbutton.png").getScaledCopy(50,50);
-        okButton = new MouseOverArea(container, ok, 65*container.getWidth()/100, 25*container.getHeight()/100, 50, 50, this);
-        nameField = new TextField(container, ttf, 38*container.getWidth()/100, 25*container.getHeight()/100, 350,50);
-        nameField.setBackgroundColor(Color.white);
-        nameField.setTextColor(Color.black);
-        uniFontMessage = new UnicodeFont(font);
-        uniFontMessage.getEffects().add(new ColorEffect(java.awt.Color.white));
-        uniFontMessage.addAsciiGlyphs();
-        uniFontMessage.loadGlyphs();
-        nameString = "NAME:";
+
+
 
     }
 
     @Override
     public void render() {
-        okButton.render(getContainer(), getContainer().getGraphics());
-        nameField.render(getContainer(), getContainer().getGraphics());
-        uniFontMessage.drawString(27*getContainer().getWidth()/100f, 25*getContainer().getHeight()/100f, nameString);
+
 
     }
 
@@ -52,8 +42,6 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
 
     @Override
     public void componentActivated(AbstractComponent source) {
-        if(source == okButton){
-            //aggiungo il nome alla classifica
-        }
+
     }
 }

@@ -20,19 +20,24 @@ public class ScoreBoard {
       scoreFacade.readScoreBoard(records, nPlayers);
   }
 
-  public void compareScore(Record p) throws IOException {
+  public boolean compareScore(Record p) throws IOException {
 
     for(int i=0; i<nPlayers; i++){
       if( p.getScore() > records[i].getScore()){
         shiftPlayers(i);
-        Scanner s = new Scanner(System.in);
-        p.setName("qwertyuiop");
+        //Scanner s = new Scanner(System.in);
+        //p.setName("qwertyuiop");
         records[i].setName(p.getName());
         records[i].setScore(p.getScore());
         scoreFacade.writePlayers(records, nPlayers);
-        break;
+        //break;
+        return true;
+        //ritorno true se ho battuto un record
       }
-    }  }
+    }
+    return false;
+    //altrimenti ritorno falso, così a fine partita so in che stato andare
+  }
 
   private void shiftPlayers(int i){
 
