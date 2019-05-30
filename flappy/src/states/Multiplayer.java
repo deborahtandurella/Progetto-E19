@@ -8,11 +8,11 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class Multiplayer extends BasicGameState {
-    private static final int ID = 6;
+    private static final int ID = 7;
 
     @Override
     public int getID() {
-        return 6;
+        return ID;
     }
 
     @Override

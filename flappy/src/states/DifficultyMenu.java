@@ -4,15 +4,13 @@ import graphics.GUI.DifficultyMenuGUI;
 import graphics.Screen;
 import graphics.SpriteDrawer;
 import org.newdawn.slick.*;
-
-import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class DifficultyMenu extends BasicGameState{
-    private static final int ID = 1;
+    private static final int ID = 2;
     private GameContainer container;
     private StateBasedGame stateBasedGame;
     private static float gameSpeed;
@@ -25,7 +23,7 @@ public class DifficultyMenu extends BasicGameState{
 
     @Override
     public int getID() {
-        return 1;
+        return ID;
     }
 
     @Override
@@ -58,28 +56,28 @@ public class DifficultyMenu extends BasicGameState{
 
     public void easy(){
         try {
-            stateBasedGame.getState(2).init(container,stateBasedGame);
+            stateBasedGame.getState(3).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();
         }
-        stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
     }
 
     public void medium(){
         try {
-            stateBasedGame.getState(2).init(container,stateBasedGame);
+            stateBasedGame.getState(3).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();
         }
-        stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
     }
 
     public void hard(){
         try {
-            stateBasedGame.getState(2).init(container,stateBasedGame);
+            stateBasedGame.getState(3).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();
         }
-        stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
     }
 }

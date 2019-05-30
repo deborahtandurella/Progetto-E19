@@ -10,8 +10,6 @@ import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.gui.TextField;
 import states.Menu;
-
-import java.awt.*;
 import java.awt.Font;
 
 public class MenuGUI extends AbstractMenuGUI {
@@ -52,31 +50,14 @@ public class MenuGUI extends AbstractMenuGUI {
     public void render(){
         singleButton.render(getContainer(),getContainer().getGraphics());
         multiButton.render(getContainer(),getContainer().getGraphics());
-        if(record.getLogin()){
-        nameField.render(getContainer(), getContainer().getGraphics());
-        uniFontMessage.drawString(getContainer().getWidth()/2 - uniFontMessage.getWidth(nameString)/2, 7*getContainer().getHeight()/100f, nameString);
-        if (error) {
-            uniFontMessage.drawString(getContainer().getWidth()/2 - uniFontMessage.getWidth(errorMessage)/2,
-                    20*getContainer().getHeight()/100f, errorMessage, Color.red);
-        }}
     }
 
     @Override
     public void componentActivated(AbstractComponent source) {
         if (source == singleButton ) {
-
-            if(nameField.getText().equals("")){
-                error = true;
-                errorMessage = "Inserisci il tuo nickname!";
-
-            }  else{
-                record.setLogin(false);
+            record.setLogin(false);
                 state.single();
             }
-
-
-
-        }
         if(source == multiButton){
             state.multi();
         }

@@ -11,15 +11,16 @@ import states.*;
 
 public class GiocoAStati extends StateBasedGame {
 
-    private static final int MENU = 0;
-    private static final int DIFFICULTY_MENU = 1;
-    private static final int SINGLEPLAYER = 2;
-    private static final int SINGLE_REPLAY_MENU = 3;
-    private static final int MULTI_MENU = 4;
-    private static final int MULTI_LOADING = 5;
-    private static final int MULTIPLAYER = 6;
-    private static final int MULTI_REPLAY_MENU = 7;
-    private static final int SCORE_BOARD_MENU = 8;
+    private static final int LOGIN = 0;
+    private static final int MENU = 1;
+    private static final int DIFFICULTY_MENU = 2;
+    private static final int SINGLEPLAYER = 3;
+    private static final int SINGLE_REPLAY_MENU = 4;
+    private static final int MULTI_MENU = 5;
+    private static final int MULTI_LOADING = 6;
+    private static final int MULTIPLAYER = 7;
+    private static final int MULTI_REPLAY_MENU = 8;
+    private static final int SCORE_BOARD_MENU = 9;
 
     public GiocoAStati() {
         super("Flappy Bird");
@@ -29,6 +30,7 @@ public class GiocoAStati extends StateBasedGame {
     public void initStatesList(GameContainer gameContainer)  {
         Record record = new Record();
 
+        this.addState(new Login(record));
         this.addState(new Menu(record));
         this.addState(new DifficultyMenu());
         this.addState(new Singleplayer(record));

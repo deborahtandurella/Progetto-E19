@@ -8,11 +8,11 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class MultiplayerReplayMenu extends BasicGameState {
-    private static final int ID = 7;
+    private static final int ID = 8;
 
     @Override
     public int getID() {
-        return 7;
+        return ID;
     }
 
     @Override

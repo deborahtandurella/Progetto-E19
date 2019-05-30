@@ -22,7 +22,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import static logic.gameConstants.GameConstants.*;
 
 public class Singleplayer extends BasicGameState {
-    private static final int ID = 2;
+    private static final int ID = 3;
     private GameContainer container;
     private Bird bird;
     private Player player;
@@ -46,7 +46,7 @@ public class Singleplayer extends BasicGameState {
 
     @Override
     public int getID() {
-        return 2;
+        return ID;
     }
 
     public Singleplayer(Record record){
@@ -127,12 +127,12 @@ public class Singleplayer extends BasicGameState {
                 rockets.remove(rocket);
                 if(player.getHearts()==0){
                     try {
-                        stateBasedGame.getState(3).init(container,stateBasedGame);
+                        stateBasedGame.getState(4).init(container,stateBasedGame);
                     } catch (SlickException e) {
                         e.printStackTrace();
                     }
                     musicPlayer.gameOverMusic();
-                    stateBasedGame.enterState(8, new FadeOutTransition(), new FadeInTransition());
+                    stateBasedGame.enterState(9, new FadeOutTransition(), new FadeInTransition());
                 }
                 immunity = true;
                 spriteDrawer.setBirdAlpha(0.5f);
@@ -159,7 +159,7 @@ public class Singleplayer extends BasicGameState {
                 player.loseHeart();
                 if(player.getHearts()==0){
                     try {
-                        stateBasedGame.getState(8).init(container,stateBasedGame);
+                        stateBasedGame.getState(9).init(container,stateBasedGame);
                     } catch (SlickException e) {
                         e.printStackTrace();
                     }
@@ -168,13 +168,10 @@ public class Singleplayer extends BasicGameState {
 
                     try {
                         if(scoreboard.compareScore(record)){
-                            System.out.println("ecfienfc");
-                            //entra nello stato 8 solo se batti il primo record
-
-                            stateBasedGame.enterState(8, new FadeOutTransition(), new FadeInTransition());
+                            stateBasedGame.enterState(9, new FadeOutTransition(), new FadeInTransition());
                         }
                         else {
-                            stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
+                            stateBasedGame.enterState(4, new FadeOutTransition(), new FadeInTransition());
                         }
                     } catch (IOException e) {
                         e.printStackTrace();

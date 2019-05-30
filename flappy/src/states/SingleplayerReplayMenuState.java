@@ -11,7 +11,7 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class SingleplayerReplayMenuState extends BasicGameState  {
-    private static final int ID = 3;
+    private static final int ID = 4;
     private GameContainer container;
     private StateBasedGame stateBasedGame;
     private SpriteDrawer drawer;
@@ -20,7 +20,7 @@ public class SingleplayerReplayMenuState extends BasicGameState  {
 
     @Override
     public int getID() {
-        return 3;
+        return ID;
     }
 
     @Override
@@ -52,19 +52,19 @@ public class SingleplayerReplayMenuState extends BasicGameState  {
     }
     public void rematch(){
         try {
-            stateBasedGame.getState(2).init(container,stateBasedGame);
+            stateBasedGame.getState(3).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();
         }
-        stateBasedGame.enterState(2,new FadeOutTransition(),new FadeInTransition());
+        stateBasedGame.enterState(3,new FadeOutTransition(),new FadeInTransition());
     }
     public void noRematch(){
         try {
-            stateBasedGame.getState(0).init(container,stateBasedGame);
+            stateBasedGame.getState(1).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();
         }
-        stateBasedGame.enterState(0,new FadeOutTransition(),new FadeInTransition());
+        stateBasedGame.enterState(1,new FadeOutTransition(),new FadeInTransition());
 
     }
 

@@ -11,7 +11,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class ScoreBoardState extends BasicGameState {
-    private static final int ID = 8;
+    private static final int ID = 9;
     private Record record;
     private GameContainer container;
     private StateBasedGame statebasedgame;
@@ -23,7 +23,7 @@ public class ScoreBoardState extends BasicGameState {
 
     @Override
     public int getID() {
-        return 8;
+        return ID;
     }
 
     public ScoreBoardState(Record record){

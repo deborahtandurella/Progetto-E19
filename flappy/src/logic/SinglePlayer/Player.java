@@ -6,7 +6,7 @@ public class Player {
     private int score;
 
     public Player() {
-        this.hearts = 3;
+        this.hearts = 1;
         this.score = 0;
     }
 
