@@ -17,9 +17,9 @@ public class SingleplayerReplayMenuGUI extends AbstractMenuGUI {
     public SingleplayerReplayMenuGUI(GameContainer container, SingleplayerReplayMenuState state, Screen screen) throws SlickException {
         super(container, screen);
         this.state=state;
-        Image yesImage = new Image("res/replaybutton.png");
+        Image yesImage = new Image("res/Images/play.png");
         yesButton = new Button(container,screen, yesImage,  0.3, this);
-        Image noImage = new Image("res/back2menubutton.png");
+        Image noImage = new Image("res/Images/back.png");
         noButton = new Button(container,screen, noImage,  0.5, this);
     }
 

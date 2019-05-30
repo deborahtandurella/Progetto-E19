@@ -28,9 +28,9 @@ public class MenuGUI extends AbstractMenuGUI {
     public MenuGUI(GameContainer container, Screen screen, Menu state) throws SlickException {
         super(container, screen);
         this.state = state;
-        Image single = new Image("res/singleplayerbutton.png");
+        Image single = new Image("res/Images/single.png");
         singleButton = new Button(container,screen, single,  0.3, this);
-        Image multi = new Image("res/multiplayerbutton.png");
+        Image multi = new Image("res/Images/multi.png");
         multiButton = new Button(container,screen, multi,  0.5, this);
         nameField = new TextField(container, ttf, 34*container.getWidth()/100, 14*container.getHeight()/100, 450, 60);
         nameField.setBackgroundColor(Color.white);

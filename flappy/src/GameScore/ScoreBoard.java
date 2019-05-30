@@ -26,7 +26,7 @@ public class ScoreBoard {
       if( p.getScore() > records[i].getScore()){
         shiftPlayers(i);
         //Scanner s = new Scanner(System.in);
-        //p.setName("qwertyuiop");
+        p.setName("qwertyuiop");
         records[i].setName(p.getName());
         records[i].setScore(p.getScore());
         scoreFacade.writePlayers(records, nPlayers);

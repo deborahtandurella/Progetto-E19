@@ -17,12 +17,23 @@ public class DifficultyMenuGUI extends AbstractMenuGUI {
     public DifficultyMenuGUI(GameContainer container, Screen screen, DifficultyMenu state) throws SlickException {
         super(container, screen);
         this.state = state;
-        Image easy = new Image("res/easybutton.png").getScaledCopy(250, 70);
-        easyButton = new Button(container, screen, easy,  0.3, this);
-        Image medium = new Image("res/mediumbutton.png").getScaledCopy(250, 70);
-        mediumButton = new Button(container,screen, medium,  0.5, this);
-        Image hard = new Image("res/hardbutton.png").getScaledCopy(250, 70);
-        hardButton = new Button(container,screen, hard,  0.7, this);
+
+        Image easy = new Image("res/Images/easy.png").getScaledCopy(450,140);
+        easyButton = new MouseOverArea(container, easy, 35*container.getWidth()/100, 20*container.getHeight()/100, 450, 140, this);
+        Image medium = new Image("res/Images/medium.png").getScaledCopy(450,140);
+        mediumButton = new MouseOverArea(container, medium, 35*container.getWidth()/100, 40*container.getHeight()/100, 450, 140, this);
+        Image hard = new Image("res/Images/hard.png").getScaledCopy(450,140);
+        hardButton = new MouseOverArea(container, hard, 35*container.getWidth()/100, 60*container.getHeight()/100, 450, 140, this);
+
+
+        /*Image easy = new Image("res/Images/easy.png").getScaledCopy(250, 50);
+        easyButton = new Button(container, screen, easy,  0.2, this);
+        Image medium = new Image("res/Images/medium.png").getScaledCopy(250, 50);
+        mediumButton = new Button(container,screen, medium,  0.4, this);
+        Image hard = new Image("res/Images/hard.png").getScaledCopy(250, 50);
+        hardButton = new Button(container,screen, hard,  0.6, this);*/
+
+
     }
 
     @Override
