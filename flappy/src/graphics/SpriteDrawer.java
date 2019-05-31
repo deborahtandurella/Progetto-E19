@@ -33,11 +33,11 @@ public class SpriteDrawer{
         this.offsetX = screen.getOffsetX();
         this.offsetY = screen.getOffsetY();
         try {
-            backgroundSingle = new Image("res/sprites/backgrounds/foresta.png").getScaledCopy(screenWidth,screenHeight);
-            birdImage = new Image("res/sprites/player/bird.png").getScaledCopy((int)(BIRD_WIDTH*screenWidth), (int)(BIRD_HEIGHT*screenHeight));
+            backgroundSingle = new Image("res/sprites/batman/background.png").getScaledCopy(screenWidth,screenHeight);
+            birdImage = new Image("res/sprites/batman/batman.png").getScaledCopy((int)(BIRD_WIDTH*screenWidth), (int)(BIRD_HEIGHT*screenHeight));
             heartImage = new Image("res/sprites/perks/heart_full.png").getScaledCopy((int) (HEART_SIZE*screenWidth), (int)(HEART_SIZE*screenHeight));
             coinImage = new Image("res/sprites/perks/onecoin.png").getScaledCopy((int)(COIN_SIZE*screenWidth), (int)(COIN_SIZE*screenHeight));
-            lowerPipeImage= new Image("res/sprites/obstacles/pipe.png").getScaledCopy((int)(PIPE_WIDTH*screenWidth), (int)(PIPE_HEIGHT*screenHeight));
+            lowerPipeImage= new Image("res/sprites/batman/pipe.png").getScaledCopy((int)(PIPE_WIDTH*screenWidth), (int)(PIPE_HEIGHT*screenHeight));
             upperPipeImage= lowerPipeImage.getFlippedCopy(false, true);
 
             coinSheet = new SpriteSheet("res/sprites/perks/Coin.png",32,32);
@@ -60,9 +60,9 @@ public class SpriteDrawer{
     }
 
     public void drawBird(float x, float y, Graphics graphics, double speedY){
-        birdAnimation.getCurrentFrame().setRotation( (float) 180*( (float) Math.atan2(speedY, JUMP_SPEED))/((float)Math.PI)) ;
-        birdAnimation.getCurrentFrame().setCenterOfRotation( (float)(BIRD_WIDTH*screenWidth)/2f,  (float)(BIRD_HEIGHT*screenHeight)/2f);
-        birdAnimation.draw(offsetX + x*screenWidth, y*screenHeight+ offsetY, (float) BIRD_WIDTH*screenWidth, (float) BIRD_HEIGHT*screenHeight+ offsetY);
+        birdImage.setRotation( (float) 180*( (float) Math.atan2(speedY, JUMP_SPEED))/((float)Math.PI)) ;
+        birdImage.setCenterOfRotation( (float)(BIRD_WIDTH*screenWidth)/2f,  (float)(BIRD_HEIGHT*screenHeight)/2f);
+        birdImage.draw(offsetX + x*screenWidth, y*screenHeight+ offsetY, (float) BIRD_WIDTH*screenWidth, (float) BIRD_HEIGHT*screenHeight+ offsetY);
 
     }
 
