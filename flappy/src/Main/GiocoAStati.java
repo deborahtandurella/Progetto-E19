@@ -1,5 +1,6 @@
 package Main;
 
+import GameScore.ScoreBoard;
 import logic.SinglePlayer.Record;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
@@ -8,6 +9,8 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import states.*;
+
+import java.io.IOException;
 
 public class GiocoAStati extends StateBasedGame {
 
@@ -29,17 +32,23 @@ public class GiocoAStati extends StateBasedGame {
     @Override
     public void initStatesList(GameContainer gameContainer)  {
         Record record = new Record();
+        try {
+            ScoreBoard scoreBoard = new ScoreBoard();
+            this.addState(new Login(record));
+            this.addState(new Menu(record));
+            this.addState(new DifficultyMenu());
+            this.addState(new Singleplayer(record, scoreBoard));
+            this.addState(new SingleplayerReplayMenuState(scoreBoard));
+            this.addState(new MultiplayerMenu());
+            this.addState(new MultiplayerLoading());
+            this.addState(new Multiplayer());
+            this.addState(new MultiplayerReplayMenu());
+            this.addState(new ScoreBoardState(record));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        this.addState(new Login(record));
-        this.addState(new Menu(record));
-        this.addState(new DifficultyMenu());
-        this.addState(new Singleplayer(record));
-        this.addState(new SingleplayerReplayMenuState());
-        this.addState(new MultiplayerMenu());
-        this.addState(new MultiplayerLoading());
-        this.addState(new Multiplayer());
-        this.addState(new MultiplayerReplayMenu());
-        this.addState(new ScoreBoardState(record));
+
 
     }
 

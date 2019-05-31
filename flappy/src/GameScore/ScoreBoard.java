@@ -25,18 +25,13 @@ public class ScoreBoard {
     for(int i=0; i<nPlayers; i++){
       if( p.getScore() > records[i].getScore()){
         shiftPlayers(i);
-        //Scanner s = new Scanner(System.in);
-       // p.setName("qwertyuiop");
         records[i].setName(p.getName());
         records[i].setScore(p.getScore());
         scoreFacade.writePlayers(records, nPlayers);
-        //break;
         return true;
-        //ritorno true se ho battuto un record
       }
     }
     return false;
-    //altrimenti ritorno falso, così a fine partita so in che stato andare
   }
 
   private void shiftPlayers(int i){
@@ -46,6 +41,18 @@ public class ScoreBoard {
       records[j].setName(records[j-1].getName());
     }
 
+  }
+
+    public Record[] getRecords() {
+        return records;
+    }
+
+    public String printScore(){
+
+    String s = "";
+    for (int i=0; i<nPlayers;i++){
+      s += i+1 +")  "+ records[i].getName() + "   " + records[i].getScore()+"\n";
+    } return s;
   }
 
 

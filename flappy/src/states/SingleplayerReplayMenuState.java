@@ -1,5 +1,6 @@
 package states;
 
+import GameScore.ScoreBoard;
 import graphics.GUI.SingleplayerReplayMenuGUI;
 import graphics.Screen;
 import graphics.SpriteDrawer;
@@ -10,6 +11,8 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
+import java.io.IOException;
+
 public class SingleplayerReplayMenuState extends BasicGameState  {
     private static final int ID = 4;
     private GameContainer container;
@@ -17,7 +20,11 @@ public class SingleplayerReplayMenuState extends BasicGameState  {
     private SpriteDrawer drawer;
     private SingleplayerReplayMenuGUI gui;
     private Screen screen;
+    private ScoreBoard scoreBoard;
 
+    public SingleplayerReplayMenuState(ScoreBoard scoreBoard){
+        this.scoreBoard = scoreBoard;
+    }
     @Override
     public int getID() {
         return ID;
@@ -42,6 +49,10 @@ public class SingleplayerReplayMenuState extends BasicGameState  {
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException{
+    }
+
+    public ScoreBoard getScoreBoard(){
+        return scoreBoard;
     }
 
     public void keyPressed(int key, char c){

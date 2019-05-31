@@ -49,18 +49,19 @@ public class Singleplayer extends BasicGameState {
         return ID;
     }
 
-    public Singleplayer(Record record){
+    public Singleplayer(Record record, ScoreBoard scoreBoard){
         super();
         this.record = record;
+        this.scoreboard = scoreBoard;
     }
 
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.container= gameContainer;
-        try {
+       /* try {
             scoreboard = new ScoreBoard();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
         player = new Player();
         immunity = false;
         random = new Random();
@@ -125,15 +126,33 @@ public class Singleplayer extends BasicGameState {
                 player.loseHeart();
                 rockets.remove(rocket);
                 if(player.getHearts()==0){
+                    musicPlayer.gameOverMusic();
+                    record.setRecord(player);
+                    try {
+                        scoreboard.compareScore(record);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     try {
                         stateBasedGame.getState(4).init(container,stateBasedGame);
                     } catch (SlickException e) {
                         e.printStackTrace();
                     }
-                    musicPlayer.gameOverMusic();
-                    record.setRecord(player);
-                    stateBasedGame.enterState(9, new FadeOutTransition(), new FadeInTransition());
+                    stateBasedGame.enterState(4, new FadeOutTransition(), new FadeInTransition());
+
+                   /* try {
+                        if(scoreboard.compareScore(record)){
+                            stateBasedGame.enterState(4, new FadeOutTransition(), new FadeInTransition());
+                        }
+                        else {
+                            stateBasedGame.enterState(4, new FadeOutTransition(), new FadeInTransition());
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }*/
                 }
+
+
                 immunity = true;
                 spriteDrawer.setBirdAlpha(0.5f);
                 immunityTimer = System.currentTimeMillis();
@@ -158,24 +177,30 @@ public class Singleplayer extends BasicGameState {
             if(pipe.collide(bird)&&immunity == false){
                 player.loseHeart();
                 if(player.getHearts()==0){
+                    musicPlayer.gameOverMusic();
+                    record.setRecord(player);
                     try {
-                        stateBasedGame.getState(9).init(container,stateBasedGame);
+                        scoreboard.compareScore(record);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        stateBasedGame.getState(4).init(container,stateBasedGame);
                     } catch (SlickException e) {
                         e.printStackTrace();
                     }
-                    musicPlayer.gameOverMusic();
-                    record.setRecord(player);
+                    stateBasedGame.enterState(4, new FadeOutTransition(), new FadeInTransition());
 
-                    try {
+                   /* try {
                         if(scoreboard.compareScore(record)){
-                            stateBasedGame.enterState(9, new FadeOutTransition(), new FadeInTransition());
+                            stateBasedGame.enterState(4, new FadeOutTransition(), new FadeInTransition());
                         }
                         else {
                             stateBasedGame.enterState(4, new FadeOutTransition(), new FadeInTransition());
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
-                    }
+                    }*/
 
                 }
                 immunity = true;
