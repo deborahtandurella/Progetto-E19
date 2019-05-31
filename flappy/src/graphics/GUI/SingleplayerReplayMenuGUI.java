@@ -15,7 +15,8 @@ public class SingleplayerReplayMenuGUI extends AbstractMenuGUI {
     private MouseOverArea replayButton;
     private MouseOverArea backButton;
     private SingleplayerReplayMenuState state;
-    private String scoreString;
+    private String scoreName;
+    private String points;
     private UnicodeFont uniFontMessage;
     private int buttonWidth;
     private int buttonHeight;
@@ -30,24 +31,26 @@ public class SingleplayerReplayMenuGUI extends AbstractMenuGUI {
         buttonWidth = container.getWidth()/3;
 
         Image replayImage = new Image("res/sprites/buttons/replay.png").getScaledCopy(buttonWidth, buttonHeight);
-        //replayButton = new Button(container,screen, replayImage,  0.7, this);
+
         replayButton = new MouseOverArea(container, replayImage, container.getWidth()-3*buttonWidth, container.getHeight()-2*buttonHeight, buttonWidth, buttonHeight, this);
 
         Image backImage = new Image("res/sprites/buttons/back.png").getScaledCopy(buttonWidth, buttonHeight);
-        //backButton = new Button(container,screen, backImage,  0.8, this);
+
         backButton = new MouseOverArea(container, backImage, container.getWidth()-buttonWidth, container.getHeight()-2*buttonHeight, buttonWidth, buttonHeight, this);
 
         uniFontMessage = new UnicodeFont(font);
-        uniFontMessage.getEffects().add(new ColorEffect(Color.BLUE));
+        uniFontMessage.getEffects().add(new ColorEffect(Color.black));
         uniFontMessage.addAsciiGlyphs();
         uniFontMessage.loadGlyphs();
-        scoreString = state.getScoreBoard().printScore();
+        scoreName = state.getScoreBoard().printName();
+        points = state.getScoreBoard().printPoint();
     }
 
     public void render(){
         replayButton.render(getContainer(),getContainer().getGraphics());
         backButton.render(getContainer(),getContainer().getGraphics());
-        uniFontMessage.drawString(getContainer().getWidth()/2-uniFontMessage.getWidth(scoreString)/2, 16*getContainer().getHeight()/100f, scoreString);
+        uniFontMessage.drawString(getContainer().getWidth()/3-uniFontMessage.getWidth(scoreName)/4, 16*getContainer().getHeight()/100f, scoreName);
+        uniFontMessage.drawString(3*getContainer().getWidth()/4-uniFontMessage.getWidth(scoreName)/2, 16*getContainer().getHeight()/100f, points);
 
     }
     @Override
