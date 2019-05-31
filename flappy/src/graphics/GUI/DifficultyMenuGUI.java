@@ -29,15 +29,12 @@ public class DifficultyMenuGUI extends AbstractMenuGUI {
         Image hard = new Image("res/sprites/buttons/hard.png").getScaledCopy(buttonWidth,buttonHeight);
         hardButton = new MouseOverArea(container, hard, (container.getWidth()-buttonWidth)/2, container.getHeight() - 2*buttonHeight, buttonWidth, buttonHeight, this);
 
-
         /*Image easy = new Image("res/Images/easy.png").getScaledCopy(250, 50);
         easyButton = new Button(container, screen, easy,  0.2, this);
         Image medium = new Image("res/Images/medium.png").getScaledCopy(250, 50);
         mediumButton = new Button(container,screen, medium,  0.4, this);
         Image hard = new Image("res/Images/hard.png").getScaledCopy(250, 50);
         hardButton = new Button(container,screen, hard,  0.6, this);*/
-
-
     }
 
     @Override

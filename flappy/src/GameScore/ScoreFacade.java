@@ -1,7 +1,6 @@
 package GameScore;
 
 import logic.SinglePlayer.Record;
-
 import java.io.*;
 
 public class ScoreFacade {
@@ -26,8 +25,4 @@ public class ScoreFacade {
         }
         f.close();
     }
-
-
-
-
 }

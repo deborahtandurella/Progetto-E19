@@ -53,7 +53,6 @@ public class LoginGUI extends AbstractMenuGUI {
         if (error) {
             uniFontMessage.drawString(getContainer().getWidth() / 2 - uniFontMessage.getWidth(errorMessage) / 2,
                     22 * getContainer().getHeight() / 100f, errorMessage, Color.red);
-            //}
         }
     }
 

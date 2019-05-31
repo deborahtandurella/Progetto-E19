@@ -13,7 +13,6 @@ import logic.SinglePlayer.Record;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
-
 public class Login extends BasicGameState {
 
     private static final int ID = 0;

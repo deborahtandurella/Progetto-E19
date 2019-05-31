@@ -5,13 +5,10 @@ import graphics.GUI.SingleplayerReplayMenuGUI;
 import graphics.Screen;
 import graphics.SpriteDrawer;
 import org.newdawn.slick.*;
-import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
-
-import java.io.IOException;
 
 public class SingleplayerReplayMenuState extends BasicGameState  {
     private static final int ID = 4;
