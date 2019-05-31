@@ -19,7 +19,6 @@ public class DifficultyMenuGUI extends AbstractMenuGUI {
     public DifficultyMenuGUI(GameContainer container, Screen screen, DifficultyMenu state) throws SlickException {
         super(container, screen);
         this.state = state;
-
         buttonHeight = container.getHeight()/7;
         buttonWidth = container.getWidth()/3;
         Image easy = new Image("res/sprites/buttons/easy.png").getScaledCopy(buttonWidth,buttonHeight);

@@ -14,12 +14,13 @@ import states.Login;
 
 public class LoginGUI extends AbstractMenuGUI {
 
+    private Image title;
     private Login state;
     private TextField nameField;
     private MouseOverArea okButton;
     private String nameString;
     private UnicodeFont uniFontMessage;
-    private Font font = new Font("Verdana", Font.BOLD, 38);
+    private Font font = new Font("Verdana", Font.BOLD, 46);
     private TrueTypeFont ttf = new TrueTypeFont(font, true);
     private String errorMessage;
     private boolean error = false;
@@ -32,10 +33,13 @@ public class LoginGUI extends AbstractMenuGUI {
         this.state = state;
         this.record = record;
         buttonHeight = container.getHeight() / 7;
-        buttonWidth = container.getWidth() / 3;
-        Image confirm = new Image("res/sprites/buttons/okbutton.png");
-        okButton = new Button(container, screen, confirm, 0.3, this);
-        nameField = new TextField(container, ttf, container.getWidth() / 2 - buttonWidth / 2, container.getHeight() - 6 * buttonHeight, buttonWidth, buttonHeight / 2);
+        buttonWidth = container.getWidth() / 4;
+        title = new Image("res/sprites/backgrounds/title.jpg");
+
+        Image confirm = new Image("res/sprites/buttons/okbutton.png").getScaledCopy(150, 150);
+        //okButton = new Button(container, screen, confirm, 0.3, this);
+        okButton = new MouseOverArea(container, confirm, container.getWidth()/2-150/2, 50 * getContainer().getHeight() / 100, 150, 150, this);
+        nameField = new TextField(container, ttf, container.getWidth() / 2 - container.getWidth()/6, 40 * getContainer().getHeight() / 100, container.getWidth()/3, buttonHeight/2);
         nameField.setBackgroundColor(Color.white);
         nameField.setTextColor(Color.black);
         uniFontMessage = new UnicodeFont(font);
@@ -47,12 +51,13 @@ public class LoginGUI extends AbstractMenuGUI {
 
     @Override
     public void render() {
+        getContainer().getGraphics().drawImage(title, getContainer().getWidth()/2-title.getWidth()/2,10);
         okButton.render(getContainer(),getContainer().getGraphics());
         nameField.render(getContainer(), getContainer().getGraphics());
-        uniFontMessage.drawString(getContainer().getWidth() / 2 - uniFontMessage.getWidth(nameString) / 2, 7 * getContainer().getHeight() / 100f, nameString);
+        uniFontMessage.drawString(getContainer().getWidth() / 2 - uniFontMessage.getWidth(nameString) / 2, 33 * getContainer().getHeight() / 100f, nameString);
         if (error) {
             uniFontMessage.drawString(getContainer().getWidth() / 2 - uniFontMessage.getWidth(errorMessage) / 2,
-                    22 * getContainer().getHeight() / 100f, errorMessage, Color.red);
+                    50 * getContainer().getHeight() / 100f, errorMessage, Color.red);
         }
     }
 

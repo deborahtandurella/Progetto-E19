@@ -35,14 +35,11 @@ public class ScoreBoard {
     }
   }
 
-    public Record[] getRecords() {
-        return records;
-    }
 
     public String printScore(){
     String s = "";
     for (int i=0; i<N_PLAYERS;i++){
-      s += i+1 +")  "+ records[i].getName() + "   " + records[i].getScore()+"\n";
+      s += i+1 +")  "+ records[i].getName() + " " + records[i].getScore()+"\n";
     } return s;
   }
 

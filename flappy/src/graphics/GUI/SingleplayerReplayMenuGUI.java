@@ -17,17 +17,25 @@ public class SingleplayerReplayMenuGUI extends AbstractMenuGUI {
     private SingleplayerReplayMenuState state;
     private String scoreString;
     private UnicodeFont uniFontMessage;
-    private Font font = new Font("Verdana", Font.BOLD, 38);
+    private int buttonWidth;
+    private int buttonHeight;
+    private Font font = new Font("Nadeem", Font.CENTER_BASELINE, 45);
     //private TrueTypeFont ttf = new TrueTypeFont(font, true);
 
 
     public SingleplayerReplayMenuGUI(GameContainer container, SingleplayerReplayMenuState state, Screen screen) throws SlickException {
         super(container, screen);
         this.state=state;
-        Image replayImage = new Image("res/sprites/buttons/replay.png");
-        replayButton = new Button(container,screen, replayImage,  0.7, this);
-        Image backImage = new Image("res/sprites/buttons/back.png");
-        backButton = new Button(container,screen, backImage,  0.8, this);
+        buttonHeight = container.getHeight()/10;
+        buttonWidth = container.getWidth()/3;
+
+        Image replayImage = new Image("res/sprites/buttons/replay.png").getScaledCopy(buttonWidth, buttonHeight);
+        //replayButton = new Button(container,screen, replayImage,  0.7, this);
+        replayButton = new MouseOverArea(container, replayImage, container.getWidth()-3*buttonWidth, container.getHeight()-2*buttonHeight, buttonWidth, buttonHeight, this);
+
+        Image backImage = new Image("res/sprites/buttons/back.png").getScaledCopy(buttonWidth, buttonHeight);
+        //backButton = new Button(container,screen, backImage,  0.8, this);
+        backButton = new MouseOverArea(container, backImage, container.getWidth()-buttonWidth, container.getHeight()-2*buttonHeight, buttonWidth, buttonHeight, this);
 
         uniFontMessage = new UnicodeFont(font);
         uniFontMessage.getEffects().add(new ColorEffect(Color.BLUE));
@@ -39,7 +47,7 @@ public class SingleplayerReplayMenuGUI extends AbstractMenuGUI {
     public void render(){
         replayButton.render(getContainer(),getContainer().getGraphics());
         backButton.render(getContainer(),getContainer().getGraphics());
-        uniFontMessage.drawString(getContainer().getWidth()/2-uniFontMessage.getWidth(scoreString)/2, 7*getContainer().getHeight()/100f, scoreString);
+        uniFontMessage.drawString(getContainer().getWidth()/2-uniFontMessage.getWidth(scoreString)/2, 16*getContainer().getHeight()/100f, scoreString);
 
     }
     @Override
