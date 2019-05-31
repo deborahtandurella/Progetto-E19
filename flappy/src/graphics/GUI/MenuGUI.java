@@ -33,9 +33,9 @@ public class MenuGUI extends AbstractMenuGUI {
         this.record = record;
         buttonHeight = container.getHeight()/7;
         buttonWidth = container.getWidth()/3;
-        Image single = new Image("res/Images/single.png");
+        Image single = new Image("res/sprites/buttons/single.png");
         singleButton = new Button(container,screen, single,  0.3, this);
-        Image multi = new Image("res/Images/multi.png");
+        Image multi = new Image("res/sprites/buttons/multi.png");
         multiButton = new Button(container,screen, multi,  0.5, this);
         nameField = new TextField(container, ttf, container.getWidth()/2 - buttonWidth/2, container.getHeight() - 6*buttonHeight, buttonWidth, buttonHeight/2);
         nameField.setBackgroundColor(Color.blue);

@@ -63,4 +63,8 @@ public class Login extends BasicGameState {
         }
         stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
     }
+
+    public void setRecordName(String name) {
+        record.setName(name);
+    }
 }

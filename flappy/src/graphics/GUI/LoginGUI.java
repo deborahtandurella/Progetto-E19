@@ -33,7 +33,7 @@ public class LoginGUI extends AbstractMenuGUI {
         this.record = record;
         buttonHeight = container.getHeight() / 7;
         buttonWidth = container.getWidth() / 3;
-        Image confirm = new Image("res/Images/okbutton.png");
+        Image confirm = new Image("res/sprites/buttons/okbutton.png");
         okButton = new Button(container, screen, confirm, 0.3, this);
         nameField = new TextField(container, ttf, container.getWidth() / 2 - buttonWidth / 2, container.getHeight() - 6 * buttonHeight, buttonWidth, buttonHeight / 2);
         nameField.setBackgroundColor(Color.white);
@@ -66,11 +66,9 @@ public class LoginGUI extends AbstractMenuGUI {
                 errorMessage = "Inserisci il tuo nickname!";
 
             } else {
-                record.setLogin(false);
+                state.setRecordName(nameField.getText());
                 state.menu();
             }
-
-
         }
     }
 }

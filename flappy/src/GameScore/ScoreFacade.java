@@ -7,7 +7,7 @@ import java.io.*;
 public class ScoreFacade {
 
     public void readScoreBoard(Record[] records, int nPlayers) throws IOException {
-        BufferedReader in = new BufferedReader(new FileReader("res/Records/scoreboard_E.txt"));
+        BufferedReader in = new BufferedReader(new FileReader("res/records/scoreboard_E.txt"));
         for(int i = 0; i <nPlayers; i++){
             String riga = in.readLine();
             String[] result = riga.split("\\t");
@@ -19,7 +19,7 @@ public class ScoreFacade {
     }
 
     public void writePlayers(Record[] records, int nPlayers) throws IOException {
-        PrintWriter f = new PrintWriter(new FileWriter("res/Records/scoreboard_E.txt"));
+        PrintWriter f = new PrintWriter(new FileWriter("res/records/scoreboard_E.txt"));
         for(int i = 0; i < nPlayers; i++){
             String line = i+1 +")\t"+ records[i].getName() + "\t" + records[i].getScore();
             f.println(line);

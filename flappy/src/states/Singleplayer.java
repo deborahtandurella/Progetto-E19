@@ -62,7 +62,6 @@ public class Singleplayer extends BasicGameState {
             e.printStackTrace();
         }
         player = new Player();
-        record = new Record();
         immunity = false;
         random = new Random();
         pipeDecider = random.nextInt(11);
@@ -132,6 +131,7 @@ public class Singleplayer extends BasicGameState {
                         e.printStackTrace();
                     }
                     musicPlayer.gameOverMusic();
+                    record.setRecord(player);
                     stateBasedGame.enterState(9, new FadeOutTransition(), new FadeInTransition());
                 }
                 immunity = true;

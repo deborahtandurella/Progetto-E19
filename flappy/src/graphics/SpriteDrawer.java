@@ -1,10 +1,6 @@
 package graphics;
 
 import logic.SinglePlayer.Player;
-import logic.gameElements.Bird;
-import logic.gameElements.Coin;
-import logic.gameElements.Heart;
-import logic.gameElements.Pipe;
 import org.newdawn.slick.*;
 
 import static logic.gameConstants.GameConstants.*;
@@ -37,23 +33,23 @@ public class SpriteDrawer{
         this.offsetX = screen.getOffsetX();
         this.offsetY = screen.getOffsetY();
         try {
-            backgroundSingle = new Image("res/foresta.png").getScaledCopy(screenWidth,screenHeight);
-            birdImage = new Image("res/bird.png").getScaledCopy((int)(BIRD_WIDTH*screenWidth), (int)(BIRD_HEIGHT*screenHeight));
-            heartImage = new Image("res/heart_full.png").getScaledCopy((int) (HEART_SIZE*screenWidth), (int)(HEART_SIZE*screenHeight));
-            coinImage = new Image("res/onecoin.png").getScaledCopy((int)(COIN_SIZE*screenWidth), (int)(COIN_SIZE*screenHeight));
-            lowerPipeImage= new Image("res/pipe.png").getScaledCopy((int)(PIPE_WIDTH*screenWidth), (int)(PIPE_HEIGHT*screenHeight));
+            backgroundSingle = new Image("res/sprites/backgrounds/foresta.png").getScaledCopy(screenWidth,screenHeight);
+            birdImage = new Image("res/sprites/player/bird.png").getScaledCopy((int)(BIRD_WIDTH*screenWidth), (int)(BIRD_HEIGHT*screenHeight));
+            heartImage = new Image("res/sprites/perks/heart_full.png").getScaledCopy((int) (HEART_SIZE*screenWidth), (int)(HEART_SIZE*screenHeight));
+            coinImage = new Image("res/sprites/perks/onecoin.png").getScaledCopy((int)(COIN_SIZE*screenWidth), (int)(COIN_SIZE*screenHeight));
+            lowerPipeImage= new Image("res/sprites/obstacles/pipe.png").getScaledCopy((int)(PIPE_WIDTH*screenWidth), (int)(PIPE_HEIGHT*screenHeight));
             upperPipeImage= lowerPipeImage.getFlippedCopy(false, true);
 
-            coinSheet = new SpriteSheet("res/Coin.png",32,32);
+            coinSheet = new SpriteSheet("res/sprites/perks/Coin.png",32,32);
             coinAnimation = new Animation(coinSheet,100);
 
-            birdSheet = new SpriteSheet("res/piccioneSheet.png",20,17);
+            birdSheet = new SpriteSheet("res/sprites/player/piccioneSheet.png",20,17);
             birdAnimation = new Animation(birdSheet,200);
 
-            heartSheet = new SpriteSheet("res/Items_Heart.png", 16, 16);
+            heartSheet = new SpriteSheet("res/sprites/perks/Items_Heart.png", 16, 16);
             heartAnimation = new Animation(heartSheet, 200);
 
-            rocketImage = new Image("res/rocket.png").getScaledCopy((int) (HEART_SIZE*screenWidth), (int)(HEART_SIZE*screenHeight));
+            rocketImage = new Image("res/sprites/obstacles/rocket.png").getScaledCopy((int) (HEART_SIZE*screenWidth), (int)(HEART_SIZE*screenHeight));
 
         } catch (SlickException e) {
             e.printStackTrace();
