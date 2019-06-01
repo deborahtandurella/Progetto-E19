@@ -5,7 +5,6 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.MouseOverArea;
 import states.SingleplayerReplayMenuState;
-
 public class SingleplayerReplayMenuGUI extends AbstractMenuGUI {
 
     private MouseOverArea replayButton;
@@ -15,7 +14,7 @@ public class SingleplayerReplayMenuGUI extends AbstractMenuGUI {
     private int buttonHeight;
 
 
-    public SingleplayerReplayMenuGUI(GameContainer container, SingleplayerReplayMenuState state, Screen screen) throws SlickException {
+    public SingleplayerReplayMenuGUI(GameContainer container, Screen screen, SingleplayerReplayMenuState state) throws SlickException {
         super(container, screen);
         this.state=state;
         buttonHeight = container.getHeight()/10;

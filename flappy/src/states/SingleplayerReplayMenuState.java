@@ -36,8 +36,8 @@ public class SingleplayerReplayMenuState extends BasicGameState implements Score
         this.stateBasedGame = stateBasedGame;
         screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
         drawer = new SpriteDrawer(screen);
-        gui= new SingleplayerReplayMenuGUI(gameContainer, this, screen);
-        scoregui = new ScoreBoardMenuGUI(gameContainer, this, screen);
+        gui= new SingleplayerReplayMenuGUI(gameContainer, screen, this);
+        scoregui = new ScoreBoardMenuGUI(gameContainer, screen, this);
         container.getGraphics().clearWorldClip();
     }
 

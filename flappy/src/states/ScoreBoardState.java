@@ -44,8 +44,8 @@ public class ScoreBoardState extends BasicGameState implements ScoreInterface {
         this.container = gameContainer;
         screen = new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0,0);
         drawer = new SpriteDrawer(screen);
-        scoreBoardButtons = new ScoreBoardButtons(gameContainer, this, screen);
-        scoreBoardGUI = new ScoreBoardMenuGUI(gameContainer, this, screen);
+        scoreBoardButtons = new ScoreBoardButtons(gameContainer, screen, this);
+        scoreBoardGUI = new ScoreBoardMenuGUI(gameContainer, screen, this);
         container.getGraphics().clearWorldClip();
 
     }
@@ -84,7 +84,7 @@ public class ScoreBoardState extends BasicGameState implements ScoreInterface {
 
     public void deleteLeaderBoard() throws IOException, SlickException {
         scoreBoard.deleteScoreBoard();
-        scoreBoardGUI = new ScoreBoardMenuGUI(container, this, screen);
+        scoreBoardGUI = new ScoreBoardMenuGUI(container, screen, this);
 
 
     }

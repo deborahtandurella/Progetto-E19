@@ -3,14 +3,10 @@ package graphics.GUI;
 import graphics.Screen;
 import logic.SinglePlayer.Record;
 import org.newdawn.slick.*;
-import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.MouseOverArea;
-import org.newdawn.slick.gui.TextField;
 import states.Menu;
-import java.awt.Font;
 
 public class MenuGUI extends AbstractMenuGUI {
     private Menu state;

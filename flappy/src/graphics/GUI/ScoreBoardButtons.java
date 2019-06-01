@@ -16,7 +16,7 @@ public class ScoreBoardButtons extends AbstractMenuGUI {
     private int buttonHeight;
 
 
-    public ScoreBoardButtons(GameContainer container, ScoreBoardState state, Screen screen) throws SlickException {
+    public ScoreBoardButtons(GameContainer container, Screen screen, ScoreBoardState state) throws SlickException {
         super(container, screen);
         this.state=state;
         buttonHeight = container.getHeight()/10;

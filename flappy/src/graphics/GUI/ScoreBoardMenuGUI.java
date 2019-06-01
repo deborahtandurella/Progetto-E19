@@ -17,7 +17,7 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
     private String positions;
     private Font font = new Font("Nadeem", Font.CENTER_BASELINE, 45);
 
-    public ScoreBoardMenuGUI(GameContainer container, ScoreInterface state, Screen screen) throws SlickException {
+    public ScoreBoardMenuGUI(GameContainer container, Screen screen, ScoreInterface state) throws SlickException {
         super(container, screen);
         this.state=state;
         uniFontMessage = new UnicodeFont(font);
