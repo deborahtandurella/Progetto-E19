@@ -33,11 +33,11 @@ public class SpriteDrawer{
         this.offsetX = screen.getOffsetX();
         this.offsetY = screen.getOffsetY();
         try {
-            backgroundSingle = new Image("res/sprites/batman/background.png").getScaledCopy(screenWidth,screenHeight);
-            birdImage = new Image("res/sprites/batman/batman.png").getScaledCopy((int)(BIRD_WIDTH*screenWidth), (int)(BIRD_HEIGHT*screenHeight));
+            backgroundSingle = new Image("res/sprites/customTextures/fish/background.png").getScaledCopy(screenWidth,screenHeight);
+            birdImage = new Image("res/sprites/customTextures/fish/fish.png").getScaledCopy((int)(BIRD_WIDTH*screenWidth), (int)(BIRD_HEIGHT*screenHeight));
             heartImage = new Image("res/sprites/perks/heart_full.png").getScaledCopy((int) (HEART_SIZE*screenWidth), (int)(HEART_SIZE*screenHeight));
             coinImage = new Image("res/sprites/perks/onecoin.png").getScaledCopy((int)(COIN_SIZE*screenWidth), (int)(COIN_SIZE*screenHeight));
-            lowerPipeImage= new Image("res/sprites/batman/pipe.png").getScaledCopy((int)(PIPE_WIDTH*screenWidth), (int)(PIPE_HEIGHT*screenHeight));
+            lowerPipeImage= new Image("res/sprites/customTextures/fish/pipe.png").getScaledCopy((int)(PIPE_WIDTH*screenWidth), (int)(PIPE_HEIGHT*screenHeight));
             upperPipeImage= lowerPipeImage.getFlippedCopy(false, true);
 
             coinSheet = new SpriteSheet("res/sprites/perks/Coin.png",32,32);
