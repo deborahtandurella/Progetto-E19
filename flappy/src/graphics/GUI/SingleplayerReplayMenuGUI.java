@@ -21,7 +21,6 @@ public class SingleplayerReplayMenuGUI extends AbstractMenuGUI {
     private int buttonWidth;
     private int buttonHeight;
     private Font font = new Font("Nadeem", Font.CENTER_BASELINE, 45);
-    //private TrueTypeFont ttf = new TrueTypeFont(font, true);
 
 
     public SingleplayerReplayMenuGUI(GameContainer container, SingleplayerReplayMenuState state, Screen screen) throws SlickException {
@@ -38,19 +37,19 @@ public class SingleplayerReplayMenuGUI extends AbstractMenuGUI {
 
         backButton = new MouseOverArea(container, backImage, container.getWidth()-buttonWidth, container.getHeight()-2*buttonHeight, buttonWidth, buttonHeight, this);
 
-        uniFontMessage = new UnicodeFont(font);
+      /*  uniFontMessage = new UnicodeFont(font);
         uniFontMessage.getEffects().add(new ColorEffect(Color.black));
         uniFontMessage.addAsciiGlyphs();
         uniFontMessage.loadGlyphs();
         scoreName = state.getScoreBoard().printName();
-        points = state.getScoreBoard().printPoint();
+        points = state.getScoreBoard().printPoint();*/
     }
 
     public void render(){
         replayButton.render(getContainer(),getContainer().getGraphics());
         backButton.render(getContainer(),getContainer().getGraphics());
-        uniFontMessage.drawString(getContainer().getWidth()/3-uniFontMessage.getWidth(scoreName)/4, 16*getContainer().getHeight()/100f, scoreName);
-        uniFontMessage.drawString(3*getContainer().getWidth()/4-uniFontMessage.getWidth(scoreName)/2, 16*getContainer().getHeight()/100f, points);
+       // uniFontMessage.drawString(getContainer().getWidth()/3-uniFontMessage.getWidth(scoreName)/4, 16*getContainer().getHeight()/100f, scoreName);
+        //uniFontMessage.drawString(3*getContainer().getWidth()/4-uniFontMessage.getWidth(scoreName)/2, 16*getContainer().getHeight()/100f, points);
 
     }
     @Override
