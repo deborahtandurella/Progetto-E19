@@ -36,7 +36,7 @@ public class PathHandler {
     public static synchronized PathHandler getInstance(){
         if (instance == null)
             try {
-                instance= new PathHandler();
+                instance = new PathHandler();
             } catch (IOException e) {
                 e.printStackTrace();
             }

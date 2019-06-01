@@ -16,13 +16,6 @@ public class MenuGUI extends AbstractMenuGUI {
     private Menu state;
     private MouseOverArea singleButton;
     private MouseOverArea multiButton;
-    private TextField nameField;
-    private String nameString;
-    private UnicodeFont uniFontMessage;
-    private Font font = new Font("Verdana", Font.BOLD, 38);
-    private TrueTypeFont ttf = new TrueTypeFont(font, true);
-    private String errorMessage;
-    private boolean error = false;
     private Record record;
     private int buttonWidth;
     private int buttonHeight;
@@ -53,14 +46,12 @@ public class MenuGUI extends AbstractMenuGUI {
     @Override
     public void componentActivated(AbstractComponent source) {
         if (source == singleButton ) {
-            record.setLogin(false);
                 state.single();
             }
         if(source == multiButton){
             state.multi();
         }
         if (source == leaderboardButton ) {
-            record.setLogin(false);
             state.leaderBoard();
         }
     }

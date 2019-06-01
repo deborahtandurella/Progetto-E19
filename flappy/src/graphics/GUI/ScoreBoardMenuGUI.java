@@ -5,10 +5,8 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.gui.AbstractComponent;
 import states.test.ScoreInterface;
-
 import java.awt.Color;
 import java.awt.Font;
-
 
 public class ScoreBoardMenuGUI extends AbstractMenuGUI {
 
@@ -17,7 +15,6 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
     private String points;
     private UnicodeFont uniFontMessage;
     private String positions;
-
     private Font font = new Font("Nadeem", Font.CENTER_BASELINE, 45);
 
     public ScoreBoardMenuGUI(GameContainer container, ScoreInterface state, Screen screen) throws SlickException {

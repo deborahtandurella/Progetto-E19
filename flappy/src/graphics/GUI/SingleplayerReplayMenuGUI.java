@@ -2,13 +2,9 @@ package graphics.GUI;
 
 import graphics.Screen;
 import org.newdawn.slick.*;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.MouseOverArea;
 import states.SingleplayerReplayMenuState;
-import java.awt.Color;
-import java.awt.Font;
 
 public class SingleplayerReplayMenuGUI extends AbstractMenuGUI {
 

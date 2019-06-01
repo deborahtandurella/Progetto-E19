@@ -19,7 +19,7 @@ public class PathReader {
             line=bufferedReader.readLine();
             st = new StringTokenizer(line,",");
             destination.put(FileKeys.valueOf(st.nextToken()),st.nextToken());
-            if(line==null)
+            if(line == null)
                 throw new InvalidKeyException();
         }
     }

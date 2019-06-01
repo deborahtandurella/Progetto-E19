@@ -24,20 +24,19 @@ public class LoginGUI extends AbstractMenuGUI {
     private TrueTypeFont ttf = new TrueTypeFont(font, true);
     private String errorMessage;
     private boolean error = false;
-    private Record record;
+    //private Record record;
     private int buttonWidth;
     private int buttonHeight;
 
     public LoginGUI(GameContainer container, Screen screen, Login state, Record record) throws SlickException {
         super(container, screen);
         this.state = state;
-        this.record = record;
+        //this.record = record;
         buttonHeight = container.getHeight() / 7;
         buttonWidth = container.getWidth() / 4;
         title = new Image("res/sprites/backgrounds/title.jpg");
 
         Image confirm = new Image("res/sprites/buttons/okbutton.png").getScaledCopy(150, 150);
-        //okButton = new Button(container, screen, confirm, 0.3, this);
         okButton = new MouseOverArea(container, confirm, container.getWidth()/2-150/2, 50 * getContainer().getHeight() / 100, 150, 150, this);
         nameField = new TextField(container, ttf, container.getWidth() / 2 - container.getWidth()/6, 40 * getContainer().getHeight() / 100, container.getWidth()/3, buttonHeight/2);
         nameField.setBackgroundColor(Color.white);

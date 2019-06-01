@@ -16,9 +16,6 @@ public class DifficultyMenu extends BasicGameState{
     private static float gameSpeed;
     private DifficultyMenuGUI gui;
     private Screen screen;
-
-
-
     private SpriteDrawer drawer;
 
     @Override
@@ -28,9 +25,9 @@ public class DifficultyMenu extends BasicGameState{
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        drawer = new SpriteDrawer(new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0));
         this.container= gameContainer;
         this.stateBasedGame= stateBasedGame;
+        drawer = new SpriteDrawer(new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0));
         screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
         gui = new DifficultyMenuGUI(container,screen,this);
         gameSpeed=0.7f;

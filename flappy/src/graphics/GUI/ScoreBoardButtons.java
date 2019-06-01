@@ -2,13 +2,10 @@ package graphics.GUI;
 
 import graphics.Screen;
 import org.newdawn.slick.*;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.MouseOverArea;
 import states.ScoreBoardState;
-
 import java.io.IOException;
-
 
 public class ScoreBoardButtons extends AbstractMenuGUI {
 
