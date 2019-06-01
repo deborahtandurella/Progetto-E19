@@ -2,9 +2,9 @@
 2)	giorgio	12
 3)	mastrota	10
 4)	mastrota	10
-5)	mastrota	8
-6)	mastrota	7
-7)	arrosto	6
-8)	mastrota	5
-9)	loguaroop	4
-10)	mastrota	4
+5)	peto	9
+6)	mastrota	8
+7)	mastrota	7
+8)	aldo moro	7
+9)	arrosto	6
+10)	mastrota	5

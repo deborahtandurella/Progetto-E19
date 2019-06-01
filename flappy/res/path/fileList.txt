@@ -1,0 +1,7 @@
+CLASSIC,flappy/res/path/classicPath.txt
+BATMAN,flappy/res/path/batmanPath.txt
+DOGO,flappy/res/path/dogoPath.txt
+SKY,flappy/res/path/skyPath.txt
+SEA,flappy/res/path/seaPath.txt
+SOUND,flappy/res/path/soundPath.txt
+BUTTON,flappy/res/path/buttonPath.txt

@@ -1,20 +1,37 @@
 package resources;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.HashMap;
 
 public class PathHandler {
-    private FileReader fileReader;
-    private BufferedReader bufferedReader;
-    private static String path= "res/path_list.txt";
-    private static PathHandler instance;
 
-    private PathHandler() throws FileNotFoundException {
-        fileReader = new FileReader(path);
-        bufferedReader =new BufferedReader(fileReader);
+    private static String path= "res/path/fileList.txt";
+    private static PathHandler instance;
+    private HashMap<FileKeys,String> filePaths;
+    private HashMap<PathKeys,String> spritePaths;
+    private HashMap<PathKeys,String> buttonPaths;
+    private HashMap<PathKeys,String> soundPaths;
+    private HashMap<FileKeys,HashMap> superMap;
+    private PathReader reader;
+    private String output;
+    private SingletonInizializer inizializer;
+
+    private PathHandler() throws IOException {
+
+        filePaths = new HashMap<>();
+        spritePaths = new HashMap<>();
+        buttonPaths = new HashMap<>();
+        soundPaths = new HashMap<>();
+        superMap = new HashMap<>();
+
+        inizializer = new SingletonInizializer();
+        inizializer.init(path,filePaths);
+
+        reader = new PathReader();
+
+        reader.reader(filePaths,FileKeys.CLASSIC,spritePaths);
+        reader.reader(filePaths,FileKeys.BUTTON,buttonPaths);
+        reader.reader(filePaths,FileKeys.SOUND,soundPaths);
     }
     public static synchronized PathHandler getInstance(){
         if (instance == null)
@@ -26,25 +43,8 @@ public class PathHandler {
         return instance;
     }
 
-    private void reload() throws IOException{
-        fileReader.reset();
-        bufferedReader = new BufferedReader(fileReader);
-    }
-    public String getPath(PathKeys key) throws IOException {
-        reload();
-        String line;
-        StringTokenizer st;
-        while(true) {
-            line=bufferedReader.readLine();
-            st = new StringTokenizer(line,",");
-
-            if(st.nextElement().equals(key.toString())){
-                path = st.nextToken();
-                return path;
-            }
-            if(line==null)
-                throw new InvalidKeyException();
-        }
-
+    public String getPath(FileKeys mapKey, PathKeys pathKey){
+        output = superMap.get(mapKey).get(pathKey).toString();
+        return output;
     }
 }

@@ -4,6 +4,7 @@ import entitiyComponent.components.gameElements.GameElementGraphicComponent;
 import graphics.Screen;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import resources.FileKeys;
 import resources.PathHandler;
 import resources.PathKeys;
 
@@ -15,7 +16,7 @@ public class HeartGraphicComponent extends GameElementGraphicComponent {
     public HeartGraphicComponent(Graphics graphics, Screen screen) {
         super(graphics, screen);
         try {
-            heartImage = new Image(PathHandler.getInstance().getPath(PathKeys.HEARTH));
+            heartImage = new Image(PathHandler.getInstance().getPath(FileKeys.CLASSIC,PathKeys.HEARTH));
         } catch (Exception e){
             e.printStackTrace();
         }

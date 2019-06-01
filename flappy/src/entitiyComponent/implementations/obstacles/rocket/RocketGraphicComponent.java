@@ -4,6 +4,7 @@ import entitiyComponent.components.gameElements.GameElementGraphicComponent;
 import graphics.Screen;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import resources.FileKeys;
 import resources.PathHandler;
 import resources.PathKeys;
 
@@ -16,7 +17,7 @@ public class RocketGraphicComponent extends GameElementGraphicComponent
     public RocketGraphicComponent(Graphics graphics, Screen screen) {
         super(graphics, screen);
         try {
-            rocketImage = new Image(PathHandler.getInstance().getPath(PathKeys.ROCKET));
+            rocketImage = new Image(PathHandler.getInstance().getPath(FileKeys.CLASSIC,PathKeys.ROCKET));
         } catch (Exception e){
             e.printStackTrace();
         }

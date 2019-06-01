@@ -6,6 +6,7 @@ import graphics.Screen;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import resources.FileKeys;
 import resources.PathHandler;
 import resources.PathKeys;
 
@@ -21,7 +22,7 @@ public class PipeGraphicComponent extends GameElementGraphicComponent {
     public PipeGraphicComponent(Graphics graphics, Screen screen) {
         super(graphics, screen);
         try{
-            lowerPipeImage = new Image(PathHandler.getInstance().getPath(PathKeys.BIRD));
+            lowerPipeImage = new Image(PathHandler.getInstance().getPath(FileKeys.CLASSIC,PathKeys.BIRD));
             upperPipeImage= lowerPipeImage.getFlippedCopy(false, true);
         } catch (Exception e){
             e.printStackTrace();
