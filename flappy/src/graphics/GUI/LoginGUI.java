@@ -65,11 +65,16 @@ public class LoginGUI extends AbstractMenuGUI {
     public void componentActivated(AbstractComponent source) {
         if (source == okButton) {
 
-            if (nameField.getText().equals("")) {
+            if (nameField.getText().equals("") || nameField.getText().charAt(0) == ' ') {
                 error = true;
                 errorMessage = "Inserisci il tuo nickname!";
 
-            } else {
+            } else
+            if (nameField.getText().length() > 10) {
+                error = true;
+                errorMessage = "Lunghezza massima 10 caratteri!";
+            } else
+                {
                 state.setRecordName(nameField.getText());
                 state.menu();
             }
