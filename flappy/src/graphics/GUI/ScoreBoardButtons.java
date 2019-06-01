@@ -7,6 +7,8 @@ import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.MouseOverArea;
 import states.ScoreBoardState;
 
+import java.io.IOException;
+
 
 public class ScoreBoardButtons extends AbstractMenuGUI {
 
@@ -41,7 +43,11 @@ public class ScoreBoardButtons extends AbstractMenuGUI {
         if (source == backButton)
             state.backToMenu();
         else if (source == deleteButton){}
-            //a questo punto azzero la classifica*/
+       /* try {
+            state.deleteLeaderBoard();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
     }
 }
 

@@ -39,7 +39,7 @@ public class ScoreBoard {
     public String printName(){
     String s = "";
     for (int i=0; i<N_PLAYERS;i++){
-      s += i+1 +") "+records[i].getName() +"\n";
+      s += i+1 +". "+records[i].getName() +"\n";
     } return s;
   }
 
@@ -50,5 +50,13 @@ public class ScoreBoard {
       } return s;
   }
 
+
+  public void deleteScoreBoard() throws IOException {
+    for(int j=0-1; j<N_PLAYERS; j++){
+      records[j].setScore(0);
+      records[j].setName("----------");
+    }
+    scoreFacade.writePlayers(records, N_PLAYERS);
+  }
 
 }

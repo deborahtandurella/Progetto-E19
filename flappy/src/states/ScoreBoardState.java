@@ -13,6 +13,8 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 import states.test.ScoreInterface;
 
+import java.io.IOException;
+
 public class ScoreBoardState extends BasicGameState implements ScoreInterface {
     private static final int ID = 9;
     private StateBasedGame stateBasedGame;
@@ -23,6 +25,7 @@ public class ScoreBoardState extends BasicGameState implements ScoreInterface {
     private SpriteDrawer drawer;
     private ScoreBoardButtons scoreBoardButtons;
     private ScoreBoardMenuGUI scoreBoardGUI;
+
 
     @Override
     public int getID() {
@@ -76,6 +79,12 @@ public class ScoreBoardState extends BasicGameState implements ScoreInterface {
             e.printStackTrace();
         }
         stateBasedGame.enterState(1,new FadeOutTransition(),new FadeInTransition());
+
+    }
+
+    public void deleteLeaderBoard() throws IOException {
+        scoreBoard.deleteScoreBoard();
+
 
     }
 
