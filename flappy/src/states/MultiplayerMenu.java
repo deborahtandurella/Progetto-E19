@@ -1,14 +1,25 @@
 package states;
 
+import graphics.GUI.MultiplayerMenuGUI;
+import graphics.Screen;
+import graphics.SpriteDrawer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class MultiplayerMenu extends BasicGameState {
     private static final int ID = 5;
+    private GameContainer container;
+    private StateBasedGame stateBasedGame;
+    private MultiplayerMenuGUI gui;
+    private Screen screen;
+    private SpriteDrawer drawer;
+
 
     @Override
     public int getID() {
@@ -17,12 +28,17 @@ public class MultiplayerMenu extends BasicGameState {
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-
+        this.container= gameContainer;
+        this.stateBasedGame= stateBasedGame;
+        gui = new MultiplayerMenuGUI(container, screen, this);
+        drawer = new SpriteDrawer(new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0));
+        screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
-
+        drawer.drawBackgroundSingle(graphics);
+        gui.render();
     }
 
     @Override
@@ -35,5 +51,15 @@ public class MultiplayerMenu extends BasicGameState {
             System.exit(0);
 
         }
+    }
+
+    public void backToMenu(){
+        try {
+            stateBasedGame.getState(1).init(container,stateBasedGame);
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+        stateBasedGame.enterState(1,new FadeOutTransition(),new FadeInTransition());
+
     }
 }
