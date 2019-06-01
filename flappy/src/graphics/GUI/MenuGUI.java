@@ -26,30 +26,28 @@ public class MenuGUI extends AbstractMenuGUI {
     private Record record;
     private int buttonWidth;
     private int buttonHeight;
+    private MouseOverArea leaderboardButton;
 
     public MenuGUI(GameContainer container, Screen screen, Menu state, Record record) throws SlickException {
         super(container, screen);
         this.state = state;
         this.record = record;
-        buttonHeight = container.getHeight()/7;
+        buttonHeight = container.getHeight()/6;
         buttonWidth = container.getWidth()/3;
         Image single = new Image("res/sprites/buttons/single.png");
         singleButton = new Button(container,screen, single,  0.3, this);
         Image multi = new Image("res/sprites/buttons/multi.png");
         multiButton = new Button(container,screen, multi,  0.5, this);
-        nameField = new TextField(container, ttf, container.getWidth()/2 - buttonWidth/2, container.getHeight() - 6*buttonHeight, buttonWidth, buttonHeight/2);
-        nameField.setBackgroundColor(Color.blue);
-        nameField.setTextColor(Color.red);
-        uniFontMessage = new UnicodeFont(font);
-        uniFontMessage.getEffects().add(new ColorEffect(java.awt.Color.white));
-        uniFontMessage.addAsciiGlyphs();
-        uniFontMessage.loadGlyphs();
-        nameString = "NICKNAME:";
+
+        Image leaderBoard = new Image("res/sprites/buttons/leaderboard.png").getScaledCopy(buttonWidth/2, buttonHeight);
+        leaderboardButton = new MouseOverArea(container, leaderBoard, container.getWidth()/2-buttonWidth/4, 11*container.getHeight()/100, buttonWidth/2, buttonHeight, this);
+
     }
 
     public void render(){
         singleButton.render(getContainer(),getContainer().getGraphics());
         multiButton.render(getContainer(),getContainer().getGraphics());
+        leaderboardButton.render(getContainer(), getContainer().getGraphics());
     }
 
     @Override
@@ -60,6 +58,10 @@ public class MenuGUI extends AbstractMenuGUI {
             }
         if(source == multiButton){
             state.multi();
+        }
+        if (source == leaderboardButton ) {
+            record.setLogin(false);
+            state.leaderBoard();
         }
     }
 }

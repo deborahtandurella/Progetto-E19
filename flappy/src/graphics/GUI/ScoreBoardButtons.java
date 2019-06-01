@@ -3,30 +3,28 @@ package graphics.GUI;
 import graphics.Screen;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.MouseOverArea;
-import states.SingleplayerReplayMenuState;
-import java.awt.Color;
-import java.awt.Font;
+import states.ScoreBoardState;
 
-public class SingleplayerReplayMenuGUI extends AbstractMenuGUI {
 
-    private MouseOverArea replayButton;
+public class ScoreBoardButtons extends AbstractMenuGUI {
+
+    private MouseOverArea deleteButton;
     private MouseOverArea backButton;
-    private SingleplayerReplayMenuState state;
+    private ScoreBoardState state;
     private int buttonWidth;
     private int buttonHeight;
 
 
-    public SingleplayerReplayMenuGUI(GameContainer container, SingleplayerReplayMenuState state, Screen screen) throws SlickException {
+    public ScoreBoardButtons(GameContainer container, ScoreBoardState state, Screen screen) throws SlickException {
         super(container, screen);
         this.state=state;
         buttonHeight = container.getHeight()/10;
         buttonWidth = container.getWidth()/3;
 
-        Image replayImage = new Image("res/sprites/buttons/replay.png").getScaledCopy(buttonWidth, buttonHeight);
-        replayButton = new MouseOverArea(container, replayImage, container.getWidth()-3*buttonWidth, container.getHeight()-2*buttonHeight, buttonWidth, buttonHeight, this);
+        Image deleteImage = new Image("res/sprites/buttons/delete.png").getScaledCopy(buttonWidth, buttonHeight);
+        deleteButton = new MouseOverArea(container, deleteImage, container.getWidth()-3*buttonWidth, container.getHeight()-2*buttonHeight, buttonWidth, buttonHeight, this);
 
         Image backImage = new Image("res/sprites/buttons/back.png").getScaledCopy(buttonWidth, buttonHeight);
         backButton = new MouseOverArea(container, backImage, container.getWidth()-buttonWidth, container.getHeight()-2*buttonHeight, buttonWidth, buttonHeight, this);
@@ -34,15 +32,16 @@ public class SingleplayerReplayMenuGUI extends AbstractMenuGUI {
     }
 
     public void render(){
-        replayButton.render(getContainer(),getContainer().getGraphics());
         backButton.render(getContainer(),getContainer().getGraphics());
+        deleteButton.render(getContainer(),getContainer().getGraphics());
     }
 
     @Override
     public void componentActivated(AbstractComponent source) {
         if (source == backButton)
-            state.noRematch();
-        else if (source == replayButton)
-            state.rematch();
+            state.backToMenu();
+        else if (source == deleteButton){}
+            //a questo punto azzero la classifica*/
     }
 }
+

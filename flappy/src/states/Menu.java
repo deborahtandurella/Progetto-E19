@@ -69,6 +69,17 @@ public class Menu extends BasicGameState{
         stateBasedGame.enterState(5, new FadeOutTransition(), new FadeInTransition());
     }
 
+
+    public void leaderBoard(){
+        try {
+            stateBasedGame.getState(9).init(container,stateBasedGame);
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+        stateBasedGame.enterState(9, new FadeOutTransition(), new FadeInTransition());
+    }
+
+
     public void keyPressed(int key, char c){
         if( key == Input.KEY_ESCAPE){
             System.exit(0);

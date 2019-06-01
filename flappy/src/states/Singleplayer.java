@@ -57,11 +57,6 @@ public class Singleplayer extends BasicGameState {
 
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.container= gameContainer;
-       /* try {
-            scoreboard = new ScoreBoard();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
         player = new Player();
         immunity = false;
         random = new Random();
@@ -82,7 +77,6 @@ public class Singleplayer extends BasicGameState {
         spriteDrawer = new SpriteDrawer(screen);
         java.awt.Font font1= new java.awt.Font("Verdana", java.awt.Font.BOLD, 32);
         font= new TrueTypeFont(font1, true);
-        //score=0;
     }
 
     @Override
@@ -102,7 +96,6 @@ public class Singleplayer extends BasicGameState {
         }
         spriteDrawer.drawLives(player,graphics);
         font.drawString(screen.getWidth()/2f + screen.getOffsetX()- font.getWidth(String.valueOf(player.getScore()))/2f,screen.getHeight()/3f,String.valueOf(player.getScore()));
-        //font.drawString(screen.getWidth()/2f + screen.getOffsetX()- font.getWidth(String.valueOf(score))/2f,screen.getHeight()/3f,String.valueOf(score));
     }
 
     @Override
@@ -139,17 +132,6 @@ public class Singleplayer extends BasicGameState {
                         e.printStackTrace();
                     }
                     stateBasedGame.enterState(4, new FadeOutTransition(), new FadeInTransition());
-
-                   /* try {
-                        if(scoreboard.compareScore(record)){
-                            stateBasedGame.enterState(4, new FadeOutTransition(), new FadeInTransition());
-                        }
-                        else {
-                            stateBasedGame.enterState(4, new FadeOutTransition(), new FadeInTransition());
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }*/
                 }
 
 
@@ -190,18 +172,6 @@ public class Singleplayer extends BasicGameState {
                         e.printStackTrace();
                     }
                     stateBasedGame.enterState(4, new FadeOutTransition(), new FadeInTransition());
-
-                   /* try {
-                        if(scoreboard.compareScore(record)){
-                            stateBasedGame.enterState(4, new FadeOutTransition(), new FadeInTransition());
-                        }
-                        else {
-                            stateBasedGame.enterState(4, new FadeOutTransition(), new FadeInTransition());
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }*/
-
                 }
                 immunity = true;
                 spriteDrawer.setBirdAlpha(0.5f);
