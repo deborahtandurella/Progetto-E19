@@ -82,8 +82,9 @@ public class ScoreBoardState extends BasicGameState implements ScoreInterface {
 
     }
 
-    public void deleteLeaderBoard() throws IOException {
+    public void deleteLeaderBoard() throws IOException, SlickException {
         scoreBoard.deleteScoreBoard();
+        scoreBoardGUI = new ScoreBoardMenuGUI(container, this, screen);
 
 
     }

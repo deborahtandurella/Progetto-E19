@@ -42,12 +42,14 @@ public class ScoreBoardButtons extends AbstractMenuGUI {
     public void componentActivated(AbstractComponent source) {
         if (source == backButton)
             state.backToMenu();
-        else if (source == deleteButton){}
-       /* try {
+        else if (source == deleteButton){
+       try {
             state.deleteLeaderBoard();
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        } catch (SlickException e) {
+           e.printStackTrace();
+       }}
     }
 }
 

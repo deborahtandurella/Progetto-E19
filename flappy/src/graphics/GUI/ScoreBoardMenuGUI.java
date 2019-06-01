@@ -16,6 +16,7 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
     private String scoreName;
     private String points;
     private UnicodeFont uniFontMessage;
+    private String positions;
 
     private Font font = new Font("Nadeem", Font.CENTER_BASELINE, 45);
 
@@ -28,13 +29,16 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
         uniFontMessage.loadGlyphs();
         scoreName = state.getScoreBoard().printName();
         points = state.getScoreBoard().printPoint();
+        positions = "1.\n2.\n3.\n4.\n5.\n6.\n7.\n8.\n9.\n10.\n";
+
 
     }
 
     @Override
     public void render() {
-        uniFontMessage.drawString(getContainer().getWidth()/3-uniFontMessage.getWidth(scoreName)/4, 16*getContainer().getHeight()/100f, scoreName);
-        uniFontMessage.drawString(3*getContainer().getWidth()/4-uniFontMessage.getWidth(scoreName)/2, 16*getContainer().getHeight()/100f, points);
+        uniFontMessage.drawString(40*getContainer().getWidth()/100, 16*getContainer().getHeight()/100f, positions);
+        uniFontMessage.drawString(45*getContainer().getWidth()/100, 16*getContainer().getHeight()/100f, scoreName);
+        uniFontMessage.drawString(60*getContainer().getWidth()/100, 16*getContainer().getHeight()/100f, points);
     }
 
     @Override
