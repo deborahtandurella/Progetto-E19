@@ -11,7 +11,7 @@ public class PathReader {
     private BufferedReader bufferedReader;
     private static String path;
 
-    public void reader (HashMap source,FileKeys key,HashMap destination) throws IOException {
+    public void read (HashMap source,FileKeys key,HashMap destination) throws IOException {
         path = source.get(key).toString();
         String line;
         StringTokenizer st;

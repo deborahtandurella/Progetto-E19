@@ -29,9 +29,9 @@ public class PathHandler {
 
         reader = new PathReader();
 
-        reader.reader(filePaths,FileKeys.CLASSIC,spritePaths);
-        reader.reader(filePaths,FileKeys.BUTTON,buttonPaths);
-        reader.reader(filePaths,FileKeys.SOUND,soundPaths);
+        reader.read(filePaths,FileKeys.CLASSIC,spritePaths);
+        reader.read(filePaths,FileKeys.BUTTON,buttonPaths);
+        reader.read(filePaths,FileKeys.SOUND,soundPaths);
     }
     public static synchronized PathHandler getInstance(){
         if (instance == null)
