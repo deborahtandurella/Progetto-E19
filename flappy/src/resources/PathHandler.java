@@ -44,6 +44,7 @@ public class PathHandler {
     }
 
     public void changeSprites(FileKeys key) throws IOException {
+        spritePaths.clear();
         reader.read(filePaths,key,spritePaths);
     }
 
