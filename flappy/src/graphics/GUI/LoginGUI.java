@@ -28,16 +28,14 @@ public class LoginGUI extends AbstractMenuGUI {
     private int buttonWidth;
     private int buttonHeight;
 
-    public LoginGUI(GameContainer container, Screen screen, Login state, Record record) throws SlickException {
+    public LoginGUI(GameContainer container, Screen screen, Login state) throws SlickException {
         super(container, screen);
         this.state = state;
-        //this.record = record;
         buttonHeight = container.getHeight() / 7;
         buttonWidth = container.getWidth() / 4;
-        title = new Image("res/sprites/backgrounds/title.jpg");
-
-        Image confirm = new Image("res/sprites/buttons/okbutton.png").getScaledCopy(150, 150);
-        okButton = new MouseOverArea(container, confirm, container.getWidth()/2-150/2, 50 * getContainer().getHeight() / 100, 150, 150, this);
+        title = new Image("res/sprites/backgrounds/title.jpg").getScaledCopy(buttonWidth*3, buttonHeight*2);
+        Image confirm = new Image("res/sprites/buttons/startM.png").getScaledCopy(buttonWidth/2, buttonHeight/2);
+        okButton = new MouseOverArea(container, confirm, container.getWidth()/2-150/2, 50 * getContainer().getHeight() / 100, buttonWidth/2, buttonHeight/2, this);
         nameField = new TextField(container, ttf, container.getWidth() / 2 - container.getWidth()/6, 40 * getContainer().getHeight() / 100, container.getWidth()/3, buttonHeight/2);
         nameField.setBackgroundColor(Color.white);
         nameField.setTextColor(Color.black);

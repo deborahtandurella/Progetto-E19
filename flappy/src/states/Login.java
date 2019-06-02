@@ -41,7 +41,7 @@ public class Login extends BasicGameState {
         this.musicPlayer = new MusicPlayer();
         screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
         drawer = new SpriteDrawer(screen);
-        gui = new LoginGUI(container, screen, this, record);
+        gui = new LoginGUI(container, screen, this);
         musicPlayer.backgroundMusic();
     }
 
