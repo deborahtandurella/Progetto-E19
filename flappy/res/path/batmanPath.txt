@@ -1,0 +1,6 @@
+BACKGROUND,res/sprites/customTextures/batman/background.png
+BIRD,res/sprites/customTextures/batman/batman.png
+PIPE,res/sprites/customTextures/batman/pipe.png
+ROCKET,res/sprites/obstacles/rocket.png
+LIFE,res/sprites/perks/heart_full.png
+HEART,res/sprites/perks/Items_Heart.png

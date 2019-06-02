@@ -1,0 +1,6 @@
+BACKGROUND,res/sprites/backgrounds/foresta.png
+BIRD,res/sprites/player/bird.png
+PIPE,res/sprites/obstacles/pipe.png
+ROCKET,res/sprites/obstacles/rocket.png
+LIFE,res/sprites/perks/heart_full.png
+HEART,res/sprites/perks/Items_Heart.png

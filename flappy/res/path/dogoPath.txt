@@ -1,0 +1,6 @@
+BACKGROUND,res/sprites/customTextures/dogo/background.png
+BIRD,res/sprites/customTextures/dogo/dogo.png
+PIPE,res/sprites/customTextures/dogo/pipe.png
+ROCKET,res/sprites/obstacles/rocket.png
+LIFE,res/sprites/perks/heart_full.png
+HEART,res/sprites/perks/Items_Heart.png

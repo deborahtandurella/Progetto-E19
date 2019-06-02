@@ -5,6 +5,7 @@ public enum PathKeys {
     HEARTH,
     PIPE,
     ROCKET,
+    LIFE,
     COIN,
     BACKGROUND,
     FLAP,

@@ -43,6 +43,11 @@ public class PathHandler {
         return instance;
     }
 
+    public void changeSprites(FileKeys key) throws IOException {
+        spritePaths.clear();
+        reader.read(filePaths,key,spritePaths);
+    }
+
     public String getPath(FileKeys mapKey, PathKeys pathKey){
         output = superMap.get(mapKey).get(pathKey).toString();
         return output;

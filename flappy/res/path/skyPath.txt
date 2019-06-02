@@ -1,0 +1,6 @@
+BACKGROUND,res/sprites/customTextures/sky/background.png
+BIRD,res/sprites/customTextures/sky/bird.png
+PIPE,res/sprites/customTextures/sky/pipe.png
+ROCKET,res/sprites/obstacles/rocket.png
+LIFE,res/sprites/perks/heart_full.png
+HEART,res/sprites/perks/Items_Heart.png
