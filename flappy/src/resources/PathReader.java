@@ -11,16 +11,14 @@ public class PathReader {
     private BufferedReader bufferedReader;
     private static String path;
 
-    public void read (HashMap source,FileKeys key,HashMap destination) throws IOException {
+    public void read (HashMap<FileKeys,String> source,FileKeys key,HashMap<PathKeys,String> destination) throws IOException {
         path = source.get(key).toString();
         String line;
         StringTokenizer st;
-        while(true) {
-            line=bufferedReader.readLine();
+        while((line = bufferedReader.readLine()) != null) {
             st = new StringTokenizer(line,",");
-            destination.put(FileKeys.valueOf(st.nextToken()),st.nextToken());
-            if(line == null)
-                throw new InvalidKeyException();
+            destination.put(PathKeys.valueOf(st.nextToken()),st.nextToken());
+
         }
     }
 }

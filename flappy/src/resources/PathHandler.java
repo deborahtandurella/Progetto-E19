@@ -13,7 +13,6 @@ public class PathHandler {
     private HashMap<PathKeys,String> soundPaths;
     private HashMap<FileKeys,HashMap> superMap;
     private PathReader reader;
-    private String output;
     private SingletonInizializer inizializer;
 
     private PathHandler() throws IOException {
@@ -49,7 +48,6 @@ public class PathHandler {
     }
 
     public String getPath(FileKeys mapKey, PathKeys pathKey){
-        output = superMap.get(mapKey).get(pathKey).toString();
-        return output;
+        return superMap.get(mapKey).get(pathKey).toString();
     }
 }
