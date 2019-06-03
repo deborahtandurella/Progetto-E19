@@ -44,6 +44,7 @@ public class GiocoAStati extends StateBasedGame {
             this.addState(new Multiplayer());
             this.addState(new MultiplayerReplayMenu());
             this.addState(new ScoreBoardState(record, scoreBoard));
+            this.addState(new CustomizationMenu());
         } catch (IOException e) {
             e.printStackTrace();
         }

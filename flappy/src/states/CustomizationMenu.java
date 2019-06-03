@@ -1,5 +1,6 @@
 package states;
 
+import graphics.GUI.CustomizationMenuGUI;
 import graphics.Screen;
 import graphics.SpriteDrawer;
 import org.newdawn.slick.GameContainer;
@@ -8,11 +9,14 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class CustomizationMenu extends BasicGameState {
-    private static final int ID = 2;
+    private static final int ID = 11;
     private GameContainer container;
     private StateBasedGame stateBasedGame;
+    private CustomizationMenuGUI gui;
     private Screen screen;
     private SpriteDrawer drawer;
 
@@ -27,12 +31,13 @@ public class CustomizationMenu extends BasicGameState {
         this.container= gameContainer;
         this.stateBasedGame= stateBasedGame;
         screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
+        gui = new CustomizationMenuGUI(container,screen,this);
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         drawer.drawBackgroundSingle(graphics);
-
+        gui.render();
     }
 
     @Override
@@ -44,5 +49,14 @@ public class CustomizationMenu extends BasicGameState {
             System.exit(0);
 
         }
+    }
+
+    public void goBack(){
+        try {
+            stateBasedGame.getState(1).init(container,stateBasedGame);
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+        stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
     }
 }

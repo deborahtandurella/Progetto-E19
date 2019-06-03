@@ -12,6 +12,7 @@ public class MenuGUI extends AbstractMenuGUI {
     private Menu state;
     private MouseOverArea singleButton;
     private MouseOverArea multiButton;
+    private MouseOverArea customButton;
     private Record record;
     private int buttonWidth;
     private int buttonHeight;
@@ -31,12 +32,15 @@ public class MenuGUI extends AbstractMenuGUI {
         Image leaderBoard = new Image("res/sprites/buttons/leaderboard.png").getScaledCopy(buttonWidth/2, buttonHeight);
         leaderboardButton = new MouseOverArea(container, leaderBoard, container.getWidth()/2-buttonWidth/4, 11*container.getHeight()/100, buttonWidth/2, buttonHeight, this);
 
+        Image custom = new Image("res/sprites/buttons/single.png").getScaledCopy(buttonWidth/2,buttonHeight);
+        customButton = new Button(container,screen, single,  0.8, this);
     }
 
     public void render(){
         singleButton.render(getContainer(),getContainer().getGraphics());
         multiButton.render(getContainer(),getContainer().getGraphics());
         leaderboardButton.render(getContainer(), getContainer().getGraphics());
+        customButton.render(getContainer(),getContainer().getGraphics());
     }
 
     @Override
@@ -49,6 +53,9 @@ public class MenuGUI extends AbstractMenuGUI {
         }
         if (source == leaderboardButton ) {
             state.leaderBoard();
+        }
+        if (source == customButton ) {
+            state.custom();
         }
     }
 }

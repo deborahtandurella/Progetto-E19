@@ -56,6 +56,7 @@ public class Login extends BasicGameState {
 
     public void menu(){
         try {
+
             stateBasedGame.getState(1).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();

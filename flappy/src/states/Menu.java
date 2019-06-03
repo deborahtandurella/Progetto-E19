@@ -85,4 +85,14 @@ public class Menu extends BasicGameState{
             System.exit(0);
         }
     }
+
+    public void custom(){
+        try {
+            stateBasedGame.getState(11).init(container,stateBasedGame);
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
+        stateBasedGame.enterState(11, new FadeOutTransition(), new FadeInTransition());
+    }
+
 }
