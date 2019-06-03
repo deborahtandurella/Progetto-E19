@@ -31,6 +31,9 @@ public class PathHandler {
         reader.read(filePaths,FileKeys.CLASSIC,spritePaths);
         reader.read(filePaths,FileKeys.BUTTON,buttonPaths);
         reader.read(filePaths,FileKeys.SOUND,soundPaths);
+        superMap.put(FileKeys.CLASSIC,spritePaths);
+        superMap.put(FileKeys.BUTTON,spritePaths);
+        superMap.put(FileKeys.SOUND,spritePaths);
     }
     public static synchronized PathHandler getInstance(){
         if (instance == null)
@@ -45,6 +48,7 @@ public class PathHandler {
     public void changeSprites(FileKeys key) throws IOException {
         spritePaths.clear();
         reader.read(filePaths,key,spritePaths);
+        superMap.put(key,spritePaths);
     }
 
     public String getPath(FileKeys mapKey, PathKeys pathKey){

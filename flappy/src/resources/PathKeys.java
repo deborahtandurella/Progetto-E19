@@ -2,7 +2,7 @@ package resources;
 
 public enum PathKeys {
     BIRD,
-    HEARTH,
+    HEART,
     PIPE,
     ROCKET,
     LIFE,

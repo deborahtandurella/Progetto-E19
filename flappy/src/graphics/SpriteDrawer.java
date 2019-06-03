@@ -2,6 +2,9 @@ package graphics;
 
 import logic.SinglePlayer.Player;
 import org.newdawn.slick.*;
+import resources.FileKeys;
+import resources.PathHandler;
+import resources.PathKeys;
 
 import static logic.gameConstants.GameConstants.*;
 
@@ -33,7 +36,7 @@ public class SpriteDrawer{
         this.offsetX = screen.getOffsetX();
         this.offsetY = screen.getOffsetY();
         try {
-            backgroundSingle = new Image("res/sprites/customTextures/sea/background.png").getScaledCopy(screenWidth,screenHeight);
+            backgroundSingle = new Image(PathHandler.getInstance().getPath(FileKeys.CLASSIC, PathKeys.BACKGROUND)).getScaledCopy(screenWidth,screenHeight);
             birdImage = new Image("res/sprites/customTextures/sea/fish.png").getScaledCopy((int)(BIRD_WIDTH*screenWidth), (int)(BIRD_HEIGHT*screenHeight));
             heartImage = new Image("res/sprites/perks/heart_full.png").getScaledCopy((int) (HEART_SIZE*screenWidth), (int)(HEART_SIZE*screenHeight));
             coinImage = new Image("res/sprites/perks/onecoin.png").getScaledCopy((int)(COIN_SIZE*screenWidth), (int)(COIN_SIZE*screenHeight));

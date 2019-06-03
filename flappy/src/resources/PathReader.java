@@ -9,10 +9,12 @@ import java.util.StringTokenizer;
 public class PathReader {
     private FileReader fileReader;
     private BufferedReader bufferedReader;
-    private static String path;
+    private String path;
 
     public void read (HashMap<FileKeys,String> source,FileKeys key,HashMap<PathKeys,String> destination) throws IOException {
         path = source.get(key).toString();
+        fileReader = new FileReader(path);
+        bufferedReader = new BufferedReader(fileReader);
         String line;
         StringTokenizer st;
         while((line = bufferedReader.readLine()) != null) {

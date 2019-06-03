@@ -15,12 +15,10 @@ public class SingletonInizializer {
         bufferedReader = new BufferedReader(fileReader);
         String line;
         StringTokenizer st;
-        while(true) {
-            line=bufferedReader.readLine();
+        while((line = bufferedReader.readLine()) != null) {
             st = new StringTokenizer(line,",");
             map.put(FileKeys.valueOf(st.nextToken()),st.nextToken());
-            if(line == null)
-                break;
+
         }
     }
 }

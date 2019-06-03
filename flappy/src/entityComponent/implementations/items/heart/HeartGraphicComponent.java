@@ -16,7 +16,7 @@ public class HeartGraphicComponent extends GameElementGraphicComponent {
     public HeartGraphicComponent(Graphics graphics, Screen screen) {
         super(graphics, screen);
         try {
-            heartImage = new Image(PathHandler.getInstance().getPath(FileKeys.CLASSIC,PathKeys.HEARTH));
+            heartImage = new Image(PathHandler.getInstance().getPath(FileKeys.CLASSIC,PathKeys.HEART));
         } catch (Exception e){
             e.printStackTrace();
         }
