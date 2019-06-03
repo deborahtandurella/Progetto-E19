@@ -7,5 +7,6 @@ public enum  FileKeys {
     SEA,
     DOGO,
     SOUND,
-    BUTTON
+    BUTTON,
+    SPRITES
 }
