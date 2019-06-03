@@ -10,7 +10,9 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import states.*;
 
+import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Field;
 
 public class GiocoAStati extends StateBasedGame {
 
@@ -54,7 +56,16 @@ public class GiocoAStati extends StateBasedGame {
     }
 
     public static void main(String[] argv) {
-
+        System.setProperty("java.library.path", "natives" );
+        System.setProperty("org.lwjgl.librarypath", new File("natives").getAbsolutePath());
+        try{
+            Field fieldSysPath = ClassLoader.class.getDeclaredField( "sys_paths" );
+            fieldSysPath.setAccessible( true );
+            fieldSysPath.set( null, null );
+        } catch(Exception e){
+            e.printStackTrace();
+            System.exit(-1);
+        }
         try {
             AppGameContainer container = new AppGameContainer(new GiocoAStati());
             container.setSmoothDeltas(false);
