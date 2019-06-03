@@ -54,4 +54,7 @@ public class PathHandler {
     public String getPath(FileKeys mapKey, PathKeys pathKey){
         return superMap.get(mapKey).get(pathKey).toString();
     }
+    public HashMap<PathKeys,String> getSoundPaths(){
+        return soundPaths;
+    }
 }
