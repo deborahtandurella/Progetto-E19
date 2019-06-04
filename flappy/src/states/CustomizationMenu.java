@@ -12,6 +12,9 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
+import java.awt.*;
+import java.io.IOException;
+
 public class CustomizationMenu extends BasicGameState {
     private static final int ID = 11;
     private GameContainer container;
@@ -31,7 +34,13 @@ public class CustomizationMenu extends BasicGameState {
         this.container= gameContainer;
         this.stateBasedGame= stateBasedGame;
         screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
-        gui = new CustomizationMenuGUI(container,screen,this);
+        try {
+            gui = new CustomizationMenuGUI(container,screen,this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (FontFormatException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
