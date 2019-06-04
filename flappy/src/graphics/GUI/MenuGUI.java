@@ -32,8 +32,8 @@ public class MenuGUI extends AbstractMenuGUI {
         Image leaderBoard = new Image("res/sprites/buttons/leaderboard.png").getScaledCopy(buttonWidth/2, buttonHeight);
         leaderboardButton = new MouseOverArea(container, leaderBoard, container.getWidth()/2-buttonWidth/4, 11*container.getHeight()/100, buttonWidth/2, buttonHeight, this);
 
-        Image custom = new Image("res/sprites/buttons/single.png").getScaledCopy(buttonWidth/2,buttonHeight);
-        customButton = new Button(container,screen, single,  0.8, this);
+        Image custom = new Image("res/sprites/buttons/customthemes.png").getScaledCopy(buttonWidth/2,buttonHeight);
+        customButton = new Button(container,screen, custom,  0.7, this);
     }
 
     public void render(){
