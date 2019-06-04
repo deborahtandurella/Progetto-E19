@@ -4,6 +4,7 @@ import org.newdawn.slick.gui.AbstractComponent;
 import graphics.Screen;
 import org.newdawn.slick.*;
 import org.newdawn.slick.gui.MouseOverArea;
+import org.newdawn.slick.gui.TextField;
 import states.MultiplayerMenu;
 
 public class MultiplayerMenuGUI extends AbstractMenuGUI {
@@ -14,6 +15,7 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
     private MultiplayerMenu state;
     private int buttonWidth;
     private int buttonHeight;
+    private TextGUI textGUI;
 
     public MultiplayerMenuGUI(GameContainer container, Screen screen, MultiplayerMenu state) throws SlickException {
         super(container, screen);
@@ -26,7 +28,8 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
         hostButton = new MouseOverArea(container, hostImage, 85*container.getWidth()/100-buttonWidth, 60*container.getHeight()/100-2*buttonHeight, buttonWidth, buttonHeight, this);
         Image joinImage = new Image("res/sprites/buttons/join.png").getScaledCopy(buttonWidth, buttonHeight);
         joinButton = new MouseOverArea(container, joinImage, 45*container.getWidth()/100-buttonWidth, 60*container.getHeight()/100-2*buttonHeight, buttonWidth, buttonHeight, this);
-
+        textGUI = new TextGUI();
+        textGUI.init(getContainer());
     }
 
     @Override
@@ -34,6 +37,11 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
         backButton.render(getContainer(), getContainer().getGraphics());
         hostButton.render(getContainer(), getContainer().getGraphics());
         joinButton.render(getContainer(), getContainer().getGraphics());
+        try {
+            textGUI.render(getContainer(), getContainer().getGraphics());
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -41,4 +49,9 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
         if (source == backButton)
             state.backToMenu();
     }
+    public void update() throws SlickException {
+        textGUI.update();
+    }
+
+
 }
