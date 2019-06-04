@@ -17,7 +17,7 @@ public class LoginGUI extends AbstractMenuGUI {
     private Image title;
     private Login state;
     private TextField nameField;
-    private MouseOverArea okButton;
+    private MouseOverArea startButton;
     private String nameString;
     private UnicodeFont uniFontMessage;
     private Font font = new Font("Verdana", Font.BOLD, 46);
@@ -35,7 +35,7 @@ public class LoginGUI extends AbstractMenuGUI {
         buttonWidth = container.getWidth() / 4;
         title = new Image("res/sprites/backgrounds/title.jpg").getScaledCopy(buttonWidth*3, buttonHeight*2);
         Image confirm = new Image("res/sprites/buttons/startM.png").getScaledCopy(buttonWidth/2, buttonHeight/2);
-        okButton = new MouseOverArea(container, confirm, container.getWidth()/2-150/2, 50 * getContainer().getHeight() / 100, buttonWidth/2, buttonHeight/2, this);
+        startButton = new MouseOverArea(container, confirm, container.getWidth()/2-buttonWidth/4, 50 * getContainer().getHeight() / 100, buttonWidth/2, buttonHeight/2, this);
         nameField = new TextField(container, ttf, container.getWidth() / 2 - container.getWidth()/6, 40 * getContainer().getHeight() / 100, container.getWidth()/3, buttonHeight/2);
         nameField.setBackgroundColor(Color.white);
         nameField.setTextColor(Color.black);
@@ -48,19 +48,19 @@ public class LoginGUI extends AbstractMenuGUI {
 
     @Override
     public void render() {
-        getContainer().getGraphics().drawImage(title, getContainer().getWidth()/2-title.getWidth()/2,10);
-        okButton.render(getContainer(),getContainer().getGraphics());
+        getContainer().getGraphics().drawImage(title, getContainer().getWidth()/2-title.getWidth()/2,5*getContainer().getHeight()/100);
+        startButton.render(getContainer(),getContainer().getGraphics());
         nameField.render(getContainer(), getContainer().getGraphics());
         uniFontMessage.drawString(getContainer().getWidth() / 2 - uniFontMessage.getWidth(nameString) / 2, 33 * getContainer().getHeight() / 100f, nameString);
         if (error) {
             uniFontMessage.drawString(getContainer().getWidth() / 2 - uniFontMessage.getWidth(errorMessage) / 2,
-                    50 * getContainer().getHeight() / 100f, errorMessage, Color.red);
+                    60 * getContainer().getHeight() / 100f, errorMessage, Color.red);
         }
     }
 
     @Override
     public void componentActivated(AbstractComponent source) {
-        if (source == okButton) {
+        if (source == startButton) {
 
             if (nameField.getText().equals("") || nameField.getText().charAt(0) == ' ') {
                 error = true;
