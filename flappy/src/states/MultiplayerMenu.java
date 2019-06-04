@@ -43,7 +43,7 @@ public class MultiplayerMenu extends BasicGameState {
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
-
+        gui.update();
     }
 
     public void keyPressed(int key, char c){

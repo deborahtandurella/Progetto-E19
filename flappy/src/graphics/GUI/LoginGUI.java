@@ -20,7 +20,7 @@ public class LoginGUI extends AbstractMenuGUI {
     private MouseOverArea startButton;
     private String nameString;
     private UnicodeFont uniFontMessage;
-    private Font font = new Font("Verdana", Font.BOLD, 46);
+    private Font font = new Font("Verdana", Font.BOLD, 3*getContainer().getWidth()/100 /*46*/);
     private TrueTypeFont ttf = new TrueTypeFont(font, true);
     private String errorMessage;
     private boolean error = false;
@@ -73,6 +73,7 @@ public class LoginGUI extends AbstractMenuGUI {
             } else
                 {
                 state.setRecordName(nameField.getText());
+                nameField.deactivate();
                 state.menu();
             }
         }

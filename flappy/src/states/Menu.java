@@ -61,11 +61,7 @@ public class Menu extends BasicGameState{
     }
 
     public void multi(){
-        try {
-            stateBasedGame.getState(5).init(container,stateBasedGame);
-        } catch (SlickException e) {
-            e.printStackTrace();
-        }
+
         stateBasedGame.enterState(5, new FadeOutTransition(), new FadeInTransition());
     }
 
