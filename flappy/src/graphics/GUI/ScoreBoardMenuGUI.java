@@ -4,6 +4,9 @@ import graphics.Screen;
 import org.newdawn.slick.*;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.gui.AbstractComponent;
+import resources.FileKeys;
+import resources.PathHandler;
+import resources.PathKeys;
 import states.test.ScoreInterface;
 import java.awt.Color;
 import java.awt.Font;
@@ -20,7 +23,7 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
     public ScoreBoardMenuGUI(GameContainer container, Screen screen, ScoreInterface state) throws SlickException {
         super(container, screen);
         this.state=state;
-        pergamena = new Image("res/sprites/backgrounds/pergamena.png").getScaledCopy(container.getWidth()/100*43, container.getHeight()/100*80);
+        pergamena = new Image(PathHandler.getInstance().getPath(FileKeys.VARIOUS, PathKeys.RANKBACKGROUND)).getScaledCopy(container.getWidth()/100*43, container.getHeight()/100*80);
         Font font = new Font("Comic Sans MS", Font.BOLD, 27*getContainer().getWidth()/1000);
         uniFontMessage = new UnicodeFont(font);
         uniFontMessage.getEffects().add(new ColorEffect(Color.black));

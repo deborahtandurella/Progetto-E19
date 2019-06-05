@@ -5,6 +5,9 @@ import org.newdawn.slick.gui.AbstractComponent;
 import graphics.Screen;
 import org.newdawn.slick.*;
 import org.newdawn.slick.gui.MouseOverArea;
+import resources.FileKeys;
+import resources.PathHandler;
+import resources.PathKeys;
 import states.MultiplayerMenu;
 import java.awt.Font;
 
@@ -31,13 +34,13 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
         int buttonHeight = container.getHeight()/10;
         int buttonWidth = container.getWidth()/3;
 
-        Image backImage = new Image("res/sprites/buttons/back1.png").getScaledCopy(buttonWidth, buttonHeight);
+        Image backImage = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.BACKTOMENUBUTTON)).getScaledCopy(buttonWidth, buttonHeight);
         backButton = new MouseOverArea(container, backImage, 65*container.getWidth()/100-buttonWidth, 90*container.getHeight()/100-2*buttonHeight, buttonWidth, buttonHeight, this);
 
-        Image hostImage = new Image("res/sprites/buttons/host.png").getScaledCopy(buttonWidth, buttonHeight);
+        Image hostImage = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.HOSTBUTTON)).getScaledCopy(buttonWidth, buttonHeight);
         hostButton = new MouseOverArea(container, hostImage, 85*container.getWidth()/100-buttonWidth, 60*container.getHeight()/100-2*buttonHeight, buttonWidth, buttonHeight, this);
 
-        Image joinImage = new Image("res/sprites/buttons/join.png").getScaledCopy(buttonWidth, buttonHeight);
+        Image joinImage = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.JOINBUTTON)).getScaledCopy(buttonWidth, buttonHeight);
         joinButton = new MouseOverArea(container, joinImage, 45*container.getWidth()/100-buttonWidth, 60*container.getHeight()/100-2*buttonHeight, buttonWidth, buttonHeight, this);
 
         ipField = new TextGUI(28, 15, 40, 5);

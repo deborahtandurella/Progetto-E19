@@ -38,7 +38,7 @@ public class SpriteDrawer{
         try {
             backgroundSingle = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND)).getScaledCopy(screenWidth,screenHeight);
             birdImage = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES,PathKeys.BIRD)).getScaledCopy((int)(BIRD_WIDTH*screenWidth), (int)(BIRD_HEIGHT*screenHeight));
-            heartImage = new Image("res/sprites/perks/heart_full.png").getScaledCopy((int) (HEART_SIZE*screenWidth), (int)(HEART_SIZE*screenHeight));
+            heartImage = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.LIFE)).getScaledCopy((int) (HEART_SIZE*screenWidth), (int)(HEART_SIZE*screenHeight));
             coinImage = new Image("res/sprites/perks/onecoin.png").getScaledCopy((int)(COIN_SIZE*screenWidth), (int)(COIN_SIZE*screenHeight));
             lowerPipeImage= new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES,PathKeys.PIPE)).getScaledCopy((int)(PIPE_WIDTH*screenWidth), (int)(PIPE_HEIGHT*screenHeight));
             upperPipeImage= lowerPipeImage.getFlippedCopy(false, true);
@@ -49,10 +49,10 @@ public class SpriteDrawer{
             birdSheet = new SpriteSheet("res/sprites/player/piccioneSheet.png",20,17);
             birdAnimation = new Animation(birdSheet,200);
 
-            heartSheet = new SpriteSheet("res/sprites/perks/Items_Heart.png", 16, 16);
+            heartSheet = new SpriteSheet(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.HEART), 16, 16);
             heartAnimation = new Animation(heartSheet, 200);
 
-            rocketImage = new Image("res/sprites/obstacles/rocket.png").getScaledCopy((int) (HEART_SIZE*screenWidth), (int)(HEART_SIZE*screenHeight));
+            rocketImage = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.ROCKET)).getScaledCopy((int) (HEART_SIZE*screenWidth), (int)(HEART_SIZE*screenHeight));
 
         } catch (SlickException e) {
             e.printStackTrace();
@@ -97,8 +97,6 @@ public class SpriteDrawer{
     }
 
     public void setBirdAlpha(float alpha){
-        for (int i = 0; i<birdAnimation.getFrameCount();i++){
-            birdAnimation.getImage(i).setAlpha(alpha);
-        }
+        birdImage.setAlpha(alpha);
     }
 }
