@@ -8,5 +8,6 @@ public enum  FileKeys {
     DOGO,
     SOUND,
     BUTTON,
-    SPRITES
+    SPRITES,
+    VARIOUS;
 }
