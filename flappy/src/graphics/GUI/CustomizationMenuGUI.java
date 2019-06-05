@@ -61,6 +61,7 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         versionFont.addAsciiGlyphs();
         versionFont.getEffects().add(new ColorEffect(Color.BLACK));
         versionFont.loadGlyphs();
+
     }
 
     @Override

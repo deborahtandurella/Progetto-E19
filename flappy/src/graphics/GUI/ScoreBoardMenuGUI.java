@@ -21,7 +21,8 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
     public ScoreBoardMenuGUI(GameContainer container, Screen screen, ScoreInterface state) throws SlickException {
         super(container, screen);
         this.state=state;
-        font = new Font("Comic Sans MS", Font.PLAIN, 3*getContainer().getWidth()/100);
+        font = new Font("Comic Sans MS", Font.BOLD, 3*getContainer().getWidth()/100);
+
         uniFontMessage = new UnicodeFont(font);
         uniFontMessage.getEffects().add(new ColorEffect(Color.black));
         uniFontMessage.addAsciiGlyphs();
@@ -45,7 +46,7 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
         uniFontMessage.drawString(60*getContainer().getWidth()/100, 24*getContainer().getHeight()/100f, points);
 
         getContainer().getGraphics().setFont(versionFont);
-        getContainer().getGraphics().drawString(title, 35*getContainer().getWidth()/100 , 10 * getContainer().getHeight() / 100);
+        getContainer().getGraphics().drawString(title, 35*getContainer().getWidth()/100 , 8 * getContainer().getHeight() / 100);
 
 
     }
