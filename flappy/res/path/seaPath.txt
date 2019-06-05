@@ -2,5 +2,5 @@ BACKGROUND,res/sprites/customTextures/sea/background.png
 BIRD,res/sprites/customTextures/sea/fish.png
 PIPE,res/sprites/customTextures/sea/pipe.png
 ROCKET,res/sprites/obstacles/rocket.png
-LIFE,res/sprites/perks/heart_full.png
-HEART,res/sprites/perks/Items_Heart.png
+LIFE,res/sprites/perks/heart.png
+HEART,res/sprites/perks/heart_frames.png
