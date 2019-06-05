@@ -34,7 +34,7 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
         int buttonHeight = container.getHeight()/10;
         int buttonWidth = container.getWidth()/3;
 
-        Image backImage = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.BACKTOMENUBUTTON)).getScaledCopy(buttonWidth, buttonHeight);
+        Image backImage = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.BACKTOMENUBUTTON1)).getScaledCopy(buttonWidth, buttonHeight);
         backButton = new MouseOverArea(container, backImage, 65*container.getWidth()/100-buttonWidth, 90*container.getHeight()/100-2*buttonHeight, buttonWidth, buttonHeight, this);
 
         Image hostImage = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.HOSTBUTTON)).getScaledCopy(buttonWidth, buttonHeight);

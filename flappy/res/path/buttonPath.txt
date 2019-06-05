@@ -4,6 +4,7 @@ MULTIPLAYERBUTTON,res/sprites/buttons/multi.png
 SINGLEPLAYERBUTTON,res/sprites/buttons/single.png
 CUSTOMBUTTON,res/sprites/buttons/customthemes.png
 BACKTOMENUBUTTON,res/sprites/buttons/back.png
+BACKTOMENUBUTTON1,res/sprites/buttons/back1.png
 RESETRANKBUTTON,res/sprites/buttons/delete.png
 EASYBUTTON,res/sprites/buttons/easy.png
 MEDIUMBUTTON,res/sprites/buttons/medium.png
