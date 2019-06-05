@@ -14,9 +14,8 @@ import org.newdawn.slick.geom.Shape;
 
 import java.awt.*;
 import java.awt.Color;
-import java.awt.Font;
 import java.io.IOException;
-import java.io.InputStream;
+
 
 public class CustomizationMenuGUI extends AbstractMenuGUI {
     private CustomizationMenu state;
@@ -28,11 +27,8 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
     private MouseOverArea returnButton;
     private Shape bordo;
     private String title;
-    //private UnicodeFont uniFontMessage;
     private UnicodeFont versionFont;
     private boolean chosen = false;
-    //private Font font = new Font("Verdana", Font.BOLD, getContainer().getHeight()/10);
-
 
     private int buttonWidth;
     private int buttonHeight;
@@ -57,11 +53,6 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         Image goBack = new Image("res/sprites/buttons/back.png").getScaledCopy(buttonWidth*3,buttonHeight);
         returnButton = new MouseOverArea(container, goBack, container.getWidth()/2 - buttonWidth/2, 75*container.getHeight()/100, buttonWidth, buttonHeight, this);
 
-        /*uniFontMessage = new UnicodeFont(font);
-        uniFontMessage.getEffects().add(new ColorEffect(Color.darkGray));
-        uniFontMessage.addAsciiGlyphs();
-        uniFontMessage.loadGlyphs();*/
-
         bordo = new Rectangle(0, 28*container.getHeight()/100,
                 14*container.getWidth()/100, 15*container.getHeight()/100);
 
@@ -83,8 +74,6 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
 
         getContainer().getGraphics().setFont(versionFont);
         getContainer().getGraphics().drawString(title, 14*getContainer().getWidth()/100 , 10 * getContainer().getHeight() / 100);
-
-       // uniFontMessage.drawString(getContainer().getWidth() / 2 - uniFontMessage.getWidth(title) / 2, 10 * getContainer().getHeight() / 100f, title);
 
        if(chosen) {
            getContainer().getGraphics().draw(bordo);

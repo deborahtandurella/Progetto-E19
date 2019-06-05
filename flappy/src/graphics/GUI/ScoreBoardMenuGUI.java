@@ -14,29 +14,40 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
     private String scoreName;
     private String points;
     private UnicodeFont uniFontMessage;
-    private String positions;
     private Font font;
+    private String title;
+    private UnicodeFont versionFont;
 
     public ScoreBoardMenuGUI(GameContainer container, Screen screen, ScoreInterface state) throws SlickException {
         super(container, screen);
         this.state=state;
-        font = new Font("Nadeem", Font.CENTER_BASELINE, 3*getContainer().getWidth()/100);
+        font = new Font("Comic Sans MS", Font.PLAIN, 3*getContainer().getWidth()/100);
         uniFontMessage = new UnicodeFont(font);
         uniFontMessage.getEffects().add(new ColorEffect(Color.black));
         uniFontMessage.addAsciiGlyphs();
         uniFontMessage.loadGlyphs();
         scoreName = state.getScoreBoard().printName();
         points = state.getScoreBoard().printPoint();
-        positions = "1.\n2.\n3.\n4.\n5.\n6.\n7.\n8.\n9.\n10.\n";
+
+        title = "TOP TEN";
+        versionFont = new UnicodeFont("res/font/FlappyBirdy.ttf", getContainer().getHeight()/5, false, false);
+        versionFont.addAsciiGlyphs();
+        versionFont.getEffects().add(new ColorEffect(Color.BLACK));
+        versionFont.loadGlyphs();
 
 
     }
 
     @Override
     public void render() {
-        uniFontMessage.drawString(40*getContainer().getWidth()/100, 16*getContainer().getHeight()/100f, positions);
-        uniFontMessage.drawString(45*getContainer().getWidth()/100, 16*getContainer().getHeight()/100f, scoreName);
-        uniFontMessage.drawString(60*getContainer().getWidth()/100, 16*getContainer().getHeight()/100f, points);
+
+        uniFontMessage.drawString(36*getContainer().getWidth()/100, 24*getContainer().getHeight()/100f, scoreName);
+        uniFontMessage.drawString(60*getContainer().getWidth()/100, 24*getContainer().getHeight()/100f, points);
+
+        getContainer().getGraphics().setFont(versionFont);
+        getContainer().getGraphics().drawString(title, 35*getContainer().getWidth()/100 , 10 * getContainer().getHeight() / 100);
+
+
     }
 
     @Override

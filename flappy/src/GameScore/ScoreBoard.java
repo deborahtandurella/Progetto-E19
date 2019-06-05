@@ -54,7 +54,7 @@ public class ScoreBoard {
   public void deleteScoreBoard() throws IOException {
     for(int j=0; j<N_PLAYERS; j++){
       records[j].setScore(0);
-      records[j].setName("----------");
+      records[j].setName("-------------");
     }
     scoreFacade.writePlayers(records, N_PLAYERS);
   }
