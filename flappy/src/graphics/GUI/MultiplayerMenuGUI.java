@@ -6,6 +6,7 @@ import graphics.Screen;
 import org.newdawn.slick.*;
 import org.newdawn.slick.gui.MouseOverArea;
 import states.MultiplayerMenu;
+import java.awt.Font;
 
 public class MultiplayerMenuGUI extends AbstractMenuGUI {
 
@@ -13,9 +14,6 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
     private MouseOverArea hostButton;
     private MouseOverArea joinButton;
     private MultiplayerMenu state;
-    private int buttonWidth;
-    private int buttonHeight;
-    private java.awt.Font font;
     private UnicodeFont uniFontMessage;
     private TextGUI ipField;
     private TextGUI portField;
@@ -28,18 +26,23 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
         super(container, screen);
         this.state = state;
 
-        font = new java.awt.Font("Comic Sans MS", java.awt.Font.PLAIN, 3*getContainer().getWidth()/100);
+        Font font = new java.awt.Font("Comic Sans MS", java.awt.Font.PLAIN, 3*getContainer().getWidth()/100);
 
-        buttonHeight = container.getHeight()/10;
-        buttonWidth = container.getWidth()/3;
+        int buttonHeight = container.getHeight()/10;
+        int buttonWidth = container.getWidth()/3;
+
         Image backImage = new Image("res/sprites/buttons/back1.png").getScaledCopy(buttonWidth, buttonHeight);
         backButton = new MouseOverArea(container, backImage, 65*container.getWidth()/100-buttonWidth, 90*container.getHeight()/100-2*buttonHeight, buttonWidth, buttonHeight, this);
+
         Image hostImage = new Image("res/sprites/buttons/host.png").getScaledCopy(buttonWidth, buttonHeight);
         hostButton = new MouseOverArea(container, hostImage, 85*container.getWidth()/100-buttonWidth, 60*container.getHeight()/100-2*buttonHeight, buttonWidth, buttonHeight, this);
+
         Image joinImage = new Image("res/sprites/buttons/join.png").getScaledCopy(buttonWidth, buttonHeight);
         joinButton = new MouseOverArea(container, joinImage, 45*container.getWidth()/100-buttonWidth, 60*container.getHeight()/100-2*buttonHeight, buttonWidth, buttonHeight, this);
+
         ipField = new TextGUI(28, 15, 40, 5);
         ipField.init(getContainer());
+
         portField = new TextGUI(28, 25,20, 5);
         portField.init(getContainer());
 
@@ -51,6 +54,7 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
         uniFontMessage.getEffects().add(new ColorEffect(java.awt.Color.black));
         uniFontMessage.addAsciiGlyphs();
         uniFontMessage.loadGlyphs();
+
         ipString = "IP Address";
         portString ="Port";
     }
@@ -59,11 +63,10 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
     public void render() {
        renderButtons();
 
-        uniFontMessage.drawString(30*getContainer().getWidth() /100, 9 * getContainer().getHeight() / 100f, ipString);
-        uniFontMessage.drawString(30*getContainer().getWidth() / 100, 20 * getContainer().getHeight() / 100f, portString);
+        uniFontMessage.drawString(30*getContainer().getWidth() /100f, 9 * getContainer().getHeight() / 100f, ipString);
+        uniFontMessage.drawString(30*getContainer().getWidth() / 100f, 20 * getContainer().getHeight() / 100f, portString);
         if (error) {
-            uniFontMessage.drawString(getContainer().getWidth() / 2 - uniFontMessage.getWidth(errorMessage) / 2,
-                    60 * getContainer().getHeight() / 100f, errorMessage, Color.red);
+            uniFontMessage.drawString(getContainer().getWidth() / 2f - uniFontMessage.getWidth(errorMessage) / 2f, 60 * getContainer().getHeight() / 100f, errorMessage, Color.red);
         }
 
         try {

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public abstract class AbstractMenuGUI implements ComponentListener {
     private GameContainer container;
     private ArrayList<MouseOverArea> buttons;
-    public AbstractMenuGUI(GameContainer container, Screen screen) {
+    AbstractMenuGUI(GameContainer container, Screen screen) {
         this.container = container;
         this.buttons = new ArrayList<>();
     }
@@ -18,10 +18,10 @@ public abstract class AbstractMenuGUI implements ComponentListener {
     public GameContainer getContainer() {
         return container;
     }
-    protected void addButton(MouseOverArea button){
+    void addButton(MouseOverArea button){
         buttons.add(button);
     }
-    protected void renderButtons(){
+    void renderButtons(){
         for(MouseOverArea button: buttons){
             button.render(container, container.getGraphics());
         }

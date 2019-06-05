@@ -20,11 +20,9 @@ public class Menu extends BasicGameState{
     private MusicPlayer musicPlayer;
     private MenuGUI gui;
     private Screen screen;
-    private Record record;
 
-    public Menu(Record record){
+    public Menu(){
         super();
-        this.record = record;
     }
     @Override
     public int getID() {
@@ -38,7 +36,7 @@ public class Menu extends BasicGameState{
         musicPlayer = new MusicPlayer();
         screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
         drawer = new SpriteDrawer(screen);
-        gui = new MenuGUI(gameContainer, screen, this, record);
+        gui = new MenuGUI(gameContainer, screen, this);
         musicPlayer.backgroundMusic();
     }
 

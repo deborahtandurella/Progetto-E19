@@ -31,7 +31,7 @@ public class TextGUI {
     }
 
 
-    public UnicodeFont getNewFont(String fontName , int fontSize)
+    private UnicodeFont getNewFont(String fontName , int fontSize)
     {
         UnicodeFont font = new UnicodeFont(new Font(fontName , Font.BOLD , fontSize));
         font.addGlyphs("@");
@@ -47,13 +47,8 @@ public class TextGUI {
 
     public void update() throws SlickException {
         font.loadGlyphs();
-        //enter();
     }
 
-    public void enter() throws SlickException
-    {
-        text.setText("vgvg");
-    }
 
     public String getString(){
         return text.getText().toString();

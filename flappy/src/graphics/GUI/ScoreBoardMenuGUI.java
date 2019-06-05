@@ -13,7 +13,6 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
     private ScoreInterface state;
     private String scoreName;
     private String points;
-    private Font font;
     private UnicodeFont uniFontMessage;
     private Image pergamena;
 
@@ -22,7 +21,7 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
         super(container, screen);
         this.state=state;
         pergamena = new Image("res/sprites/pergamena.png").getScaledCopy(container.getWidth()/100*43, container.getHeight()/100*80);
-        font = new Font("Comic Sans MS", Font.BOLD, 27*getContainer().getWidth()/1000);
+        Font font = new Font("Comic Sans MS", Font.BOLD, 27*getContainer().getWidth()/1000);
         uniFontMessage = new UnicodeFont(font);
         uniFontMessage.getEffects().add(new ColorEffect(Color.black));
         uniFontMessage.addAsciiGlyphs();
@@ -34,16 +33,15 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
 
     @Override
     public void render() {
-        pergamena.draw(getContainer().getWidth()/2-pergamena.getWidth()/2, 5*getContainer().getHeight()/100);
+        pergamena.draw(getContainer().getWidth()/2f-pergamena.getWidth()/2f, 5*getContainer().getHeight()/100f);
 
-        uniFontMessage.drawString(37*getContainer().getWidth()/100, 16*getContainer().getHeight()/100f, scoreName);
-        uniFontMessage.drawString(61*getContainer().getWidth()/100, 16*getContainer().getHeight()/100f, points);
+        uniFontMessage.drawString(37*getContainer().getWidth()/100f, 16*getContainer().getHeight()/100f, scoreName);
+        uniFontMessage.drawString(61*getContainer().getWidth()/100f, 16*getContainer().getHeight()/100f, points);
 
     }
 
     @Override
     public void componentActivated(AbstractComponent abstractComponent) {
-
     }
 }
 

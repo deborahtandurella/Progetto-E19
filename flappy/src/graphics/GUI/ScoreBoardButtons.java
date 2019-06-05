@@ -12,15 +12,12 @@ public class ScoreBoardButtons extends AbstractMenuGUI {
     private MouseOverArea deleteButton;
     private MouseOverArea backButton;
     private ScoreBoardState state;
-    private int buttonWidth;
-    private int buttonHeight;
-
 
     public ScoreBoardButtons(GameContainer container, Screen screen, ScoreBoardState state) throws SlickException {
         super(container, screen);
         this.state=state;
-        buttonHeight = container.getHeight()/10;
-        buttonWidth = container.getWidth()/3;
+        int buttonHeight = container.getHeight()/10;
+        int buttonWidth = container.getWidth()/3;
 
         Image deleteImage = new Image("res/sprites/buttons/delete.png").getScaledCopy(buttonWidth, buttonHeight);
         deleteButton = new MouseOverArea(container, deleteImage, container.getWidth()-3*buttonWidth, container.getHeight()-2*buttonHeight, buttonWidth, buttonHeight, this);

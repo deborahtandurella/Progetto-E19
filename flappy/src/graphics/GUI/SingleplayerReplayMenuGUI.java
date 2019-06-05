@@ -10,15 +10,13 @@ public class SingleplayerReplayMenuGUI extends AbstractMenuGUI {
     private MouseOverArea replayButton;
     private MouseOverArea backButton;
     private SingleplayerReplayMenuState state;
-    private int buttonWidth;
-    private int buttonHeight;
-
 
     public SingleplayerReplayMenuGUI(GameContainer container, Screen screen, SingleplayerReplayMenuState state) throws SlickException {
         super(container, screen);
         this.state=state;
-        buttonHeight = container.getHeight()/10;
-        buttonWidth = container.getWidth()/3;
+        
+        int buttonHeight = container.getHeight()/10;
+        int buttonWidth = container.getWidth()/3;
 
         Image replayImage = new Image("res/sprites/buttons/replay.png").getScaledCopy(buttonWidth, buttonHeight);
         replayButton = new MouseOverArea(container, replayImage, container.getWidth()-3*buttonWidth, container.getHeight()-2*buttonHeight, buttonWidth, buttonHeight, this);

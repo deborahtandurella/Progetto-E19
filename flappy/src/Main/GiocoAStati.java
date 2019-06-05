@@ -37,7 +37,7 @@ public class GiocoAStati extends StateBasedGame {
         try {
             ScoreBoard scoreBoard = new ScoreBoard();
             this.addState(new Login(record));
-            this.addState(new Menu(record));
+            this.addState(new Menu());
             this.addState(new DifficultyMenu());
             this.addState(new Singleplayer(record, scoreBoard));
             this.addState(new SingleplayerReplayMenuState(scoreBoard));

@@ -1,7 +1,7 @@
 package graphics.GUI;
 
 import graphics.Screen;
-import logic.SinglePlayer.Record;
+
 import org.newdawn.slick.*;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.gui.AbstractComponent;
@@ -13,17 +13,15 @@ public class MenuGUI extends AbstractMenuGUI {
     private MouseOverArea singleButton;
     private MouseOverArea multiButton;
     private MouseOverArea customButton;
-    private Record record;
-    private int buttonWidth;
-    private int buttonHeight;
+   // private Record record;
     private MouseOverArea leaderboardButton;
 
-    public MenuGUI(GameContainer container, Screen screen, Menu state, Record record) throws SlickException {
+    public MenuGUI(GameContainer container, Screen screen, Menu state) throws SlickException {
         super(container, screen);
         this.state = state;
-        this.record = record;
-        buttonHeight = container.getHeight()/6;
-        buttonWidth = container.getWidth()/3;
+       // this.record = record;
+        int buttonHeight = container.getHeight()/6;
+        int buttonWidth = container.getWidth()/3;
 
         Image single = new Image("res/sprites/buttons/single.png").getScaledCopy(3*buttonWidth/2, 80*buttonHeight/100);
         singleButton = new MouseOverArea(container, single, 25*container.getWidth()/100, 50*container.getHeight()/100 , this);

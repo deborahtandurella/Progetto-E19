@@ -13,14 +13,12 @@ public class DifficultyMenuGUI extends AbstractMenuGUI {
     private MouseOverArea easyButton;
     private MouseOverArea mediumButton;
     private MouseOverArea hardButton;
-    private int buttonWidth;
-    private int buttonHeight;
 
     public DifficultyMenuGUI(GameContainer container, Screen screen, DifficultyMenu state) throws SlickException {
         super(container, screen);
         this.state = state;
-        buttonHeight = container.getHeight()/7;
-        buttonWidth = container.getWidth()/3;
+        int buttonHeight = container.getHeight()/7;
+        int buttonWidth = container.getWidth()/3;
         Image easy = new Image("res/sprites/buttons/easy.png").getScaledCopy(buttonWidth,buttonHeight);
         easyButton = new MouseOverArea(container, easy, container.getWidth()/2 - buttonWidth/2, container.getHeight() - 5*buttonHeight, buttonWidth, buttonHeight, this);
         Image medium = new Image("res/sprites/buttons/medium.png").getScaledCopy(buttonWidth,buttonHeight);

@@ -30,31 +30,31 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
     private UnicodeFont versionFont;
     private boolean chosen = false;
 
-    private int buttonWidth;
-    private int buttonHeight;
-
     public CustomizationMenuGUI(GameContainer container, Screen screen, CustomizationMenu state) throws SlickException, IOException, FontFormatException {
         super(container, screen);
         this.state = state;
-        buttonHeight = container.getHeight()/9;
-        buttonWidth = container.getWidth()/9;
-
+        int buttonHeight = container.getHeight()/9;
+        int buttonWidth = container.getWidth()/9;
 
         Image dogo = new Image("res/sprites/customTextures/dogo/dogo.png").getScaledCopy(buttonWidth,buttonHeight);
         dogoButton = new MouseOverArea(container, dogo, 2*container.getWidth()/7-buttonWidth, 30*container.getHeight()/100, buttonWidth, buttonHeight, this);
+
         Image bird = new Image("res/sprites/player/bird.png").getScaledCopy(buttonWidth,buttonHeight);
         classicButton = new MouseOverArea(container, bird, 3*container.getWidth()/7-buttonWidth, 30*container.getHeight()/100, buttonWidth, buttonHeight, this);
+
         Image fish = new Image("res/sprites/customTextures/sea/fish.png").getScaledCopy(buttonWidth,buttonHeight);
         seaButton = new MouseOverArea(container, fish, 4*container.getWidth()/7-buttonWidth, 30*container.getHeight()/100, buttonWidth, buttonHeight, this);
+
         Image blueBird = new Image("res/sprites/customTextures/sky/bird.png").getScaledCopy(buttonWidth,buttonHeight);
         skyButton = new MouseOverArea(container, blueBird, 5*container.getWidth()/7-buttonWidth, 30*container.getHeight()/100, buttonWidth, buttonHeight, this);
+
         Image batman = new Image("res/sprites/customTextures/batman/batman.png").getScaledCopy(buttonWidth,buttonHeight);
         batmanButton = new MouseOverArea(container, batman, 6*container.getWidth()/7-buttonWidth, 30*container.getHeight()/100, buttonWidth, buttonHeight, this);
+
         Image goBack = new Image("res/sprites/buttons/back.png").getScaledCopy(buttonWidth*3,buttonHeight);
         returnButton = new MouseOverArea(container, goBack, container.getWidth()/2 - buttonWidth/2, 75*container.getHeight()/100, buttonWidth, buttonHeight, this);
 
-        bordo = new Rectangle(0, 28*container.getHeight()/100,
-                14*container.getWidth()/100, 15*container.getHeight()/100);
+        bordo = new Rectangle(0, 28*container.getHeight()/100f, 14*container.getWidth()/100f, 15*container.getHeight()/100f);
 
         title = "CHOOSE YOUR THEME";
         versionFont = new UnicodeFont("res/font/FlappyBirdy.ttf", getContainer().getHeight()/5, false, false);
@@ -75,7 +75,7 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         renderButtons();
 
         getContainer().getGraphics().setFont(versionFont);
-        getContainer().getGraphics().drawString(title, 14*getContainer().getWidth()/100 , 10 * getContainer().getHeight() / 100);
+        getContainer().getGraphics().drawString(title, 14*getContainer().getWidth()/100f , 10 * getContainer().getHeight() / 100f);
 
        if(chosen) {
            getContainer().getGraphics().draw(bordo);
