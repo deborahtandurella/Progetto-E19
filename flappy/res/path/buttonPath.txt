@@ -1,4 +1,4 @@
-STARTBUTTON,res/sprites/buttons/startE.png
+STARTBUTTON,res/sprites/buttons/startM.png
 LEADERBOARDSBUTTON,res/sprites/buttons/leaderboard.png
 MULTIPLAYERBUTTON,res/sprites/buttons/multi.png
 SINGLEPLAYERBUTTON,res/sprites/buttons/single.png
