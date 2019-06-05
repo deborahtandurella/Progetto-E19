@@ -5,3 +5,4 @@ SKY,res/path/skyPath.txt
 SEA,res/path/seaPath.txt
 SOUND,res/path/soundPath.txt
 BUTTON,res/path/buttonPath.txt
+VARIOUS,res/path/variousPath.txt

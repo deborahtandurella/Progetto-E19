@@ -1,0 +1,2 @@
+TITLE,res/sprites/backgrounds/title.jpg
+RANKBACKGROUND,res/sprites/backgrounds/pergamena.png
