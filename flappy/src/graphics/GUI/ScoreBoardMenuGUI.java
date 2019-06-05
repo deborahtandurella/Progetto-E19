@@ -13,16 +13,16 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
     private ScoreInterface state;
     private String scoreName;
     private String points;
-    private UnicodeFont uniFontMessage;
     private Font font;
-    private String title;
-    private UnicodeFont versionFont;
+    private UnicodeFont uniFontMessage;
+    private Image pergamena;
+
 
     public ScoreBoardMenuGUI(GameContainer container, Screen screen, ScoreInterface state) throws SlickException {
         super(container, screen);
         this.state=state;
-        font = new Font("Comic Sans MS", Font.BOLD, 3*getContainer().getWidth()/100);
-
+        pergamena = new Image("res/sprites/pergamena.png").getScaledCopy(container.getWidth()/100*43, container.getHeight()/100*80);
+        font = new Font("Comic Sans MS", Font.BOLD, 27*getContainer().getWidth()/1000);
         uniFontMessage = new UnicodeFont(font);
         uniFontMessage.getEffects().add(new ColorEffect(Color.black));
         uniFontMessage.addAsciiGlyphs();
@@ -30,24 +30,14 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
         scoreName = state.getScoreBoard().printName();
         points = state.getScoreBoard().printPoint();
 
-        title = "TOP TEN";
-        versionFont = new UnicodeFont("res/font/FlappyBirdy.ttf", getContainer().getHeight()/5, false, false);
-        versionFont.addAsciiGlyphs();
-        versionFont.getEffects().add(new ColorEffect(Color.BLACK));
-        versionFont.loadGlyphs();
-
-
     }
 
     @Override
     public void render() {
+        pergamena.draw(getContainer().getWidth()/2-pergamena.getWidth()/2, 5*getContainer().getHeight()/100);
 
-        uniFontMessage.drawString(36*getContainer().getWidth()/100, 24*getContainer().getHeight()/100f, scoreName);
-        uniFontMessage.drawString(60*getContainer().getWidth()/100, 24*getContainer().getHeight()/100f, points);
-
-        getContainer().getGraphics().setFont(versionFont);
-        getContainer().getGraphics().drawString(title, 35*getContainer().getWidth()/100 , 8 * getContainer().getHeight() / 100);
-
+        uniFontMessage.drawString(37*getContainer().getWidth()/100, 16*getContainer().getHeight()/100f, scoreName);
+        uniFontMessage.drawString(61*getContainer().getWidth()/100, 16*getContainer().getHeight()/100f, points);
 
     }
 
