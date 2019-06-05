@@ -1,4 +1,4 @@
-BACKGROUND,res/sprites/backgrounds/foresta.png
+BACKGROUND,res/sprites/backgrounds/bg.jpeg
 BIRD,res/sprites/player/bird.png
 PIPE,res/sprites/obstacles/pipe.png
 ROCKET,res/sprites/obstacles/rocket.png

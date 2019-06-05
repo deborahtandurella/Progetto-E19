@@ -28,11 +28,13 @@ public class ScoreBoardButtons extends AbstractMenuGUI {
         Image backImage = new Image("res/sprites/buttons/back.png").getScaledCopy(buttonWidth, buttonHeight);
         backButton = new MouseOverArea(container, backImage, container.getWidth()-buttonWidth, container.getHeight()-2*buttonHeight, buttonWidth, buttonHeight, this);
 
+        addButton(deleteButton);
+        addButton(backButton);
+
     }
 
     public void render(){
-        backButton.render(getContainer(),getContainer().getGraphics());
-        deleteButton.render(getContainer(),getContainer().getGraphics());
+        renderButtons();
     }
 
     @Override

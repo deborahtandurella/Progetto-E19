@@ -15,7 +15,7 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
     private MultiplayerMenu state;
     private int buttonWidth;
     private int buttonHeight;
-    private java.awt.Font font = new java.awt.Font("Verdana", java.awt.Font.BOLD, 3*getContainer().getWidth()/100 /*46*/);
+    private java.awt.Font font;
     private UnicodeFont uniFontMessage;
     private TextGUI ipField;
     private TextGUI portField;
@@ -43,6 +43,10 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
         portField = new TextGUI(28, 25,20, 5);
         portField.init(getContainer());
 
+        addButton(backButton);
+        addButton(hostButton);
+        addButton(joinButton);
+
         uniFontMessage = new UnicodeFont(font);
         uniFontMessage.getEffects().add(new ColorEffect(java.awt.Color.black));
         uniFontMessage.addAsciiGlyphs();
@@ -53,9 +57,8 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
 
     @Override
     public void render() {
-        backButton.render(getContainer(), getContainer().getGraphics());
-        hostButton.render(getContainer(), getContainer().getGraphics());
-        joinButton.render(getContainer(), getContainer().getGraphics());
+       renderButtons();
+
         uniFontMessage.drawString(30*getContainer().getWidth() /100, 9 * getContainer().getHeight() / 100f, ipString);
         uniFontMessage.drawString(30*getContainer().getWidth() / 100, 20 * getContainer().getHeight() / 100f, portString);
         if (error) {

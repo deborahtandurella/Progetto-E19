@@ -61,24 +61,24 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         versionFont.addAsciiGlyphs();
         versionFont.getEffects().add(new ColorEffect(Color.BLACK));
         versionFont.loadGlyphs();
+        addButton(dogoButton);
+        addButton(classicButton);
+        addButton(seaButton);
+        addButton(skyButton);
+        addButton(batmanButton);
+        addButton(returnButton);
 
     }
 
     @Override
     public void render() {
-        batmanButton.render(getContainer(),getContainer().getGraphics());
-        classicButton.render(getContainer(),getContainer().getGraphics());
-        dogoButton.render(getContainer(),getContainer().getGraphics());
-        skyButton.render(getContainer(),getContainer().getGraphics());
-        seaButton.render(getContainer(),getContainer().getGraphics());
-        returnButton.render(getContainer(),getContainer().getGraphics());
+        renderButtons();
 
         getContainer().getGraphics().setFont(versionFont);
         getContainer().getGraphics().drawString(title, 14*getContainer().getWidth()/100 , 10 * getContainer().getHeight() / 100);
 
        if(chosen) {
            getContainer().getGraphics().draw(bordo);
-
        }
     }
 

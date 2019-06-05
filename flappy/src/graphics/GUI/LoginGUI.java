@@ -36,6 +36,7 @@ public class LoginGUI extends AbstractMenuGUI {
         title = new Image("res/sprites/backgrounds/title.jpg").getScaledCopy(buttonWidth*3, buttonHeight*2);
         Image confirm = new Image("res/sprites/buttons/startM.png").getScaledCopy(buttonWidth/2, buttonHeight/2);
         startButton = new MouseOverArea(container, confirm, container.getWidth()/2-buttonWidth/4, 50 * getContainer().getHeight() / 100, buttonWidth/2, buttonHeight/2, this);
+        addButton(startButton);
         nameField = new TextField(container, ttf, container.getWidth() / 2 - container.getWidth()/6, 40 * getContainer().getHeight() / 100, container.getWidth()/3, buttonHeight/2);
         nameField.setBackgroundColor(Color.white);
         nameField.setTextColor(Color.black);
@@ -49,7 +50,8 @@ public class LoginGUI extends AbstractMenuGUI {
     @Override
     public void render() {
         getContainer().getGraphics().drawImage(title, getContainer().getWidth()/2-title.getWidth()/2,5*getContainer().getHeight()/100);
-        startButton.render(getContainer(),getContainer().getGraphics());
+       // startButton.render(getContainer(),getContainer().getGraphics());
+        renderButtons();
         nameField.render(getContainer(), getContainer().getGraphics());
         uniFontMessage.drawString(getContainer().getWidth() / 2 - uniFontMessage.getWidth(nameString) / 2, 33 * getContainer().getHeight() / 100f, nameString);
         if (error) {
@@ -73,6 +75,8 @@ public class LoginGUI extends AbstractMenuGUI {
             } else
                 {
                 state.setRecordName(nameField.getText());
+                nameField.setFocus(false);
+
                 nameField.deactivate();
                 state.menu();
             }
