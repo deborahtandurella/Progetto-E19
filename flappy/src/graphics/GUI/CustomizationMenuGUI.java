@@ -8,6 +8,7 @@ import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.MouseOverArea;
 import resources.FileKeys;
 import resources.PathHandler;
+import resources.PathKeys;
 import states.CustomizationMenu;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
@@ -36,22 +37,22 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         int buttonHeight = container.getHeight()/9;
         int buttonWidth = container.getWidth()/9;
 
-        Image dogo = new Image("res/sprites/customTextures/dogo/dogo.png").getScaledCopy(buttonWidth,buttonHeight);
+        Image dogo = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.DOGOBUTTON)).getScaledCopy(buttonWidth,buttonHeight);
         dogoButton = new MouseOverArea(container, dogo, 2*container.getWidth()/7-buttonWidth, 30*container.getHeight()/100, buttonWidth, buttonHeight, this);
 
-        Image bird = new Image("res/sprites/player/bird.png").getScaledCopy(buttonWidth,buttonHeight);
+        Image bird = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.BIRDBUTTON)).getScaledCopy(buttonWidth,buttonHeight);
         classicButton = new MouseOverArea(container, bird, 3*container.getWidth()/7-buttonWidth, 30*container.getHeight()/100, buttonWidth, buttonHeight, this);
 
-        Image fish = new Image("res/sprites/customTextures/sea/fish.png").getScaledCopy(buttonWidth,buttonHeight);
+        Image fish = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.FISHBUTTON)).getScaledCopy(buttonWidth,buttonHeight);
         seaButton = new MouseOverArea(container, fish, 4*container.getWidth()/7-buttonWidth, 30*container.getHeight()/100, buttonWidth, buttonHeight, this);
 
-        Image blueBird = new Image("res/sprites/customTextures/sky/bird.png").getScaledCopy(buttonWidth,buttonHeight);
+        Image blueBird = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.BLUEBIRDBUTTON)).getScaledCopy(buttonWidth,buttonHeight);
         skyButton = new MouseOverArea(container, blueBird, 5*container.getWidth()/7-buttonWidth, 30*container.getHeight()/100, buttonWidth, buttonHeight, this);
 
-        Image batman = new Image("res/sprites/customTextures/batman/batman.png").getScaledCopy(buttonWidth,buttonHeight);
+        Image batman = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.BATMANBUTTON)).getScaledCopy(buttonWidth,buttonHeight);
         batmanButton = new MouseOverArea(container, batman, 6*container.getWidth()/7-buttonWidth, 30*container.getHeight()/100, buttonWidth, buttonHeight, this);
 
-        Image goBack = new Image("res/sprites/buttons/back.png").getScaledCopy(buttonWidth*3,buttonHeight);
+        Image goBack = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.BACKTOMENUBUTTON)).getScaledCopy(buttonWidth*3,buttonHeight);
         returnButton = new MouseOverArea(container, goBack, container.getWidth()/2 - buttonWidth/2, 75*container.getHeight()/100, buttonWidth, buttonHeight, this);
 
         bordo = new Rectangle(0, 28*container.getHeight()/100f, 14*container.getWidth()/100f, 15*container.getHeight()/100f);

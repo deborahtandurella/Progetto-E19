@@ -5,6 +5,9 @@ import graphics.Screen;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import resources.FileKeys;
+import resources.PathHandler;
+import resources.PathKeys;
 
 import static logic.gameConstants.GameConstants.*;
 
@@ -15,7 +18,7 @@ public class BirdGraphicComponent extends GameElementGraphicComponent
     public BirdGraphicComponent(Graphics graphics, Screen screen) {
         super(graphics, screen);
         try {
-            birdImage = new Image("res/bird.png").getScaledCopy((int) (BIRD_WIDTH * screen.getWidth()), (int) (BIRD_HEIGHT * screen.getHeight()));
+            birdImage = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BIRD)).getScaledCopy((int) (BIRD_WIDTH * screen.getWidth()), (int) (BIRD_HEIGHT * screen.getHeight()));
         } catch (SlickException e){
             e.printStackTrace();
         }

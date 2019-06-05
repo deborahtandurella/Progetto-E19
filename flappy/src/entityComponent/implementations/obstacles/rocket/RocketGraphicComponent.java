@@ -17,7 +17,7 @@ public class RocketGraphicComponent extends GameElementGraphicComponent
     public RocketGraphicComponent(Graphics graphics, Screen screen) {
         super(graphics, screen);
         try {
-            rocketImage = new Image(PathHandler.getInstance().getPath(FileKeys.CLASSIC,PathKeys.ROCKET));
+            rocketImage = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES,PathKeys.ROCKET));
         } catch (Exception e){
             e.printStackTrace();
         }

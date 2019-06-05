@@ -18,7 +18,7 @@ public class PipeGraphicComponent extends GameElementGraphicComponent {
     public PipeGraphicComponent(Graphics graphics, Screen screen) {
         super(graphics, screen);
         try{
-            lowerPipeImage = new Image(PathHandler.getInstance().getPath(FileKeys.CLASSIC,PathKeys.BIRD));
+            lowerPipeImage = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES,PathKeys.PIPE));
             upperPipeImage= lowerPipeImage.getFlippedCopy(false, true);
         } catch (Exception e){
             e.printStackTrace();

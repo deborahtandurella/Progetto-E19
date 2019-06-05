@@ -20,7 +20,7 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
     public ScoreBoardMenuGUI(GameContainer container, Screen screen, ScoreInterface state) throws SlickException {
         super(container, screen);
         this.state=state;
-        pergamena = new Image("res/sprites/pergamena.png").getScaledCopy(container.getWidth()/100*43, container.getHeight()/100*80);
+        pergamena = new Image("res/sprites/backgrounds/pergamena.png").getScaledCopy(container.getWidth()/100*43, container.getHeight()/100*80);
         Font font = new Font("Comic Sans MS", Font.BOLD, 27*getContainer().getWidth()/1000);
         uniFontMessage = new UnicodeFont(font);
         uniFontMessage.getEffects().add(new ColorEffect(Color.black));

@@ -35,8 +35,8 @@ public class PathHandler {
         reader.read(filePaths,FileKeys.SOUND,soundPaths);
         reader.read(filePaths,FileKeys.VARIOUS,variousPaths);
         superMap.put(FileKeys.SPRITES,spritePaths);
-        superMap.put(FileKeys.BUTTON,spritePaths);
-        superMap.put(FileKeys.SOUND,spritePaths);
+        superMap.put(FileKeys.BUTTON,buttonPaths);
+        superMap.put(FileKeys.SOUND,soundPaths);
         superMap.put(FileKeys.VARIOUS,variousPaths);
     }
     public static synchronized PathHandler getInstance(){
