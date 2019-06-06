@@ -34,7 +34,7 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
         int buttonHeight = container.getHeight()/10;
         int buttonWidth = container.getWidth()/3;
 
-        Image backImage = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.BACKTOMENUBUTTON1)).getScaledCopy(buttonWidth, buttonHeight);
+        Image backImage = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.BACKTOMENUBUTTON)).getScaledCopy(buttonWidth, buttonHeight);
         backButton = new MouseOverArea(container, backImage, 65*container.getWidth()/100-buttonWidth, 90*container.getHeight()/100-2*buttonHeight, buttonWidth, buttonHeight, this);
 
         Image hostImage = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.HOSTBUTTON)).getScaledCopy(buttonWidth, buttonHeight);
@@ -64,7 +64,7 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
 
     @Override
     public void render() {
-       renderButtons();
+        renderButtons();
 
         uniFontMessage.drawString(30*getContainer().getWidth() /100f, 9 * getContainer().getHeight() / 100f, ipString);
         uniFontMessage.drawString(30*getContainer().getWidth() / 100f, 20 * getContainer().getHeight() / 100f, portString);
@@ -82,18 +82,23 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
 
     @Override
     public void componentActivated(AbstractComponent source) {
-        if(source == joinButton || source == hostButton) {
+        if(source == hostButton) {
             if (ipField.getString().equals("") || portField.getString().equals("")) {
                 error = true;
                 errorMessage = "Inserisci l'IP e la Port, stupido razzista celiaco";
-            } else if (ipField.getString().length() != 15) {
-                error = true;
-                errorMessage = "boh ce, non sai scrivere un ip, sei un fra";
-            } else if (portField.getString().length() != 4) {
-                error = true;
-                errorMessage = "chi è quel mona che sbatte la porta!?";
+            }  else {
+                state.host(Integer.parseInt(portField.getString()));
             }
-            //c'è da fare il cambiamento di stato
+        }
+
+        if(source == joinButton) {
+            if (ipField.getString().equals("") || portField.getString().equals("")) {
+                error = true;
+                errorMessage = "Inserisci l'IP e la Port, stupido razzista celiaco";
+            }
+            else {
+                state.join(ipField.getString(),Integer.parseInt(portField.getString()));
+            }
         }
 
         if (source == backButton)
