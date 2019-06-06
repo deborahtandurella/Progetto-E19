@@ -12,9 +12,10 @@ import resources.PathKeys;
 import states.CustomizationMenu;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
+import org.newdawn.slick.Color;
 
 import java.awt.*;
-import java.awt.Color;
+
 import java.awt.Font;
 import java.io.IOException;
 
@@ -46,11 +47,11 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         int buttonHeight = container.getHeight()/9;
         int buttonWidth = container.getWidth()/9;
         uniFontMessage = new UnicodeFont(font);
-        uniFontMessage.getEffects().add(new ColorEffect(Color.LIGHT_GRAY));
+        uniFontMessage.getEffects().add(new ColorEffect(java.awt.Color.LIGHT_GRAY));
         uniFontMessage.addAsciiGlyphs();
         uniFontMessage.loadGlyphs();
         versionFont.addAsciiGlyphs();
-        versionFont.getEffects().add(new ColorEffect(Color.BLACK));
+        versionFont.getEffects().add(new ColorEffect(java.awt.Color.BLACK));
         versionFont.loadGlyphs();
 
         bordo = new Rectangle(0, 28*container.getHeight()/100f, 14*container.getWidth()/100f, 15*container.getHeight()/100f);
@@ -86,17 +87,20 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
     public void render() {
         pergamena.draw(getContainer().getWidth()/2f-pergamena.getWidth()/2f, 24*getContainer().getHeight()/100f);
 
-        renderButtons();
+
 
         getContainer().getGraphics().setFont(versionFont);
         getContainer().getGraphics().drawString(title, 14*getContainer().getWidth()/100f , 10 * getContainer().getHeight() / 100f);
 
        if(chosen) {
+           getContainer().getGraphics().setColor(Color.orange);
+           getContainer().getGraphics().fill(bordo);
            getContainer().getGraphics().draw(bordo);
            uniFontMessage.drawString(getContainer().getWidth()/2f-uniFontMessage.getWidth(name)/2f, 44*getContainer().getHeight()/100f, name, org.newdawn.slick.Color.black);
 
        }
 
+        renderButtons();
     }
 
     @Override
