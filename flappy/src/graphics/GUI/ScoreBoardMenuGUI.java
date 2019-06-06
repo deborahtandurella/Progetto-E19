@@ -48,13 +48,13 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
     public void render() {
 
 
-        pergamena.draw(getContainer().getWidth()/2f-pergamena.getWidth()/2f, 5*getContainer().getHeight()/100f);
+        pergamena.draw(getContainer().getWidth()/2f-pergamena.getWidth()/2f, 3*getContainer().getHeight()/100f);
         uniFontMessage.drawString(37*getContainer().getWidth()/100f, 18*getContainer().getHeight()/100f, scoreName, org.newdawn.slick.Color.black);
         uniFontMessage.drawString(61*getContainer().getWidth()/100f, 18*getContainer().getHeight()/100f, points, org.newdawn.slick.Color.black);
         if(state.getScoreBoard().getnewRecord()){
 
             getContainer().getGraphics().setFont(versionFont);
-            getContainer().getGraphics().drawString(newRecord, 37*getContainer().getWidth()/100f , 12 * getContainer().getHeight() / 100f);
+            getContainer().getGraphics().drawString(newRecord, 37*getContainer().getWidth()/100f , 11 * getContainer().getHeight() / 100f);
         }
     }
 

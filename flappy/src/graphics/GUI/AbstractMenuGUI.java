@@ -2,6 +2,7 @@ package graphics.GUI;
 
 import graphics.Screen;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.gui.ComponentListener;
 import org.newdawn.slick.gui.MouseOverArea;
 
@@ -14,7 +15,7 @@ public abstract class AbstractMenuGUI implements ComponentListener {
         this.container = container;
         this.buttons = new ArrayList<>();
     }
-    public abstract void render();
+    public abstract void render() throws SlickException;
     public GameContainer getContainer() {
         return container;
     }

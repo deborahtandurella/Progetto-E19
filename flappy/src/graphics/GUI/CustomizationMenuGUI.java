@@ -33,10 +33,12 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
     private boolean chosen = false;
     private String name;
     private UnicodeFont uniFontMessage;
+    private Image pergamena;
 
     public CustomizationMenuGUI(GameContainer container, Screen screen, CustomizationMenu state) throws SlickException, IOException, FontFormatException {
         super(container, screen);
         this.state = state;
+        pergamena = new Image(PathHandler.getInstance().getPath(FileKeys.VARIOUS, PathKeys.RANKBACKGROUND)).getScaledCopy(container.getWidth()/100*86, container.getHeight()/100*30);
         title = "CHOOSE YOUR THEME";
         Font font = new Font("Comic Sans MS", Font.BOLD, 27*getContainer().getWidth()/1000);
         versionFont = new UnicodeFont("res/font/FlappyBirdy.ttf", getContainer().getHeight()/5, false, false);
@@ -82,6 +84,8 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
 
     @Override
     public void render() {
+        pergamena.draw(getContainer().getWidth()/2f-pergamena.getWidth()/2f, 24*getContainer().getHeight()/100f);
+
         renderButtons();
 
         getContainer().getGraphics().setFont(versionFont);
@@ -89,9 +93,10 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
 
        if(chosen) {
            getContainer().getGraphics().draw(bordo);
-           uniFontMessage.drawString(getContainer().getWidth()/2f-uniFontMessage.getWidth(name)/2f, 46*getContainer().getHeight()/100f, name, org.newdawn.slick.Color.lightGray);
+           uniFontMessage.drawString(getContainer().getWidth()/2f-uniFontMessage.getWidth(name)/2f, 44*getContainer().getHeight()/100f, name, org.newdawn.slick.Color.black);
 
        }
+
     }
 
     @Override
