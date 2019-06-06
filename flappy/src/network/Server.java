@@ -23,15 +23,22 @@ public class Server {
     }
 
     public void SetConnection(int port) {
+        System.out.println("Server listening on port " + port);
+
         try {
             serviceSocket = new ServerSocket(port);
             System.out.println("Server listening on port " + port);
+            System.out.println("sto facendo qualcosa");
+
             myService = serviceSocket.accept();
+            System.out.println("sto facendo qualcosa");
+
             Thread th1 = new Thread(new Runnable() {
                 @Override
                 public void run() {
                     while (option) {
                         ListenData();
+                        System.out.println("sto facendo qualcosa");
                     }
                 }
             });

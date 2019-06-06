@@ -1,5 +1,7 @@
 package states;
 
+import network.Client;
+import network.Server;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -9,6 +11,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class MultiplayerLoading extends BasicGameState {
     private static final int ID = 6;
+
 
     @Override
     public int getID() {
@@ -35,5 +38,6 @@ public class MultiplayerLoading extends BasicGameState {
             System.exit(0);
 
         }
+
     }
 }

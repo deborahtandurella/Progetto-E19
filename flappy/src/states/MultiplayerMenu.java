@@ -3,6 +3,8 @@ package states;
 import graphics.GUI.MultiplayerMenuGUI;
 import graphics.Screen;
 import graphics.SpriteDrawer;
+import network.Client;
+import network.Server;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -19,6 +21,8 @@ public class MultiplayerMenu extends BasicGameState {
     private MultiplayerMenuGUI gui;
     private Screen screen;
     private SpriteDrawer drawer;
+    private Client socketClient;
+    private Server socketServer = new Server();
 
 
     @Override
@@ -33,6 +37,7 @@ public class MultiplayerMenu extends BasicGameState {
         gui = new MultiplayerMenuGUI(container, screen, this);
         drawer = new SpriteDrawer(new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0));
         screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
+
     }
 
     @Override
@@ -60,6 +65,32 @@ public class MultiplayerMenu extends BasicGameState {
             e.printStackTrace();
         }
         stateBasedGame.enterState(1,new FadeOutTransition(),new FadeInTransition());
+
+    }
+
+    public void join(String ip,int port){
+        Thread thread = new Thread(new Runnable(){
+            @Override
+            public void run() {
+                socketClient.SetConnection(ip,5555);
+            }
+        });
+        thread.start();
+    }
+
+    public void host(int port){
+        Thread thread = new Thread(new Runnable(){
+            @Override
+            public void run() {
+                socketServer.SetConnection(5555);
+            }
+        });
+        thread.start();
+    }
+
+    @Override
+    public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+        super.enter(container, game);
 
     }
 }
