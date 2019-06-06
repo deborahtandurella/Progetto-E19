@@ -21,7 +21,7 @@ public class MultiplayerMenu extends BasicGameState {
     private MultiplayerMenuGUI gui;
     private Screen screen;
     private SpriteDrawer drawer;
-    private Client socketClient;
+    private Client socketClient = new Client();
     private Server socketServer = new Server();
 
 
@@ -72,7 +72,7 @@ public class MultiplayerMenu extends BasicGameState {
         Thread thread = new Thread(new Runnable(){
             @Override
             public void run() {
-                socketClient.SetConnection(ip,5555);
+                socketClient.SetConnection(ip,port);
             }
         });
         thread.start();
@@ -82,7 +82,7 @@ public class MultiplayerMenu extends BasicGameState {
         Thread thread = new Thread(new Runnable(){
             @Override
             public void run() {
-                socketServer.SetConnection(5555);
+                socketServer.SetConnection(port);
             }
         });
         thread.start();
