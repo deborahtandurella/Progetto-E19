@@ -15,6 +15,7 @@ import org.newdawn.slick.geom.Shape;
 
 import java.awt.*;
 import java.awt.Color;
+import java.awt.Font;
 import java.io.IOException;
 
 
@@ -30,12 +31,27 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
     private String title;
     private UnicodeFont versionFont;
     private boolean chosen = false;
+    private String name;
+    private UnicodeFont uniFontMessage;
 
     public CustomizationMenuGUI(GameContainer container, Screen screen, CustomizationMenu state) throws SlickException, IOException, FontFormatException {
         super(container, screen);
         this.state = state;
+        title = "CHOOSE YOUR THEME";
+        Font font = new Font("Comic Sans MS", Font.BOLD, 27*getContainer().getWidth()/1000);
+        versionFont = new UnicodeFont("res/font/FlappyBirdy.ttf", getContainer().getHeight()/5, false, false);
+
         int buttonHeight = container.getHeight()/9;
         int buttonWidth = container.getWidth()/9;
+        uniFontMessage = new UnicodeFont(font);
+        uniFontMessage.getEffects().add(new ColorEffect(Color.LIGHT_GRAY));
+        uniFontMessage.addAsciiGlyphs();
+        uniFontMessage.loadGlyphs();
+        versionFont.addAsciiGlyphs();
+        versionFont.getEffects().add(new ColorEffect(Color.BLACK));
+        versionFont.loadGlyphs();
+
+        bordo = new Rectangle(0, 28*container.getHeight()/100f, 14*container.getWidth()/100f, 15*container.getHeight()/100f);
 
         Image dogo = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.DOGOBUTTON)).getScaledCopy(buttonWidth,buttonHeight);
         dogoButton = new MouseOverArea(container, dogo, 2*container.getWidth()/7-buttonWidth, 30*container.getHeight()/100, buttonWidth, buttonHeight, this);
@@ -55,13 +71,6 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         Image goBack = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.BACKTOMENUBUTTON)).getScaledCopy(buttonWidth*3,buttonHeight);
         returnButton = new MouseOverArea(container, goBack, container.getWidth()/2 - buttonWidth/2, 75*container.getHeight()/100, buttonWidth, buttonHeight, this);
 
-        bordo = new Rectangle(0, 28*container.getHeight()/100f, 14*container.getWidth()/100f, 15*container.getHeight()/100f);
-
-        title = "CHOOSE YOUR THEME";
-        versionFont = new UnicodeFont("res/font/FlappyBirdy.ttf", getContainer().getHeight()/5, false, false);
-        versionFont.addAsciiGlyphs();
-        versionFont.getEffects().add(new ColorEffect(Color.BLACK));
-        versionFont.loadGlyphs();
         addButton(dogoButton);
         addButton(classicButton);
         addButton(seaButton);
@@ -80,6 +89,8 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
 
        if(chosen) {
            getContainer().getGraphics().draw(bordo);
+           uniFontMessage.drawString(getContainer().getWidth()/2f-uniFontMessage.getWidth(name)/2f, 46*getContainer().getHeight()/100f, name, org.newdawn.slick.Color.lightGray);
+
        }
     }
 
@@ -87,6 +98,7 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
     public void componentActivated(AbstractComponent source) {
         if(source == batmanButton){
             try {
+                name = "Batman";
                 chosen = true;
                 bordo.setX(batmanButton.getX()- 10*bordo.getWidth()/100);
                 PathHandler.getInstance().changeSprites(FileKeys.BATMAN);
@@ -96,6 +108,7 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         }
         if(source == dogoButton){
             try {
+                name = "Dogo";
                 chosen = true;
                 bordo.setX(dogoButton.getX()- 10*bordo.getWidth()/100);
                 PathHandler.getInstance().changeSprites(FileKeys.DOGO);
@@ -105,6 +118,7 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         }
         if(source == classicButton){
             try {
+                name = "Classic";
                 chosen = true;
                 bordo.setX(classicButton.getX()- 10*bordo.getWidth()/100);
                 PathHandler.getInstance().changeSprites(FileKeys.CLASSIC);
@@ -114,6 +128,7 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         }
         if(source == seaButton){
             try {
+                name = "Sea";
                 chosen = true;
                 bordo.setX(seaButton.getX()- 10*bordo.getWidth()/100);
                 PathHandler.getInstance().changeSprites(FileKeys.SEA);
@@ -123,6 +138,7 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         }
         if(source == skyButton){
             try {
+                name = "Sky";
                 chosen = true;
                 bordo.setX(skyButton.getX()- 10*bordo.getWidth()/100);
                 PathHandler.getInstance().changeSprites(FileKeys.SKY);
