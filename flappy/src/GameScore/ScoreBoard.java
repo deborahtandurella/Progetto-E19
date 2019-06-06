@@ -8,11 +8,13 @@ public class ScoreBoard {
   private Record[] records;
   private ScoreFacade scoreFacade;
   private static final int N_PLAYERS = 10;
+  private boolean newRecord;
 
   public ScoreBoard() throws IOException {
       this.records = new Record[N_PLAYERS];
       this.scoreFacade = new ScoreFacade();
       scoreFacade.readScoreBoard(records, N_PLAYERS);
+      newRecord = false;
   }
 
   public boolean compareScore(Record p) throws IOException {
@@ -22,12 +24,16 @@ public class ScoreBoard {
         records[i].setName(p.getName());
         records[i].setScore(p.getScore());
         scoreFacade.writePlayers(records, N_PLAYERS);
-        return true;
+        return newRecord = true;
       }
     }
-    return false;
+    return newRecord = false;
   }
 
+  public boolean getnewRecord(){
+    return newRecord;
+
+  }
   private void shiftPlayers(int i){
     for(int j=N_PLAYERS-1; j>i; j--){
       records[j].setScore(records[j-1].getScore());
