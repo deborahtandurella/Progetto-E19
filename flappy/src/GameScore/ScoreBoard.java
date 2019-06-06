@@ -2,6 +2,7 @@ package GameScore;
 
 import logic.SinglePlayer.Record;
 import java.io.*;
+import java.util.Collections;
 
 public class ScoreBoard {
 
@@ -9,12 +10,19 @@ public class ScoreBoard {
   private ScoreFacade scoreFacade;
   private static final int N_PLAYERS = 10;
   private boolean newRecord;
+  private int currentRecord;
+
 
   public ScoreBoard() throws IOException {
       this.records = new Record[N_PLAYERS];
       this.scoreFacade = new ScoreFacade();
       scoreFacade.readScoreBoard(records, N_PLAYERS);
       newRecord = false;
+      currentRecord = records[0].getScore();
+  }
+
+  public int getCurrentRecord(){
+    return currentRecord;
   }
 
   public boolean compareScore(Record p) throws IOException {
@@ -24,15 +32,17 @@ public class ScoreBoard {
         records[i].setName(p.getName());
         records[i].setScore(p.getScore());
         scoreFacade.writePlayers(records, N_PLAYERS);
+        currentRecord = records[0].getScore();
         return newRecord = true;
       }
     }
     return newRecord = false;
   }
 
+
+
   public boolean getnewRecord(){
     return newRecord;
-
   }
   private void shiftPlayers(int i){
     for(int j=N_PLAYERS-1; j>i; j--){
@@ -58,6 +68,8 @@ public class ScoreBoard {
 
 
   public void deleteScoreBoard() throws IOException {
+    currentRecord = 0;
+
     for(int j=0; j<N_PLAYERS; j++){
       records[j].setScore(0);
       records[j].setName("-------------");

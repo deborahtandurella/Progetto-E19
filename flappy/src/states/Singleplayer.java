@@ -4,10 +4,13 @@ import GameScore.ScoreBoard;
 import gameMusic.MusicPlayer;
 import graphics.Screen;
 import graphics.SpriteDrawer;
+import java.awt.Font;
+
 import logic.SinglePlayer.Player;
 import logic.SinglePlayer.Record;
 import logic.gameElements.*;
 import org.newdawn.slick.*;
+import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
@@ -38,11 +41,17 @@ public class Singleplayer extends BasicGameState {
     private MusicPlayer musicPlayer;
     private boolean immunity;
     private long immunityTimer;
+    private long newRecordTimer;
     private TrueTypeFont font;
     //private int score;
     private Record record;
+    private boolean first;
     private Screen screen;
     private ScoreBoard scoreboard;
+    private UnicodeFont uniFontMessage;
+    private String newRecordString;
+    private boolean newRecord;
+
 
     @Override
     public int getID() {
@@ -59,6 +68,8 @@ public class Singleplayer extends BasicGameState {
         this.container= gameContainer;
         player = new Player();
         immunity = false;
+        first = true;
+        newRecord = false;
         random = new Random();
         pipeDecider = random.nextInt(11);
         lifeSpawner = random.nextInt(16);
@@ -77,7 +88,14 @@ public class Singleplayer extends BasicGameState {
         spriteDrawer = new SpriteDrawer(screen);
         java.awt.Font font1= new java.awt.Font("Verdana", java.awt.Font.BOLD, 32);
         font= new TrueTypeFont(font1, true);
-    }
+
+        Font font = new Font("Comic Sans MS", Font.BOLD, 4*container.getWidth()/100);
+        uniFontMessage = new UnicodeFont(font);
+        uniFontMessage.getEffects().add(new ColorEffect(java.awt.Color.red));
+        uniFontMessage.addAsciiGlyphs();
+        uniFontMessage.loadGlyphs();
+        newRecordString = "NEW RECORD!";
+}
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
@@ -96,10 +114,14 @@ public class Singleplayer extends BasicGameState {
         }
         spriteDrawer.drawLives(player,graphics);
         font.drawString(screen.getWidth()/2f + screen.getOffsetX()- font.getWidth(String.valueOf(player.getScore()))/2f,screen.getHeight()/3f,String.valueOf(player.getScore()));
+
+        if(newRecord){
+            uniFontMessage.drawString(container.getWidth() / 2f - uniFontMessage.getWidth(newRecordString) / 2f, 23 * container.getHeight() / 100f, newRecordString);
+        }
     }
 
     @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
+    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i){
 
         bird.update(i);
         for(Heart heart:hearts){
@@ -150,7 +172,6 @@ public class Singleplayer extends BasicGameState {
         for(Pipe pipe : pipes) {
             pipe.update(i);
             if(pipe.getX()<bird.getX()&&!pipe.isPassed()){
-                //score++;
                 player.addScore();
                 pipe.setPassed(true);
 
@@ -202,6 +223,17 @@ public class Singleplayer extends BasicGameState {
         }
 
 
+
+
+        if(player.getScore() > scoreboard.getCurrentRecord() && first ){
+            newRecord = true;
+            first = false;
+            newRecordTimer = System.currentTimeMillis();
+
+        }
+        if((System.currentTimeMillis()-newRecordTimer) > 2000){
+            newRecord = false;
+        }
 
 
     }

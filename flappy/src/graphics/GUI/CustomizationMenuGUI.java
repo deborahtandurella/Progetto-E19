@@ -42,7 +42,7 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         pergamena = new Image(PathHandler.getInstance().getPath(FileKeys.VARIOUS, PathKeys.RANKBACKGROUND)).getScaledCopy(container.getWidth()/100*86, container.getHeight()/100*30);
         title = "CHOOSE YOUR THEME";
         Font font = new Font("Comic Sans MS", Font.BOLD, 27*getContainer().getWidth()/1000);
-        versionFont = new UnicodeFont("res/font/FlappyBirdy.ttf", getContainer().getHeight()/5, false, false);
+        versionFont = new UnicodeFont("res/font/FlappyBirdy.ttf", getContainer().getHeight()/100*25, false, false);
 
         int buttonHeight = container.getHeight()/9;
         int buttonWidth = container.getWidth()/9;
@@ -54,22 +54,22 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         versionFont.getEffects().add(new ColorEffect(java.awt.Color.BLACK));
         versionFont.loadGlyphs();
 
-        bordo = new Rectangle(0, 28*container.getHeight()/100f, 14*container.getWidth()/100f, 15*container.getHeight()/100f);
+        bordo = new Rectangle(0, 30*container.getHeight()/100f, 14*container.getWidth()/100f, 15*container.getHeight()/100f);
 
         Image dogo = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.DOGOBUTTON)).getScaledCopy(buttonWidth,buttonHeight);
-        dogoButton = new MouseOverArea(container, dogo, 2*container.getWidth()/7-buttonWidth, 30*container.getHeight()/100, buttonWidth, buttonHeight, this);
+        dogoButton = new MouseOverArea(container, dogo, 2*container.getWidth()/7-buttonWidth, 32*container.getHeight()/100, buttonWidth, buttonHeight, this);
 
         Image bird = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.BIRDBUTTON)).getScaledCopy(buttonWidth,buttonHeight);
-        classicButton = new MouseOverArea(container, bird, 3*container.getWidth()/7-buttonWidth, 30*container.getHeight()/100, buttonWidth, buttonHeight, this);
+        classicButton = new MouseOverArea(container, bird, 3*container.getWidth()/7-buttonWidth, 32*container.getHeight()/100, buttonWidth, buttonHeight, this);
 
         Image fish = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.FISHBUTTON)).getScaledCopy(buttonWidth,buttonHeight);
-        seaButton = new MouseOverArea(container, fish, 4*container.getWidth()/7-buttonWidth, 30*container.getHeight()/100, buttonWidth, buttonHeight, this);
+        seaButton = new MouseOverArea(container, fish, 4*container.getWidth()/7-buttonWidth, 32*container.getHeight()/100, buttonWidth, buttonHeight, this);
 
         Image blueBird = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.BLUEBIRDBUTTON)).getScaledCopy(buttonWidth,buttonHeight);
-        skyButton = new MouseOverArea(container, blueBird, 5*container.getWidth()/7-buttonWidth, 30*container.getHeight()/100, buttonWidth, buttonHeight, this);
+        skyButton = new MouseOverArea(container, blueBird, 5*container.getWidth()/7-buttonWidth, 32*container.getHeight()/100, buttonWidth, buttonHeight, this);
 
         Image batman = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.BATMANBUTTON)).getScaledCopy(buttonWidth,buttonHeight);
-        batmanButton = new MouseOverArea(container, batman, 6*container.getWidth()/7-buttonWidth, 30*container.getHeight()/100, buttonWidth, buttonHeight, this);
+        batmanButton = new MouseOverArea(container, batman, 6*container.getWidth()/7-buttonWidth, 32*container.getHeight()/100, buttonWidth, buttonHeight, this);
 
         Image goBack = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.BACKTOMENUBUTTON)).getScaledCopy(buttonWidth*3,buttonHeight);
         returnButton = new MouseOverArea(container, goBack, container.getWidth()/2 - buttonWidth/2, 75*container.getHeight()/100, buttonWidth, buttonHeight, this);
@@ -85,18 +85,16 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
 
     @Override
     public void render() {
-        pergamena.draw(getContainer().getWidth()/2f-pergamena.getWidth()/2f, 24*getContainer().getHeight()/100f);
-
-
+        pergamena.draw(getContainer().getWidth()/2f-pergamena.getWidth()/2f, 26*getContainer().getHeight()/100f);
 
         getContainer().getGraphics().setFont(versionFont);
-        getContainer().getGraphics().drawString(title, 14*getContainer().getWidth()/100f , 10 * getContainer().getHeight() / 100f);
+        getContainer().getGraphics().drawString(title, 7*getContainer().getWidth()/100f , 9 * getContainer().getHeight() / 100f);
 
        if(chosen) {
-           getContainer().getGraphics().setColor(Color.orange);
-           getContainer().getGraphics().fill(bordo);
+           getContainer().getGraphics().setColor(Color.black);
+          // getContainer().getGraphics().fill(bordo);
            getContainer().getGraphics().draw(bordo);
-           uniFontMessage.drawString(getContainer().getWidth()/2f-uniFontMessage.getWidth(name)/2f, 44*getContainer().getHeight()/100f, name, org.newdawn.slick.Color.black);
+           uniFontMessage.drawString(getContainer().getWidth()/2f-uniFontMessage.getWidth(name)/2f, 46*getContainer().getHeight()/100f, name, org.newdawn.slick.Color.black);
 
        }
 
