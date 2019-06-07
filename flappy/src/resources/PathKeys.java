@@ -33,5 +33,6 @@ public enum PathKeys {
     JOINBUTTON,
     HOSTBUTTON,
     CUSTOMIZATION_BG,
-    RANKBACKGROUND;
+    RANKBACKGROUND,
+    BUTTON_BG;
 }

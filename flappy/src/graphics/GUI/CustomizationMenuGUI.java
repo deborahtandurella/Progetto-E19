@@ -28,14 +28,16 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
     private MouseOverArea skyButton;
     private MouseOverArea dogoButton;
     private MouseOverArea returnButton;
-    private Shape bordo;
     private String title;
     private UnicodeFont versionFont;
-   // private boolean chosen = false;
     private String name;
     private UnicodeFont uniFontMessage;
     private Image pergamena;
     private Image background;
+    private Image buttonBg;
+    private int buttonHeight;
+    private int buttonWidth;
+    private int buttonBgX;
 
     public CustomizationMenuGUI(GameContainer container, Screen screen, CustomizationMenu state) throws SlickException, IOException, FontFormatException {
         super(container, screen);
@@ -48,9 +50,6 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         Font font = new Font("Comic Sans MS", Font.BOLD, 27*getContainer().getWidth()/1000);
         versionFont = new UnicodeFont("res/font/FlappyBirdy.ttf", getContainer().getHeight()/100*25, false, false);
 
-        int buttonHeight = container.getHeight()/9;
-        int buttonWidth = container.getWidth()/9;
-
         uniFontMessage = new UnicodeFont(font);
         uniFontMessage.getEffects().add(new ColorEffect(java.awt.Color.LIGHT_GRAY));
         uniFontMessage.addAsciiGlyphs();
@@ -59,7 +58,8 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         versionFont.getEffects().add(new ColorEffect(java.awt.Color.BLACK));
         versionFont.loadGlyphs();
 
-        bordo = new Rectangle(0, 30*container.getHeight()/100f, 14*container.getWidth()/100f, 15*container.getHeight()/100f);
+        buttonHeight = container.getHeight()/9;
+        buttonWidth = container.getWidth()/9;
 
         Image dogo = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.DOGOBUTTON)).getScaledCopy(buttonWidth,buttonHeight);
         dogoButton = new MouseOverArea(container, dogo, 2*container.getWidth()/7-buttonWidth, 32*container.getHeight()/100, buttonWidth, buttonHeight, this);
@@ -79,6 +79,10 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         Image goBack = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.BACKTOMENUBUTTON)).getScaledCopy(buttonWidth*3,buttonHeight);
         returnButton = new MouseOverArea(container, goBack, container.getWidth()/2 - buttonWidth/2, 75*container.getHeight()/100, buttonWidth, buttonHeight, this);
 
+        buttonBg = new Image(PathHandler.getInstance().getPath(FileKeys.VARIOUS, PathKeys.BUTTON_BG)).getScaledCopy(buttonWidth,buttonHeight);
+
+        buttonBgX = classicButton.getX()-10*buttonWidth/100;
+
         addButton(dogoButton);
         addButton(classicButton);
         addButton(seaButton);
@@ -87,7 +91,6 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         addButton(returnButton);
 
         name = "Classic";
-        bordo.setX(classicButton.getX()- 10*bordo.getWidth()/100);
 
     }
 
@@ -95,18 +98,11 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
     public void render() {
         background.draw();
         pergamena.draw(getContainer().getWidth()/2f-pergamena.getWidth()/2f, 26*getContainer().getHeight()/100f);
-
+        buttonBg.draw(buttonBgX, 30*getContainer().getHeight()/100f, 14*getContainer().getWidth()/100f, 15*getContainer().getHeight()/100f);
         getContainer().getGraphics().setFont(versionFont);
         getContainer().getGraphics().drawString(title, 7*getContainer().getWidth()/100f , 9 * getContainer().getHeight() / 100f);
 
-
-     //  if(chosen) {
-           getContainer().getGraphics().setColor(Color.black);
-          // getContainer().getGraphics().fill(bordo);
-           getContainer().getGraphics().draw(bordo);
-           uniFontMessage.drawString(getContainer().getWidth()/2f-uniFontMessage.getWidth(name)/2f, 46*getContainer().getHeight()/100f, name, org.newdawn.slick.Color.black);
-
-      // }
+        uniFontMessage.drawString(getContainer().getWidth()/2f-uniFontMessage.getWidth(name)/2f, 46*getContainer().getHeight()/100f, name, org.newdawn.slick.Color.black);
 
         renderButtons();
     }
@@ -116,8 +112,7 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         if(source == batmanButton){
             try {
                 name = "Batman";
-                //chosen = true;
-                bordo.setX(batmanButton.getX()- 10*bordo.getWidth()/100);
+                buttonBgX = batmanButton.getX()-10*buttonWidth/100;
                 PathHandler.getInstance().changeSprites(FileKeys.BATMAN);
                 state.initStates();
             } catch (IOException e) {
@@ -129,8 +124,7 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         if(source == dogoButton){
             try {
                 name = "Dogo";
-             //   chosen = true;
-                bordo.setX(dogoButton.getX()- 10*bordo.getWidth()/100);
+                buttonBgX = dogoButton.getX()-10*buttonWidth/100;
                 PathHandler.getInstance().changeSprites(FileKeys.DOGO);
                 state.initStates();
             } catch (IOException e) {
@@ -142,8 +136,7 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         if(source == classicButton){
             try {
                 name = "Classic";
-             //   chosen = true;
-                bordo.setX(classicButton.getX()- 10*bordo.getWidth()/100);
+                buttonBgX = classicButton.getX()-10*buttonWidth/100;
                 PathHandler.getInstance().changeSprites(FileKeys.CLASSIC);
                 state.initStates();
             } catch (IOException e) {
@@ -155,8 +148,7 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         if(source == seaButton){
             try {
                 name = "Sea";
-              //  chosen = true;
-                bordo.setX(seaButton.getX()- 10*bordo.getWidth()/100);
+                buttonBgX = seaButton.getX()-10*buttonWidth/100;
                 PathHandler.getInstance().changeSprites(FileKeys.SEA);
                 state.initStates();
             } catch (IOException e) {
@@ -168,8 +160,7 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         if(source == skyButton){
             try {
                 name = "Sky";
-             //   chosen = true;
-                bordo.setX(skyButton.getX()- 10*bordo.getWidth()/100);
+                buttonBgX = skyButton.getX()-10*buttonWidth/100;
                 PathHandler.getInstance().changeSprites(FileKeys.SKY);
                 state.initStates();
             } catch (IOException e) {

@@ -1,3 +1,4 @@
 TITLE,res/sprites/backgrounds/title.jpg
 RANKBACKGROUND,res/sprites/backgrounds/pergamena.png
 CUSTOMIZATION_BG,res/sprites/backgrounds/customization_bg.jpg
+BUTTON_BG,res/sprites/backgrounds/buttonBackground.png
