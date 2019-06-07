@@ -68,4 +68,17 @@ public class CustomizationMenu extends BasicGameState {
         }
         stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
     }
+
+    public void initStates() throws SlickException {
+        stateBasedGame.getState(0).init(container,stateBasedGame);
+        stateBasedGame.getState(1).init(container,stateBasedGame);
+        stateBasedGame.getState(2).init(container,stateBasedGame);
+        stateBasedGame.getState(3).init(container,stateBasedGame);
+        stateBasedGame.getState(4).init(container,stateBasedGame);
+        stateBasedGame.getState(5).init(container,stateBasedGame);
+        stateBasedGame.getState(6).init(container,stateBasedGame);
+        stateBasedGame.getState(7).init(container,stateBasedGame);
+        stateBasedGame.getState(8).init(container,stateBasedGame);
+        stateBasedGame.getState(9).init(container,stateBasedGame);
+    }
 }

@@ -109,7 +109,10 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
                 chosen = true;
                 bordo.setX(batmanButton.getX()- 10*bordo.getWidth()/100);
                 PathHandler.getInstance().changeSprites(FileKeys.BATMAN);
+                state.initStates();
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (SlickException e) {
                 e.printStackTrace();
             }
         }
@@ -119,7 +122,10 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
                 chosen = true;
                 bordo.setX(dogoButton.getX()- 10*bordo.getWidth()/100);
                 PathHandler.getInstance().changeSprites(FileKeys.DOGO);
+                state.initStates();
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (SlickException e) {
                 e.printStackTrace();
             }
         }
@@ -129,7 +135,10 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
                 chosen = true;
                 bordo.setX(classicButton.getX()- 10*bordo.getWidth()/100);
                 PathHandler.getInstance().changeSprites(FileKeys.CLASSIC);
+                state.initStates();
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (SlickException e) {
                 e.printStackTrace();
             }
         }
@@ -139,7 +148,10 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
                 chosen = true;
                 bordo.setX(seaButton.getX()- 10*bordo.getWidth()/100);
                 PathHandler.getInstance().changeSprites(FileKeys.SEA);
+                state.initStates();
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (SlickException e) {
                 e.printStackTrace();
             }
         }
@@ -149,7 +161,10 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
                 chosen = true;
                 bordo.setX(skyButton.getX()- 10*bordo.getWidth()/100);
                 PathHandler.getInstance().changeSprites(FileKeys.SKY);
+                state.initStates();
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (SlickException e) {
                 e.printStackTrace();
             }
         }
