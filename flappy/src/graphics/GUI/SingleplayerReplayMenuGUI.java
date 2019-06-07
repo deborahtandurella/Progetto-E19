@@ -37,8 +37,12 @@ public class SingleplayerReplayMenuGUI extends AbstractMenuGUI {
 
     @Override
     public void componentActivated(AbstractComponent source) {
-        if (source == backButton)
+        if (source == backButton) {
+            if(state.getScoreBoard().getnewRecord()){
+                state.getScoreBoard().setNewRecord();
+            }
             state.noRematch();
+        }
         else if (source == replayButton)
             state.rematch();
     }

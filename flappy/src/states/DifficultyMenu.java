@@ -52,7 +52,7 @@ public class DifficultyMenu extends BasicGameState{
     }
 
     public void startGame(/*ci sarà da passare un enum o qualcosa per la difficoltà*/){
-        try {
+       try {
             stateBasedGame.getState(3).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();
@@ -61,11 +61,11 @@ public class DifficultyMenu extends BasicGameState{
     }
 
     public void back(){
-        try {
+        /*try {
             stateBasedGame.getState(1).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();
-        }
+        }*/
         stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
     }
 

@@ -55,12 +55,12 @@ public class Login extends BasicGameState {
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException { }
 
     public void menu(){
-        try {
+        /*try {
 
             stateBasedGame.getState(1).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();
-        }
+        }*/
         stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
     }
 

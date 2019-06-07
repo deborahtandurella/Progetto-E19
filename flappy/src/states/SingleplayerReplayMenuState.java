@@ -72,15 +72,13 @@ public class SingleplayerReplayMenuState extends BasicGameState implements Score
         stateBasedGame.enterState(3,new FadeOutTransition(),new FadeInTransition());
     }
     public void noRematch(){
-        try {
+     /*   try {
             stateBasedGame.getState(1).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();
-        }
+        }*/
         stateBasedGame.enterState(1,new FadeOutTransition(),new FadeInTransition());
 
     }
-
-
 
 }

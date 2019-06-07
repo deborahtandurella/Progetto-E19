@@ -50,11 +50,11 @@ public class Menu extends BasicGameState{
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException { }
 
     public void single(){
-        try {
+       /* try {
             stateBasedGame.getState(2).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();
-        }
+        }*/
         stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
     }
 
@@ -81,11 +81,11 @@ public class Menu extends BasicGameState{
     }
 
     public void custom(){
-        try {
+       /* try {
             stateBasedGame.getState(11).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();
-        }
+        }*/
         stateBasedGame.enterState(11, new FadeOutTransition(), new FadeInTransition());
     }
 

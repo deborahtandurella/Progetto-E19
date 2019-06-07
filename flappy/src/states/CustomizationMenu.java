@@ -61,11 +61,11 @@ public class CustomizationMenu extends BasicGameState {
     }
 
     public void goBack(){
-        try {
+       /* try {
             stateBasedGame.getState(1).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();
-        }
+        }*/
         stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
     }
 

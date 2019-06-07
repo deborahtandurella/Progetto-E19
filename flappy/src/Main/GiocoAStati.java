@@ -56,7 +56,7 @@ public class GiocoAStati extends StateBasedGame {
     }
 
     public static void main(String[] argv) {
-        System.setProperty("java.library.path", "natives" );
+     /*   System.setProperty("java.library.path", "natives" );
         System.setProperty("org.lwjgl.librarypath", new File("natives").getAbsolutePath());
         try{
             Field fieldSysPath = ClassLoader.class.getDeclaredField( "sys_paths" );
@@ -65,7 +65,7 @@ public class GiocoAStati extends StateBasedGame {
         } catch(Exception e){
             e.printStackTrace();
             System.exit(-1);
-        }
+        }*/
         try {
             AppGameContainer container = new AppGameContainer(new GiocoAStati());
             container.setSmoothDeltas(false);

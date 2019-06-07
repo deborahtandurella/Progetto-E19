@@ -76,11 +76,11 @@ public class ScoreBoardState extends BasicGameState implements ScoreInterface {
 
 
     public void backToMenu(){
-        try {
+       /* try {
             stateBasedGame.getState(1).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();
-        }
+        }*/
         stateBasedGame.enterState(1,new FadeOutTransition(),new FadeInTransition());
 
     }
@@ -88,8 +88,6 @@ public class ScoreBoardState extends BasicGameState implements ScoreInterface {
     public void deleteLeaderBoard() throws IOException, SlickException {
         scoreBoard.deleteScoreBoard();
         scoreBoardGUI = new ScoreBoardMenuGUI(container, screen, this);
-
-
     }
 
 }

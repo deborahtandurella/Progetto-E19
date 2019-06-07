@@ -66,6 +66,9 @@ public class ScoreBoard {
       } return s;
   }
 
+  public void setNewRecord(){
+    newRecord = false;
+  }
 
   public void deleteScoreBoard() throws IOException {
     currentRecord = 0;
