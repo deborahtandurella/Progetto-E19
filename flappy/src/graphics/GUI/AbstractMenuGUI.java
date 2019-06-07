@@ -16,12 +16,15 @@ public abstract class AbstractMenuGUI implements ComponentListener {
         this.buttons = new ArrayList<>();
     }
     public abstract void render() throws SlickException;
+
     public GameContainer getContainer() {
         return container;
     }
+
     void addButton(MouseOverArea button){
         buttons.add(button);
     }
+
     void renderButtons(){
         for(MouseOverArea button: buttons){
             button.render(container, container.getGraphics());
