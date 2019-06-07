@@ -40,13 +40,17 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
     public CustomizationMenuGUI(GameContainer container, Screen screen, CustomizationMenu state) throws SlickException, IOException, FontFormatException {
         super(container, screen);
         this.state = state;
+
         pergamena = new Image(PathHandler.getInstance().getPath(FileKeys.VARIOUS, PathKeys.RANKBACKGROUND)).getScaledCopy(container.getWidth()/100*86, container.getHeight()/100*30);
+        background = new Image(PathHandler.getInstance().getPath(FileKeys.VARIOUS, PathKeys.CUSTOMIZATION_BG)).getScaledCopy(screen.getWidth(), screen.getHeight());
+
         title = "CHOOSE YOUR THEME";
         Font font = new Font("Comic Sans MS", Font.BOLD, 27*getContainer().getWidth()/1000);
         versionFont = new UnicodeFont("res/font/FlappyBirdy.ttf", getContainer().getHeight()/100*25, false, false);
 
         int buttonHeight = container.getHeight()/9;
         int buttonWidth = container.getWidth()/9;
+
         uniFontMessage = new UnicodeFont(font);
         uniFontMessage.getEffects().add(new ColorEffect(java.awt.Color.LIGHT_GRAY));
         uniFontMessage.addAsciiGlyphs();
@@ -54,8 +58,6 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         versionFont.addAsciiGlyphs();
         versionFont.getEffects().add(new ColorEffect(java.awt.Color.BLACK));
         versionFont.loadGlyphs();
-        background = new Image("res/sprites/backgrounds/azz.png").getScaledCopy(screen.getWidth(), screen.getHeight());
-
 
         bordo = new Rectangle(0, 30*container.getHeight()/100f, 14*container.getWidth()/100f, 15*container.getHeight()/100f);
 

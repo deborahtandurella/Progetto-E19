@@ -32,5 +32,6 @@ public enum PathKeys {
     PLAYAGAINBUTTON,
     JOINBUTTON,
     HOSTBUTTON,
+    CUSTOMIZATION_BG,
     RANKBACKGROUND;
 }

@@ -14,11 +14,11 @@ import java.awt.Font;
 public class ScoreBoardMenuGUI extends AbstractMenuGUI {
 
     private ScoreInterface state;
+    private Image pergamena;
     private String scoreName;
     private String newRecord;
     private String points;
     private UnicodeFont uniFontMessage;
-    private Image pergamena;
     private UnicodeFont versionFont;
 
 

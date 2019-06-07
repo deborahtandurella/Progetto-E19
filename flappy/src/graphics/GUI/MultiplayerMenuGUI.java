@@ -19,11 +19,15 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
     private MultiplayerMenu state;
     private UnicodeFont uniFontMessage;
     private TextGUI ipField;
-    private TextGUI portField;
+    private TextGUI clientPortField;
+    private TextGUI hostPortField;
     private String ipString;
-    private String portString;
-    private String errorMessage;
-    private boolean error = false;
+    private String clientPortString;
+    private String hostPortString;
+    private String clientErrorMessage;
+    private String hostErrorMessage;
+    private boolean hostError = false;
+    private boolean clientError = false;
 
     public MultiplayerMenuGUI(GameContainer container, Screen screen, MultiplayerMenu state) throws SlickException {
         super(container, screen);
@@ -35,19 +39,20 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
         int buttonWidth = container.getWidth()/3;
 
         Image backImage = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.BACKTOMENUBUTTON1)).getScaledCopy(buttonWidth, buttonHeight);
-        backButton = new MouseOverArea(container, backImage, 65*container.getWidth()/100-buttonWidth, 90*container.getHeight()/100-2*buttonHeight, buttonWidth, buttonHeight, this);
-
         Image hostImage = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.HOSTBUTTON)).getScaledCopy(buttonWidth, buttonHeight);
-        hostButton = new MouseOverArea(container, hostImage, 85*container.getWidth()/100-buttonWidth, 60*container.getHeight()/100-2*buttonHeight, buttonWidth, buttonHeight, this);
-
         Image joinImage = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.JOINBUTTON)).getScaledCopy(buttonWidth, buttonHeight);
-        joinButton = new MouseOverArea(container, joinImage, 45*container.getWidth()/100-buttonWidth, 60*container.getHeight()/100-2*buttonHeight, buttonWidth, buttonHeight, this);
 
-        ipField = new TextGUI(28, 15, 40, 5);
+        hostButton = new MouseOverArea(container, hostImage, 50*(container.getWidth()-buttonWidth)/100, 66*container.getHeight()/100-2*buttonHeight, buttonWidth, buttonHeight, this);
+        joinButton = new MouseOverArea(container, joinImage, 50*(container.getWidth()-buttonWidth)/100, 42*container.getHeight()/100-2*buttonHeight, buttonWidth, buttonHeight, this);
+        backButton = new MouseOverArea(container, backImage, 50*(container.getWidth()-buttonWidth)/100, 90*container.getHeight()/100-2*buttonHeight, buttonWidth, buttonHeight, this);
+
+        ipField = new TextGUI(20, 15, 29, 5);
+        clientPortField = new TextGUI(20, 25,10, 5);
+        hostPortField = new TextGUI(20, 48, 10, 5);
+
         ipField.init(getContainer());
-
-        portField = new TextGUI(28, 25,20, 5);
-        portField.init(getContainer());
+        hostPortField.init(getContainer());
+        clientPortField.init(getContainer());
 
         addButton(backButton);
         addButton(hostButton);
@@ -55,26 +60,33 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
 
         uniFontMessage = new UnicodeFont(font);
         uniFontMessage.getEffects().add(new ColorEffect(java.awt.Color.black));
+        uniFontMessage.getEffects().add(new ColorEffect(java.awt.Color.red));
         uniFontMessage.addAsciiGlyphs();
         uniFontMessage.loadGlyphs();
 
         ipString = "IP Address";
-        portString ="Port";
+        clientPortString ="Port";
+        hostPortString = clientPortString;
     }
 
     @Override
     public void render() {
         renderButtons();
 
-        uniFontMessage.drawString(30*getContainer().getWidth() /100f, 9 * getContainer().getHeight() / 100f, ipString);
-        uniFontMessage.drawString(30*getContainer().getWidth() / 100f, 20 * getContainer().getHeight() / 100f, portString);
-        if (error) {
-            uniFontMessage.drawString(getContainer().getWidth() / 2f - uniFontMessage.getWidth(errorMessage) / 2f, 60 * getContainer().getHeight() / 100f, errorMessage, Color.red);
+        uniFontMessage.drawString(20 * getContainer().getWidth() /100f, 9 * getContainer().getHeight() / 100f, ipString, Color.black);
+        uniFontMessage.drawString(20 * getContainer().getWidth() / 100f, 20 * getContainer().getHeight() / 100f, clientPortString, Color.black);
+        uniFontMessage.drawString(20 * getContainer().getWidth() / 100f, 43 * getContainer().getHeight() / 100f, hostPortString, Color.black);
+        if (clientError){
+            uniFontMessage.drawString(44 * (getContainer().getWidth() - uniFontMessage.getWidth(clientErrorMessage)) / 100f, 33 * getContainer().getHeight() / 100f, clientErrorMessage, Color.red);
+        }
+        if(hostError){
+            uniFontMessage.drawString(34 * (getContainer().getWidth() - uniFontMessage.getWidth(hostErrorMessage)) / 100f, 57 * getContainer().getHeight() / 100f, hostErrorMessage, Color.red);
         }
 
         try {
             ipField.render(getContainer(), getContainer().getGraphics());
-            portField.render(getContainer(), getContainer().getGraphics());
+            clientPortField.render(getContainer(), getContainer().getGraphics());
+            hostPortField.render(getContainer(), getContainer().getGraphics());
         } catch (SlickException e) {
             e.printStackTrace();
         }
@@ -83,31 +95,37 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
     @Override
     public void componentActivated(AbstractComponent source) {
         if(source == hostButton) {
-            if (ipField.getString().equals("") || portField.getString().equals("")) {
-                error = true;
-                errorMessage = "Inserisci l'IP e la Port, stupido razzista celiaco";
+            if (hostPortField.getString().equals("")) {
+                hostError = true;
+                hostErrorMessage = "Inserisci la port, stupido host!";
             }  else {
-                state.host(Integer.parseInt(portField.getString()));
+                clientError = false;
+                hostError = false;
+                state.host(Integer.parseInt(hostPortField.getString()));
             }
         }
 
         if(source == joinButton) {
-            if (ipField.getString().equals("") || portField.getString().equals("")) {
-                error = true;
-                errorMessage = "Inserisci l'IP e la Port, stupido razzista celiaco";
+            if (ipField.getString().equals("") || clientPortField.getString().equals("")) {
+                clientError = true;
+                clientErrorMessage = "Inserisci l'IP e la Port, stupido rassista";
             }
             else {
-                state.join(ipField.getString(),Integer.parseInt(portField.getString()));
+                clientError = false;
+                hostError = false;
+                state.join(ipField.getString(),Integer.parseInt(clientPortField.getString()));
             }
         }
 
-        if (source == backButton)
+        if (source == backButton) {
+            clientError = false;
+            hostError = false;
             state.backToMenu();
+        }
     }
     public void update() throws SlickException {
         ipField.update();
-        portField.update();
+        clientPortField.update();
+        hostPortField.update();
     }
-
-
 }

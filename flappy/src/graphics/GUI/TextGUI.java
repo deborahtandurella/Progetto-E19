@@ -51,6 +51,6 @@ public class TextGUI {
 
 
     public String getString(){
-        return text.getText().toString();
+        return text.getText();
     }
 }

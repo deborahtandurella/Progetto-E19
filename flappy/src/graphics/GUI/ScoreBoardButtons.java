@@ -19,6 +19,7 @@ public class ScoreBoardButtons extends AbstractMenuGUI {
     public ScoreBoardButtons(GameContainer container, Screen screen, ScoreBoardState state) throws SlickException {
         super(container, screen);
         this.state=state;
+
         int buttonHeight = container.getHeight()/10;
         int buttonWidth = container.getWidth()/3;
 
@@ -30,7 +31,6 @@ public class ScoreBoardButtons extends AbstractMenuGUI {
 
         addButton(deleteButton);
         addButton(backButton);
-
     }
 
     public void render(){
@@ -41,6 +41,7 @@ public class ScoreBoardButtons extends AbstractMenuGUI {
     public void componentActivated(AbstractComponent source) {
         if (source == backButton)
             state.backToMenu();
+
         else if (source == deleteButton){
        try {
             state.deleteLeaderBoard();

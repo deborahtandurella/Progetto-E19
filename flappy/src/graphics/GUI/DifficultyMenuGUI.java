@@ -21,6 +21,7 @@ public class DifficultyMenuGUI extends AbstractMenuGUI {
     public DifficultyMenuGUI(GameContainer container, Screen screen, DifficultyMenu state) throws SlickException {
         super(container, screen);
         this.state = state;
+
         int buttonHeight = container.getHeight()/7;
         int buttonWidth = container.getWidth()/3;
 
