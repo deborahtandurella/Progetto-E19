@@ -4,9 +4,9 @@ import game.itemGeneration.obstacle.ObstacleGenerator;
 
 public class DifficultySettings {
     private double speed;
-    private ObstacleGenerator obstacleGenerator;
+    private ObstacleGeneratorType obstacleGenerator;
 
-    public DifficultySettings(double speed, ObstacleGenerator obstacleGenerator) {
+    public DifficultySettings(double speed, ObstacleGeneratorType obstacleGenerator) {
         this.speed = speed;
         this.obstacleGenerator = obstacleGenerator;
     }
@@ -15,7 +15,7 @@ public class DifficultySettings {
         return speed;
     }
 
-    public ObstacleGenerator getObstacleGenerator() {
+    public ObstacleGeneratorType getObstacleGenerator() {
         return obstacleGenerator;
     }
 }

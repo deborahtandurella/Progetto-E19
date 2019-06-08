@@ -7,11 +7,14 @@ import entityComponent.implementations.items.heart.HeartLogicComponent;
 import entityComponent.implementations.obstacles.ObstacleLogicComponent;
 import game.gameEvents.GameEventDispatcher;
 import game.gameEvents.GameEventType;
+import game.itemGeneration.heart.HeartGenerator;
 import game.itemGeneration.heart.HeartListener;
 import game.itemGeneration.obstacle.ObstacleGenerator;
+import game.itemGeneration.obstacle.ObstacleGeneratorFactory;
 import game.itemGeneration.obstacle.ObstacleListener;
 import graphics.Canvas;
 import logic.SinglePlayer.Player;
+import logic.gameElements.Heart;
 
 import java.util.ArrayList;
 
@@ -24,17 +27,22 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
     private Canvas canvas;
     private double gameSpeed;
     private ObstacleGenerator obstacleGenerator;
+    private HeartGenerator heartGenerator;
 
     public LocalGame(Canvas canvas, DifficultySettings settings) {
         this.canvas = canvas;
         this.gameSpeed = settings.getSpeed();
-        this.obstacleGenerator = settings.getObstacleGenerator();
+        this.obstacleGenerator = ObstacleGeneratorFactory.makeObstacleGenerator(settings.getObstacleGenerator(), canvas);
+        obstacleGenerator.addListener(this);
+        this.heartGenerator = new HeartGenerator(canvas);
+        heartGenerator.addListener(this);
     }
 
     private void addEntity(Entity entity){
         entities.add(entity);
     }
     public void update(int delta){
+        delta*=gameSpeed;
         updateEntities(delta);
         checkCollisions();
         checkScore();
@@ -130,11 +138,15 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
 
     @Override
     public void onHeartGenerated(Entity heart) {
+        addEntity(heart);
+        hearts.add((HeartLogicComponent) heart.getLogicComponent());
 
     }
 
     @Override
     public void onObstacleGenerated(Entity obstacle) {
+        addEntity(obstacle);
+        obstacles.add((ObstacleLogicComponent) obstacle.getLogicComponent());
 
     }
 }
