@@ -34,5 +34,6 @@ public enum PathKeys {
     HOSTBUTTON,
     CUSTOMIZATION_BG,
     RANKBACKGROUND,
+    LOADINGSHEET,
     BUTTON_BG;
 }

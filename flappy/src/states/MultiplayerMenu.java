@@ -3,6 +3,7 @@ package states;
 import graphics.GUI.MultiplayerMenuGUI;
 import graphics.Screen;
 import graphics.SpriteDrawer;
+import logic.SinglePlayer.Player;
 import network.Client;
 import network.Server;
 import org.newdawn.slick.GameContainer;
@@ -69,23 +70,14 @@ public class MultiplayerMenu extends BasicGameState {
     }
 
     public void join(String ip,int port){
-        Thread thread = new Thread(new Runnable(){
-            @Override
-            public void run() {
-                socketClient.SetConnection(ip,port);
-            }
-        });
-        thread.start();
+        MultiplayerLoading.setIp(ip);
+        MultiplayerLoading.setPort(port);
+        stateBasedGame.enterState(6,new FadeOutTransition(),new FadeInTransition());
     }
 
     public void host(int port){
-        Thread thread = new Thread(new Runnable(){
-            @Override
-            public void run() {
-                socketServer.SetConnection(port);
-            }
-        });
-        thread.start();
+        MultiplayerLoading.setPort(port);
+        stateBasedGame.enterState(6,new FadeOutTransition(),new FadeInTransition());
     }
 
     @Override

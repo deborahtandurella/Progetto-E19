@@ -1,5 +1,7 @@
 package states;
 
+import graphics.GUI.MultiplayerLoadingGUI;
+import graphics.Screen;
 import network.Client;
 import network.Server;
 import org.newdawn.slick.GameContainer;
@@ -12,6 +14,16 @@ import org.newdawn.slick.state.StateBasedGame;
 public class MultiplayerLoading extends BasicGameState {
     private static final int ID = 6;
 
+    private GameContainer container;
+    private StateBasedGame stateBasedGame;
+    private Screen screen;
+    private MultiplayerLoadingGUI gui;
+
+    private static int port;
+    private static String ip;
+
+    private Client socketClient = new Client();
+    private Server socketServer = new Server();
 
     @Override
     public int getID() {
@@ -19,13 +31,27 @@ public class MultiplayerLoading extends BasicGameState {
     }
 
     @Override
-    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
+    public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+        super.enter(container, game);
+        if(ip==""){
+            host(port);
+        }else{
+            join(ip,port);
+        }
+    }
 
+    @Override
+    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
+        this.container= gameContainer;
+        this.stateBasedGame= stateBasedGame;
+        screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
+        gui = new MultiplayerLoadingGUI(container,screen,this);
+        ip = "";
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
-
+        gui.render();
     }
 
     @Override
@@ -39,5 +65,33 @@ public class MultiplayerLoading extends BasicGameState {
 
         }
 
+    }
+
+    public void join(String ip,int port){
+        Thread thread = new Thread(new Runnable(){
+            @Override
+            public void run() {
+                socketClient.SetConnection(ip,port);
+            }
+        });
+        thread.start();
+    }
+
+    public void host(int port){
+        Thread thread = new Thread(new Runnable(){
+            @Override
+            public void run() {
+                socketServer.SetConnection(port);
+            }
+        });
+        thread.start();
+    }
+
+    public static void setPort(int port) {
+        MultiplayerLoading.port = port;
+    }
+
+    public static void setIp(String ip) {
+        MultiplayerLoading.ip = ip;
     }
 }

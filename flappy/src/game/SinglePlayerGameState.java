@@ -31,8 +31,8 @@ public class SinglePlayerGameState extends BasicGameState {
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         this.game =new LocalGame(canvas, settings);
         this.game.addListener(soundPlayer);
-    }
 
+    }
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         game.render();
