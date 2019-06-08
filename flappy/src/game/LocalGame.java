@@ -7,18 +7,29 @@ import entityComponent.implementations.items.heart.HeartLogicComponent;
 import entityComponent.implementations.obstacles.ObstacleLogicComponent;
 import game.gameEvents.GameEventDispatcher;
 import game.gameEvents.GameEventType;
+import game.itemGeneration.heart.HeartListener;
+import game.itemGeneration.obstacle.ObstacleGenerator;
+import game.itemGeneration.obstacle.ObstacleListener;
 import graphics.Canvas;
 import logic.SinglePlayer.Player;
 
 import java.util.ArrayList;
 
-public class LocalGame extends GameEventDispatcher {
+public class LocalGame extends GameEventDispatcher implements HeartListener, ObstacleListener {
     private ArrayList<Entity> entities;
     private ArrayList<ObstacleLogicComponent> obstacles;
     private ArrayList<HeartLogicComponent> hearts;
     private BirdLogicComponent bird;
     private Player player;
     private Canvas canvas;
+    private double gameSpeed;
+    private ObstacleGenerator obstacleGenerator;
+
+    public LocalGame(Canvas canvas, DifficultySettings settings) {
+        this.canvas = canvas;
+        this.gameSpeed = settings.getSpeed();
+        this.obstacleGenerator = settings.getObstacleGenerator();
+    }
 
     private void addEntity(Entity entity){
         entities.add(entity);
@@ -114,6 +125,16 @@ public class LocalGame extends GameEventDispatcher {
     }
     private void gameover(){
         notifyEvent(GameEventType.GAMEOVER);
+
+    }
+
+    @Override
+    public void onHeartGenerated(Entity heart) {
+
+    }
+
+    @Override
+    public void onObstacleGenerated(Entity obstacle) {
 
     }
 }
