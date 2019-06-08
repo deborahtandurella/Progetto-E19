@@ -113,11 +113,9 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
             try {
                 name = "Batman";
                 buttonBgX = batmanButton.getX()-10*buttonWidth/100;
-                PathHandler.getInstance().changeSprites(FileKeys.BATMAN);
-                state.initStates();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (SlickException e) {
+                state.changeSprites(FileKeys.BATMAN);
+                background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND)).getScaledCopy(getContainer().getWidth(), getContainer().getHeight());
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -135,11 +133,9 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
                     }
                 }
                 )).start(); */
-
                 try {
-                    PathHandler.getInstance().changeSprites(FileKeys.DOGO);
+                    state.changeSprites(FileKeys.DOGO);
                     background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND)).getScaledCopy(getContainer().getWidth(), getContainer().getHeight());
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -150,11 +146,9 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
             try {
                 name = "Classic";
                 buttonBgX = classicButton.getX()-10*buttonWidth/100;
-                PathHandler.getInstance().changeSprites(FileKeys.CLASSIC);
-                state.initStates();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (SlickException e) {
+                state.changeSprites(FileKeys.CLASSIC);
+                background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND)).getScaledCopy(getContainer().getWidth(), getContainer().getHeight());
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -162,11 +156,9 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
             try {
                 name = "Sea";
                 buttonBgX = seaButton.getX()-10*buttonWidth/100;
-                PathHandler.getInstance().changeSprites(FileKeys.SEA);
-                state.initStates();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (SlickException e) {
+                state.changeSprites(FileKeys.SEA);
+                background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND)).getScaledCopy(getContainer().getWidth(), getContainer().getHeight());
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -174,13 +166,18 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
             try {
                 name = "Sky";
                 buttonBgX = skyButton.getX()-10*buttonWidth/100;
-                PathHandler.getInstance().changeSprites(FileKeys.SKY);
-                state.initStates();
-            } catch (IOException | SlickException e) {
+                state.changeSprites(FileKeys.SKY);
+                background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND)).getScaledCopy(getContainer().getWidth(), getContainer().getHeight());
+            } catch (Exception e){
                 e.printStackTrace();
             }
         }
         if(source == returnButton){
+            try {
+                state.initStates();
+            } catch (SlickException e) {
+                e.printStackTrace();
+            }
             state.goBack();
         }
     }

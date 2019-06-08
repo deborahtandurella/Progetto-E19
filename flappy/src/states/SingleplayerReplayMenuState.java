@@ -60,7 +60,6 @@ public class SingleplayerReplayMenuState extends BasicGameState implements Score
     public void keyPressed(int key, char c){
         if( key == Input.KEY_ESCAPE){
             System.exit(0);
-
         }
     }
     public void rematch(){
@@ -72,11 +71,11 @@ public class SingleplayerReplayMenuState extends BasicGameState implements Score
         stateBasedGame.enterState(3,new FadeOutTransition(),new FadeInTransition());
     }
     public void noRematch(){
-     /*   try {
+        try {
             stateBasedGame.getState(1).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();
-        }*/
+        }
         stateBasedGame.enterState(1,new FadeOutTransition(),new FadeInTransition());
 
     }

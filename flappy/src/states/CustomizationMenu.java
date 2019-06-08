@@ -3,6 +3,7 @@ package states;
 import graphics.GUI.CustomizationMenuGUI;
 import graphics.Screen;
 import graphics.SpriteDrawer;
+import org.lwjgl.opengl.GLContext;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -11,7 +12,9 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
-
+import resources.FileKeys;
+import resources.PathHandler;
+import resources.PathKeys;
 import java.awt.*;
 import java.io.IOException;
 
@@ -76,12 +79,16 @@ public class CustomizationMenu extends BasicGameState {
         stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
     }
 
+    public void changeSprites(FileKeys fileKey) throws IOException, SlickException {
+        PathHandler.getInstance().changeSprites(fileKey);
+    }
+
     public void initStates() throws SlickException {
-        initializerThread = new Thread(new Runnable(){
+       /* initializerThread = new Thread(new Runnable(){
 
             @Override
             public void run() {
-                try{
+                try{*/
                     stateBasedGame.getState(0).init(container,stateBasedGame);
                     stateBasedGame.getState(1).init(container,stateBasedGame);
                     stateBasedGame.getState(2).init(container,stateBasedGame);
@@ -92,13 +99,12 @@ public class CustomizationMenu extends BasicGameState {
                     stateBasedGame.getState(7).init(container,stateBasedGame);
                     stateBasedGame.getState(8).init(container,stateBasedGame);
                     stateBasedGame.getState(9).init(container,stateBasedGame);
-                } catch (SlickException e ){
+              /*  } catch (SlickException e ){
                     e.printStackTrace();
                 }
             }
         });
         initializerThread.start();
-
     }
 
     @Override
@@ -109,5 +115,7 @@ public class CustomizationMenu extends BasicGameState {
         } catch (InterruptedException e ){
             e.printStackTrace();
         }
+        i thread non funzionano, eseguiamo in serie
+        */
     }
 }
