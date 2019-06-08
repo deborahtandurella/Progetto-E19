@@ -4,10 +4,11 @@ import entityComponent.implementations.obstacles.ObstacleLogicComponent;
 import org.newdawn.slick.geom.Rectangle;
 
 import static logic.gameConstants.GameConstants.ROCKET_SIZE;
+import static logic.gameConstants.GameConstants.ROCKET_SPEED;
 
 public class RocketLogicComponent extends ObstacleLogicComponent {
-    public RocketLogicComponent(double x, double y, double speedX) {
-        super(x, y, speedX, 0);
+    public RocketLogicComponent(double x, double y) {
+        super(x, y, ROCKET_SPEED, 0);
         addHitboxShape(new Rectangle( (float)(x+ROCKET_SIZE/8), (float)(y+ROCKET_SIZE/5), (float) (ROCKET_SIZE/8), (float)(ROCKET_SIZE/5)) );
 
     }

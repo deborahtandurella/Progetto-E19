@@ -1,6 +1,7 @@
 package entityComponent.implementations.obstacles.pipes;
 
 import entityComponent.components.gameElements.GameElementGraphicComponent;
+import graphics.Canvas;
 import graphics.Screen;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -15,8 +16,8 @@ import static logic.gameConstants.GameConstants.PIPE_WIDTH;
 public class PipeGraphicComponent extends GameElementGraphicComponent {
     private Image upperPipeImage;
     private Image lowerPipeImage;
-    public PipeGraphicComponent(Graphics graphics, Screen screen) {
-        super(graphics, screen);
+    public PipeGraphicComponent(Canvas canvas) {
+        super(canvas);
         try{
             lowerPipeImage = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES,PathKeys.PIPE));
             upperPipeImage= lowerPipeImage.getFlippedCopy(false, true);
@@ -28,12 +29,12 @@ public class PipeGraphicComponent extends GameElementGraphicComponent {
 
     @Override
     public void render() {
-        getScreen().drawImage(upperPipeImage,
+        getCanvas().drawImage(upperPipeImage,
                 (float) getLogicComponent().getX(),
                 (float) (getLogicComponent().getY() - PIPE_HEIGHT - 0.5*PIPE_FREE_SPACE),
                 (float) PIPE_WIDTH,
                 (float) PIPE_HEIGHT);
-        getScreen().drawImage(lowerPipeImage,
+        getCanvas().drawImage(lowerPipeImage,
                 (float) getLogicComponent().getX(),
                 (float) (getLogicComponent().getY() + 0.5*PIPE_FREE_SPACE),
                 (float) PIPE_WIDTH,

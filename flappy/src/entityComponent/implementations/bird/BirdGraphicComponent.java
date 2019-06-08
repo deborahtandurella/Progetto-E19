@@ -1,6 +1,7 @@
 package entityComponent.implementations.bird;
 
 import entityComponent.components.gameElements.GameElementGraphicComponent;
+import graphics.Canvas;
 import graphics.Screen;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -15,10 +16,10 @@ public class BirdGraphicComponent extends GameElementGraphicComponent
 {
     private Image birdImage;
 
-    public BirdGraphicComponent(Graphics graphics, Screen screen) {
-        super(graphics, screen);
+    public BirdGraphicComponent(Canvas canvas) {
+        super(canvas);
         try {
-            birdImage = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BIRD)).getScaledCopy((int) (BIRD_WIDTH * screen.getWidth()), (int) (BIRD_HEIGHT * screen.getHeight()));
+            birdImage = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BIRD));
         } catch (SlickException e){
             e.printStackTrace();
         }
@@ -27,7 +28,7 @@ public class BirdGraphicComponent extends GameElementGraphicComponent
     @Override
     public void render() {
         float angle = (float) (180*Math.atan2(getLogicComponent().getSpeedY(), JUMP_SPEED)/Math.PI);
-        getScreen().drawRotatedImage(birdImage,
+        getCanvas().drawRotatedImage(birdImage,
                 (float) getLogicComponent().getX(),
                 (float) getLogicComponent().getY(),
                 (float) BIRD_WIDTH,

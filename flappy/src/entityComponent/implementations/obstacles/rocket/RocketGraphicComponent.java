@@ -1,6 +1,7 @@
 package entityComponent.implementations.obstacles.rocket;
 
 import entityComponent.components.gameElements.GameElementGraphicComponent;
+import graphics.Canvas;
 import graphics.Screen;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -14,8 +15,8 @@ public class RocketGraphicComponent extends GameElementGraphicComponent
 {
     private Image rocketImage;
 
-    public RocketGraphicComponent(Graphics graphics, Screen screen) {
-        super(graphics, screen);
+    public RocketGraphicComponent(Canvas canvas) {
+        super(canvas);
         try {
             rocketImage = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES,PathKeys.ROCKET));
         } catch (Exception e){
@@ -25,7 +26,7 @@ public class RocketGraphicComponent extends GameElementGraphicComponent
 
     @Override
     public void render() {
-        getScreen().drawImage(rocketImage,
+        getCanvas().drawImage(rocketImage,
                 (float) getLogicComponent().getX(),
                 (float) getLogicComponent().getY(),
                 (float) ROCKET_SIZE,

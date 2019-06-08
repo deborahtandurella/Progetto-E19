@@ -5,7 +5,7 @@ import entityComponent.components.gameElements.GameElementGraphicComponent;
 import entityComponent.components.gameElements.GameElementLogicComponent;
 
 public class HeartEntity extends GameElementEntity {
-    public HeartEntity(GameElementLogicComponent logicComponent, GameElementGraphicComponent graphicComponent) {
+    public HeartEntity(HeartLogicComponent logicComponent, HeartGraphicComponent graphicComponent) {
         super(logicComponent, graphicComponent);
     }
 }

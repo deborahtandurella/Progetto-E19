@@ -7,8 +7,8 @@ import java.util.Random;
 
 public class MovingPipeLogicComponent extends PipeLogicComponent {
 
-    public MovingPipeLogicComponent(double x, double centerY, double speedX) {
-        super(x, centerY, speedX);
+    public MovingPipeLogicComponent(double x, double centerY) {
+        super(x, centerY);
         Random random = new Random();
         if(random.nextBoolean()){
             setSpeedY(-getSpeedY());

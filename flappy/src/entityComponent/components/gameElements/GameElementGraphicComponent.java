@@ -1,18 +1,18 @@
 package entityComponent.components.gameElements;
 
 import entityComponent.components.GraphicComponent;
+import graphics.Canvas;
 import graphics.Screen;
 import org.newdawn.slick.Graphics;
 
 public abstract class GameElementGraphicComponent implements GraphicComponent {
     private GameElementLogicComponent logicComponent;
-    private Graphics graphics;
-    private Screen screen;
+
+    private Canvas canvas;
     @Override
     abstract public void render();
-    public GameElementGraphicComponent(Graphics graphics, Screen screen) {
-        this.graphics= graphics;
-        this.screen=screen;
+    public GameElementGraphicComponent(Canvas canvas) {
+        this.canvas=canvas;
     }
 
     public void setLogicComponent(GameElementLogicComponent logicComponent) {
@@ -23,11 +23,11 @@ public abstract class GameElementGraphicComponent implements GraphicComponent {
         return logicComponent;
     }
 
-    public Graphics getGraphics() {
-        return graphics;
+    public Canvas getCanvas() {
+        return canvas;
     }
 
-    public Screen getScreen() {
-        return screen;
+    public void setCanvas(Canvas canvas) {
+        this.canvas = canvas;
     }
 }

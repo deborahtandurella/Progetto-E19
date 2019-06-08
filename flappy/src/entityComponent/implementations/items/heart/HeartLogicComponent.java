@@ -4,10 +4,11 @@ import entityComponent.implementations.items.ItemLogicComponent;
 import org.newdawn.slick.geom.Ellipse;
 
 import static logic.gameConstants.GameConstants.HEART_SIZE;
+import static logic.gameConstants.GameConstants.PIPE_SPEED;
 
 public class HeartLogicComponent extends ItemLogicComponent {
-    public HeartLogicComponent(double x, double y, double speedX, double speedY) {
-        super(x, y, speedX, speedY);
+    public HeartLogicComponent(double x, double y) {
+        super(x, y, PIPE_SPEED, 0);
         addHitboxShape(new Ellipse( (float)(x+HEART_SIZE/2), (float)(y+HEART_SIZE/2), (float) (HEART_SIZE/2), (float)(HEART_SIZE/2)));
     }
 
