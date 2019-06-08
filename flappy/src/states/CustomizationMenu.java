@@ -22,6 +22,7 @@ public class CustomizationMenu extends BasicGameState {
     private CustomizationMenuGUI gui;
     private Screen screen;
     private SpriteDrawer drawer;
+    private Thread initializerThread;
 
     @Override
     public int getID() {
@@ -66,19 +67,47 @@ public class CustomizationMenu extends BasicGameState {
         } catch (SlickException e) {
             e.printStackTrace();
         }*/
+        try {
+            initStates();
+        } catch (Exception e ){
+            e.printStackTrace();
+        }
+
         stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
     }
 
     public void initStates() throws SlickException {
-        stateBasedGame.getState(0).init(container,stateBasedGame);
-        stateBasedGame.getState(1).init(container,stateBasedGame);
-        stateBasedGame.getState(2).init(container,stateBasedGame);
-        stateBasedGame.getState(3).init(container,stateBasedGame);
-        stateBasedGame.getState(4).init(container,stateBasedGame);
-        stateBasedGame.getState(5).init(container,stateBasedGame);
-        stateBasedGame.getState(6).init(container,stateBasedGame);
-        stateBasedGame.getState(7).init(container,stateBasedGame);
-        stateBasedGame.getState(8).init(container,stateBasedGame);
-        stateBasedGame.getState(9).init(container,stateBasedGame);
+        initializerThread = new Thread(new Runnable(){
+
+            @Override
+            public void run() {
+                try{
+                    stateBasedGame.getState(0).init(container,stateBasedGame);
+                    stateBasedGame.getState(1).init(container,stateBasedGame);
+                    stateBasedGame.getState(2).init(container,stateBasedGame);
+                    stateBasedGame.getState(3).init(container,stateBasedGame);
+                    stateBasedGame.getState(4).init(container,stateBasedGame);
+                    stateBasedGame.getState(5).init(container,stateBasedGame);
+                    stateBasedGame.getState(6).init(container,stateBasedGame);
+                    stateBasedGame.getState(7).init(container,stateBasedGame);
+                    stateBasedGame.getState(8).init(container,stateBasedGame);
+                    stateBasedGame.getState(9).init(container,stateBasedGame);
+                } catch (SlickException e ){
+                    e.printStackTrace();
+                }
+            }
+        });
+        initializerThread.start();
+
+    }
+
+    @Override
+    public void leave(GameContainer container, StateBasedGame game) throws SlickException {
+        super.leave(container, game);
+        try {
+            initializerThread.join();
+        } catch (InterruptedException e ){
+            e.printStackTrace();
+        }
     }
 }

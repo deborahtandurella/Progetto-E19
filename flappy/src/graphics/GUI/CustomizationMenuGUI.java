@@ -122,16 +122,29 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
             }
         }
         if(source == dogoButton){
-            try {
+
                 name = "Dogo";
                 buttonBgX = dogoButton.getX()-10*buttonWidth/100;
-                PathHandler.getInstance().changeSprites(FileKeys.DOGO);
-                state.initStates();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (SlickException e) {
-                e.printStackTrace();
-            }
+ /*               (new Thread( new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                        }catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                )).start(); */
+
+                try {
+                    PathHandler.getInstance().changeSprites(FileKeys.DOGO);
+                    background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND)).getScaledCopy(getContainer().getWidth(), getContainer().getHeight());
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
         }
         if(source == classicButton){
             try {
@@ -163,9 +176,7 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
                 buttonBgX = skyButton.getX()-10*buttonWidth/100;
                 PathHandler.getInstance().changeSprites(FileKeys.SKY);
                 state.initStates();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (SlickException e) {
+            } catch (IOException | SlickException e) {
                 e.printStackTrace();
             }
         }
@@ -173,4 +184,5 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
             state.goBack();
         }
     }
+
 }
