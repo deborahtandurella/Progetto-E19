@@ -7,6 +7,7 @@ import entityComponent.implementations.items.heart.HeartLogicComponent;
 import entityComponent.implementations.obstacles.ObstacleLogicComponent;
 import game.gameEvents.GameEventDispatcher;
 import game.gameEvents.GameEventType;
+import graphics.Canvas;
 import logic.SinglePlayer.Player;
 
 import java.util.ArrayList;
@@ -17,15 +18,16 @@ public class LocalGame extends GameEventDispatcher {
     private ArrayList<HeartLogicComponent> hearts;
     private BirdLogicComponent bird;
     private Player player;
+    private Canvas canvas;
 
     private void addEntity(Entity entity){
+        entities.add(entity);
     }
     public void update(int delta){
         updateEntities(delta);
         checkCollisions();
         checkScore();
         checkOutOfBounds();
-
     }
     public void render(){
         renderEntities();
@@ -70,9 +72,7 @@ public class LocalGame extends GameEventDispatcher {
         decreaseLife();
         if(obstacle.destroyOnHit())
             removeObstacle(obstacle);
-        if(obstacle.isPeriodic()){
 
-        }
     }
     private void checkHeartCollisions(){
         for(HeartLogicComponent heart: hearts){
