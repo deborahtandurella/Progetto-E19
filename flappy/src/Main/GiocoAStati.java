@@ -1,6 +1,10 @@
 package Main;
 
 import GameScore.ScoreBoard;
+import com.sun.scenario.Settings;
+import game.DifficultySettings;
+import game.ObstacleGeneratorType;
+import game.itemGeneration.obstacle.NormalObstacleGenerator;
 import logic.SinglePlayer.Record;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
@@ -34,6 +38,7 @@ public class GiocoAStati extends StateBasedGame {
     @Override
     public void initStatesList(GameContainer gameContainer)  {
         Record record = new Record();
+        DifficultySettings settings = new DifficultySettings(1, ObstacleGeneratorType.MEDIUM);
         try {
             ScoreBoard scoreBoard = new ScoreBoard();
             this.addState(new Login(record));
