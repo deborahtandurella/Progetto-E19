@@ -1,7 +1,6 @@
 package game.itemGeneration.obstacle;
 
 import entityComponent.Entity;
-import game.itemGeneration.ObstacleListener;
 import graphics.Canvas;
 
 import java.util.ArrayList;
