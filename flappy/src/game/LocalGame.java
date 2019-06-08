@@ -33,9 +33,11 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
         this.canvas = canvas;
         this.gameSpeed = settings.getSpeed();
         this.obstacleGenerator = ObstacleGeneratorFactory.makeObstacleGenerator(settings.getObstacleGenerator(), canvas);
-        obstacleGenerator.addListener(this);
         this.heartGenerator = new HeartGenerator(canvas);
+        obstacleGenerator.addListener(this);
+        obstacleGenerator.addListener(heartGenerator);
         heartGenerator.addListener(this);
+
     }
 
     private void addEntity(Entity entity){
@@ -44,9 +46,12 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
     public void update(int delta){
         delta*=gameSpeed;
         updateEntities(delta);
-        checkCollisions();
-        checkScore();
-        checkOutOfBounds();
+        obstacleGenerator.update(delta);
+        if (!bird.isImmune()){
+            checkCollisions();
+            checkScore();
+            checkOutOfBounds();
+        }
     }
     public void render(){
         renderEntities();
@@ -87,6 +92,7 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
         }
     }
     private void obstacleCollision(ObstacleLogicComponent obstacle){
+        bird.acquireImmunity();
         notifyEvent(GameEventType.COLLISION);
         decreaseLife();
         if(obstacle.destroyOnHit())

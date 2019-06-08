@@ -28,6 +28,11 @@ public class BirdGraphicComponent extends GameElementGraphicComponent
     @Override
     public void render() {
         float angle = (float) (180*Math.atan2(getLogicComponent().getSpeedY(), JUMP_SPEED)/Math.PI);
+        if( ((BirdLogicComponent) getLogicComponent()).isImmune())
+            birdImage.setAlpha(0.7f);
+        else
+            birdImage.setAlpha(1);
+
         getCanvas().drawRotatedImage(birdImage,
                 (float) getLogicComponent().getX(),
                 (float) getLogicComponent().getY(),
@@ -35,5 +40,6 @@ public class BirdGraphicComponent extends GameElementGraphicComponent
                 (float) BIRD_HEIGHT,
                 angle);
     }
+
 }
 
