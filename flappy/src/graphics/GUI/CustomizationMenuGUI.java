@@ -44,7 +44,7 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         this.state = state;
 
         pergamena = new Image(PathHandler.getInstance().getPath(FileKeys.VARIOUS, PathKeys.RANKBACKGROUND)).getScaledCopy(container.getWidth()/100*86, container.getHeight()/100*30);
-        background = new Image(PathHandler.getInstance().getPath(FileKeys.VARIOUS, PathKeys.CUSTOMIZATION_BG)).getScaledCopy(screen.getWidth(), screen.getHeight());
+        background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND)).getScaledCopy(screen.getWidth(), screen.getHeight());
 
         title = "CHOOSE YOUR THEME";
         Font font = new Font("Comic Sans MS", Font.BOLD, 27*getContainer().getWidth()/1000);
