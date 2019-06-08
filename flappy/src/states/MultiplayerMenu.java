@@ -1,5 +1,6 @@
 package states;
 
+import graphics.GUI.MultiplayerLoadingGUI;
 import graphics.GUI.MultiplayerMenuGUI;
 import graphics.Screen;
 import graphics.SpriteDrawer;
@@ -24,8 +25,7 @@ public class MultiplayerMenu extends BasicGameState {
     private SpriteDrawer drawer;
     private Client socketClient = new Client();
     private Server socketServer = new Server();
-
-
+    private boolean initialized = false;
     @Override
     public int getID() {
         return ID;
@@ -35,7 +35,10 @@ public class MultiplayerMenu extends BasicGameState {
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.container= gameContainer;
         this.stateBasedGame= stateBasedGame;
-        gui = new MultiplayerMenuGUI(container, screen, this);
+        if (!initialized){
+            gui = new MultiplayerMenuGUI(container, screen, this);
+            initialized=true;
+        }
         drawer = new SpriteDrawer(new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0));
         screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
 
