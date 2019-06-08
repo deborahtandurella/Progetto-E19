@@ -33,7 +33,7 @@ public class MultiplayerLoading extends BasicGameState {
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         super.enter(container, game);
-        if(ip==""){
+        if(ip.equals("")){
             host(port);
         }else{
             join(ip,port);
