@@ -1,5 +1,7 @@
 package game;
 
+import graphics.Canvas;
+import graphics.Screen;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -10,6 +12,9 @@ import org.newdawn.slick.state.StateBasedGame;
 public class SinglePlayerGameState extends BasicGameState {
     private LocalGame game;
     private SoundPlayer soundPlayer;
+    private Canvas canvas;
+    private DifficultySettings settings;
+
     @Override
     public int getID() {
         return 0;
@@ -18,11 +23,13 @@ public class SinglePlayerGameState extends BasicGameState {
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         soundPlayer=new SoundPlayer();
+        canvas = new Canvas( new Screen(gameContainer.getWidth()/2, gameContainer.getHeight(), gameContainer.getWidth()/4, 0 ),
+                gameContainer.getGraphics());
     }
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-        this.game =new LocalGame();
+        this.game =new LocalGame(canvas, settings);
         this.game.addListener(soundPlayer);
     }
 
