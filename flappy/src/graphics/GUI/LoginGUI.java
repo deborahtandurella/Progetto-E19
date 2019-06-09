@@ -43,12 +43,20 @@ public class LoginGUI extends AbstractMenuGUI {
         nameField = new TextField(container, ttf, container.getWidth() / 2 - container.getWidth() / 6, 40 * getContainer().getHeight() / 100, container.getWidth()/3, buttonHeight/2);
         nameField.setBackgroundColor(Color.white);
         nameField.setTextColor(Color.black);
+        deactivate();
         nameString = "INSERISCI IL NICKNAME";
 
         uniFontMessage = new UnicodeFont(font);
         uniFontMessage.getEffects().add(new ColorEffect(java.awt.Color.white));
         uniFontMessage.addAsciiGlyphs();
         uniFontMessage.loadGlyphs();
+    }
+    public void activate(){
+        nameField.setConsumeEvents(true);
+    }
+    public void deactivate(){
+        nameField.setConsumeEvents(false);
+
     }
 
     @Override

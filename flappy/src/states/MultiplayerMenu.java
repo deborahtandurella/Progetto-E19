@@ -55,6 +55,11 @@ public class MultiplayerMenu extends BasicGameState {
         gui.update();
     }
 
+    @Override
+    public void leave(GameContainer container, StateBasedGame game) throws SlickException {
+        super.leave(container, game);
+        gui.deactivate();
+    }
     public void keyPressed(int key, char c){
         if( key == Input.KEY_ESCAPE){
             System.exit(0);
@@ -86,6 +91,8 @@ public class MultiplayerMenu extends BasicGameState {
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         super.enter(container, game);
+        gui.activate();
+
 
     }
 }
