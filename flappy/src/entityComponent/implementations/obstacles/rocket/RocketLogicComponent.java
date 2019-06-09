@@ -8,7 +8,7 @@ import static logic.gameConstants.GameConstants.ROCKET_SPEED;
 
 public class RocketLogicComponent extends ObstacleLogicComponent {
     public RocketLogicComponent(double x, double y) {
-        super(x, y, ROCKET_SPEED, 0);
+        super(x, y, -ROCKET_SPEED, 0);
         addHitboxShape(new Rectangle( (float)(x+ROCKET_SIZE/8), (float)(y+ROCKET_SIZE/5), (float) (ROCKET_SIZE/8), (float)(ROCKET_SIZE/5)) );
 
     }
