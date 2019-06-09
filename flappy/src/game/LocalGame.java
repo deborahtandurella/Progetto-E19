@@ -1,6 +1,7 @@
 package game;
 
 import entityComponent.Entity;
+import entityComponent.EntityFactory;
 import entityComponent.components.LogicComponent;
 import entityComponent.implementations.bird.BirdLogicComponent;
 import entityComponent.implementations.items.heart.HeartLogicComponent;
@@ -15,28 +16,48 @@ import game.itemGeneration.obstacle.ObstacleListener;
 import graphics.Canvas;
 import logic.SinglePlayer.Player;
 import logic.gameElements.Heart;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Shape;
+import resources.FileKeys;
+import resources.PathHandler;
+import resources.PathKeys;
 
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class LocalGame extends GameEventDispatcher implements HeartListener, ObstacleListener {
-    private ArrayList<Entity> entities;
-    private ArrayList<ObstacleLogicComponent> obstacles;
-    private ArrayList<HeartLogicComponent> hearts;
+    private CopyOnWriteArrayList<Entity> entities;
+    private CopyOnWriteArrayList<ObstacleLogicComponent> obstacles;
+    private CopyOnWriteArrayList<HeartLogicComponent> hearts;
     private BirdLogicComponent bird;
     private Player player;
     private Canvas canvas;
     private double gameSpeed;
     private ObstacleGenerator obstacleGenerator;
     private HeartGenerator heartGenerator;
+    private Image background;
 
     public LocalGame(Canvas canvas, DifficultySettings settings) {
         this.canvas = canvas;
         this.gameSpeed = settings.getSpeed();
         this.obstacleGenerator = ObstacleGeneratorFactory.makeObstacleGenerator(settings.getObstacleGenerator(), canvas);
         this.heartGenerator = new HeartGenerator(canvas);
+        entities=new CopyOnWriteArrayList<>();
+        hearts= new CopyOnWriteArrayList<>();
+        obstacles= new CopyOnWriteArrayList<>();
+        Entity birdEntity= EntityFactory.makeBird(0.2, 0.5,canvas);
+        entities.add(birdEntity);
+        player= new Player();
+        bird= (BirdLogicComponent) birdEntity.getLogicComponent();
         obstacleGenerator.addListener(this);
         obstacleGenerator.addListener(heartGenerator);
         heartGenerator.addListener(this);
+        try {
+            background= new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND));
+        } catch (SlickException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -54,6 +75,7 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
         }
     }
     public void render(){
+        canvas.drawImage(background, 0, 0, 1, 1);
         renderEntities();
     }
     public void playerJump(){
@@ -85,6 +107,7 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
         }
     }
     private void checkObstacleCollisions(){
+
         for(ObstacleLogicComponent obstacle : obstacles){
             if (obstacle.collide(bird)){
                 obstacleCollision(obstacle);
@@ -139,9 +162,7 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
     }
     private void gameover(){
         notifyEvent(GameEventType.GAMEOVER);
-
     }
-
     @Override
     public void onHeartGenerated(Entity heart) {
         addEntity(heart);
