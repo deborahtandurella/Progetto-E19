@@ -1,5 +1,6 @@
 package graphics;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
@@ -20,6 +21,14 @@ public class Canvas {
         image.setCenterOfRotation(imageWidth*screen.getWidth()/2f, imageHeight*screen.getHeight()/2f);
         drawImage(image, x, y, imageWidth, imageHeight);
     }
-
+    public void drawAnimation(Animation animation, float x, float y, float animationWidth, float animationHeight){
+        animation.draw(screen.getOffsetX() + x*screen.getWidth(), screen.getOffsetY() + y*screen.getHeight(), animationWidth*screen.getWidth(), animationHeight*screen.getHeight());
+    }
+    public void clipScreen(){
+        graphics.setWorldClip(screen.getOffsetX(), screen.getOffsetY(), screen.getWidth(), screen.getHeight());
+    }
+    public Screen getScreen() {
+        return screen;
+    }
 
 }
