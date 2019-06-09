@@ -40,9 +40,7 @@ public class CustomizationMenu extends BasicGameState {
         screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
         try {
             gui = new CustomizationMenuGUI(container,screen,this);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (FontFormatException e) {
+        } catch (IOException | FontFormatException e) {
             e.printStackTrace();
         }
     }
@@ -79,8 +77,12 @@ public class CustomizationMenu extends BasicGameState {
         stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
     }
 
-    public void changeSprites(FileKeys fileKey) throws IOException, SlickException {
-        PathHandler.getInstance().changeSprites(fileKey);
+    public void themeSelected(FileKeys theme) {
+        try {
+            PathHandler.getInstance().changeSprites(theme);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void initStates() throws SlickException {

@@ -110,75 +110,42 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
     @Override
     public void componentActivated(AbstractComponent source) {
         if(source == batmanButton){
-            try {
-                name = "Batman";
-                buttonBgX = batmanButton.getX()-10*buttonWidth/100;
-                state.changeSprites(FileKeys.BATMAN);
-                background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND)).getScaledCopy(getContainer().getWidth(), getContainer().getHeight());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            name = "Batman";
+            buttonBgX = batmanButton.getX()-10*buttonWidth/100;
+            changeTheme(FileKeys.DOGO);
         }
         if(source == dogoButton){
-
-                name = "Dogo";
-                buttonBgX = dogoButton.getX()-10*buttonWidth/100;
- /*               (new Thread( new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                        }catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-                )).start(); */
-                try {
-                    state.changeSprites(FileKeys.DOGO);
-                    background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND)).getScaledCopy(getContainer().getWidth(), getContainer().getHeight());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-
+            name = "Dogo";
+            buttonBgX = dogoButton.getX()-10*buttonWidth/100;
+            changeTheme(FileKeys.DOGO);
         }
         if(source == classicButton){
-            try {
-                name = "Classic";
-                buttonBgX = classicButton.getX()-10*buttonWidth/100;
-                state.changeSprites(FileKeys.CLASSIC);
-                background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND)).getScaledCopy(getContainer().getWidth(), getContainer().getHeight());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            name = "Classic";
+            buttonBgX = classicButton.getX()-10*buttonWidth/100;
+            changeTheme(FileKeys.CLASSIC);
+
         }
-        if(source == seaButton){
-            try {
-                name = "Sea";
-                buttonBgX = seaButton.getX()-10*buttonWidth/100;
-                state.changeSprites(FileKeys.SEA);
-                background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND)).getScaledCopy(getContainer().getWidth(), getContainer().getHeight());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        if(source == seaButton) {
+            name = "Sea";
+            buttonBgX = seaButton.getX() - 10 * buttonWidth / 100;
+            changeTheme(FileKeys.SEA);
         }
         if(source == skyButton){
-            try {
-                name = "Sky";
-                buttonBgX = skyButton.getX()-10*buttonWidth/100;
-                state.changeSprites(FileKeys.SKY);
-                background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND)).getScaledCopy(getContainer().getWidth(), getContainer().getHeight());
-            } catch (Exception e){
-                e.printStackTrace();
-            }
+            name = "Sky";
+            buttonBgX = skyButton.getX()-10*buttonWidth/100;
+            changeTheme(FileKeys.SKY);
         }
         if(source == returnButton){
-            try {
-                state.initStates();
-            } catch (SlickException e) {
-                e.printStackTrace();
-            }
             state.goBack();
+        }
+    }
+
+    private void changeTheme(FileKeys theme){
+        state.themeSelected(theme);
+        try{
+            background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND)).getScaledCopy(getContainer().getWidth(), getContainer().getHeight());
+        } catch (SlickException e){
+            e.printStackTrace();
         }
     }
 
