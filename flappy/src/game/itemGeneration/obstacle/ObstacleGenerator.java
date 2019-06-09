@@ -16,6 +16,7 @@ public abstract class ObstacleGenerator  {
 
     protected ObstacleGenerator(Canvas canvas) {
         this.canvas=canvas;
+        listeners = new ArrayList<>();
     }
 
     public void addListener(ObstacleListener listener){

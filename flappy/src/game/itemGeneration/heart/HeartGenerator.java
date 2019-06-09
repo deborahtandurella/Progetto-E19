@@ -19,6 +19,7 @@ public class HeartGenerator implements ObstacleListener {
 
     public HeartGenerator(Canvas canvas) {
         this.canvas = canvas;
+        listeners= new ArrayList<>();
     }
 
     public void addListener(HeartListener listener){
