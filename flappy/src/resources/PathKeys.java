@@ -8,7 +8,7 @@ public enum PathKeys {
     LIFE,
     COIN,
     BACKGROUND,
-    FLAP,
+    JUMP,
     BG_MUSIC,
     GAMEOVER_MUSIC,
     ROCKET_EXPLOSION,
