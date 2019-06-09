@@ -52,6 +52,18 @@ public class Login extends BasicGameState {
     }
 
     @Override
+    public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+        super.enter(container, game);
+        gui.activate();
+    }
+
+    @Override
+    public void leave(GameContainer container, StateBasedGame game) throws SlickException {
+        super.leave(container, game);
+        gui.deactivate();
+    }
+
+    @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException { }
 
     public void menu(){

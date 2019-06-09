@@ -67,6 +67,8 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
         ipString = "IP Address";
         clientPortString ="Port";
         hostPortString = clientPortString;
+        deactivate();
+
     }
 
     @Override
@@ -91,7 +93,16 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
             e.printStackTrace();
         }
     }
-
+    public void activate(){
+        ipField.setConsumeEvents(true);
+        clientPortField.setConsumeEvents(true);
+        hostPortField.setConsumeEvents(false);
+    }
+    public void deactivate(){
+        ipField.setConsumeEvents(false);
+        clientPortField.setConsumeEvents(false);
+        hostPortField.setConsumeEvents(false);
+    }
     @Override
     public void componentActivated(AbstractComponent source) {
         if(source == hostButton) {

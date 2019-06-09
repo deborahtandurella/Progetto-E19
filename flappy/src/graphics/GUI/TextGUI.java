@@ -44,7 +44,9 @@ public class TextGUI {
         text.render(gc , g);
         g.setFont(font);
     }
-
+    public void setConsumeEvents(boolean focus){
+        text.setConsumeEvents(focus);
+    }
     public void update() throws SlickException {
         font.loadGlyphs();
     }
