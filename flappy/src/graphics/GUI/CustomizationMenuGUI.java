@@ -77,7 +77,7 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         batmanButton = new MouseOverArea(container, batman, 6*container.getWidth()/7-buttonWidth, 32*container.getHeight()/100, buttonWidth, buttonHeight, this);
 
         Image goBack = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.BACKTOMENUBUTTON)).getScaledCopy(buttonWidth*3,buttonHeight);
-        returnButton = new MouseOverArea(container, goBack, container.getWidth()/2 - buttonWidth/2, 75*container.getHeight()/100, buttonWidth, buttonHeight, this);
+        returnButton = new MouseOverArea(container, goBack, container.getWidth()/2 - buttonWidth*3/2, 75*container.getHeight()/100, buttonWidth*3, buttonHeight, this);
 
         buttonBg = new Image(PathHandler.getInstance().getPath(FileKeys.VARIOUS, PathKeys.BUTTON_BG)).getScaledCopy(buttonWidth,buttonHeight);
 
