@@ -12,31 +12,46 @@ public class MultiplayerLoadingGUI extends AbstractMenuGUI{
     private MultiplayerLoading state;
     private SpriteSheet loadingSheet;
     private Animation loadingAnimation;
+    private SpriteSheet threeTwoOneSheet;
+    private Animation threeTwoOneAnimation;
     private Image background;
-    private int buttonHeight;
-    private int buttonWidth;
+    private int buttonDimension;
+    private boolean connected;
+
 
     public MultiplayerLoadingGUI(GameContainer container, Screen screen, MultiplayerLoading state) throws SlickException {
         super(container, screen);
         this.state = state;
 
-        buttonHeight = container.getHeight()/7;
-        buttonWidth = container.getWidth()/7;
+        connected = false;
+
+        buttonDimension = container.getWidth()/5;
 
         background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES,PathKeys.BACKGROUND)).getScaledCopy(screen.getWidth(), screen.getHeight());
 
         loadingSheet = new SpriteSheet(PathHandler.getInstance().getPath(FileKeys.VARIOUS, PathKeys.LOADINGSHEET),64,64);
         loadingAnimation = new Animation(loadingSheet,100);
+
+        threeTwoOneSheet = new SpriteSheet(PathHandler.getInstance().getPath(FileKeys.VARIOUS, PathKeys.THREETWOONE),288,288);
+        threeTwoOneAnimation = new Animation(threeTwoOneSheet,50);
     }
 
     @Override
     public void render() throws SlickException {
         background.draw();
-        loadingAnimation.draw(getContainer().getWidth()/2-buttonWidth/2,getContainer().getHeight()/2-buttonHeight/2,buttonWidth,buttonHeight);
+        if(!connected) {
+            loadingAnimation.draw(getContainer().getWidth() / 2 - buttonDimension / 2, getContainer().getHeight() / 2 - buttonDimension / 2, buttonDimension, buttonDimension);
+        }else{
+            threeTwoOneAnimation.draw(getContainer().getWidth() / 2 - buttonDimension / 2, getContainer().getHeight() / 2 - buttonDimension / 2, buttonDimension, buttonDimension);
+        }
     }
 
     @Override
     public void componentActivated(AbstractComponent abstractComponent) {
 
+    }
+
+    public void connected(){
+        connected=true;
     }
 }

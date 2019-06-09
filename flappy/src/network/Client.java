@@ -1,6 +1,8 @@
 package network;
 
 
+import states.MultiplayerLoading;
+
 import java.io.*;
 import java.net.Socket;
 
@@ -36,6 +38,7 @@ public class Client {
             });
             th1.start();
             System.out.println("Successfully connected to " + ip + ":" + port);
+            MultiplayerLoading.isConnected();
         } catch (IOException ex) {
             System.err.println("ERROR: connection error");
             System.exit(0);

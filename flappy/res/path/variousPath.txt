@@ -2,3 +2,4 @@ TITLE,res/sprites/backgrounds/title.jpg
 RANKBACKGROUND,res/sprites/backgrounds/pergamena.png
 BUTTON_BG,res/sprites/backgrounds/buttonBackground.png
 LOADINGSHEET,res/sprites/backgrounds/loadingSpriteSheet.png
+THREETWOONE,res/sprites/backgrounds/321spritesheet.png

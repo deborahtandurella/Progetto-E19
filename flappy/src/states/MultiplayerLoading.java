@@ -25,6 +25,8 @@ public class MultiplayerLoading extends BasicGameState {
     private Client socketClient = new Client();
     private Server socketServer = new Server();
 
+    private static boolean connected;
+
     @Override
     public int getID() {
         return ID;
@@ -33,6 +35,7 @@ public class MultiplayerLoading extends BasicGameState {
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         super.enter(container, game);
+        connected = false;
         if(ip.equals("")){
             host(port);
         }else{
@@ -56,7 +59,9 @@ public class MultiplayerLoading extends BasicGameState {
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
-
+        if(connected){
+            gui.connected();
+        }
     }
 
     public void keyPressed(int key, char c){
@@ -93,5 +98,9 @@ public class MultiplayerLoading extends BasicGameState {
 
     public static void setIp(String ip) {
         MultiplayerLoading.ip = ip;
+    }
+
+    public static void isConnected(){
+        connected = true;
     }
 }
