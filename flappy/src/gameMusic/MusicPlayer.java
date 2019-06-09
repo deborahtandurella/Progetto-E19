@@ -29,7 +29,7 @@ public class MusicPlayer {
     }
 
     public void backgroundMusic(){
-        backgroundTheme.loop(1.0f,1.0f);
+        //backgroundTheme.loop(1.0f,1.0f);
     }
 
     public void explosionMusic(){

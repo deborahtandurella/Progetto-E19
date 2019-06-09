@@ -9,6 +9,7 @@ import resources.FileKeys;
 import resources.PathHandler;
 import resources.PathKeys;
 
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class SoundPlayer implements GameEventListener {
@@ -17,11 +18,6 @@ public class SoundPlayer implements GameEventListener {
     public SoundPlayer(){
         sounds=new HashMap<GameEventType, Sound>();
         HashMap<PathKeys, String> soundPaths = PathHandler.getInstance().getSoundPaths();
-        try{
-            music= new Music(soundPaths.get(PathKeys.BG_MUSIC));
-        } catch (SlickException e){
-            e.printStackTrace();
-        }
         Set<GameEventType> gameEvents= new HashSet<GameEventType>(Arrays.asList(GameEventType.values()));
         Set<String> gameEventsStrings= new HashSet<String>();
         for (GameEventType event: gameEvents) {
@@ -37,8 +33,6 @@ public class SoundPlayer implements GameEventListener {
                 }
             }
         }
-        if(music!=null)
-            music.play();
     }
     @Override
     public void gameEvent(GameEventType event) {
