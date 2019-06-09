@@ -13,6 +13,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import states.*;
+import states.test.LocalMultiplayerState;
 import states.test.SingleplayerState;
 
 import java.io.File;
@@ -54,6 +55,8 @@ public class GiocoAStati extends StateBasedGame {
             this.addState(new ScoreBoardState(record, scoreBoard));
             this.addState(new CustomizationMenu());
             this.addState(new SingleplayerState());
+            this.addState(new LocalMultiplayerState());
+
         } catch (IOException e) {
             e.printStackTrace();
         }
