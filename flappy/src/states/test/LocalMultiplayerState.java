@@ -20,7 +20,7 @@ public class LocalMultiplayerState extends BasicGameState {
 
     @Override
     public int getID() {
-        return 11;
+        return 12;
     }
 
     @Override
