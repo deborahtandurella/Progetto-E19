@@ -27,12 +27,12 @@ public class LocalMultiplayerState extends BasicGameState {
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        Screen screen = new Screen(gameContainer.getWidth()/100*45, gameContainer.getHeight()/100*95, 0, 0);
+        Screen screen = new Screen((int) (gameContainer.getWidth()*0.45), (int) (gameContainer.getHeight()*0.95), 0, 0);
         leftScreenCopy = new Image(screen.getWidth(), screen.getHeight());
         gameCanvas = new Canvas(screen, gameContainer.getGraphics());
         soundPlayer= new SoundPlayer();
-        yPanel = new Image("res/sprites/backgrounds/nero.jpg").getScaledCopy(gameContainer.getWidth()/100*10, gameContainer.getHeight());
-        xPanel = new Image("res/sprites/backgrounds/nero.jpg").getScaledCopy( gameContainer.getWidth(),gameContainer.getHeight()/100*5);
+        yPanel = new Image("res/sprites/backgrounds/nero.jpg").getScaledCopy((int)(gameContainer.getWidth()*0.1), gameContainer.getHeight());
+        xPanel = new Image("res/sprites/backgrounds/nero.jpg").getScaledCopy( gameContainer.getWidth(),(int)(gameContainer.getHeight()*0.08)); //sovradimensionata per compensare imprecisioni date dalle troncature
     }
 
     @Override
@@ -50,8 +50,8 @@ public class LocalMultiplayerState extends BasicGameState {
         rightGame.render();
         graphics.copyArea(leftScreenCopy, 0, 0);
         leftGame.render();
-        leftScreenCopy.draw(gameContainer.getWidth()*55/100f, 0);
-        yPanel.draw(gameContainer.getWidth()/100f*45, 0);
+        leftScreenCopy.draw(gameContainer.getWidth()*0.55f, 0);
+        yPanel.draw(gameContainer.getWidth()*0.45f, 0);
         xPanel.draw(0,gameCanvas.getScreen().getHeight());
     }
 
