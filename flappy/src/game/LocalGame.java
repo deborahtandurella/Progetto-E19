@@ -43,18 +43,18 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
         this.gameSpeed = settings.getSpeed();
         this.obstacleGenerator = ObstacleGeneratorFactory.makeObstacleGenerator(settings.getObstacleGenerator(), canvas);
         this.heartGenerator = new HeartGenerator(canvas);
-        entities=new CopyOnWriteArrayList<>();
-        hearts= new CopyOnWriteArrayList<>();
-        obstacles= new CopyOnWriteArrayList<>();
-        Entity birdEntity= EntityFactory.makeBird(0.2, 0.5,canvas);
+        entities = new CopyOnWriteArrayList<>();
+        hearts = new CopyOnWriteArrayList<>();
+        obstacles = new CopyOnWriteArrayList<>();
+        Entity birdEntity = EntityFactory.makeBird(0.2, 0.5,canvas);
         entities.add(birdEntity);
-        player= new Player();
-        bird= (BirdLogicComponent) birdEntity.getLogicComponent();
+        player = new Player();
+        bird = (BirdLogicComponent) birdEntity.getLogicComponent();
         obstacleGenerator.addListener(this);
         obstacleGenerator.addListener(heartGenerator);
         heartGenerator.addListener(this);
         try {
-            background= new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND));
+            background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND));
         } catch (SlickException e) {
             e.printStackTrace();
         }

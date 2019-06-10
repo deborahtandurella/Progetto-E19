@@ -5,8 +5,10 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
 public class Canvas {
+
     private Screen screen;
     private Graphics graphics;
+
     public Canvas(Screen screen, Graphics graphics){
         this.screen = screen;
         this.graphics = graphics;

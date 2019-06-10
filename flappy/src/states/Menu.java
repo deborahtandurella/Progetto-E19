@@ -60,7 +60,7 @@ public class Menu extends BasicGameState{
 
     public void multi(){
 
-        stateBasedGame.enterState(5, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(12, new FadeOutTransition(), new FadeInTransition());
     }
 
 
