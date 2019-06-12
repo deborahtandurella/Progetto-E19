@@ -30,6 +30,7 @@ public class LoginGUI extends AbstractMenuGUI {
     public LoginGUI(GameContainer container, Screen screen, Login state) throws SlickException {
         super(container, screen);
         this.state = state;
+        setBackground();
 
         int buttonHeight = container.getHeight() / 7;
         int buttonWidth = container.getWidth() / 4;
@@ -61,11 +62,11 @@ public class LoginGUI extends AbstractMenuGUI {
 
     @Override
     public void render() {
+        renderBackground();
         renderButtons();
         title.draw((getContainer().getWidth()-title.getWidth()) / 2f,5 * getContainer().getHeight() / 100f);
         uniFontMessage.drawString((getContainer().getWidth() - uniFontMessage.getWidth(nameString)) / 2f, 33 * getContainer().getHeight() / 100f, nameString);
         nameField.render(getContainer(), getContainer().getGraphics());
-        /* cos'è sto badile?! -> getContainer().getGraphics().drawImage(title, getContainer().getWidth()/2f-title.getWidth()/2f,5*getContainer().getHeight()/100f);*/
         if (error) {
             uniFontMessage.drawString((getContainer().getWidth() - uniFontMessage.getWidth(errorMessage)) / 2f, 60 * getContainer().getHeight() / 100f, errorMessage, Color.red);
         }

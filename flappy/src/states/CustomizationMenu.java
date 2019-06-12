@@ -8,24 +8,21 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 import resources.FileKeys;
 import resources.PathHandler;
-import resources.PathKeys;
 import java.awt.*;
 import java.io.IOException;
 
-public class CustomizationMenu extends BasicGameState {
+public class CustomizationMenu extends AbstractMenuState {
     private static final int ID = 11;
     private GameContainer container;
     private StateBasedGame stateBasedGame;
-    private CustomizationMenuGUI gui;
     private Screen screen;
-    private SpriteDrawer drawer;
-    private Thread initializerThread;
+    //private Thread initializerThread;
+    //da far vedere al prof
 
     @Override
     public int getID() {
@@ -34,12 +31,12 @@ public class CustomizationMenu extends BasicGameState {
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        drawer = new SpriteDrawer(new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0));
         this.container= gameContainer;
         this.stateBasedGame= stateBasedGame;
         screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
+
         try {
-            gui = new CustomizationMenuGUI(container,screen,this);
+            setGui(new CustomizationMenuGUI(container,screen,this));
         } catch (IOException | FontFormatException e) {
             e.printStackTrace();
         }
@@ -47,8 +44,7 @@ public class CustomizationMenu extends BasicGameState {
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
-        drawer.drawBackgroundSingle(graphics);
-        gui.render();
+        renderGui();
     }
 
     @Override
@@ -58,22 +54,15 @@ public class CustomizationMenu extends BasicGameState {
     public void keyPressed(int key, char c){
         if( key == Input.KEY_ESCAPE){
             System.exit(0);
-
         }
     }
 
     public void goBack(){
-       /* try {
-            stateBasedGame.getState(1).init(container,stateBasedGame);
-        } catch (SlickException e) {
-            e.printStackTrace();
-        }*/
         try {
             initStates();
         } catch (Exception e ){
             e.printStackTrace();
         }
-
         stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
     }
 
@@ -85,27 +74,32 @@ public class CustomizationMenu extends BasicGameState {
         }
     }
 
-    public void initStates() throws SlickException {
-       /* initializerThread = new Thread(new Runnable(){
+    private void initStates() throws SlickException {
 
-            @Override
-            public void run() {
-                try{*/
-                    stateBasedGame.getState(0).init(container,stateBasedGame);
-                    stateBasedGame.getState(1).init(container,stateBasedGame);
-                    stateBasedGame.getState(2).init(container,stateBasedGame);
+       // initializerThread = new Thread(new Runnable(){
+
+
+            //@Override
+           // public void run() {
+                try{
+                    ((AbstractMenuState)stateBasedGame.getState(1)).reload();
+                    ((AbstractMenuState)stateBasedGame.getState(2)).reload();
                     stateBasedGame.getState(3).init(container,stateBasedGame);
-                    stateBasedGame.getState(4).init(container,stateBasedGame);
-                    stateBasedGame.getState(5).init(container,stateBasedGame);
-                    stateBasedGame.getState(6).init(container,stateBasedGame);
+                    ((AbstractMenuState)stateBasedGame.getState(4)).reload();
+                    ((AbstractMenuState)stateBasedGame.getState(5)).reload();
+                    ((AbstractMenuState)stateBasedGame.getState(6)).reload();
                     stateBasedGame.getState(7).init(container,stateBasedGame);
                     stateBasedGame.getState(8).init(container,stateBasedGame);
-                    stateBasedGame.getState(9).init(container,stateBasedGame);
-              /*  } catch (SlickException e ){
+                    //((AbstractMenuState)stateBasedGame.getState(8)).reload();
+                    //non esiste ancora la GUI per lo stato 8, finché non è definita, reload dà exception
+                    //per gli stati 3 e 7, che non estendono AbstractMenuState, bisogna fare il metodo reload apposta
+                    ((AbstractMenuState)stateBasedGame.getState(9)).reload();
+                } catch (SlickException e ){
                     e.printStackTrace();
                 }
-            }
+        /*    }
         });
+
         initializerThread.start();
     }
 

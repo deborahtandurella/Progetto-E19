@@ -15,13 +15,12 @@ public class MenuGUI extends AbstractMenuGUI {
     private MouseOverArea singleButton;
     private MouseOverArea multiButton;
     private MouseOverArea customButton;
-   // private Record record;
     private MouseOverArea leaderboardButton;
 
     public MenuGUI(GameContainer container, Screen screen, Menu state) throws SlickException {
         super(container, screen);
         this.state = state;
-       // this.record = record;
+        setBackground();
         int buttonHeight = container.getHeight()/6;
         int buttonWidth = container.getWidth()/3;
 
@@ -44,6 +43,7 @@ public class MenuGUI extends AbstractMenuGUI {
     }
 
     public void render(){
+        renderBackground();
         renderButtons();
     }
 

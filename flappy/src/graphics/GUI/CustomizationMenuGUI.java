@@ -10,15 +10,9 @@ import resources.FileKeys;
 import resources.PathHandler;
 import resources.PathKeys;
 import states.CustomizationMenu;
-import org.newdawn.slick.geom.Rectangle;
-import org.newdawn.slick.geom.Shape;
-import org.newdawn.slick.Color;
-
 import java.awt.*;
-
 import java.awt.Font;
 import java.io.IOException;
-
 
 public class CustomizationMenuGUI extends AbstractMenuGUI {
     private CustomizationMenu state;
@@ -43,9 +37,8 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         super(container, screen);
         this.state = state;
 
+        setBackground();
         pergamena = new Image(PathHandler.getInstance().getPath(FileKeys.VARIOUS, PathKeys.RANKBACKGROUND)).getScaledCopy(container.getWidth()/100*86, container.getHeight()/100*30);
-        background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND)).getScaledCopy(screen.getWidth(), screen.getHeight());
-
         title = "CHOOSE YOUR THEME";
         Font font = new Font("Comic Sans MS", Font.BOLD, 27*getContainer().getWidth()/1000);
         versionFont = new UnicodeFont("res/font/FlappyBirdy.ttf", getContainer().getHeight()/100*25, false, false);
@@ -96,7 +89,7 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
 
     @Override
     public void render() {
-        background.draw();
+        renderBackground();
         pergamena.draw(getContainer().getWidth()/2f-pergamena.getWidth()/2f, 26*getContainer().getHeight()/100f);
         buttonBg.draw(buttonBgX, 30*getContainer().getHeight()/100f, 14*getContainer().getWidth()/100f, 15*getContainer().getHeight()/100f);
         getContainer().getGraphics().setFont(versionFont);
@@ -112,7 +105,7 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         if(source == batmanButton){
             name = "Batman";
             buttonBgX = batmanButton.getX()-10*buttonWidth/100;
-            changeTheme(FileKeys.DOGO);
+            changeTheme(FileKeys.BATMAN);
         }
         if(source == dogoButton){
             name = "Dogo";
@@ -143,7 +136,7 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
     private void changeTheme(FileKeys theme){
         state.themeSelected(theme);
         try{
-            background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND)).getScaledCopy(getContainer().getWidth(), getContainer().getHeight());
+            setBackground();
         } catch (SlickException e){
             e.printStackTrace();
         }

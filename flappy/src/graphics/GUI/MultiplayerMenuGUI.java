@@ -33,6 +33,8 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
         super(container, screen);
         this.state = state;
 
+        setBackground();
+
         Font font = new java.awt.Font("Comic Sans MS", java.awt.Font.PLAIN, 3*getContainer().getWidth()/100);
 
         int buttonHeight = container.getHeight()/10;
@@ -73,6 +75,7 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
 
     @Override
     public void render() {
+        renderBackground();
         renderButtons();
 
         uniFontMessage.drawString(20 * getContainer().getWidth() /100f, 9 * getContainer().getHeight() / 100f, ipString, Color.black);

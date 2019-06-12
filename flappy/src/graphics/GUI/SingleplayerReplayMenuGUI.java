@@ -17,7 +17,7 @@ public class SingleplayerReplayMenuGUI extends AbstractMenuGUI {
     public SingleplayerReplayMenuGUI(GameContainer container, Screen screen, SingleplayerReplayMenuState state) throws SlickException {
         super(container, screen);
         this.state=state;
-        
+
         int buttonHeight = container.getHeight()/10;
         int buttonWidth = container.getWidth()/3;
 

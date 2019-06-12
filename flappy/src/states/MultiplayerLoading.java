@@ -8,16 +8,14 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class MultiplayerLoading extends BasicGameState {
+public class MultiplayerLoading extends AbstractMenuState {
     private static final int ID = 6;
 
     private GameContainer container;
     private StateBasedGame stateBasedGame;
     private Screen screen;
-    private MultiplayerLoadingGUI gui;
 
     private static int port;
     private static String ip;
@@ -48,19 +46,19 @@ public class MultiplayerLoading extends BasicGameState {
         this.container= gameContainer;
         this.stateBasedGame= stateBasedGame;
         screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
-        gui = new MultiplayerLoadingGUI(container,screen,this);
+        setGui(new MultiplayerLoadingGUI(container,screen,this));
         ip = "";
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
-        gui.render();
+        renderGui();
     }
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
         if(connected){
-            gui.connected();
+            ((MultiplayerLoadingGUI)getGui()).connected();
         }
     }
 
