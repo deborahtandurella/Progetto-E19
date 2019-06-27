@@ -16,5 +16,6 @@ public class EasyObstacleGenerator extends ObstacleGenerator{
     @Override
     protected void generatePeriodicObstacle() {
         Entity obstacle = EntityFactory.makeNormalPipe(1.5,0.25 + (new Random()).nextFloat() * 0.5, getCanvas());
+        notifyListeners(obstacle);
     }
 }
