@@ -6,6 +6,7 @@ import game.DifficultySettings;
 import game.ObstacleGeneratorType;
 import game.itemGeneration.obstacle.NormalObstacleGenerator;
 import logic.SinglePlayer.Record;
+import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.newdawn.slick.AppGameContainer;
@@ -14,6 +15,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import states.*;
 import states.test.LocalMultiplayerState;
+import states.test.MultiplayerState;
 import states.test.SingleplayerState;
 
 import java.io.File;
@@ -56,7 +58,7 @@ public class GiocoAStati extends StateBasedGame {
             this.addState(new CustomizationMenu());
             this.addState(new SingleplayerState());
             this.addState(new LocalMultiplayerState());
-
+            this.addState(new MultiplayerState());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -78,17 +80,16 @@ public class GiocoAStati extends StateBasedGame {
         }*/
         try {
             AppGameContainer container = new AppGameContainer(new GiocoAStati());
+            container.setUpdateOnlyWhenVisible(false);
             container.setSmoothDeltas(false);
-            container.setTargetFrameRate(125);
+            container.setTargetFrameRate(200);
             container.setVSync(false);
             DisplayMode[] modes = Display.getAvailableDisplayModes();
 
             DisplayMode bestMode = DisplayModeManager.getBiggestWithRatio(4, 3);
             container.setDisplayMode(bestMode.getWidth(),bestMode.getHeight(),false);
             container.start();
-        } catch (SlickException e) {
-            e.printStackTrace();
-        } catch (Exception e){
+        } catch (SlickException | LWJGLException e) {
             e.printStackTrace();
         }
     }
