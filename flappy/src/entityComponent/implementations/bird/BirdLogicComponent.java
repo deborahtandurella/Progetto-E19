@@ -28,7 +28,9 @@ public class BirdLogicComponent extends SolidGameElementLogicComponent {
         }
 
     }
-
+    public boolean outOfBounds(){
+        return getY() + BIRD_HEIGHT > 0;
+    }
     public boolean isImmune() {
         return immunity;
     }

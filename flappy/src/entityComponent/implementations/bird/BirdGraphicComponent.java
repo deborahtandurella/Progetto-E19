@@ -2,8 +2,6 @@ package entityComponent.implementations.bird;
 
 import entityComponent.components.gameElements.GameElementGraphicComponent;
 import graphics.Canvas;
-import graphics.Screen;
-import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import resources.FileKeys;
@@ -29,9 +27,9 @@ public class BirdGraphicComponent extends GameElementGraphicComponent
     public void render() {
         float angle = (float) (180*Math.atan2(getLogicComponent().getSpeedY(), JUMP_SPEED)/Math.PI);
         if( ((BirdLogicComponent) getLogicComponent()).isImmune())
-            birdImage.setAlpha(0.7f);
+            birdImage.setImageColor(1f, 0.f , 0.2f);
         else
-            birdImage.setAlpha(1);
+            birdImage.setImageColor(255, 255, 255);
 
         getCanvas().drawRotatedImage(birdImage,
                 (float) getLogicComponent().getX(),
