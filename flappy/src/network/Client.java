@@ -1,69 +1,84 @@
 package network;
 
 
+import game.RemoteGame;
+import network.test.CommandHandler;
+import network.test.commands.Command;
 import states.MultiplayerLoading;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
 
-public class Client {
+public class Client implements CommandHandler {
 
 
     private String clientName;
 
     private Socket clientSocket ;
-
-    private InputStream inputStream;
-    private OutputStream outputStream;
+    private RemoteGame game;
+    private ObjectInputStream inputStream;
+    private ObjectOutputStream outputStream;
     private DataInputStream inData;
     private DataOutputStream outData;
+    private ArrayList<ConnectionListener> connectionListeners;
+    private boolean connected = false;
 
-    private boolean option = true;
-
-
+    public Client(){
+        connectionListeners=new ArrayList<>();
+    }
     public String getUsername() {
         return clientName;
     }
 
-    public void SetConnection(String ip, int port) {
+    public void setConnection(String ip, int port) {
         try {
             clientSocket = new Socket(ip, port);
-            Thread th1 = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    while (option) {
-                        ListenData();
-                    }
-                }
-            });
-            th1.start();
+            outputStream = new ObjectOutputStream(clientSocket.getOutputStream());
+            inputStream = new ObjectInputStream(clientSocket.getInputStream());
+            setConnected(true);
             System.out.println("Successfully connected to " + ip + ":" + port);
-            MultiplayerLoading.isConnected();
         } catch (IOException ex) {
             System.err.println("ERROR: connection error");
             System.exit(0);
         }
     }
 
-    public void SendMessage(String msg) {
+    public void sendCommand(Command command) {
         try {
-            outputStream = clientSocket.getOutputStream();
-            outData = new DataOutputStream(outputStream);
-            outData.writeUTF(msg);
-            outData.flush();
-        } catch (IOException ex) {
-            System.err.println("ERROR: error sending data");
+            outputStream.writeObject(command);
+        } catch (IOException e) {
+            setConnected(false);
+        }
+    }
+    public void startListening(RemoteGame game){
+        this.game=game;
+        Thread th1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (connected) {
+                    listenCommand();
+                }
+                closeConnection();
+            }
+        });
+        th1.start();
+    }
+    private void listenCommand(){
+        try {
+            Command command = (Command) inputStream.readObject();
+            command.execute(game);
+        } catch (IOException e) {
+            setConnected(false);
+        } catch (ClassNotFoundException | ClassCastException e) {
+            e.printStackTrace();
         }
     }
 
-    public void ListenData(){
-        //TODO
-    }
-
-    public void CloseConnection() {
+    public void closeConnection() {
         try {
-            outData.close();
-            inData.close();
+            inputStream.close();
+            outputStream.close();
             clientSocket.close();
         } catch (IOException ex) {
             System.err.println("ERROR: error closing connection");
@@ -73,5 +88,17 @@ public class Client {
     public void SetClientProperties(String name) {
         clientName = name;
     }
+    public void addConnectionListener(ConnectionListener listener){
+        connectionListeners.add(listener);
+    }
+    protected void notifyListeners(boolean connected){
+        for(ConnectionListener listener: connectionListeners){
+            listener.connectionWorking(connected);
+        }
+    }
 
+    public void setConnected(boolean connected) {
+        this.connected = connected;
+        notifyListeners(connected);
+    }
 }

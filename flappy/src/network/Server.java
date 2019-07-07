@@ -1,90 +1,109 @@
 package network;
 
+import game.RemoteGame;
+import network.test.CommandHandler;
+import network.test.commands.Command;
 import states.MultiplayerLoading;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
-public class Server {
+public class Server implements CommandHandler {
     private String serverName;
     // Sockets
-    private Socket myService;
-    private ServerSocket serviceSocket;
+    private Socket clientSocket;
+    private ServerSocket serverSocket;
 
-    private OutputStream outputStream;
-    private InputStream inputStream;
+
 
     private DataOutputStream outputData;
     private DataInputStream inputData;
 
-    private boolean option = true;
+    private ObjectInputStream inputStream;
+    private ObjectOutputStream outputStream;
+    private RemoteGame game;
+    private ArrayList<ConnectionListener> connectionListeners;
 
+    private boolean connected = false;
+    public Server(){
+        connectionListeners=new ArrayList<>();
+    }
     public String getUsername() {
         return serverName;
     }
 
-    public void SetConnection(int port) {
+    public void setConnection(int port) {
 
         try {
-            serviceSocket = new ServerSocket(port);
-            System.out.println("Server listening on port " + port);
-
-            myService = serviceSocket.accept();
-
-            Thread th1 = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    while (option) {
-                        ListenData();
-                    }
-                }
-            });
-            th1.start();
+            serverSocket = new ServerSocket(port);
+            System.out.println("Server connected on port " + port);
+            clientSocket = serverSocket.accept();
+            inputStream = new ObjectInputStream(clientSocket.getInputStream());
+            outputStream = new ObjectOutputStream(clientSocket.getOutputStream());
+            setConnected(true);
             System.out.println("Successfully connected");
-            MultiplayerLoading.isConnected();
         } catch (IOException ex) {
             System.err.println("ERROR: connection error");
             System.exit(0);
         }
     }
 
-    public void ListenData() {
+    private void listenCommand() {
         try {
-            inputStream = myService.getInputStream();
-            inputData = new DataInputStream(inputStream);
-            if(inputData.readUTF().equals("connected from client")){
-                SendMessage("connected from server");
-            }
-        } catch (IOException ex) {
-            System.err.println("ERROR: error listening data");
+            Command command = (Command) inputStream.readObject();
+            command.execute(game);
+        } catch (IOException e) {
+            setConnected(false);
+        } catch (ClassNotFoundException | ClassCastException e) {
+            e.printStackTrace();
+        }
+    }
+    public void startListening(RemoteGame game){
+        if (connected){
+            this.game=game;
+            new Thread(() -> {
+                while (connected) {
+                    listenCommand();
+                }
+                closeConnection();
+            }).start();
+        }
+    }
+    public void sendCommand(Command command) {
+        try {
+            outputStream.writeObject(command);
+        } catch (IOException e) {
+           setConnected(false);
         }
     }
 
-    public void SendMessage(String msg) {
-        try {
-            outputStream = myService.getOutputStream();
-            outputData = new DataOutputStream(outputStream);
-            outputData.writeUTF(msg);
-            outputData.flush();
-        } catch (IOException ex) {
-            System.err.println("ERROR: error sending data");
-        }
-    }
-
-    public void SetServerProperties(String name) {
+    public void setServerProperties(String name) {
         serverName = name;
     }
 
-    public void CloseConnection() {
+    public void closeConnection() {
         try {
-            outputData.close();
-            inputData.close();
-            serviceSocket.close();
-            myService.close();
+            outputStream.close();
+            inputStream.close();
+            serverSocket.close();
+            clientSocket.close();
         } catch (IOException ex) {
             System.err.println("ERROR: error closing connection");
         }
     }
+    public void addConnectionListener(ConnectionListener listener){
+        connectionListeners.add(listener);
+    }
+    protected void notifyListeners(boolean connected){
+        for(ConnectionListener listener: connectionListeners){
+            listener.connectionWorking(connected);
+        }
+    }
 
+    public void setConnected(boolean connected) {
+        this.connected = connected;
+        notifyListeners(connected);
+    }
 }
