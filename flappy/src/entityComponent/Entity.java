@@ -6,7 +6,7 @@ import entityComponent.components.LogicComponent;
 public abstract class Entity {
     private GraphicComponent graphicComponent;
     private LogicComponent logicComponent;
-
+    private int ID;
     public Entity(LogicComponent logicComponent,GraphicComponent graphicComponent) {
         this.graphicComponent = graphicComponent;
         this.logicComponent = logicComponent;
@@ -36,5 +36,13 @@ public abstract class Entity {
         if (graphicComponent != null) {
             graphicComponent.render();
         }
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 }

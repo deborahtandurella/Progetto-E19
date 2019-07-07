@@ -22,8 +22,8 @@ public class EntityFactory {
     public static Entity makeNormalPipe(double x, double y, Canvas canvas){
         return new GameElementEntity(new PipeLogicComponent(x,y), new PipeGraphicComponent(canvas));
     }
-    public static Entity makeMovingPipe(double x, double y, Canvas canvas){
-        return new GameElementEntity(new MovingPipeLogicComponent(x,y), new PipeGraphicComponent(canvas));
+    public static Entity makeMovingPipe(double x, double y, double speedY, Canvas canvas){
+        return new GameElementEntity(new MovingPipeLogicComponent(x,y,speedY), new PipeGraphicComponent(canvas));
     }
     public static Entity makeHeart(double x, double y, Canvas canvas){
         return new GameElementEntity(new HeartLogicComponent(x,y), new HeartGraphicComponent(canvas));
