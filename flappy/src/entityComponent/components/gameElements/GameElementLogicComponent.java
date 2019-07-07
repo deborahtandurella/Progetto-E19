@@ -9,6 +9,7 @@ public abstract class GameElementLogicComponent implements LogicComponent {
     private double speedY;
 
 
+
     public GameElementLogicComponent(double x, double y, double speedX, double speedY) {
         this.x = x;
         this.y = y;
@@ -45,7 +46,6 @@ public abstract class GameElementLogicComponent implements LogicComponent {
     public void setSpeedY(double speedY) {
         this.speedY = speedY;
     }
-
     @Override
     public void update(int i) {
         x += speedX*i;
