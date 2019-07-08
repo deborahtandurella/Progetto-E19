@@ -1,11 +1,14 @@
 package states.test;
 
+import Main.GiocoAStati;
 import game.DifficultySettings;
 import game.LocalGame;
 import game.ObstacleGeneratorType;
 import game.SoundPlayer;
 import graphics.Canvas;
+import graphics.HUD.SinglePlayerHud;
 import graphics.Screen;
+import logic.SinglePlayer.SingleModePlayer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -18,7 +21,8 @@ public class SingleplayerState extends BasicGameState {
     private Canvas gameCanvas;
     private DifficultySettings settings = new DifficultySettings(1, ObstacleGeneratorType.MEDIUM);
     private SoundPlayer soundPlayer;
-
+    private SingleModePlayer player;
+    private SinglePlayerHud hud;
     @Override
     public int getID() {
         return 10;
@@ -34,8 +38,10 @@ public class SingleplayerState extends BasicGameState {
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         super.enter(container, game);
-        this.game= new LocalGame(gameCanvas, settings);
+        player= new SingleModePlayer(((GiocoAStati)game).getPlayerInfo());
+        this.game= new LocalGame(gameCanvas, settings,  player);
         this.game.addListener(soundPlayer);
+        hud= new SinglePlayerHud(player, gameCanvas);
 
 
     }
@@ -43,6 +49,7 @@ public class SingleplayerState extends BasicGameState {
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         game.render();
+        hud.render();
         gameCanvas.clipScreen();
     }
 

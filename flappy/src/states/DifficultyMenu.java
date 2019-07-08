@@ -46,12 +46,7 @@ public class DifficultyMenu extends AbstractMenuState {
     }
 
     public void startGame(/*ci sarà da passare un enum o qualcosa per la difficoltà*/){
-       try {
-            stateBasedGame.getState(3).init(container,stateBasedGame);
-        } catch (SlickException e) {
-            e.printStackTrace();
-        }
-        stateBasedGame.enterState(3, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(10, new FadeOutTransition(), new FadeInTransition());
     }
 
     public void back(){

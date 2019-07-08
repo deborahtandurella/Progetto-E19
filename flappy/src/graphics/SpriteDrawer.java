@@ -1,6 +1,6 @@
 package graphics;
 
-import logic.SinglePlayer.Player;
+import logic.SinglePlayer.SingleModePlayer;
 import org.newdawn.slick.*;
 import resources.FileKeys;
 import resources.PathHandler;
@@ -69,7 +69,7 @@ public class SpriteDrawer{
 
     }
 
-    public void drawLives(Player player, Graphics graphics){
+    public void drawLives(SingleModePlayer player, Graphics graphics){
         lives = player.getHearts();
         lifeBias = screenWidth/15;
         for(int i = 0; i<lives;i++){

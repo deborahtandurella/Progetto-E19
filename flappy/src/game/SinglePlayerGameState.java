@@ -1,7 +1,9 @@
 package game;
 
+import Main.GiocoAStati;
 import graphics.Canvas;
 import graphics.Screen;
+import logic.SinglePlayer.SingleModePlayer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -29,7 +31,7 @@ public class SinglePlayerGameState extends BasicGameState {
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
-        this.game =new LocalGame(canvas, settings);
+        this.game =new LocalGame(canvas, settings, new SingleModePlayer(((GiocoAStati)game).getPlayerInfo()));
         this.game.addListener(soundPlayer);
 
     }

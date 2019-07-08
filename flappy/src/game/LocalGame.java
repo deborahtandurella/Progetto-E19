@@ -14,7 +14,7 @@ import game.itemGeneration.obstacle.ObstacleGenerator;
 import game.itemGeneration.obstacle.ObstacleGeneratorFactory;
 import game.itemGeneration.obstacle.ObstacleListener;
 import graphics.Canvas;
-import logic.SinglePlayer.Player;
+import logic.SinglePlayer.SingleModePlayer;
 import logic.gameElements.Heart;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -31,24 +31,24 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
     private CopyOnWriteArrayList<ObstacleLogicComponent> obstacles;
     private CopyOnWriteArrayList<HeartLogicComponent> hearts;
     private BirdLogicComponent bird;
-    private Player player;
+    private SingleModePlayer player;
     private Canvas canvas;
     private double gameSpeed;
     private ObstacleGenerator obstacleGenerator;
     private HeartGenerator heartGenerator;
     private Image background;
 
-    public LocalGame(Canvas canvas, DifficultySettings settings) {
+    public LocalGame(Canvas canvas, DifficultySettings settings, SingleModePlayer player) {
         this.canvas = canvas;
         this.gameSpeed = settings.getSpeed();
         this.obstacleGenerator = ObstacleGeneratorFactory.makeObstacleGenerator(settings.getObstacleGenerator(), canvas);
         this.heartGenerator = new HeartGenerator(canvas);
+        this.player= player;
         entities = new CopyOnWriteArrayList<>();
         hearts = new CopyOnWriteArrayList<>();
         obstacles = new CopyOnWriteArrayList<>();
         Entity birdEntity = EntityFactory.makeBird(0.2, 0.5,canvas);
         entities.add(birdEntity);
-        player = new Player();
         bird = (BirdLogicComponent) birdEntity.getLogicComponent();
         obstacleGenerator.addListener(this);
         obstacleGenerator.addListener(heartGenerator);

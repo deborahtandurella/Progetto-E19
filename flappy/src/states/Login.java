@@ -1,6 +1,8 @@
 package states;
 
+import Main.GiocoAStati;
 import graphics.GUI.LoginGUI;
+import logic.player.PlayerInfo;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -18,12 +20,7 @@ public class Login extends AbstractMenuState {
     private StateBasedGame stateBasedGame;
     private MusicPlayer musicPlayer;
     private Screen screen;
-    private Record record;
 
-    public Login(Record record){
-        super();
-        this.record = record;
-    }
 
     @Override
     public int getID() {
@@ -48,13 +45,13 @@ public class Login extends AbstractMenuState {
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         super.enter(container, game);
-        ((LoginGUI)getGui()).activate();
+        ((LoginGUI) getGui()).activate();
     }
 
     @Override
     public void leave(GameContainer container, StateBasedGame game) throws SlickException {
         super.leave(container, game);
-        ((LoginGUI)getGui()).deactivate();
+        ((LoginGUI) getGui()).deactivate();
     }
 
     @Override
@@ -64,7 +61,7 @@ public class Login extends AbstractMenuState {
         stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
     }
 
-    public void setRecordName(String name) {
-        record.setName(name);
+    public void setName(String name) {
+        ((GiocoAStati) stateBasedGame).setPlayerInfo( new PlayerInfo(name));
     }
 }

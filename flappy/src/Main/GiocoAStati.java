@@ -6,6 +6,7 @@ import game.DifficultySettings;
 import game.ObstacleGeneratorType;
 import game.itemGeneration.obstacle.NormalObstacleGenerator;
 import logic.SinglePlayer.Record;
+import logic.player.PlayerInfo;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
@@ -34,9 +35,18 @@ public class GiocoAStati extends StateBasedGame {
     private static final int MULTIPLAYER = 7;
     private static final int MULTI_REPLAY_MENU = 8;
     private static final int SCORE_BOARD_MENU = 9;
+    private PlayerInfo playerInfo;
 
     public GiocoAStati() {
         super("Flappy Bird");
+    }
+
+    public PlayerInfo getPlayerInfo() {
+        return playerInfo;
+    }
+
+    public void setPlayerInfo(PlayerInfo playerInfo) {
+        this.playerInfo = playerInfo;
     }
 
     @Override
@@ -45,7 +55,7 @@ public class GiocoAStati extends StateBasedGame {
         DifficultySettings settings = new DifficultySettings(1, ObstacleGeneratorType.MEDIUM);
         try {
             ScoreBoard scoreBoard = new ScoreBoard();
-            this.addState(new Login(record));
+            this.addState(new Login());
             this.addState(new Menu());
             this.addState(new DifficultyMenu());
             this.addState(new Singleplayer(record, scoreBoard));

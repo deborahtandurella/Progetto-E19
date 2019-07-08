@@ -36,6 +36,7 @@ public class Client implements CommandHandler {
             clientSocket = new Socket(ip, port);
             outputStream = new ObjectOutputStream(clientSocket.getOutputStream());
             inputStream = new ObjectInputStream(clientSocket.getInputStream());
+            listenCommand();
             setConnected(true);
             System.out.println("Successfully connected to " + ip + ":" + port);
         } catch (IOException ex) {

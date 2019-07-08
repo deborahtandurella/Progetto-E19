@@ -1,13 +1,16 @@
 package logic.SinglePlayer;
 
-public class Player {
+import logic.player.Player;
+import logic.player.PlayerInfo;
 
+public class SingleModePlayer implements Player {
     private int hearts;
     private int score;
-
-    public Player() {
-        this.hearts = 1;
+    private PlayerInfo playerInfo;
+    public SingleModePlayer(PlayerInfo playerInfo) {
+        this.hearts = 3;
         this.score = 0;
+        this.playerInfo=playerInfo;
     }
 
     public void addScore(){
@@ -16,6 +19,11 @@ public class Player {
 
     public int getScore(){
         return score;
+    }
+
+    @Override
+    public PlayerInfo getPlayerInfo() {
+        return playerInfo;
     }
 
     public void loseHeart() {

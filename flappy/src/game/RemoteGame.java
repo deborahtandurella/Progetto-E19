@@ -8,7 +8,7 @@ import entityComponent.implementations.bird.BirdLogicComponent;
 import game.gameEvents.GameEventDispatcher;
 import game.gameEvents.GameEventType;
 import graphics.Canvas;
-import logic.SinglePlayer.Player;
+import logic.player.MultiModePlayer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import resources.FileKeys;
@@ -21,12 +21,12 @@ public class RemoteGame extends GameEventDispatcher {
     private CopyOnWriteArrayList<Entity> entities;
     private CopyOnWriteArrayList<ScrollingElement> scrollingElements;
     private BirdLogicComponent bird;
-    private Player player;
+    private MultiModePlayer player;
     private Canvas canvas;
     private double gameSpeed;
     private Image background;
 
-    public RemoteGame(Canvas canvas, DifficultySettings settings) {
+    public RemoteGame(Canvas canvas, DifficultySettings settings, MultiModePlayer player) {
         this.canvas = canvas;
         this.gameSpeed = settings.getSpeed();
         entities = new CopyOnWriteArrayList<>();
@@ -34,7 +34,7 @@ public class RemoteGame extends GameEventDispatcher {
         Entity birdEntity = EntityFactory.makeBird(0.2, 0.5,canvas);
         entities.add(birdEntity);
         bird = (BirdLogicComponent) birdEntity.getLogicComponent();
-        player = new Player();
+        this.player=player;
         try {
             background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND));
         } catch (SlickException e) {
@@ -115,6 +115,10 @@ public class RemoteGame extends GameEventDispatcher {
     }
     public Canvas getCanvas() {
         return canvas;
+    }
+
+    public MultiModePlayer getPlayer() {
+        return player;
     }
 }
 

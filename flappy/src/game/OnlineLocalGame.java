@@ -15,8 +15,8 @@ import game.itemGeneration.obstacle.ObstacleGenerator;
 import game.itemGeneration.obstacle.ObstacleGeneratorFactory;
 import game.itemGeneration.obstacle.ObstacleListener;
 import graphics.Canvas;
-import logic.SinglePlayer.Player;
 import logic.gameElements.Coin;
+import logic.player.PlayerInfo;
 import network.test.CommandHandler;
 import network.test.commands.*;
 import org.newdawn.slick.Image;
@@ -25,6 +25,7 @@ import org.newdawn.slick.geom.Shape;
 import resources.FileKeys;
 import resources.PathHandler;
 import resources.PathKeys;
+import logic.player.MultiModePlayer;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -35,7 +36,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     private CopyOnWriteArrayList<ObstacleLogicComponent> obstacles;
     private CopyOnWriteArrayList<CoinLogicComponent> coins;
     private BirdLogicComponent bird;
-    private Player player;
+    private MultiModePlayer player;
     private Canvas canvas;
     private double gameSpeed;
     private ObstacleGenerator obstacleGenerator;
@@ -44,18 +45,18 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     private CommandHandler commandHandler;
     private int IDcount;
 
-    public OnlineLocalGame(Canvas canvas, DifficultySettings settings, CommandHandler commandHandler) {
+    public OnlineLocalGame(Canvas canvas, DifficultySettings settings, CommandHandler commandHandler, MultiModePlayer player) {
         this.canvas = canvas;
         this.gameSpeed = settings.getSpeed();
         this.obstacleGenerator = ObstacleGeneratorFactory.makeObstacleGenerator(settings.getObstacleGenerator(), canvas);
         this.coinGenerator = new CoinGenerator(canvas);
         this.commandHandler= commandHandler;
+        this.player= player;
         entities = new CopyOnWriteArrayList<>();
         coins = new CopyOnWriteArrayList<>();
         obstacles = new CopyOnWriteArrayList<>();
         Entity birdEntity = EntityFactory.makeBird(0.2, 0.5,canvas);
         addEntity(birdEntity);
-        player = new Player();
         bird = (BirdLogicComponent) birdEntity.getLogicComponent();
         obstacleGenerator.addListener(this);
         obstacleGenerator.addListener(coinGenerator);

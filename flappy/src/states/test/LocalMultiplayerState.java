@@ -1,11 +1,10 @@
 package states.test;
 
-import game.DifficultySettings;
-import game.LocalGame;
-import game.ObstacleGeneratorType;
-import game.SoundPlayer;
+import Main.GiocoAStati;
+import game.*;
 import graphics.Canvas;
 import graphics.Screen;
+import logic.SinglePlayer.SingleModePlayer;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -19,6 +18,9 @@ public class LocalMultiplayerState extends BasicGameState {
     private Image leftScreenCopy;
     private Image yPanel;
     private Image xPanel;
+    private double angle = 0;
+    private boolean entered=false;
+
 
     @Override
     public int getID() {
@@ -38,36 +40,49 @@ public class LocalMultiplayerState extends BasicGameState {
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         super.enter(container, game);
-        leftGame= new LocalGame(gameCanvas, settings);
+        leftGame= new LocalGame(gameCanvas, settings, new SingleModePlayer(((GiocoAStati)game).getPlayerInfo()));
         leftGame.addListener(soundPlayer);
-        rightGame= new LocalGame(gameCanvas, settings);
+        rightGame= new LocalGame(gameCanvas, settings, new SingleModePlayer(((GiocoAStati)game).getPlayerInfo()));
         rightGame.addListener(soundPlayer);
         System.out.println(container.getWidth() + "   " + container.getHeight());
+        entered=true;
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
-        rightGame.render();
-        graphics.copyArea(leftScreenCopy, 0, 0);
-        leftGame.render();
-        leftScreenCopy.draw(gameContainer.getWidth()*0.55f, 0);
-        yPanel.draw(gameContainer.getWidth()*0.45f, 0);
-        xPanel.draw(0,gameCanvas.getScreen().getHeight());
+        if (entered) {
+            rightGame.render();
+
+
+            angle += 0.1;
+
+            graphics.copyArea(leftScreenCopy, 0, 0);
+
+            leftScreenCopy.getFlippedCopy(false, true).draw(gameContainer.getWidth() * 0.55f, 0);
+            leftGame.render();
+
+            yPanel.draw(gameContainer.getWidth() * 0.45f, 0);
+            xPanel.draw(0, gameCanvas.getScreen().getHeight());
+        }
     }
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
-        leftGame.update(i);
-        rightGame.update(i);
+        if (entered){
+            leftGame.update(i);
+            rightGame.update(i);
+        }
     }
 
     @Override
     public void keyPressed(int key, char c) {
-        if (key== Input.KEY_SPACE){
-            rightGame.playerJump();
-        }
-        if (key== Input.KEY_LCONTROL){
-            leftGame.playerJump();
+        if (entered){
+            if (key == Input.KEY_SPACE) {
+                rightGame.playerJump();
+            }
+            if (key == Input.KEY_LCONTROL) {
+                leftGame.playerJump();
+            }
         }
     }
 }

@@ -6,9 +6,10 @@ import graphics.Screen;
 import graphics.SpriteDrawer;
 import java.awt.Font;
 
-import logic.SinglePlayer.Player;
+import logic.SinglePlayer.SingleModePlayer;
 import logic.SinglePlayer.Record;
 import logic.gameElements.*;
+import logic.player.PlayerInfo;
 import org.newdawn.slick.*;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
@@ -28,7 +29,7 @@ public class Singleplayer extends BasicGameState {
     private static final int ID = 3;
     private GameContainer container;
     private Bird bird;
-    private Player player;
+    private SingleModePlayer player;
     private List<Pipe> pipes;
     private List<Heart> hearts;
     private List<Rocket> rockets;
@@ -51,6 +52,7 @@ public class Singleplayer extends BasicGameState {
     private UnicodeFont uniFontMessage;
     private String newRecordString;
     private boolean newRecord;
+    private boolean initialized;
 
 
     @Override
@@ -66,7 +68,7 @@ public class Singleplayer extends BasicGameState {
 
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.container= gameContainer;
-        player = new Player();
+        player = new SingleModePlayer(new PlayerInfo("ciao"));
         immunity = false;
         first = true;
         newRecord = false;
@@ -100,7 +102,10 @@ public class Singleplayer extends BasicGameState {
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         spriteDrawer.drawBackgroundSingle(graphics);
-        setClip(graphics);
+        if(!initialized) {
+            setClip(graphics);
+            initialized= true;
+        }
 
         spriteDrawer.drawBird((float) bird.getX(), (float) bird.getY(), graphics, bird.getSpeedY());
         for(Pipe pipe : pipes) {
@@ -229,7 +234,6 @@ public class Singleplayer extends BasicGameState {
             newRecord = true;
             first = false;
             newRecordTimer = System.currentTimeMillis();
-
         }
         if((System.currentTimeMillis()-newRecordTimer) > 2000){
             newRecord = false;
@@ -253,5 +257,9 @@ public class Singleplayer extends BasicGameState {
         graphics.setWorldClip(screen.getOffsetX(), screen.getOffsetY(), screen.getWidth(), screen.getHeight());
     }
 
-
+    @Override
+    public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+        super.enter(container, game);
+        setClip(container.getGraphics());
+    }
 }

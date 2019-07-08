@@ -1,10 +1,15 @@
 package states.test;
 
+import Main.GiocoAStati;
 import game.*;
 import graphics.Canvas;
 import graphics.Screen;
+import logic.player.MultiModePlayer;
+import logic.player.PlayerInfo;
 import network.ConnectionListener;
 import network.test.CommandHandler;
+import network.test.commands.Command;
+import network.test.commands.NameCommand;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -20,7 +25,6 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
     private Image leftScreenCopy;
     private Image yPanel;
     private Image xPanel;
-    private double angle = 0;
     private CommandHandler commandHandler;
     private StateBasedGame stateBasedGame;
 
@@ -48,31 +52,28 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         super.enter(container, game);
-        leftGame= new OnlineLocalGame(gameCanvas, settings, commandHandler);
+        PlayerInfo myPlayer= ((GiocoAStati) game).getPlayerInfo();
+        leftGame= new OnlineLocalGame(gameCanvas, settings, commandHandler, new MultiModePlayer(myPlayer));
         leftGame.addListener(soundPlayer);
-        rightGame= new RemoteGame(gameCanvas, settings);
+        rightGame= new RemoteGame(gameCanvas, settings, new MultiModePlayer(myPlayer));
         commandHandler.startListening(rightGame);
         rightGame.addListener(soundPlayer);
-        System.out.println(container.getWidth() + "   " + container.getHeight());
     }
 
     @Override
-    public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
+    public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) {
         rightGame.render();
-
-        angle += 0.1;
-
         graphics.copyArea(leftScreenCopy, 0, 0);
 
-        leftScreenCopy.draw(gameContainer.getWidth()*0.55f, 0);
         leftGame.render();
+        leftScreenCopy.draw(gameContainer.getWidth()*0.55f, 0);
 
         yPanel.draw(gameContainer.getWidth()*0.45f, 0);
         xPanel.draw(0,gameCanvas.getScreen().getHeight());
     }
 
     @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
+    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) {
         leftGame.update(i);
         rightGame.update(i);
     }

@@ -1,5 +1,7 @@
 package logic.SinglePlayer;
 
+import logic.player.Player;
+
 public class Record {
 
     private String playerName;
