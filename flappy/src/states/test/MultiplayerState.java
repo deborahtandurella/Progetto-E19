@@ -2,6 +2,7 @@ package states.test;
 
 import Main.GiocoAStati;
 import game.*;
+import game.itemGeneration.obstacle.ObstacleGeneratorType;
 import graphics.Canvas;
 import graphics.Screen;
 import logic.player.MultiModePlayer;

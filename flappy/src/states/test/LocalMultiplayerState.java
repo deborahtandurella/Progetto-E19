@@ -3,7 +3,7 @@ package states.test;
 import Main.GiocoAStati;
 import game.DifficultySettings;
 import game.LocalGame;
-import game.ObstacleGeneratorType;
+import game.itemGeneration.obstacle.ObstacleGeneratorType;
 import game.SoundPlayer;
 import graphics.Canvas;
 import graphics.Screen;
