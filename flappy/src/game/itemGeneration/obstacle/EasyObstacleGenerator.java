@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class EasyObstacleGenerator extends ObstacleGenerator{
 
-    protected EasyObstacleGenerator(Canvas canvas) {
+    EasyObstacleGenerator(Canvas canvas) {
         super(canvas);
     }
 

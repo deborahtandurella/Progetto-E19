@@ -10,7 +10,7 @@ import java.util.Random;
 public class NormalObstacleGenerator extends ObstacleGenerator {
 
 
-    protected NormalObstacleGenerator(Canvas canvas) {
+    NormalObstacleGenerator(Canvas canvas) {
         super(canvas);
     }
 

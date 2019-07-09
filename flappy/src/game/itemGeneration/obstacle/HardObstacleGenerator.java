@@ -8,9 +8,9 @@ import java.util.Random;
 
 public class HardObstacleGenerator extends NormalObstacleGenerator {
     private int rocketTime=0;
-    private static int ROCKET_PERIOD = (int) PIPE_PERIOD/2;
+    private static final int ROCKET_PERIOD = (int) PIPE_PERIOD/2;
 
-    protected HardObstacleGenerator(Canvas canvas) {
+    HardObstacleGenerator(Canvas canvas) {
         super(canvas);
     }
 
