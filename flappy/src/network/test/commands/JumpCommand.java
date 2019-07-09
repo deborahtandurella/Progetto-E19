@@ -2,7 +2,6 @@ package network.test.commands;
 
 import game.OnlineLocalGame;
 import game.RemoteGame;
-import network.test.EnemyGame;
 
 public class JumpCommand extends Command {
     private Double birdX;
