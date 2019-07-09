@@ -5,3 +5,4 @@ Realizzazione di un clone del gioco Flappy Bird con alcune modifiche alle meccan
 * Resa grafica del gioco
 * Architettura client/server
 * Utilizzo di libreria esterna Slick2d
+* Implementazione di una classifica
