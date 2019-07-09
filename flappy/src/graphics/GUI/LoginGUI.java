@@ -1,18 +1,19 @@
 package graphics.GUI;
 
 import graphics.Screen;
-import org.newdawn.slick.*;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.*;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.gui.TextField;
-import java.awt.Font;
 import resources.FileKeys;
 import resources.PathHandler;
 import resources.PathKeys;
 import states.Login;
+
+import java.awt.Font;
 
 public class LoginGUI extends AbstractMenuGUI {
 

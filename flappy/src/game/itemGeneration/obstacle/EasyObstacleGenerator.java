@@ -4,7 +4,6 @@ import entityComponent.Entity;
 import entityComponent.EntityFactory;
 import graphics.Canvas;
 
-
 import java.util.Random;
 
 public class EasyObstacleGenerator extends ObstacleGenerator{

@@ -1,8 +1,9 @@
 package graphics.GUI;
 
 import graphics.Screen;
-import org.newdawn.slick.*;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.MouseOverArea;
 import resources.FileKeys;

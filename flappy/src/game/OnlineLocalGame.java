@@ -8,26 +8,21 @@ import entityComponent.implementations.items.coin.CoinLogicComponent;
 import entityComponent.implementations.obstacles.ObstacleLogicComponent;
 import game.gameEvents.GameEventDispatcher;
 import game.gameEvents.GameEventType;
-import game.itemGeneration.coin.CoinListener;
 import game.itemGeneration.coin.CoinGenerator;
 import game.itemGeneration.coin.CoinListener;
 import game.itemGeneration.obstacle.ObstacleGenerator;
 import game.itemGeneration.obstacle.ObstacleGeneratorFactory;
 import game.itemGeneration.obstacle.ObstacleListener;
 import graphics.Canvas;
-import logic.gameElements.Coin;
-import logic.player.PlayerInfo;
+import logic.player.MultiModePlayer;
 import network.test.CommandHandler;
 import network.test.commands.*;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.geom.Shape;
 import resources.FileKeys;
 import resources.PathHandler;
 import resources.PathKeys;
-import logic.player.MultiModePlayer;
 
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;
 

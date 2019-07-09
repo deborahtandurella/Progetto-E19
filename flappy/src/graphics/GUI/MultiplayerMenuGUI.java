@@ -1,14 +1,17 @@
 package graphics.GUI;
 
+import graphics.Screen;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.*;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.gui.AbstractComponent;
-import graphics.Screen;
-import org.newdawn.slick.*;
 import org.newdawn.slick.gui.MouseOverArea;
 import resources.FileKeys;
 import resources.PathHandler;
 import resources.PathKeys;
 import states.MultiplayerMenu;
+
 import java.awt.Font;
 
 public class MultiplayerMenuGUI extends AbstractMenuGUI {

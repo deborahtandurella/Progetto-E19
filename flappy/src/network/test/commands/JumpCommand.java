@@ -22,9 +22,9 @@ public class JumpCommand extends Command {
     }
 
     @Override
-    public void execute(RemoteGame game) {
-        game.getBird().setX(birdX);
-        game.getBird().setY(birdY);
-        game.playerJump();
+    public void execute(RemoteGame remoteGame, OnlineLocalGame localGame) {
+        remoteGame.getBird().setX(birdX);
+        remoteGame.getBird().setY(birdY);
+        remoteGame.playerJump();
     }
 }

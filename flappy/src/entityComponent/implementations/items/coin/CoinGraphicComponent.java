@@ -1,7 +1,6 @@
 package entityComponent.implementations.items.coin;
 
 import entityComponent.components.gameElements.GameElementGraphicComponent;
-import entityComponent.implementations.bird.BirdLogicComponent;
 import graphics.Canvas;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;

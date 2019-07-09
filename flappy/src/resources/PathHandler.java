@@ -1,6 +1,6 @@
 package resources;
 
-import java.io.*;
+import java.io.IOException;
 import java.util.HashMap;
 
 public class PathHandler {

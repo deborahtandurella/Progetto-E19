@@ -12,8 +12,6 @@ import entityComponent.implementations.obstacles.pipes.movingPipe.MovingPipeLogi
 import entityComponent.implementations.obstacles.rocket.RocketGraphicComponent;
 import entityComponent.implementations.obstacles.rocket.RocketLogicComponent;
 import graphics.Canvas;
-import graphics.Screen;
-import org.newdawn.slick.Graphics;
 
 public class EntityFactory {
     public static Entity makeBird(double x, double y, Canvas canvas){

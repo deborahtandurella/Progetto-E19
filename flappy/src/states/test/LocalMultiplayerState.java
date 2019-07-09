@@ -1,7 +1,10 @@
 package states.test;
 
 import Main.GiocoAStati;
-import game.*;
+import game.DifficultySettings;
+import game.LocalGame;
+import game.ObstacleGeneratorType;
+import game.SoundPlayer;
 import graphics.Canvas;
 import graphics.Screen;
 import logic.SinglePlayer.SingleModePlayer;

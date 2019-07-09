@@ -1,10 +1,8 @@
 package Main;
 
 import GameScore.ScoreBoard;
-import com.sun.scenario.Settings;
 import game.DifficultySettings;
 import game.ObstacleGeneratorType;
-import game.itemGeneration.obstacle.NormalObstacleGenerator;
 import logic.SinglePlayer.Record;
 import logic.player.PlayerInfo;
 import org.lwjgl.LWJGLException;
@@ -19,9 +17,7 @@ import states.test.LocalMultiplayerState;
 import states.test.MultiplayerState;
 import states.test.SingleplayerState;
 
-import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Field;
 
 public class GiocoAStati extends StateBasedGame {
 

@@ -6,7 +6,6 @@ import entityComponent.implementations.obstacles.ObstacleLogicComponent;
 import game.itemGeneration.obstacle.ObstacleListener;
 import graphics.Canvas;
 
-
 import java.util.ArrayList;
 import java.util.Random;
 

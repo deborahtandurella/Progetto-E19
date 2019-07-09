@@ -1,9 +1,6 @@
 package logic.gameElements;
 
 import org.newdawn.slick.geom.Ellipse;
-import org.newdawn.slick.geom.Shape;
-
-import java.util.ArrayList;
 
 import static logic.gameConstants.GameConstants.HEART_SIZE;
 

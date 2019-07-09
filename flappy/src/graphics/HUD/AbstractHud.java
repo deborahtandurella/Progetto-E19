@@ -2,7 +2,6 @@ package graphics.HUD;
 
 import graphics.Canvas;
 import logic.player.Player;
-import org.newdawn.slick.Font;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;

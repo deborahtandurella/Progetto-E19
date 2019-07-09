@@ -15,15 +15,12 @@ import game.itemGeneration.obstacle.ObstacleGeneratorFactory;
 import game.itemGeneration.obstacle.ObstacleListener;
 import graphics.Canvas;
 import logic.SinglePlayer.SingleModePlayer;
-import logic.gameElements.Heart;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.geom.Shape;
 import resources.FileKeys;
 import resources.PathHandler;
 import resources.PathKeys;
 
-import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class LocalGame extends GameEventDispatcher implements HeartListener, ObstacleListener {

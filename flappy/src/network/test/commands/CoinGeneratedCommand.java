@@ -3,6 +3,7 @@ package network.test.commands;
 import entityComponent.Entity;
 import entityComponent.EntityFactory;
 import entityComponent.implementations.items.coin.CoinLogicComponent;
+import game.OnlineLocalGame;
 import game.RemoteGame;
 
 public class CoinGeneratedCommand extends Command {
@@ -18,9 +19,9 @@ public class CoinGeneratedCommand extends Command {
     }
 
     @Override
-    public void execute(RemoteGame game) {
-        Entity coin = EntityFactory.makeCoin(x, y, game.getCanvas());
+    public void execute(RemoteGame remoteGame, OnlineLocalGame localGame) {
+        Entity coin = EntityFactory.makeCoin(x, y, remoteGame.getCanvas());
         coin.setID(ID);
-        game.addScrollingElement(coin);
+        remoteGame.addScrollingElement(coin);
     }
 }

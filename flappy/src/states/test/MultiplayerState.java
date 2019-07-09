@@ -8,8 +8,6 @@ import logic.player.MultiModePlayer;
 import logic.player.PlayerInfo;
 import network.ConnectionListener;
 import network.test.CommandHandler;
-import network.test.commands.Command;
-import network.test.commands.NameCommand;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;

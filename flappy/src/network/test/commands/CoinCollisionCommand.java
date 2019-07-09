@@ -2,6 +2,7 @@ package network.test.commands;
 
 import entityComponent.Entity;
 import entityComponent.implementations.ScrollingElement;
+import game.OnlineLocalGame;
 import game.RemoteGame;
 
 public class CoinCollisionCommand extends Command {
@@ -10,11 +11,11 @@ public class CoinCollisionCommand extends Command {
         ID= coin.getID();
     }
     @Override
-    public void execute(RemoteGame game) {
-        game.increaseCoins();
-        Entity coin = game.getEntityByID(ID);
+    public void execute(RemoteGame remoteGame, OnlineLocalGame localGame) {
+        remoteGame.increaseCoins();
+        Entity coin = remoteGame.getEntityByID(ID);
         if (coin!=null)
-            game.removeScrollingElement((ScrollingElement)coin.getLogicComponent());
+            remoteGame.removeScrollingElement((ScrollingElement)coin.getLogicComponent());
 
 
     }

@@ -2,8 +2,6 @@ package logic.gameElements;
 
 import org.newdawn.slick.geom.Shape;
 
-import java.util.ArrayList;
-
 public abstract class GameElement implements SolidElement{
     private double x;
     private double y;

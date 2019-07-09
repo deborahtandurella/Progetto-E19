@@ -1,15 +1,18 @@
 package graphics.GUI;
 
 import graphics.Screen;
-import org.newdawn.slick.*;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.gui.AbstractComponent;
 import resources.FileKeys;
 import resources.PathHandler;
 import resources.PathKeys;
 import states.test.ScoreInterface;
-import java.awt.Color;
-import java.awt.Font;
+
+import java.awt.*;
 
 public class ScoreBoardMenuGUI extends AbstractMenuGUI {
 

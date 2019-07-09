@@ -5,12 +5,7 @@ import entityComponent.EntityFactory;
 import graphics.Canvas;
 import logic.gameConstants.GameConstants;
 
-
-import java.util.ArrayList;
 import java.util.Random;
-
-import static logic.gameConstants.GameConstants.PIPE_SPEED;
-import static logic.gameConstants.GameConstants.PIPE_WIDTH;
 
 public class NormalObstacleGenerator extends ObstacleGenerator {
 

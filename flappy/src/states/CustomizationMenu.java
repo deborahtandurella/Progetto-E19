@@ -2,8 +2,6 @@ package states;
 
 import graphics.GUI.CustomizationMenuGUI;
 import graphics.Screen;
-import graphics.SpriteDrawer;
-import org.lwjgl.opengl.GLContext;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -13,6 +11,7 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 import resources.FileKeys;
 import resources.PathHandler;
+
 import java.awt.*;
 import java.io.IOException;
 

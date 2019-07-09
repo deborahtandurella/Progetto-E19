@@ -13,6 +13,11 @@ public class MultiModePlayer implements  Player{
     public void addCoin(){
         coins++;
     }
+
+    public void setCoins(int coins) {
+        this.coins = coins;
+    }
+
     public void addScore(){
         score++;
     }

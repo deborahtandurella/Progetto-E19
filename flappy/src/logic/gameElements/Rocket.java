@@ -1,11 +1,7 @@
 package logic.gameElements;
 
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.TriangleMesh;
-import org.newdawn.slick.geom.Ellipse;
 import org.newdawn.slick.geom.Rectangle;
 
-import static logic.gameConstants.GameConstants.HEART_SIZE;
 import static logic.gameConstants.GameConstants.ROCKET_SIZE;
 
 public class Rocket extends GameElement implements SolidElement{

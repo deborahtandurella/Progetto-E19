@@ -2,9 +2,6 @@ package entityComponent.implementations.obstacles.pipes.movingPipe;
 
 
 import entityComponent.implementations.obstacles.pipes.PipeLogicComponent;
-import logic.gameConstants.GameConstants;
-
-import java.util.Random;
 
 public class MovingPipeLogicComponent extends PipeLogicComponent {
 

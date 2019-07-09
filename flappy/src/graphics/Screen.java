@@ -1,8 +1,6 @@
 package graphics;
 
 
-import org.newdawn.slick.Image;
-
 /**
  * Questa classe rappresenta uno schermo di gioco
  *

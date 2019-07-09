@@ -1,15 +1,14 @@
 package states;
 
 import Main.GiocoAStati;
+import gameMusic.MusicPlayer;
 import graphics.GUI.LoginGUI;
+import graphics.Screen;
 import logic.player.PlayerInfo;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
-import gameMusic.MusicPlayer;
-import graphics.Screen;
-import logic.SinglePlayer.Record;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 

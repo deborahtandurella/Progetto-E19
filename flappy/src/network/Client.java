@@ -4,7 +4,6 @@ package network;
 import game.RemoteGame;
 import network.test.CommandHandler;
 import network.test.commands.Command;
-import states.MultiplayerLoading;
 
 import java.io.*;
 import java.net.Socket;
@@ -68,7 +67,7 @@ public class Client implements CommandHandler {
     private void listenCommand(){
         try {
             Command command = (Command) inputStream.readObject();
-            command.execute(game);
+            command.execute(game, null);
         } catch (IOException e) {
             setConnected(false);
         } catch (ClassNotFoundException | ClassCastException e) {

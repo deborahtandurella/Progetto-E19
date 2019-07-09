@@ -5,12 +5,13 @@ import game.gameEvents.GameEventType;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
-import resources.FileKeys;
 import resources.PathHandler;
 import resources.PathKeys;
 
-import java.sql.SQLOutput;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class SoundPlayer implements GameEventListener {
     private HashMap<GameEventType, Sound> sounds;

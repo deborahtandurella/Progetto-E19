@@ -1,10 +1,7 @@
 package entityComponent.implementations.obstacles.rocket;
 
 import entityComponent.GameElementEntity;
-
 import graphics.Canvas;
-import graphics.Screen;
-import org.newdawn.slick.Graphics;
 
 
 public class RocketEntity extends GameElementEntity {

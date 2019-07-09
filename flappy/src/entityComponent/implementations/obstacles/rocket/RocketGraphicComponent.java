@@ -2,8 +2,6 @@ package entityComponent.implementations.obstacles.rocket;
 
 import entityComponent.components.gameElements.GameElementGraphicComponent;
 import graphics.Canvas;
-import graphics.Screen;
-import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import resources.FileKeys;
 import resources.PathHandler;

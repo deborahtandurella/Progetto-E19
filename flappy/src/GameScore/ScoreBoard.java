@@ -1,8 +1,8 @@
 package GameScore;
 
 import logic.SinglePlayer.Record;
-import java.io.*;
-import java.util.Collections;
+
+import java.io.IOException;
 
 public class ScoreBoard {
 

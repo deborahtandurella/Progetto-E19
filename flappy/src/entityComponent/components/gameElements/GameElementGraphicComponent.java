@@ -2,8 +2,6 @@ package entityComponent.components.gameElements;
 
 import entityComponent.components.GraphicComponent;
 import graphics.Canvas;
-import graphics.Screen;
-import org.newdawn.slick.Graphics;
 
 public abstract class GameElementGraphicComponent implements GraphicComponent {
     private GameElementLogicComponent logicComponent;

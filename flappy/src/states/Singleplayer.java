@@ -4,20 +4,19 @@ import GameScore.ScoreBoard;
 import gameMusic.MusicPlayer;
 import graphics.Screen;
 import graphics.SpriteDrawer;
-import java.awt.Font;
-
-import logic.SinglePlayer.SingleModePlayer;
 import logic.SinglePlayer.Record;
+import logic.SinglePlayer.SingleModePlayer;
 import logic.gameElements.*;
 import logic.player.PlayerInfo;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.*;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
-import org.newdawn.slick.state.transition.Transition;
 
+import java.awt.Font;
 import java.io.IOException;
 import java.util.List;
 import java.util.Random;

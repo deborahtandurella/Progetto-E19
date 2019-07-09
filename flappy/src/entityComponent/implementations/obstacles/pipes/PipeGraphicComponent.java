@@ -2,16 +2,12 @@ package entityComponent.implementations.obstacles.pipes;
 
 import entityComponent.components.gameElements.GameElementGraphicComponent;
 import graphics.Canvas;
-import graphics.Screen;
-import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import resources.FileKeys;
 import resources.PathHandler;
 import resources.PathKeys;
 
-import static logic.gameConstants.GameConstants.PIPE_FREE_SPACE;
-import static logic.gameConstants.GameConstants.PIPE_HEIGHT;
-import static logic.gameConstants.GameConstants.PIPE_WIDTH;
+import static logic.gameConstants.GameConstants.*;
 
 public class PipeGraphicComponent extends GameElementGraphicComponent {
     private Image upperPipeImage;

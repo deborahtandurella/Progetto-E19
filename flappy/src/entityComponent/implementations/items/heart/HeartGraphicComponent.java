@@ -2,10 +2,7 @@ package entityComponent.implementations.items.heart;
 
 import entityComponent.components.gameElements.GameElementGraphicComponent;
 import graphics.Canvas;
-import graphics.Screen;
 import org.newdawn.slick.Animation;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SpriteSheet;
 import resources.FileKeys;
 import resources.PathHandler;

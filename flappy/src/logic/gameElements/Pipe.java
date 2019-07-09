@@ -1,13 +1,8 @@
 package logic.gameElements;
 
 import org.newdawn.slick.geom.Rectangle;
-import org.newdawn.slick.geom.Shape;
 
-import java.util.ArrayList;
-
-import static logic.gameConstants.GameConstants.PIPE_FREE_SPACE;
-import static logic.gameConstants.GameConstants.PIPE_HEIGHT;
-import static logic.gameConstants.GameConstants.PIPE_WIDTH;
+import static logic.gameConstants.GameConstants.*;
 
 public class Pipe extends GameElement implements SolidElement {
     private final double speedX;
