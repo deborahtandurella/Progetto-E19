@@ -28,10 +28,13 @@ public class MovingPipeLogicComponent extends PipeLogicComponent {
     }
     @Override
     public SerializableElement getTransmittableVersion() {
+        double myX= getX();
+        double myY= getY();
+        double mySpeedY = getSpeedY();
         return new SerializableElement() {
-            private double x = getX();
-            private double y = getY();
-            private double speedY = getSpeedY();
+            private double x = myX;
+            private double y = myY;
+            private double speedY=mySpeedY;
             @Override
             public Entity instantiate(Canvas canvas) {
                 return EntityFactory.makeMovingPipe(x, y, speedY, canvas);
