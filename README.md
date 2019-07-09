@@ -2,8 +2,9 @@
 
 Realizzazione di un clone del gioco Flappy Bird con alcune modifiche alle meccaniche di gioco e aggiunta di multiplayer a 2 giocatori. Altri aspetti:
 
-* Resa grafica del gioco
-* Architettura client/server
-* Utilizzo di libreria esterna Slick2d
-* Utilizzo di gioco a stati
-* Implementazione di una classifica
+* Resa grafica del gioco (libreria slick2d)
+* Architettura peer to peer per il multigiocatore
+* Diverse difficoltà per il singleplayer
+* Implementazione di una classifica per i punteggi del singleplayer
+* Scelta di temi grafici
+
