@@ -1,5 +1,7 @@
 package game;
 
+import game.itemGeneration.obstacle.ObstacleGeneratorType;
+
 public class DifficultySettings {
     private double speed;
     private ObstacleGeneratorType obstacleGenerator;

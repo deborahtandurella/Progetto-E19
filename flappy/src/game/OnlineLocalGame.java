@@ -11,7 +11,6 @@ import game.gameEvents.GameEventType;
 import game.itemGeneration.coin.CoinGenerator;
 import game.itemGeneration.coin.CoinListener;
 import game.itemGeneration.obstacle.ObstacleGenerator;
-import game.itemGeneration.obstacle.ObstacleGeneratorFactory;
 import game.itemGeneration.obstacle.ObstacleListener;
 import graphics.Canvas;
 import logic.player.MultiModePlayer;
@@ -43,7 +42,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     public OnlineLocalGame(Canvas canvas, DifficultySettings settings, CommandHandler commandHandler, MultiModePlayer player) {
         this.canvas = canvas;
         this.gameSpeed = settings.getSpeed();
-        this.obstacleGenerator = ObstacleGeneratorFactory.makeObstacleGenerator(settings.getObstacleGenerator(), canvas);
+        this.obstacleGenerator = settings.getObstacleGenerator().create(canvas);
         this.coinGenerator = new CoinGenerator(canvas);
         this.commandHandler= commandHandler;
         this.player= player;

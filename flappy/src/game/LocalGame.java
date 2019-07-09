@@ -11,7 +11,6 @@ import game.gameEvents.GameEventType;
 import game.itemGeneration.heart.HeartGenerator;
 import game.itemGeneration.heart.HeartListener;
 import game.itemGeneration.obstacle.ObstacleGenerator;
-import game.itemGeneration.obstacle.ObstacleGeneratorFactory;
 import game.itemGeneration.obstacle.ObstacleListener;
 import graphics.Canvas;
 import logic.SinglePlayer.SingleModePlayer;
@@ -38,7 +37,7 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
     public LocalGame(Canvas canvas, DifficultySettings settings, SingleModePlayer player) {
         this.canvas = canvas;
         this.gameSpeed = settings.getSpeed();
-        this.obstacleGenerator = ObstacleGeneratorFactory.makeObstacleGenerator(settings.getObstacleGenerator(), canvas);
+        this.obstacleGenerator = settings.getObstacleGenerator().create(canvas);
         this.heartGenerator = new HeartGenerator(canvas);
         this.player= player;
         entities = new CopyOnWriteArrayList<>();

@@ -2,7 +2,7 @@ package Main;
 
 import GameScore.ScoreBoard;
 import game.DifficultySettings;
-import game.ObstacleGeneratorType;
+import game.itemGeneration.obstacle.ObstacleGeneratorType;
 import logic.SinglePlayer.Record;
 import logic.player.PlayerInfo;
 import org.lwjgl.LWJGLException;

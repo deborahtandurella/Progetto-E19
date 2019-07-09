@@ -16,11 +16,6 @@ enum PowerUpType {
             return new GravityPowerUp();
         }
     };
-    private PowerUp create() {
-        return null;
-    }
-    public static PowerUp newInstance(PowerUpType powerUpType) {
-        return powerUpType.create();
-    }
+    public abstract PowerUp create();
 }
 
