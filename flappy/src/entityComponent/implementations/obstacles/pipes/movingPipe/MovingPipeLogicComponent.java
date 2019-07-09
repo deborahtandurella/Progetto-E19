@@ -8,13 +8,9 @@ import java.util.Random;
 
 public class MovingPipeLogicComponent extends PipeLogicComponent {
 
-    public MovingPipeLogicComponent(double x, double centerY) {
+    public MovingPipeLogicComponent(double x, double centerY, double speedY) {
         super(x, centerY);
-        Random random = new Random();
-        setSpeedY(GameConstants.PIPE_VERTICAL_SPEED);
-        if(random.nextBoolean()){
-            setSpeedY(-getSpeedY());
-        }
+        setSpeedY(speedY);
     }
 
     @Override
