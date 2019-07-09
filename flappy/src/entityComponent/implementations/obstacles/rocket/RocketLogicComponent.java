@@ -1,6 +1,10 @@
 package entityComponent.implementations.obstacles.rocket;
 
+import entityComponent.Entity;
+import entityComponent.EntityFactory;
+import entityComponent.implementations.SerializableElement;
 import entityComponent.implementations.obstacles.ObstacleLogicComponent;
+import graphics.Canvas;
 import org.newdawn.slick.geom.Rectangle;
 
 import static logic.gameConstants.GameConstants.ROCKET_SIZE;
@@ -26,5 +30,16 @@ public class RocketLogicComponent extends ObstacleLogicComponent {
     @Override
     public boolean destroyOnHit() {
         return true;
+    }
+    @Override
+    public SerializableElement getTransmittableVersion() {
+        return new SerializableElement() {
+            private double x = getX();
+            private double y = getY();
+            @Override
+            public Entity instantiate(Canvas canvas) {
+                return EntityFactory.makeRocket(x, y, canvas);
+            }
+        };
     }
 }

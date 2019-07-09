@@ -1,7 +1,11 @@
 package entityComponent.implementations.obstacles.pipes;
 
 
+import entityComponent.Entity;
+import entityComponent.EntityFactory;
+import entityComponent.implementations.SerializableElement;
 import entityComponent.implementations.obstacles.ObstacleLogicComponent;
+import graphics.Canvas;
 import org.newdawn.slick.geom.Rectangle;
 
 import static logic.gameConstants.GameConstants.*;
@@ -28,4 +32,15 @@ public class PipeLogicComponent extends ObstacleLogicComponent {
         return false;
     }
 
+    @Override
+    public SerializableElement getTransmittableVersion() {
+        return new SerializableElement() {
+            private double x= getX();
+            private double y= getY();
+            @Override
+            public Entity instantiate(Canvas canvas) {
+                return EntityFactory.makeNormalPipe(x, y, canvas);
+            }
+        };
+    }
 }
