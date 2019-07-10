@@ -146,6 +146,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
             if(coin.collide(bird)){
                 removeCoin(coin);
                 player.addCoin();
+                commandHandler.sendCommand(new CoinCollisionCommand(Objects.requireNonNull(getEntity(coin))));
             }
         }
     }
@@ -157,7 +158,6 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
 
     private void removeCoin(LogicComponent logic){
         coins.removeIf(obstacleLogicComponent -> obstacleLogicComponent == logic);
-        commandHandler.sendCommand(new CoinCollisionCommand(Objects.requireNonNull(getEntity(logic))));
         removeEntity(logic);
 
     }
