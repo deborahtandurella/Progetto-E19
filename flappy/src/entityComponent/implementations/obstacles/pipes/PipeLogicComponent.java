@@ -34,15 +34,6 @@ public class PipeLogicComponent extends ObstacleLogicComponent {
 
     @Override
     public SerializableElement getTransmittableVersion() {
-        double myX= getX();
-        double myY= getY();
-        return new SerializableElement() {
-            private double x = myX;
-            private double y = myY;
-            @Override
-            public Entity instantiate(Canvas canvas) {
-                return EntityFactory.makeNormalPipe(myX, myY, canvas);
-            }
-        };
+        return new SerializablePipeLogic(getX(), getY());
     }
 }

@@ -1,4 +1,4 @@
-package entityComponent.implementations.obstacles.pipes.movingPipe;
+package entityComponent.implementations.obstacles.pipes;
 
 
 import entityComponent.Entity;
@@ -28,17 +28,6 @@ public class MovingPipeLogicComponent extends PipeLogicComponent {
     }
     @Override
     public SerializableElement getTransmittableVersion() {
-        double myX= getX();
-        double myY= getY();
-        double mySpeedY = getSpeedY();
-        return new SerializableElement() {
-            private double x = myX;
-            private double y = myY;
-            private double speedY=mySpeedY;
-            @Override
-            public Entity instantiate(Canvas canvas) {
-                return EntityFactory.makeMovingPipe(x, y, speedY, canvas);
-            }
-        };
+        return new SerializableMovingPipeLogic(getX(), getY(), getSpeedY());
     }
 }

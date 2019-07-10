@@ -41,7 +41,6 @@ public class Server implements CommandHandler {
             clientSocket = serverSocket.accept();
             inputStream = new ObjectInputStream(clientSocket.getInputStream());
             outputStream = new ObjectOutputStream(clientSocket.getOutputStream());
-            listenCommand();
             setConnected(true);
             System.out.println("Successfully connected");
         } catch (IOException ex) {

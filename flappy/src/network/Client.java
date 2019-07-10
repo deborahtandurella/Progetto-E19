@@ -35,7 +35,6 @@ public class Client implements CommandHandler {
             clientSocket = new Socket(ip, port);
             outputStream = new ObjectOutputStream(clientSocket.getOutputStream());
             inputStream = new ObjectInputStream(clientSocket.getInputStream());
-            listenCommand();
             setConnected(true);
             System.out.println("Successfully connected to " + ip + ":" + port);
         } catch (IOException ex) {
@@ -48,6 +47,7 @@ public class Client implements CommandHandler {
         try {
             outputStream.writeObject(command);
         } catch (IOException e) {
+            e.printStackTrace();
             setConnected(false);
         }
     }
@@ -69,6 +69,7 @@ public class Client implements CommandHandler {
             Command command = (Command) inputStream.readObject();
             command.execute(game, null);
         } catch (IOException e) {
+            e.printStackTrace();
             setConnected(false);
         } catch (ClassNotFoundException | ClassCastException e) {
             e.printStackTrace();

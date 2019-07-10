@@ -8,7 +8,7 @@ import entityComponent.implementations.items.heart.HeartGraphicComponent;
 import entityComponent.implementations.items.heart.HeartLogicComponent;
 import entityComponent.implementations.obstacles.pipes.PipeGraphicComponent;
 import entityComponent.implementations.obstacles.pipes.PipeLogicComponent;
-import entityComponent.implementations.obstacles.pipes.movingPipe.MovingPipeLogicComponent;
+import entityComponent.implementations.obstacles.pipes.MovingPipeLogicComponent;
 import entityComponent.implementations.obstacles.rocket.RocketGraphicComponent;
 import entityComponent.implementations.obstacles.rocket.RocketLogicComponent;
 import graphics.Canvas;
