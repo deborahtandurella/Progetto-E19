@@ -54,7 +54,7 @@ public class ScoreBoardState extends AbstractMenuState implements ScoreInterface
     }
 
     @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
+    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) {
     }
 
     public ScoreBoard getScoreBoard(){
