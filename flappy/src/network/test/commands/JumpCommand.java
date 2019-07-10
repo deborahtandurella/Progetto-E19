@@ -4,21 +4,14 @@ import game.OnlineLocalGame;
 import game.RemoteGame;
 
 public class JumpCommand extends Command {
+    private static final long serialVersionUID = -539210512249000001L;
+
     private Double birdX;
     private Double birdY;
 
     public JumpCommand(Double x, Double y) {
         birdX = x;
         birdY = y;
-    }
-
-
-    @Override
-    public String toString() {
-        return "JumpCommand{" +
-                "birdX=" + birdX +
-                ", birdY=" + birdY +
-                '}';
     }
 
     @Override

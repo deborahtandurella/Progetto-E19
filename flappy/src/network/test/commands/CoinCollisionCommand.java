@@ -6,6 +6,8 @@ import game.OnlineLocalGame;
 import game.RemoteGame;
 
 public class CoinCollisionCommand extends Command {
+    private static final long serialVersionUID = -539210512249000005L;
+
     private Integer ID;
     public CoinCollisionCommand(Entity coin){
         ID= coin.getID();

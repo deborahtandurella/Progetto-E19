@@ -6,6 +6,8 @@ import entityComponent.implementations.SerializableElement;
 import graphics.Canvas;
 
 public class SerializablePipeLogic implements SerializableElement {
+    private static final long serialVersionUID = -539210512250000002L;
+
     private Double x;
     private Double y;
 

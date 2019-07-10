@@ -7,6 +7,8 @@ import game.OnlineLocalGame;
 import game.RemoteGame;
 
 public class CoinGeneratedCommand extends Command {
+    private static final long serialVersionUID = -539210512249000004L;
+
     private Double x;
     private Double y;
     private Integer ID;
