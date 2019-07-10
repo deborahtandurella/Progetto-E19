@@ -1,6 +1,7 @@
 package network;
 
 import game.RemoteGame;
+import logic.player.PlayerInfo;
 import network.test.CommandHandler;
 import network.test.commands.Command;
 
@@ -10,7 +11,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class Server implements CommandHandler {
-    private String serverName;
+    private String othersName;
     // Sockets
     private Socket clientSocket;
     private ServerSocket serverSocket;
@@ -29,9 +30,6 @@ public class Server implements CommandHandler {
     public Server(){
         connectionListeners=new ArrayList<>();
     }
-    public String getUsername() {
-        return serverName;
-    }
 
     public void setConnection(int port, String name) {
 
@@ -42,7 +40,7 @@ public class Server implements CommandHandler {
             inputStream = new ObjectInputStream(clientSocket.getInputStream());
             outputStream = new ObjectOutputStream(clientSocket.getOutputStream());
             outputStream.writeObject(name);
-            System.out.println((String)inputStream.readObject());
+            othersName=(String)inputStream.readObject();
             setConnected(true);
             System.out.println("Successfully connected");
         } catch (IOException ex) {
@@ -82,9 +80,6 @@ public class Server implements CommandHandler {
         }
     }
 
-    public void setServerProperties(String name) {
-        serverName = name;
-    }
 
     public void closeConnection() {
         try {
@@ -108,5 +103,8 @@ public class Server implements CommandHandler {
     public void setConnected(boolean connected) {
         this.connected = connected;
         notifyListeners(connected);
+    }
+    public PlayerInfo getOthersInfo(){
+        return new PlayerInfo(othersName);
     }
 }

@@ -22,12 +22,10 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
 
     private Screen screen;
 
-    private static int port;
-    private static String ip;
+
     private String playerName;
     private CommandHandler commandHandler;
-
-    private boolean connected;
+    private GiocoAStati giocoAStati;
 
     @Override
     public int getID() {
@@ -39,19 +37,12 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
         super.enter(container, game);
         playerName= ((GiocoAStati) game).getPlayerInfo().getName();
         setGui(new MultiplayerLoadingGUI(container,screen,this));
-
-        connected = false;
-        if(ip.equals("")){
-            host(port);
-        }else{
-            join(ip,port);
-        }
     }
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) {
+        giocoAStati = (GiocoAStati) stateBasedGame;
         screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
-        ip = "";
     }
 
     @Override
@@ -61,34 +52,6 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
 
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) {
-        if(connected){
-            ((MultiplayerLoadingGUI)getGui()).connected();
-            if (ip.equals("")){
-                ((MultiplayerState) stateBasedGame.getState(13)).setCommandHandler(commandHandler);
-            } else {
-                ((MultiplayerState) stateBasedGame.getState(13)).setCommandHandler(commandHandler);
-            }
-            (new Timer()).schedule( new TimerTask(){
-                @Override
-                public void run() {
-                    stateBasedGame.enterState(13);
-                }
-            }, 3000);
-            connected=false;
-            /*Thread th1 = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try{
-                        Thread.sleep(3000);
-                    } catch (InterruptedException e){
-                        e.printStackTrace();
-                    }
-                }
-            });
-            th1.start();*/
-
-
-        }
     }
 
     public void keyPressed(int key, char c){
@@ -99,26 +62,34 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
 
     }
 
-    private void join(String ip, int port){
+    public void join(String ip, int port){
         Client client = new Client();
         setCommandHandler(client);
-        Thread thread = new Thread(() -> client.setConnection(ip,port, playerName));
-        thread.start();
+        Thread connectionThread = new Thread(() -> client.setConnection(ip,port, playerName));
+        connectionThread.start();
     }
 
-    private void host(int port){
+    public void host(int port){
         Server server = new Server();
         setCommandHandler(server);
-        Thread thread = new Thread(() -> server.setConnection(port, playerName));
-        thread.start();
+        Thread connectionThread = new Thread(() -> server.setConnection(port, playerName));
+        connectionThread.start();
     }
 
-    static void setPort(int port) {
-        MultiplayerLoading.port = port;
-    }
-
-    static void setIp(String ip) {
-        MultiplayerLoading.ip = ip;
+    private void startLoading(){
+        (new Timer()).schedule( new TimerTask(){
+            @Override
+            public void run() {
+                ((MultiplayerLoadingGUI)getGui()).connected();
+                ((MultiplayerState) giocoAStati.getState(13)).setCommandHandler(commandHandler);
+            }
+        }, 1000);
+        (new Timer()).schedule( new TimerTask(){
+            @Override
+            public void run() {
+                giocoAStati.enterState(13);
+            }
+        }, 3000);
     }
 
     private void setCommandHandler(CommandHandler commandHandler) {
@@ -130,6 +101,7 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
 
     @Override
     public void connectionWorking(boolean connected) {
-        this.connected=connected;
+        if(connected)
+            startLoading();
     }
 }

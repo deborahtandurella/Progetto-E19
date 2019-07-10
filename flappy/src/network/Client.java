@@ -2,36 +2,28 @@ package network;
 
 
 import game.RemoteGame;
+import logic.player.PlayerInfo;
 import network.test.CommandHandler;
 import network.test.commands.Command;
-import network.test.commands.JumpCommand;
 
 import java.io.*;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
 
 public class Client implements CommandHandler {
 
 
-    private String clientName;
+    private String othersName;
 
     private Socket clientSocket ;
     private RemoteGame game;
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
-    private DataInputStream inData;
-    private DataOutputStream outData;
     private ArrayList<ConnectionListener> connectionListeners;
     private boolean connected = false;
 
     public Client(){
         connectionListeners=new ArrayList<>();
-    }
-    public String getUsername() {
-        return clientName;
     }
 
     public void setConnection(String ip, int port, String name) {
@@ -49,7 +41,7 @@ public class Client implements CommandHandler {
             byte[] sndData= bos.toByteArray();
             DatagramPacket packet = new DatagramPacket(sndData, sndData.length, clientSocket.getInetAddress(), port );
             udpSocket.send(packet); */
-            System.out.println( (String) inputStream.readObject());
+            othersName=(String) inputStream.readObject();
             setConnected(true);
             System.out.println("Successfully connected to " + ip + ":" + port);
         } catch (IOException | ClassNotFoundException ex) {
@@ -68,16 +60,12 @@ public class Client implements CommandHandler {
     }
     public void startListening(RemoteGame game){
         this.game=game;
-        Thread th1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (connected) {
-                    listenCommand();
-                }
-                closeConnection();
+        new Thread(() -> {
+            while (connected) {
+                listenCommand();
             }
-        });
-        th1.start();
+            closeConnection();
+        }).start();
     }
     private void listenCommand(){
         try {
@@ -101,20 +89,21 @@ public class Client implements CommandHandler {
         }
     }
 
-    public void SetClientProperties(String name) {
-        clientName = name;
-    }
     public void addConnectionListener(ConnectionListener listener){
         connectionListeners.add(listener);
     }
-    protected void notifyListeners(boolean connected){
+    private void notifyListeners(boolean connected){
         for(ConnectionListener listener: connectionListeners){
             listener.connectionWorking(connected);
         }
     }
 
-    public void setConnected(boolean connected) {
+    private void setConnected(boolean connected) {
         this.connected = connected;
         notifyListeners(connected);
     }
+    public PlayerInfo getOthersInfo(){
+        return new PlayerInfo(othersName);
+    }
+
 }

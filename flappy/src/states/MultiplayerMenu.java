@@ -55,15 +55,15 @@ public class MultiplayerMenu extends AbstractMenuState {
     }
 
     public void join(String ip,int port){
-        MultiplayerLoading.setIp(ip);
-        MultiplayerLoading.setPort(port);
         stateBasedGame.enterState(6,new FadeOutTransition(),new FadeInTransition());
-
+        ((MultiplayerLoading)stateBasedGame.getState(6)).join(ip, port);
     }
 
     public void host(int port){
-        MultiplayerLoading.setPort(port);
         stateBasedGame.enterState(6,new FadeOutTransition(),new FadeInTransition());
+        ((MultiplayerLoading)stateBasedGame.getState(6)).host(port);
+
+
     }
 
     @Override
