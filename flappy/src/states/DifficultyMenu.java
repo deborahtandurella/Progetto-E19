@@ -1,5 +1,7 @@
 package states;
 
+import game.DifficultySettings;
+import game.itemGeneration.obstacle.ObstacleGeneratorType;
 import graphics.GUI.DifficultyMenuGUI;
 import graphics.Screen;
 import org.newdawn.slick.GameContainer;
@@ -9,6 +11,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
+import states.test.SingleplayerState;
 
 public class DifficultyMenu extends AbstractMenuState {
     private static final int ID = 2;
@@ -43,10 +46,21 @@ public class DifficultyMenu extends AbstractMenuState {
         }
     }
 
-    public void startGame(/*ci sarà da passare un enum o qualcosa per la difficoltà*/){
+    private void startGame(/*ci sarà da passare un enum o qualcosa per la difficoltà*/){
         stateBasedGame.enterState(10, new FadeOutTransition(), new FadeInTransition());
     }
-
+    public void startEasyGame(){
+        ((SingleplayerState) stateBasedGame.getState(10)).setDifficulty(new DifficultySettings(0.7, ObstacleGeneratorType.EASY));
+        startGame();
+    }
+    public void startNormalGame(){
+        ((SingleplayerState) stateBasedGame.getState(10)).setDifficulty(new DifficultySettings(1, ObstacleGeneratorType.MEDIUM));
+        startGame();
+    }
+    public void startHardGame(){
+        ((SingleplayerState) stateBasedGame.getState(10)).setDifficulty(new DifficultySettings(1.3, ObstacleGeneratorType.HARD));
+        startGame();
+    }
     public void back(){
         stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
     }

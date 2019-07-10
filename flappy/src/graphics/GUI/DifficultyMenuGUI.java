@@ -54,13 +54,13 @@ public class DifficultyMenuGUI extends AbstractMenuGUI {
     @Override
     public void componentActivated(AbstractComponent source) {
         if(source == easyButton){
-            state.startGame();
+            state.startEasyGame();
         }
         if(source == mediumButton){
-            state.startGame();
+            state.startNormalGame();
         }
         if(source == hardButton){
-            state.startGame();
+            state.startHardGame();
         }
         if(source == backButton){
             state.back();

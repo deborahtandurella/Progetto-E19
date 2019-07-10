@@ -19,7 +19,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class SingleplayerState extends BasicGameState {
     private LocalGame game;
     private Canvas gameCanvas;
-    private DifficultySettings settings = new DifficultySettings(1, ObstacleGeneratorType.MEDIUM);
+    private DifficultySettings difficulty = new DifficultySettings(1, ObstacleGeneratorType.MEDIUM);
     private SoundPlayer soundPlayer;
     private SinglePlayerHud hud;
     @Override
@@ -38,7 +38,7 @@ public class SingleplayerState extends BasicGameState {
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         super.enter(container, game);
         SingleModePlayer player = new SingleModePlayer(((GiocoAStati) game).getPlayerInfo());
-        this.game= new LocalGame(gameCanvas, settings, player);
+        this.game= new LocalGame(gameCanvas, difficulty, player);
         this.game.addListener(soundPlayer);
         hud= new SinglePlayerHud(player, gameCanvas);
 
@@ -62,5 +62,8 @@ public class SingleplayerState extends BasicGameState {
         if (key==Input.KEY_SPACE){
             game.playerJump();
         }
+    }
+    public void setDifficulty(DifficultySettings difficulty){
+        this.difficulty=difficulty;
     }
 }
