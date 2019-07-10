@@ -1,9 +1,7 @@
 package Main;
 
 import GameScore.ScoreBoard;
-import game.DifficultySettings;
-import game.itemGeneration.obstacle.ObstacleGeneratorType;
-import logic.SinglePlayer.Record;
+import logic.SinglePlayer.Result;
 import logic.player.PlayerInfo;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
@@ -21,24 +19,34 @@ import java.io.IOException;
 
 public class GiocoAStati extends StateBasedGame {
 
-    private static final int LOGIN = 0;
-    private static final int MENU = 1;
-    private static final int DIFFICULTY_MENU = 2;
-    private static final int SINGLEPLAYER = 3;
-    private static final int SINGLE_REPLAY_MENU = 4;
-    private static final int MULTI_MENU = 5;
-    private static final int MULTI_LOADING = 6;
-    private static final int MULTIPLAYER = 7;
-    private static final int MULTI_REPLAY_MENU = 8;
-    private static final int SCORE_BOARD_MENU = 9;
+    public static final int LOGIN = 0;
+    public static final int MENU = 1;
+    public static final int DIFFICULTY_MENU = 2;
+    public static final int SINGLEPLAYER = 3;
+    public static final int SINGLE_REPLAY_MENU = 4;
+    public static final int MULTI_MENU = 5;
+    public static final int MULTI_LOADING = 6;
+    public static final int MULTIPLAYER = 7;
+    public static final int MULTI_REPLAY_MENU = 8;
+    public static final int SCORE_BOARD_MENU = 9;
     private PlayerInfo playerInfo;
+    private ScoreBoard scoreBoard;
 
     public GiocoAStati() {
         super("Flappy Bird");
+        try {
+            scoreBoard = new ScoreBoard();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public PlayerInfo getPlayerInfo() {
         return playerInfo;
+    }
+
+    public ScoreBoard getScoreBoard() {
+        return scoreBoard;
     }
 
     public void setPlayerInfo(PlayerInfo playerInfo) {
@@ -47,20 +55,19 @@ public class GiocoAStati extends StateBasedGame {
 
     @Override
     public void initStatesList(GameContainer gameContainer)  {
-        Record record = new Record();
-        DifficultySettings settings = new DifficultySettings(1, ObstacleGeneratorType.MEDIUM);
+        Result result = new Result();
         try {
             ScoreBoard scoreBoard = new ScoreBoard();
             this.addState(new Login());
             this.addState(new Menu());
             this.addState(new DifficultyMenu());
-            this.addState(new Singleplayer(record, scoreBoard));
-            this.addState(new SingleplayerReplayMenuState(scoreBoard));
+            this.addState(new Singleplayer(result));
+            this.addState(new SingleplayerReplayMenuState());
             this.addState(new MultiplayerMenu());
             this.addState(new MultiplayerLoading());
             this.addState(new Multiplayer());
             this.addState(new MultiplayerReplayMenu());
-            this.addState(new ScoreBoardState(record, scoreBoard));
+            this.addState(new ScoreBoardState(result));
             this.addState(new CustomizationMenu());
             this.addState(new SingleplayerState());
             this.addState(new LocalMultiplayerState());

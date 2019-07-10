@@ -1,6 +1,7 @@
 package states;
 
 import GameScore.ScoreBoard;
+import Main.GiocoAStati;
 import graphics.GUI.ScoreBoardMenuGUI;
 import graphics.GUI.SingleplayerReplayMenuGUI;
 import graphics.Screen;
@@ -20,8 +21,8 @@ public class SingleplayerReplayMenuState extends AbstractMenuState implements Sc
     private ScoreBoardMenuGUI scoregui;
     private ScoreBoard scoreBoard;
 
-    public SingleplayerReplayMenuState(ScoreBoard scoreBoard){
-        this.scoreBoard = scoreBoard;
+    public SingleplayerReplayMenuState( ){
+
     }
     @Override
     public int getID() {
@@ -30,6 +31,7 @@ public class SingleplayerReplayMenuState extends AbstractMenuState implements Sc
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
+        scoreBoard= ((GiocoAStati)stateBasedGame).getScoreBoard();
         this.container = gameContainer;
         this.stateBasedGame = stateBasedGame;
         Screen screen = new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);

@@ -1,10 +1,11 @@
 package states;
 
 import GameScore.ScoreBoard;
+import Main.GiocoAStati;
 import gameMusic.MusicPlayer;
 import graphics.Screen;
 import graphics.SpriteDrawer;
-import logic.SinglePlayer.Record;
+import logic.SinglePlayer.Result;
 import logic.SinglePlayer.SingleModePlayer;
 import logic.gameElements.*;
 import logic.player.PlayerInfo;
@@ -42,7 +43,7 @@ public class Singleplayer extends BasicGameState {
     private long immunityTimer;
     private long newRecordTimer;
     private TrueTypeFont font;
-    private Record record;
+    private Result result;
     private boolean first;
     private Screen screen;
     private ScoreBoard scoreboard;
@@ -57,13 +58,13 @@ public class Singleplayer extends BasicGameState {
         return ID;
     }
 
-    public Singleplayer(Record record, ScoreBoard scoreBoard){
+    public Singleplayer(Result result){
         super();
-        this.record = record;
-        this.scoreboard = scoreBoard;
+        this.result = result;
     }
 
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
+        this.scoreboard = ((GiocoAStati) stateBasedGame).getScoreBoard();
         this.container= gameContainer;
         player = new SingleModePlayer(new PlayerInfo("ciao"));
         immunity = false;
@@ -144,12 +145,10 @@ public class Singleplayer extends BasicGameState {
                 rockets.remove(rocket);
                 if(player.getHearts()==0){
                     musicPlayer.gameOverMusic();
-                    record.setRecord(player);
-                    try {
-                        scoreboard.compareScore(record);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    result.setRecord(player);
+
+                    scoreboard.compareScore(result);
+
                     try {
                         stateBasedGame.getState(4).init(container,stateBasedGame);
                     } catch (SlickException e) {
@@ -183,12 +182,10 @@ public class Singleplayer extends BasicGameState {
                 player.loseHeart();
                 if(player.getHearts()==0){
                     musicPlayer.gameOverMusic();
-                    record.setRecord(player);
-                    try {
-                        scoreboard.compareScore(record);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    result.setRecord(player);
+
+                    scoreboard.compareScore(result);
+
                     try {
                         stateBasedGame.getState(4).init(container,stateBasedGame);
                     } catch (SlickException e) {
