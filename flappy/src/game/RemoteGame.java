@@ -8,6 +8,8 @@ import entityComponent.implementations.bird.BirdLogicComponent;
 import game.gameEvents.GameEventDispatcher;
 import game.gameEvents.GameEventType;
 import graphics.Canvas;
+import graphics.HUD.Hud;
+import graphics.HUD.MultiplayerHud;
 import logic.player.MultiModePlayer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -25,6 +27,7 @@ public class RemoteGame extends GameEventDispatcher {
     private Canvas canvas;
     private double gameSpeed;
     private Image background;
+    private Hud hud;
 
     public RemoteGame(Canvas canvas, DifficultySettings settings, MultiModePlayer player) {
         this.canvas = canvas;
@@ -36,15 +39,12 @@ public class RemoteGame extends GameEventDispatcher {
         bird = (BirdLogicComponent) birdEntity.getLogicComponent();
         this.player=player;
         try {
+            hud = new MultiplayerHud(player, canvas);
             background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND));
         } catch (SlickException e) {
             e.printStackTrace();
         }
 
-    }
-
-    private void addEntity(Entity entity){
-        entities.add(entity);
     }
     public void update(int delta){
         delta*=gameSpeed;
@@ -55,6 +55,7 @@ public class RemoteGame extends GameEventDispatcher {
     public void render(){
         canvas.drawImage(background, 0, 0, 1, 1);
         renderEntities();
+        hud.render();
     }
     public void playerJump(){
         bird.jump();
@@ -89,9 +90,8 @@ public class RemoteGame extends GameEventDispatcher {
         entities.removeIf(entity -> entity.getLogicComponent() == logic);
     }
     private void renderEntities(){
-        for(Entity entity: entities){
+        for(Entity entity: entities)
             entity.render();
-        }
     }
     private void gameover(){
         notifyEvent(GameEventType.GAMEOVER);
@@ -101,16 +101,15 @@ public class RemoteGame extends GameEventDispatcher {
         return bird;
     }
     public void obstacleCollision(){
+        notifyEvent(GameEventType.COLLISION);
         bird.acquireImmunity();
     }
     public void increaseCoins(){
     }
     public Entity getEntityByID(int ID) {
-        for(Entity entity: entities){
-            if (entity.getID()==ID){
+        for(Entity entity: entities)
+            if (entity.getID()==ID)
                 return entity;
-            }
-        }
         return null;
     }
     public Canvas getCanvas() {

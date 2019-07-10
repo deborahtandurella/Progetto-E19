@@ -1,5 +1,6 @@
 package game;
 
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader;
 import entityComponent.Entity;
 import entityComponent.EntityFactory;
 import entityComponent.components.LogicComponent;
@@ -13,6 +14,8 @@ import game.itemGeneration.heart.HeartListener;
 import game.itemGeneration.obstacle.ObstacleGenerator;
 import game.itemGeneration.obstacle.ObstacleListener;
 import graphics.Canvas;
+import graphics.HUD.Hud;
+import graphics.HUD.SinglePlayerHud;
 import logic.SinglePlayer.SingleModePlayer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -31,14 +34,13 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
     private Canvas canvas;
     private double gameSpeed;
     private ObstacleGenerator obstacleGenerator;
-    private HeartGenerator heartGenerator;
     private Image background;
+    private Hud hud;
 
     public LocalGame(Canvas canvas, DifficultySettings settings, SingleModePlayer player) {
         this.canvas = canvas;
         this.gameSpeed = settings.getSpeed();
         this.obstacleGenerator = settings.getObstacleGenerator().create(canvas);
-        this.heartGenerator = new HeartGenerator(canvas);
         this.player= player;
         entities = new CopyOnWriteArrayList<>();
         hearts = new CopyOnWriteArrayList<>();
@@ -47,9 +49,11 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
         entities.add(birdEntity);
         bird = (BirdLogicComponent) birdEntity.getLogicComponent();
         obstacleGenerator.addListener(this);
+        HeartGenerator heartGenerator = new HeartGenerator(canvas);
         obstacleGenerator.addListener(heartGenerator);
         heartGenerator.addListener(this);
         try {
+            hud = new SinglePlayerHud(player, canvas);
             background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND));
         } catch (SlickException e) {
             e.printStackTrace();
@@ -74,22 +78,19 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
     public void render(){
         canvas.drawImage(background, 0, 0, 1, 1);
         renderEntities();
+        hud.render();
     }
     public void playerJump(){
         bird.jump();
         notifyEvent(GameEventType.JUMP);
     }
     private void checkOutOfBounds(){
-        for( ObstacleLogicComponent obstacle : obstacles){
-            if (obstacle.outOfBounds()){
+        for( ObstacleLogicComponent obstacle : obstacles)
+            if (obstacle.outOfBounds())
                 removeObstacle(obstacle);
-            }
-        }
-        for( HeartLogicComponent heart : hearts){
-            if (heart.outOfBounds()){
+        for( HeartLogicComponent heart : hearts)
+            if (heart.outOfBounds())
                 removeHeart(heart);
-            }
-        }
     }
     private void checkCollisions(){
         checkHeartCollisions();
@@ -104,16 +105,13 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
         }
     }
     private void checkObstacleCollisions(){
-
-        for(ObstacleLogicComponent obstacle : obstacles){
-            if (obstacle.collide(bird)){
+        for(ObstacleLogicComponent obstacle : obstacles)
+            if (obstacle.collide(bird))
                 obstacleCollision(obstacle);
-            }
-        }
     }
     private void obstacleCollision(ObstacleLogicComponent obstacle){
-        bird.acquireImmunity();
         notifyEvent(GameEventType.COLLISION);
+        bird.acquireImmunity();
         decreaseLife();
         if(obstacle.destroyOnHit())
             removeObstacle(obstacle);
@@ -132,15 +130,14 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
         if (player.getHearts()==0)
             gameover();
     }
-    public void increaseLife(){
+    private void increaseLife(){
         player.addHeart();
     }
     private void updateEntities(int delta){
-        for(Entity entity: entities){
+        for(Entity entity: entities)
             entity.update(delta);
-        }
     }
-    public void removeHeart(LogicComponent logic){
+    private void removeHeart(LogicComponent logic){
         hearts.removeIf(obstacleLogicComponent -> obstacleLogicComponent == logic);
         removeEntity(logic);
     }
@@ -152,9 +149,8 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
         entities.removeIf(entity -> entity.getLogicComponent() == logic);
     }
     private void renderEntities(){
-        for(Entity entity: entities){
+        for(Entity entity: entities)
             entity.render();
-        }
     }
     private void gameover(){
         notifyEvent(GameEventType.GAMEOVER);
@@ -163,7 +159,6 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
     public void onHeartGenerated(Entity heart) {
         addEntity(heart);
         hearts.add((HeartLogicComponent) heart.getLogicComponent());
-
     }
 
     @Override
@@ -172,5 +167,3 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
         obstacles.add((ObstacleLogicComponent) obstacle.getLogicComponent());
     }
 }
-
-/*TODO inizializzazione, aggiunta di entity*/

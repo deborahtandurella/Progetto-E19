@@ -8,9 +8,9 @@ import resources.FileKeys;
 import resources.PathHandler;
 import resources.PathKeys;
 
-public class MultiplayerHud extends AbstractHud {
+public class MultiplayerHud extends Hud {
     private Image coinImage;
-    private static float COIN_SIZE = 0.65f;
+    private static float COIN_SIZE = 0.065f;
     public MultiplayerHud(MultiModePlayer player, Canvas canvas) throws SlickException {
         super(player, canvas);
         coinImage= new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.COIN));
@@ -19,9 +19,9 @@ public class MultiplayerHud extends AbstractHud {
     @Override
     public void render() {
         super.render();
-        getCanvas().drawImage(coinImage, COIN_SIZE, COIN_SIZE, COIN_SIZE, COIN_SIZE );
+        getCanvas().drawImage(coinImage, COIN_SIZE*0.5f, COIN_SIZE*0.5f, COIN_SIZE, COIN_SIZE );
         getCanvas().drawString( String.valueOf(((MultiModePlayer)getPlayer()).getCoins()),
                 getFont(),
-                COIN_SIZE*4, COIN_SIZE*1.5f);
+                COIN_SIZE*2, 0.05f);
     }
 }

@@ -8,7 +8,7 @@ import resources.FileKeys;
 import resources.PathHandler;
 import resources.PathKeys;
 
-public class SinglePlayerHud extends AbstractHud {
+public class SinglePlayerHud extends Hud {
     private Image heartImage;
     private static float HEART_SIZE = 0.05f;
     public SinglePlayerHud(SingleModePlayer player, Canvas canvas) throws SlickException {

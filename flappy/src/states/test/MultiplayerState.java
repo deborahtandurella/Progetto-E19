@@ -4,6 +4,7 @@ import Main.GiocoAStati;
 import game.*;
 import game.itemGeneration.obstacle.ObstacleGeneratorType;
 import graphics.Canvas;
+import graphics.HUD.Hud;
 import graphics.Screen;
 import logic.player.MultiModePlayer;
 import logic.player.PlayerInfo;
@@ -26,6 +27,7 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
     private Image xPanel;
     private CommandHandler commandHandler;
     private StateBasedGame stateBasedGame;
+
 
     public void setCommandHandler(CommandHandler commandHandler) {
         this.commandHandler = commandHandler;
@@ -54,7 +56,7 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
         PlayerInfo myPlayer= ((GiocoAStati) game).getPlayerInfo();
         leftGame= new OnlineLocalGame(gameCanvas, settings, commandHandler, new MultiModePlayer(myPlayer));
         leftGame.addListener(soundPlayer);
-        rightGame= new RemoteGame(gameCanvas, settings, new MultiModePlayer(myPlayer));
+        rightGame= new RemoteGame(gameCanvas, settings, new MultiModePlayer(commandHandler.getOthersInfo()));
         commandHandler.startListening(rightGame);
         rightGame.addListener(soundPlayer);
     }
@@ -62,6 +64,7 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) {
         rightGame.render();
+
         graphics.copyArea(leftScreenCopy, 0, 0);
 
         leftGame.render();
@@ -79,10 +82,7 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
 
     @Override
     public void keyPressed(int key, char c) {
-        /*if (key== Input.KEY_SPACE){
-            rightGame.playerJump();
-        }*/
-        if (key== Input.KEY_LCONTROL){
+        if (key== Input.KEY_SPACE){
             leftGame.playerJump();
         }
     }

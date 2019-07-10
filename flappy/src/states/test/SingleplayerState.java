@@ -21,7 +21,6 @@ public class SingleplayerState extends BasicGameState {
     private Canvas gameCanvas;
     private DifficultySettings difficulty = new DifficultySettings(1, ObstacleGeneratorType.MEDIUM);
     private SoundPlayer soundPlayer;
-    private SinglePlayerHud hud;
     @Override
     public int getID() {
         return 10;
@@ -40,15 +39,11 @@ public class SingleplayerState extends BasicGameState {
         SingleModePlayer player = new SingleModePlayer(((GiocoAStati) game).getPlayerInfo());
         this.game= new LocalGame(gameCanvas, difficulty, player);
         this.game.addListener(soundPlayer);
-        hud= new SinglePlayerHud(player, gameCanvas);
-
-
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) {
         game.render();
-        hud.render();
         gameCanvas.clipScreen();
     }
 
