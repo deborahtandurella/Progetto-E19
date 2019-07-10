@@ -92,7 +92,7 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
     @Override
     public void render() {
         renderBackground();
-        pergamena.draw(getContainer().getWidth()/2f-pergamena.getWidth()/2f, 26*getContainer().getHeight()/100f);
+        pergamena.draw(getContainer().getWidth()/2f-pergamena.getWidth()/2.1f, 26*getContainer().getHeight()/100f);
         buttonBg.draw(buttonBgX, 30*getContainer().getHeight()/100f, 14*getContainer().getWidth()/100f, 15*getContainer().getHeight()/100f);
         getContainer().getGraphics().setFont(versionFont);
         getContainer().getGraphics().drawString(title, 7*getContainer().getWidth()/100f , 9 * getContainer().getHeight() / 100f);
