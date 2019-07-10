@@ -144,9 +144,9 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     private void checkCoinCollisions(){
         for(CoinLogicComponent coin: coins){
             if(coin.collide(bird)){
+                commandHandler.sendCommand(new CoinCollisionCommand(Objects.requireNonNull(getEntity(coin))));
                 removeCoin(coin);
                 player.addCoin();
-                commandHandler.sendCommand(new CoinCollisionCommand(Objects.requireNonNull(getEntity(coin))));
             }
         }
     }
