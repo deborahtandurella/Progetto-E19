@@ -24,7 +24,7 @@ public class HeartGenerator implements ObstacleListener {
     public void addListener(HeartListener listener){
         listeners.add(listener);
     }
-    protected void notifyListeners(Entity heart){
+    private void notifyListeners(Entity heart){
         for(HeartListener listener: listeners){
             listener.onHeartGenerated(heart);
         }
@@ -32,12 +32,12 @@ public class HeartGenerator implements ObstacleListener {
     @Override
     public void onObstacleGenerated(Entity obstacle) {
         if ( ((ObstacleLogicComponent) obstacle.getLogicComponent()).isPeriodic()) {
-            if ((new Random()).nextInt(15) == 0)
+            if ((new Random()).nextInt(2) == 0)
                 generateHeart();
         }
     }
     private void generateHeart(){
-        Entity heart= EntityFactory.makeHeart(1 + PIPE_WIDTH + 0.25 - HEART_SIZE*0.5, 0.25 + (new Random()).nextFloat()*0.5, canvas);
+        Entity heart= EntityFactory.makeHeart(1 +PIPE_WIDTH*0.75 + 0.25  - HEART_SIZE*0.5, 0.25 + (new Random()).nextFloat()*0.5, canvas);
         notifyListeners(heart);
     }
 

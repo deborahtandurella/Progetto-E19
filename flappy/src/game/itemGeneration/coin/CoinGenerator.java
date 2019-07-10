@@ -24,7 +24,7 @@ public class CoinGenerator implements ObstacleListener {
     public void addListener(CoinListener listener){
         listeners.add(listener);
     }
-    protected void notifyListeners(Entity coin){
+    private void notifyListeners(Entity coin){
         for(CoinListener listener: listeners){
             listener.onCoinGenerated(coin);
         }
@@ -38,7 +38,7 @@ public class CoinGenerator implements ObstacleListener {
         }
     }
     private void generateCoin(){
-        Entity coin= EntityFactory.makeCoin(1 + PIPE_WIDTH + 0.25 - COIN_SIZE*0.5, 0.25 + (new Random()).nextFloat()*0.5, canvas);
+        Entity coin= EntityFactory.makeCoin(1 + PIPE_WIDTH*0.75 + 0.25 - COIN_SIZE*0.5, 0.25 + (new Random()).nextFloat()*0.5, canvas);
         notifyListeners(coin);
     }
 
