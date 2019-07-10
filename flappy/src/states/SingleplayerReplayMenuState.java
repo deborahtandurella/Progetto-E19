@@ -18,7 +18,6 @@ public class SingleplayerReplayMenuState extends AbstractMenuState implements Sc
     private GameContainer container;
     private StateBasedGame stateBasedGame;
     private ScoreBoardMenuGUI scoregui;
-    private Screen screen;
     private ScoreBoard scoreBoard;
 
     public SingleplayerReplayMenuState(ScoreBoard scoreBoard){
@@ -33,7 +32,7 @@ public class SingleplayerReplayMenuState extends AbstractMenuState implements Sc
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.container = gameContainer;
         this.stateBasedGame = stateBasedGame;
-        screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
+        Screen screen = new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
         setGui(new SingleplayerReplayMenuGUI(gameContainer, screen, this));
         scoregui = new ScoreBoardMenuGUI(gameContainer, screen, this);
         container.getGraphics().clearWorldClip();
@@ -47,7 +46,7 @@ public class SingleplayerReplayMenuState extends AbstractMenuState implements Sc
     }
 
     @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException{
+    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i){
     }
 
    public ScoreBoard getScoreBoard(){

@@ -32,7 +32,6 @@ public class Singleplayer extends BasicGameState {
     private List<Pipe> pipes;
     private List<Heart> hearts;
     private List<Rocket> rockets;
-    private double gameSpeed;
     private SpriteDrawer spriteDrawer;
     private Random random;
     private int pipeDecider;
@@ -43,7 +42,6 @@ public class Singleplayer extends BasicGameState {
     private long immunityTimer;
     private long newRecordTimer;
     private TrueTypeFont font;
-    //private int score;
     private Record record;
     private boolean first;
     private Screen screen;
@@ -99,7 +97,7 @@ public class Singleplayer extends BasicGameState {
 }
 
     @Override
-    public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
+    public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) {
         spriteDrawer.drawBackgroundSingle(graphics);
         if(!initialized) {
             setClip(graphics);
@@ -140,7 +138,7 @@ public class Singleplayer extends BasicGameState {
         }
         for(Rocket rocket:rockets){
             rocket.update(i);
-            if(rocket.collide(bird)&&immunity == false){
+            if(rocket.collide(bird)&& !immunity){
                 musicPlayer.explosionMusic();
                 player.loseHeart();
                 rockets.remove(rocket);
@@ -181,7 +179,7 @@ public class Singleplayer extends BasicGameState {
 
             }
 
-            if(pipe.collide(bird)&&immunity == false){
+            if(pipe.collide(bird)&& !immunity){
                 player.loseHeart();
                 if(player.getHearts()==0){
                     musicPlayer.gameOverMusic();
@@ -252,7 +250,7 @@ public class Singleplayer extends BasicGameState {
         }
     }
 
-    public void setClip(Graphics graphics){
+    private void setClip(Graphics graphics){
         graphics.setWorldClip(screen.getOffsetX(), screen.getOffsetY(), screen.getWidth(), screen.getHeight());
     }
 
