@@ -114,12 +114,15 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         for(ObstacleLogicComponent obstacle: obstacles){
             if( ( !obstacle.isPassed() ) && (bird.getX() > obstacle.getX()) ){
                 obstacle.setPassed(true);
-                player.addScore();
-                gameSpeed += 0.05;
+                increaseScore();
             }
         }
     }
-
+    private void increaseScore(){
+        player.addScore();
+        gameSpeed += 0.05;
+        commandHandler.sendCommand(new IncreaseScoreCommand());
+    }
     private void checkObstacleCollisions(){
         for(ObstacleLogicComponent obstacle : obstacles)
             if (obstacle.collide(bird))

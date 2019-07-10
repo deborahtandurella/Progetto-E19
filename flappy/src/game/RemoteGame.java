@@ -61,9 +61,6 @@ public class RemoteGame extends GameEventDispatcher {
         bird.jump();
         notifyEvent(GameEventType.JUMP);
     }
-    public void increaseScore(){
-        player.addScore();
-    }
     private void checkOutOfBounds(){
         for (ScrollingElement element: scrollingElements){
             if (element.outOfBounds()){
@@ -104,7 +101,11 @@ public class RemoteGame extends GameEventDispatcher {
         notifyEvent(GameEventType.COLLISION);
         bird.acquireImmunity();
     }
+    public void increaseScore(){
+        player.addScore();
+    }
     public void increaseCoins(){
+        player.addCoin();
     }
     public Entity getEntityByID(int ID) {
         for(Entity entity: entities)
