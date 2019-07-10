@@ -4,4 +4,4 @@ PIPE,res/sprites/customTextures/dogo/pipe.png
 ROCKET,res/sprites/obstacles/rocket.png
 LIFE,res/sprites/perks/heart.png
 HEART,res/sprites/perks/heart_frames.png
-COIN,res/sprites/perks/Coin.png
+COIN,res/sprites/perks/onecoin.png
