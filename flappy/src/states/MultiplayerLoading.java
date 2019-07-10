@@ -19,10 +19,6 @@ import java.util.TimerTask;
 
 public class MultiplayerLoading extends AbstractMenuState implements ConnectionListener {
     private static final int ID = 6;
-
-    private Screen screen;
-
-
     private String playerName;
     private CommandHandler commandHandler;
     private GiocoAStati giocoAStati;
@@ -36,13 +32,14 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         super.enter(container, game);
         playerName= ((GiocoAStati) game).getPlayerInfo().getName();
-        setGui(new MultiplayerLoadingGUI(container,screen,this));
     }
 
     @Override
-    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) {
+    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         giocoAStati = (GiocoAStati) stateBasedGame;
-        screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
+        Screen screen = new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
+        setGui(new MultiplayerLoadingGUI(gameContainer, screen,this));
+
     }
 
     @Override
@@ -89,7 +86,7 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
             public void run() {
                 giocoAStati.enterState(13);
             }
-        }, 3000);
+        }, 4000);
     }
 
     private void setCommandHandler(CommandHandler commandHandler) {
