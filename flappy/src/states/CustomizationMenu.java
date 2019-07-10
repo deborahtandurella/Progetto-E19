@@ -19,8 +19,6 @@ public class CustomizationMenu extends AbstractMenuState {
     private static final int ID = 11;
     private GameContainer container;
     private StateBasedGame stateBasedGame;
-    //private Thread initializerThread;
-    //da far vedere al prof
 
     @Override
     public int getID() {

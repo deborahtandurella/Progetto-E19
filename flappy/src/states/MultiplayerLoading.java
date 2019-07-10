@@ -12,6 +12,7 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import states.test.MultiplayerState;
+import Main.GiocoAStati;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -23,7 +24,7 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
 
     private static int port;
     private static String ip;
-
+    private String playerName;
     private CommandHandler commandHandler;
 
     private boolean connected;
@@ -36,6 +37,7 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         super.enter(container, game);
+        playerName= ((GiocoAStati) game).getPlayerInfo().getName();
         setGui(new MultiplayerLoadingGUI(container,screen,this));
 
         connected = false;
@@ -100,14 +102,14 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
     private void join(String ip, int port){
         Client client = new Client();
         setCommandHandler(client);
-        Thread thread = new Thread(() -> client.setConnection(ip,port));
+        Thread thread = new Thread(() -> client.setConnection(ip,port, playerName));
         thread.start();
     }
 
     private void host(int port){
         Server server = new Server();
         setCommandHandler(server);
-        Thread thread = new Thread(() -> server.setConnection(port));
+        Thread thread = new Thread(() -> server.setConnection(port, playerName));
         thread.start();
     }
 

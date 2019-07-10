@@ -33,7 +33,7 @@ public class Server implements CommandHandler {
         return serverName;
     }
 
-    public void setConnection(int port) {
+    public void setConnection(int port, String name) {
 
         try {
             serverSocket = new ServerSocket(port);
@@ -41,11 +41,15 @@ public class Server implements CommandHandler {
             clientSocket = serverSocket.accept();
             inputStream = new ObjectInputStream(clientSocket.getInputStream());
             outputStream = new ObjectOutputStream(clientSocket.getOutputStream());
+            outputStream.writeObject(name);
+            System.out.println((String)inputStream.readObject());
             setConnected(true);
             System.out.println("Successfully connected");
         } catch (IOException ex) {
             System.err.println("ERROR: connection error");
             System.exit(0);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 

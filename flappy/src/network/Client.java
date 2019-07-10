@@ -4,8 +4,12 @@ package network;
 import game.RemoteGame;
 import network.test.CommandHandler;
 import network.test.commands.Command;
+import network.test.commands.JumpCommand;
 
 import java.io.*;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
 
@@ -30,14 +34,25 @@ public class Client implements CommandHandler {
         return clientName;
     }
 
-    public void setConnection(String ip, int port) {
+    public void setConnection(String ip, int port, String name) {
         try {
             clientSocket = new Socket(ip, port);
             outputStream = new ObjectOutputStream(clientSocket.getOutputStream());
             inputStream = new ObjectInputStream(clientSocket.getInputStream());
+            outputStream.writeObject(name);
+            /*DatagramSocket udpSocket = new DatagramSocket(port);
+            Command comando= new JumpCommand(0.4, 0.2);
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(bos);
+            oos.writeObject(comando);
+            oos.flush();
+            byte[] sndData= bos.toByteArray();
+            DatagramPacket packet = new DatagramPacket(sndData, sndData.length, clientSocket.getInetAddress(), port );
+            udpSocket.send(packet); */
+            System.out.println( (String) inputStream.readObject());
             setConnected(true);
             System.out.println("Successfully connected to " + ip + ":" + port);
-        } catch (IOException ex) {
+        } catch (IOException | ClassNotFoundException ex) {
             System.err.println("ERROR: connection error");
             System.exit(0);
         }

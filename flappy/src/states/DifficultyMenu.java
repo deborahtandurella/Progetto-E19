@@ -42,11 +42,10 @@ public class DifficultyMenu extends AbstractMenuState {
     public void keyPressed(int key, char c){
         if( key == Input.KEY_ESCAPE){
             System.exit(0);
-
         }
     }
 
-    private void startGame(/*ci sarà da passare un enum o qualcosa per la difficoltà*/){
+    private void startGame(){
         stateBasedGame.enterState(10, new FadeOutTransition(), new FadeInTransition());
     }
     public void startEasyGame(){
