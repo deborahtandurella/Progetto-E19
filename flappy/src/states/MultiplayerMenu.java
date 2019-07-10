@@ -2,8 +2,6 @@ package states;
 
 import graphics.GUI.MultiplayerMenuGUI;
 import graphics.Screen;
-import network.Client;
-import network.Server;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -14,11 +12,7 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class MultiplayerMenu extends AbstractMenuState {
     private static final int ID = 5;
-    private GameContainer container;
     private StateBasedGame stateBasedGame;
-    private Screen screen;
-    private Client socketClient = new Client();
-    private Server socketServer = new Server();
     private boolean initialized = false;
     @Override
     public int getID() {
@@ -27,11 +21,10 @@ public class MultiplayerMenu extends AbstractMenuState {
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        this.container= gameContainer;
         this.stateBasedGame= stateBasedGame;
-        screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
+        Screen screen = new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
         if (!initialized){
-            setGui(new MultiplayerMenuGUI(container, screen, this));
+            setGui(new MultiplayerMenuGUI(gameContainer, screen, this));
             initialized=true;
         }
     }

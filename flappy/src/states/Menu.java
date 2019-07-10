@@ -18,8 +18,6 @@ public class Menu extends AbstractMenuState{
     private GameContainer container;
     private StateBasedGame stateBasedGame;
     private SpriteDrawer drawer;
-    private MusicPlayer musicPlayer;
-    private Screen screen;
 
     public Menu(){
         super();
@@ -33,8 +31,8 @@ public class Menu extends AbstractMenuState{
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.container= gameContainer;
         this.stateBasedGame= stateBasedGame;
-        musicPlayer = new MusicPlayer();
-        screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
+        MusicPlayer musicPlayer = new MusicPlayer();
+        Screen screen = new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
         drawer = new SpriteDrawer(screen);
         setGui(new MenuGUI(gameContainer, screen, this));
         musicPlayer.backgroundMusic();
@@ -47,7 +45,7 @@ public class Menu extends AbstractMenuState{
     }
 
     @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException { }
+    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) { }
 
     public void single(){
         stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());

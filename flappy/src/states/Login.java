@@ -15,10 +15,7 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 public class Login extends AbstractMenuState {
 
     private static final int ID = 0;
-    private GameContainer container;
     private StateBasedGame stateBasedGame;
-    private MusicPlayer musicPlayer;
-    private Screen screen;
 
 
     @Override
@@ -28,11 +25,10 @@ public class Login extends AbstractMenuState {
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        this.container = gameContainer;
         this.stateBasedGame = stateBasedGame;
-        this.musicPlayer = new MusicPlayer();
-        screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
-        setGui(new LoginGUI(container, screen, this));
+        MusicPlayer musicPlayer = new MusicPlayer();
+        Screen screen = new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
+        setGui(new LoginGUI(gameContainer, screen, this));
         musicPlayer.backgroundMusic();
     }
 
@@ -54,7 +50,7 @@ public class Login extends AbstractMenuState {
     }
 
     @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException { }
+    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) { }
 
     public void menu(){
         stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());

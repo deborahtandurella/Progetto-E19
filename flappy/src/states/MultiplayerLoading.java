@@ -19,8 +19,6 @@ import java.util.TimerTask;
 public class MultiplayerLoading extends AbstractMenuState implements ConnectionListener {
     private static final int ID = 6;
 
-    private GameContainer container;
-    private StateBasedGame stateBasedGame;
     private Screen screen;
 
     private static int port;
@@ -49,9 +47,7 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
     }
 
     @Override
-    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        this.container= gameContainer;
-        this.stateBasedGame= stateBasedGame;
+    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) {
         screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
         ip = "";
     }
@@ -62,7 +58,7 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
     }
 
     @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
+    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) {
         if(connected){
             ((MultiplayerLoadingGUI)getGui()).connected();
             if (ip.equals("")){
@@ -101,39 +97,29 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
 
     }
 
-    public void join(String ip,int port){
+    private void join(String ip, int port){
         Client client = new Client();
         setCommandHandler(client);
-        Thread thread = new Thread(new Runnable(){
-            @Override
-            public void run() {
-                client.setConnection(ip,port);
-            }
-        });
+        Thread thread = new Thread(() -> client.setConnection(ip,port));
         thread.start();
     }
 
-    public void host(int port){
+    private void host(int port){
         Server server = new Server();
         setCommandHandler(server);
-        Thread thread = new Thread(new Runnable(){
-            @Override
-            public void run() {
-                server.setConnection(port);
-            }
-        });
+        Thread thread = new Thread(() -> server.setConnection(port));
         thread.start();
     }
 
-    public static void setPort(int port) {
+    static void setPort(int port) {
         MultiplayerLoading.port = port;
     }
 
-    public static void setIp(String ip) {
+    static void setIp(String ip) {
         MultiplayerLoading.ip = ip;
     }
 
-    public void setCommandHandler(CommandHandler commandHandler) {
+    private void setCommandHandler(CommandHandler commandHandler) {
         this.commandHandler = commandHandler;
         commandHandler.addConnectionListener(this);
 

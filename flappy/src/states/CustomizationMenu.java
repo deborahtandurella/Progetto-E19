@@ -19,7 +19,6 @@ public class CustomizationMenu extends AbstractMenuState {
     private static final int ID = 11;
     private GameContainer container;
     private StateBasedGame stateBasedGame;
-    private Screen screen;
     //private Thread initializerThread;
     //da far vedere al prof
 
@@ -32,10 +31,10 @@ public class CustomizationMenu extends AbstractMenuState {
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.container= gameContainer;
         this.stateBasedGame= stateBasedGame;
-        screen= new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
+        Screen screen = new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
 
         try {
-            setGui(new CustomizationMenuGUI(container,screen,this));
+            setGui(new CustomizationMenuGUI(container, screen,this));
         } catch (IOException | FontFormatException e) {
             e.printStackTrace();
         }
@@ -47,7 +46,7 @@ public class CustomizationMenu extends AbstractMenuState {
     }
 
     @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
+    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) {
 
     }
     public void keyPressed(int key, char c){

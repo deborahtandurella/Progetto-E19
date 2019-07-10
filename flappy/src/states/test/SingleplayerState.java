@@ -21,7 +21,6 @@ public class SingleplayerState extends BasicGameState {
     private Canvas gameCanvas;
     private DifficultySettings settings = new DifficultySettings(1, ObstacleGeneratorType.MEDIUM);
     private SoundPlayer soundPlayer;
-    private SingleModePlayer player;
     private SinglePlayerHud hud;
     @Override
     public int getID() {
@@ -29,7 +28,7 @@ public class SingleplayerState extends BasicGameState {
     }
 
     @Override
-    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
+    public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) {
         Screen screen= new Screen(gameContainer.getWidth()/2, gameContainer.getHeight(), gameContainer.getWidth()/4, 0);
         gameCanvas= new Canvas(screen, gameContainer.getGraphics());
         soundPlayer= new SoundPlayer();
@@ -38,8 +37,8 @@ public class SingleplayerState extends BasicGameState {
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         super.enter(container, game);
-        player= new SingleModePlayer(((GiocoAStati)game).getPlayerInfo());
-        this.game= new LocalGame(gameCanvas, settings,  player);
+        SingleModePlayer player = new SingleModePlayer(((GiocoAStati) game).getPlayerInfo());
+        this.game= new LocalGame(gameCanvas, settings, player);
         this.game.addListener(soundPlayer);
         hud= new SinglePlayerHud(player, gameCanvas);
 
@@ -47,14 +46,14 @@ public class SingleplayerState extends BasicGameState {
     }
 
     @Override
-    public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
+    public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) {
         game.render();
         hud.render();
         gameCanvas.clipScreen();
     }
 
     @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {
+    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) {
         game.update(i);
     }
 
