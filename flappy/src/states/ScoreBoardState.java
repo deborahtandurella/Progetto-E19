@@ -48,6 +48,12 @@ public class ScoreBoardState extends AbstractMenuState implements ScoreInterface
     }
 
     @Override
+    public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+        super.enter(container, game);
+        getGui().reload();
+    }
+
+    @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         graphics.clearWorldClip();
         renderGui();

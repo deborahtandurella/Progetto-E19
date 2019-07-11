@@ -48,6 +48,7 @@ public abstract class AbstractMenuGUI implements ComponentListener {
     protected void renderBackground(){
         background.draw(screen.getOffsetX(), screen.getOffsetY());
     }
+    public void reload(){};
 }
 
 

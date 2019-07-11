@@ -78,18 +78,18 @@ public class CustomizationMenu extends AbstractMenuState {
             //@Override
            // public void run() {
                 try{
-                    ((AbstractMenuState)stateBasedGame.getState(1)).reload();
-                    ((AbstractMenuState)stateBasedGame.getState(2)).reload();
+                    ((AbstractMenuState)stateBasedGame.getState(1)).reloadTheme();
+                    ((AbstractMenuState)stateBasedGame.getState(2)).reloadTheme();
                     stateBasedGame.getState(3).init(container,stateBasedGame);
-                    ((AbstractMenuState)stateBasedGame.getState(4)).reload();
-                    ((AbstractMenuState)stateBasedGame.getState(5)).reload();
-                    ((AbstractMenuState)stateBasedGame.getState(6)).reload();
+                    ((AbstractMenuState)stateBasedGame.getState(4)).reloadTheme();
+                    ((AbstractMenuState)stateBasedGame.getState(5)).reloadTheme();
+                    ((AbstractMenuState)stateBasedGame.getState(6)).reloadTheme();
                     stateBasedGame.getState(7).init(container,stateBasedGame);
                     stateBasedGame.getState(8).init(container,stateBasedGame);
-                    //((AbstractMenuState)stateBasedGame.getState(8)).reload();
-                    //non esiste ancora la GUI per lo stato 8, finché non è definita, reload dà exception
-                    //per gli stati 3 e 7, che non estendono AbstractMenuState, bisogna fare il metodo reload apposta
-                    ((AbstractMenuState)stateBasedGame.getState(9)).reload();
+                    //((AbstractMenuState)stateBasedGame.getState(8)).reloadTheme();
+                    //non esiste ancora la GUI per lo stato 8, finché non è definita, reloadTheme dà exception
+                    //per gli stati 3 e 7, che non estendono AbstractMenuState, bisogna fare il metodo reloadTheme apposta
+                    ((AbstractMenuState)stateBasedGame.getState(9)).reloadTheme();
                 } catch (SlickException e ){
                     e.printStackTrace();
                 }

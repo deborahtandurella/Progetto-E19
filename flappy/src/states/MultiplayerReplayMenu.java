@@ -2,6 +2,8 @@ package states;
 
 import graphics.GUI.MultiplayerReplayMenuGUI;
 import graphics.Screen;
+import logic.SinglePlayer.Result;
+import logic.player.Player;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -14,6 +16,8 @@ public class MultiplayerReplayMenu extends AbstractMenuState {
     private static final int ID = 8;
     private GameContainer container;
     private StateBasedGame stateBasedGame;
+    private Result localPlayerResult;
+    private Result remotePlayerResult;
 
     public MultiplayerReplayMenu(){}
 
@@ -45,9 +49,10 @@ public class MultiplayerReplayMenu extends AbstractMenuState {
     public void keyPressed(int key, char c){
         if( key == Input.KEY_ESCAPE){
             System.exit(0);
-
         }
     }
+
+
 
     public void backToMenu(){
         try {
@@ -56,6 +61,17 @@ public class MultiplayerReplayMenu extends AbstractMenuState {
             e.printStackTrace();
         }
         stateBasedGame.enterState(1,new FadeOutTransition(),new FadeInTransition());
+    }
+    public void setResults(Result localPlayerResult, Result remotePlayerResult){
+        this.localPlayerResult= localPlayerResult;
+        this.remotePlayerResult = remotePlayerResult;
+    }
 
+    public Result getLocalPlayerResult() {
+        return localPlayerResult;
+    }
+
+    public Result getRemotePlayerResult() {
+        return remotePlayerResult;
     }
 }

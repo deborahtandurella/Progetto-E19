@@ -19,8 +19,9 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
     private ScoreInterface state;
     private Image pergamena;
     private String scoreName;
-    private String newRecord;
     private String points;
+
+    private String newRecord = "New Record";
     private UnicodeFont uniFontMessage;
     private UnicodeFont versionFont;
 
@@ -39,13 +40,18 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
         uniFontMessage.loadGlyphs();
         scoreName = state.getScoreBoard().printName();
         points = state.getScoreBoard().printPoint();
-        newRecord = "NEW RECORD";
 
         versionFont = new UnicodeFont("res/font/FlappyBirdy.ttf", getContainer().getHeight()/10, false, false);
         versionFont.addAsciiGlyphs();
         versionFont.getEffects().add(new ColorEffect(Color.RED));
         versionFont.loadGlyphs();
 
+    }
+
+    @Override
+    public void reload() {
+        scoreName = state.getScoreBoard().printName();
+        points = state.getScoreBoard().printPoint();
     }
 
     @Override

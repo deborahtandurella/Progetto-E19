@@ -100,5 +100,10 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
     public void connectionWorking(boolean connected) {
         if(connected)
             startLoading();
+        else {
+            if (this.isAcceptingInput()){
+
+            }
+        }
     }
 }

@@ -6,7 +6,7 @@ import org.newdawn.slick.state.BasicGameState;
 
 public abstract class AbstractMenuState extends BasicGameState {
    private AbstractMenuGUI gui;
-    void reload() throws SlickException {
+    void reloadTheme() throws SlickException {
         gui.setBackground();
     }
     protected AbstractMenuGUI getGui(){
@@ -18,4 +18,5 @@ public abstract class AbstractMenuState extends BasicGameState {
     void renderGui() throws SlickException {
         gui.render();
     }
+
 }
