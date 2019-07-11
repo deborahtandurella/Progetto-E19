@@ -126,7 +126,7 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
             else {
                 clientError = false;
                 hostError = false;
-                state.join(ipField.getString(),Integer.parseInt(clientPortField.getString()));
+                state.join(ipField.getString(),Integer.parseInt(clientPortField.getString().replaceAll("[\\D]", "")));
             }
         }
 

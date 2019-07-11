@@ -11,6 +11,8 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 import states.test.MultiplayerState;
 import Main.GiocoAStati;
 
@@ -61,6 +63,7 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
 
     public void join(String ip, int port){
         Client client = new Client();
+        client.addConnectionListener(this);
         setCommandHandler(client);
         Thread connectionThread = new Thread(() -> client.setConnection(ip,port, playerName));
         connectionThread.start();
@@ -68,6 +71,7 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
 
     public void host(int port){
         Server server = new Server();
+        server.addConnectionListener(this);
         setCommandHandler(server);
         Thread connectionThread = new Thread(() -> server.setConnection(port, playerName));
         connectionThread.start();
@@ -102,7 +106,7 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
             startLoading();
         else {
             if (this.isAcceptingInput()){
-
+                giocoAStati.enterState(GiocoAStati.MENU, new FadeInTransition(), new FadeOutTransition());
             }
         }
     }
