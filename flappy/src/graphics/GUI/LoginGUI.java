@@ -22,8 +22,6 @@ public class LoginGUI extends AbstractMenuGUI {
     private TextField nameField;
     private MouseOverArea startButton;
     private UnicodeFont uniFontMessage;
-    private Font font = new Font("Comic Sans MS", Font.BOLD, 3*getContainer().getWidth()/100 /*46*/);
-    private TrueTypeFont ttf = new TrueTypeFont(font, true);
     private String errorMessage;
     private String nameString;
     private boolean error = false;
@@ -32,6 +30,8 @@ public class LoginGUI extends AbstractMenuGUI {
         super(container, screen);
         this.state = state;
         setBackground();
+        Font font = new Font("Comic Sans MS", Font.BOLD, 3*getContainer().getWidth()/100 /*46*/);
+        TrueTypeFont ttf = new TrueTypeFont(font, true);
 
         int buttonHeight = container.getHeight() / 7;
         int buttonWidth = container.getWidth() / 4;
