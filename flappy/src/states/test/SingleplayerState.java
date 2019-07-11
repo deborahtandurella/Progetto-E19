@@ -1,13 +1,17 @@
 package states.test;
 
+import GameScore.ScoreBoard;
 import Main.GiocoAStati;
 import game.DifficultySettings;
 import game.LocalGame;
+import game.gameEvents.GameEventListener;
+import game.gameEvents.GameEventType;
 import game.itemGeneration.obstacle.ObstacleGeneratorType;
 import game.SoundPlayer;
 import graphics.Canvas;
 import graphics.HUD.SinglePlayerHud;
 import graphics.Screen;
+import logic.SinglePlayer.Result;
 import logic.SinglePlayer.SingleModePlayer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -16,11 +20,14 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class SingleplayerState extends BasicGameState {
+public class SingleplayerState extends BasicGameState implements GameEventListener {
     private LocalGame game;
     private Canvas gameCanvas;
     private DifficultySettings difficulty = new DifficultySettings(1, ObstacleGeneratorType.MEDIUM);
     private SoundPlayer soundPlayer;
+    private ScoreBoard scoreBoard;
+    private GiocoAStati stateGame;
+
     @Override
     public int getID() {
         return 10;
@@ -28,6 +35,8 @@ public class SingleplayerState extends BasicGameState {
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) {
+        stateGame=(GiocoAStati) stateBasedGame;
+        this.scoreBoard = stateGame.getScoreBoard();
         Screen screen= new Screen(gameContainer.getWidth()/2, gameContainer.getHeight(), gameContainer.getWidth()/4, 0);
         gameCanvas= new Canvas(screen, gameContainer.getGraphics());
         soundPlayer= new SoundPlayer();
@@ -39,6 +48,7 @@ public class SingleplayerState extends BasicGameState {
         SingleModePlayer player = new SingleModePlayer(((GiocoAStati) game).getPlayerInfo());
         this.game= new LocalGame(gameCanvas, difficulty, player);
         this.game.addListener(soundPlayer);
+        this.game.addListener(this);
     }
 
     @Override
@@ -60,5 +70,14 @@ public class SingleplayerState extends BasicGameState {
     }
     public void setDifficulty(DifficultySettings difficulty){
         this.difficulty=difficulty;
+    }
+
+    @Override
+    public void gameEvent(GameEventType event) {
+        if(event==GameEventType.GAMEOVER){
+            if (scoreBoard.compareScore(new Result(game.getPlayer()))){
+                stateGame.enterState(GiocoAStati.SCORE_BOARD_MENU);
+            }
+        }
     }
 }
