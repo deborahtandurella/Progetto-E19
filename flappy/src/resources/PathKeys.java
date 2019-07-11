@@ -10,7 +10,7 @@ public enum PathKeys {
     BACKGROUND,
     JUMP,
     BG_MUSIC,
-    GAMEOVER_MUSIC,
+    GAMEOVER,
     COLLISION,
     TITLE,
     STARTBUTTON,
