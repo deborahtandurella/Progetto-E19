@@ -1,4 +1,4 @@
 JUMP,res/sounds/flap.ogg
 BG_MUSIC,res/sounds/menu.ogg
 GAMEOVER_MUSIC,res/sounds/gameOver.ogg
-ROCKET_EXPLOSION,res/sounds/explosion.ogg
+COLLISION,res/sounds/explosion.ogg
