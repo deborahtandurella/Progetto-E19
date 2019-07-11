@@ -1,5 +1,6 @@
 package network;
 
+import game.OnlineLocalGame;
 import game.RemoteGame;
 import logic.player.PlayerInfo;
 import network.test.CommandHandler;
@@ -61,9 +62,9 @@ public class Server implements CommandHandler {
             e.printStackTrace();
         }
     }
-    public void startListening(RemoteGame game){
+    public void startListening(RemoteGame remoteGame, OnlineLocalGame localGame){
         if (connected){
-            this.game=game;
+            this.game= remoteGame;
             new Thread(() -> {
                 while (connected) {
                     listenCommand();

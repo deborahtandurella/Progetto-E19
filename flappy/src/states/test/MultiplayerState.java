@@ -5,7 +5,6 @@ import game.*;
 import game.itemGeneration.obstacle.ObstacleGeneratorType;
 import game.powerUps.PowerUpType;
 import graphics.Canvas;
-import graphics.HUD.Hud;
 import graphics.Screen;
 import logic.player.MultiModePlayer;
 import logic.player.PlayerInfo;
@@ -58,7 +57,7 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
         leftGame= new OnlineLocalGame(gameCanvas, settings, commandHandler, new MultiModePlayer(myPlayer));
         leftGame.addListener(soundPlayer);
         rightGame= new RemoteGame(gameCanvas, settings, new MultiModePlayer(commandHandler.getOthersInfo()));
-        commandHandler.startListening(rightGame);
+        commandHandler.startListening(rightGame, leftGame);
         rightGame.addListener(soundPlayer);
     }
 
