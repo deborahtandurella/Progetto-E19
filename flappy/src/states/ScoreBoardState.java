@@ -1,10 +1,11 @@
 package states;
 
 import GameScore.ScoreBoard;
+import Main.GiocoAStati;
 import graphics.GUI.ScoreBoardButtons;
 import graphics.GUI.ScoreBoardMenuGUI;
 import graphics.Screen;
-import logic.SinglePlayer.Record;
+import logic.SinglePlayer.Result;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -22,7 +23,7 @@ public class ScoreBoardState extends AbstractMenuState implements ScoreInterface
     public Screen screen;
     private GameContainer container;
     private ScoreBoard scoreBoard;
-    private Record record;
+    private Result result;
     private ScoreBoardButtons scoreBoardButtons;
 
     @Override
@@ -30,16 +31,16 @@ public class ScoreBoardState extends AbstractMenuState implements ScoreInterface
         return ID;
     }
 
-    public ScoreBoardState(Record record, ScoreBoard scoreBoard){
+    public ScoreBoardState(Result result){
         super();
-        this.scoreBoard = scoreBoard;
-        this.record = record;
+        this.result = result;
     }
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.stateBasedGame = stateBasedGame;
         this.container = gameContainer;
+        this.scoreBoard = ((GiocoAStati) stateBasedGame).getScoreBoard();
         screen = new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0,0);
         scoreBoardButtons = new ScoreBoardButtons(gameContainer, screen, this);
         setGui(new ScoreBoardMenuGUI(gameContainer, screen, this));

@@ -127,8 +127,6 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         for(ObstacleLogicComponent obstacle : obstacles)
             if (obstacle.collide(bird))
                 obstacleCollision(obstacle);
-
-
     }
     private void obstacleCollision(ObstacleLogicComponent obstacle){
         notifyEvent(GameEventType.COLLISION);

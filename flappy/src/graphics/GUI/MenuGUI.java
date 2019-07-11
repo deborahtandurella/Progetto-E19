@@ -22,6 +22,7 @@ public class MenuGUI extends AbstractMenuGUI {
         super(container, screen);
         this.state = state;
         setBackground();
+
         int buttonHeight = container.getHeight()/6;
         int buttonWidth = container.getWidth()/3;
 

@@ -17,6 +17,7 @@ import graphics.Canvas;
 import graphics.HUD.Hud;
 import graphics.HUD.SinglePlayerHud;
 import logic.SinglePlayer.SingleModePlayer;
+import logic.player.Player;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import resources.FileKeys;
@@ -152,6 +153,11 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
         for(Entity entity: entities)
             entity.render();
     }
+
+    public Player getPlayer() {
+        return player;
+    }
+
     private void gameover(){
         notifyEvent(GameEventType.GAMEOVER);
     }

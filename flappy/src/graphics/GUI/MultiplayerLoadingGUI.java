@@ -10,9 +10,7 @@ import states.MultiplayerLoading;
 
 public class MultiplayerLoadingGUI extends AbstractMenuGUI{
     private MultiplayerLoading state;
-    private SpriteSheet loadingSheet;
     private Animation loadingAnimation;
-    private SpriteSheet threeTwoOneSheet;
     private Animation threeTwoOneAnimation;
     private Image background;
     private int buttonDimension;
@@ -22,6 +20,9 @@ public class MultiplayerLoadingGUI extends AbstractMenuGUI{
     public MultiplayerLoadingGUI(GameContainer container, Screen screen, MultiplayerLoading state) throws SlickException {
         super(container, screen);
         this.state = state;
+
+        SpriteSheet threeTwoOneSheet;
+        SpriteSheet loadingSheet;
 
         connected = false;
 
@@ -40,9 +41,9 @@ public class MultiplayerLoadingGUI extends AbstractMenuGUI{
     public void render() throws SlickException {
         background.draw();
         if(!connected) {
-            loadingAnimation.draw(getContainer().getWidth() / 2 - buttonDimension / 2, getContainer().getHeight() / 2 - buttonDimension / 2, buttonDimension, buttonDimension);
+            loadingAnimation.draw((getContainer().getWidth() - buttonDimension) / 2f, (getContainer().getHeight() - buttonDimension)/2f, buttonDimension, buttonDimension);
         }else{
-            threeTwoOneAnimation.draw(getContainer().getWidth() / 2 - buttonDimension / 2, getContainer().getHeight() / 2 - buttonDimension / 2, buttonDimension, buttonDimension);
+            threeTwoOneAnimation.draw((getContainer().getWidth() - buttonDimension)/2f, (getContainer().getHeight() - buttonDimension) / 2f, buttonDimension, buttonDimension);
         }
     }
 
@@ -55,5 +56,3 @@ public class MultiplayerLoadingGUI extends AbstractMenuGUI{
         connected=true;
     }
 }
-
-//HEY, TI VA UNA SCHWEPPES SOLO IO E TE?
