@@ -11,7 +11,7 @@ public enum PathKeys {
     JUMP,
     BG_MUSIC,
     GAMEOVER_MUSIC,
-    ROCKET_EXPLOSION,
+    COLLISION,
     TITLE,
     STARTBUTTON,
     LEADERBOARDSBUTTON,
