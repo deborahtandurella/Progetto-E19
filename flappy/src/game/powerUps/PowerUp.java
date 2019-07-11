@@ -1,9 +1,12 @@
 package game.powerUps;
 
+import game.OnlineLocalGame;
 import game.RemoteGame;
-import network.test.CommandHandler;
 
-public interface PowerUp {
+import java.io.Serializable;
+
+public interface PowerUp extends Serializable {
+    long serialVersionUID = -539210512251000000L;
     int getPrice();
-    void execute(CommandHandler handler, RemoteGame remoteGame);
+    void execute(OnlineLocalGame localGame, RemoteGame remoteGame);
 }

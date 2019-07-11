@@ -1,7 +1,8 @@
 package game.powerUps;
 
+import entityComponent.EntityFactory;
+import game.OnlineLocalGame;
 import game.RemoteGame;
-import network.test.CommandHandler;
 
 public class GravityPowerUp implements PowerUp{
     @Override
@@ -10,7 +11,6 @@ public class GravityPowerUp implements PowerUp{
     }
 
     @Override
-    public void execute(CommandHandler handler, RemoteGame remoteGame) {
-
+    public void execute(OnlineLocalGame localGame, RemoteGame remoteGame) {
     }
 }

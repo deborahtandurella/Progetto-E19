@@ -1,7 +1,7 @@
 package game.powerUps;
 
+import game.OnlineLocalGame;
 import game.RemoteGame;
-import network.test.CommandHandler;
 
 public class SpeedPowerUP implements PowerUp{
     @Override
@@ -10,7 +10,7 @@ public class SpeedPowerUP implements PowerUp{
     }
 
     @Override
-    public void execute(CommandHandler handler, RemoteGame remoteGame) {
+    public void execute(OnlineLocalGame localGame, RemoteGame remoteGame) {
 
     }
 }

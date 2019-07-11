@@ -12,6 +12,9 @@ import game.itemGeneration.coin.CoinGenerator;
 import game.itemGeneration.coin.CoinListener;
 import game.itemGeneration.obstacle.ObstacleGenerator;
 import game.itemGeneration.obstacle.ObstacleListener;
+import game.powerUps.PowerUp;
+import game.powerUps.PowerUpShop;
+import game.powerUps.PowerUpType;
 import graphics.Canvas;
 import graphics.HUD.Hud;
 import graphics.HUD.MultiplayerHud;
@@ -189,6 +192,14 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         coins.add((CoinLogicComponent) coin.getLogicComponent());
         commandHandler.sendCommand(new CoinGeneratedCommand(coin));
 
+    }
+    public void powerUpUsed(PowerUpType powerUpType){
+        PowerUp powerUp= PowerUpShop.buy(powerUpType, player);
+        if (powerUp!=null)
+            commandHandler.sendCommand(new PowerUpCommand(powerUp));
+    }
+    public Canvas getCanvas() {
+        return canvas;
     }
 
     @Override

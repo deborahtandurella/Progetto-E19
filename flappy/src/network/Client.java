@@ -46,7 +46,7 @@ public class Client implements CommandHandler {
             System.out.println("Successfully connected to " + ip + ":" + port);
         } catch (IOException | ClassNotFoundException ex) {
             System.err.println("ERROR: connection error");
-            System.exit(0);
+            setConnected(false);
         }
     }
 

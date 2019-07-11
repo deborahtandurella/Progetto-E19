@@ -3,6 +3,7 @@ package states.test;
 import Main.GiocoAStati;
 import game.*;
 import game.itemGeneration.obstacle.ObstacleGeneratorType;
+import game.powerUps.PowerUpType;
 import graphics.Canvas;
 import graphics.HUD.Hud;
 import graphics.Screen;
@@ -85,6 +86,8 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
         if (key== Input.KEY_SPACE){
             leftGame.playerJump();
         }
+        if (key== Input.KEY_Z)
+            leftGame.powerUpUsed(PowerUpType.ROCKET);
     }
 
     @Override

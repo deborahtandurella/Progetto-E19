@@ -1,6 +1,6 @@
 package game.powerUps;
 
-enum PowerUpType {
+public enum PowerUpType {
     ROCKET {
         public PowerUp create() {
             return new RocketPowerUp();
