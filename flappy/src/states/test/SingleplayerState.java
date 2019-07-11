@@ -27,6 +27,7 @@ public class SingleplayerState extends BasicGameState implements GameEventListen
     private SoundPlayer soundPlayer;
     private ScoreBoard scoreBoard;
     private GiocoAStati stateGame;
+
     @Override
     public int getID() {
         return 10;
