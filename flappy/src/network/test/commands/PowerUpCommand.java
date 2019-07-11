@@ -3,6 +3,7 @@ package network.test.commands;
 import game.OnlineLocalGame;
 import game.RemoteGame;
 import game.powerUps.PowerUp;
+import logic.player.MultiModePlayer;
 
 public class PowerUpCommand extends Command {
     private PowerUp powerUp;
@@ -14,5 +15,7 @@ public class PowerUpCommand extends Command {
     @Override
     public void execute(RemoteGame remoteGame, OnlineLocalGame localGame) {
         powerUp.execute(localGame, remoteGame);
+        MultiModePlayer enemy = remoteGame.getPlayer();
+        enemy.setCoins(enemy.getCoins()-powerUp.getPrice());
     }
 }
