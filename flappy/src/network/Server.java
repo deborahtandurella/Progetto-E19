@@ -24,7 +24,8 @@ public class Server implements CommandHandler {
 
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
-    private RemoteGame game;
+    private RemoteGame remoteGame;
+    private OnlineLocalGame localGame;
     private ArrayList<ConnectionListener> connectionListeners;
 
     private boolean connected = false;
@@ -55,7 +56,7 @@ public class Server implements CommandHandler {
     private void listenCommand() {
         try {
             Command command = (Command) inputStream.readObject();
-            command.execute(game, null);
+            command.execute(remoteGame, localGame);
         } catch (IOException e) {
             setConnected(false);
         } catch (ClassNotFoundException | ClassCastException e) {
@@ -64,7 +65,8 @@ public class Server implements CommandHandler {
     }
     public void startListening(RemoteGame remoteGame, OnlineLocalGame localGame){
         if (connected){
-            this.game= remoteGame;
+            this.localGame= localGame;
+            this.remoteGame = remoteGame;
             new Thread(() -> {
                 while (connected) {
                     listenCommand();

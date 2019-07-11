@@ -17,7 +17,8 @@ public class Client implements CommandHandler {
     private String othersName;
 
     private Socket clientSocket ;
-    private RemoteGame game;
+    private RemoteGame remoteGame;
+    private OnlineLocalGame localGame;
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
     private ArrayList<ConnectionListener> connectionListeners;
@@ -60,7 +61,8 @@ public class Client implements CommandHandler {
         }
     }
     public void startListening(RemoteGame remoteGame, OnlineLocalGame localGame){
-        this.game= remoteGame;
+        this.remoteGame = remoteGame;
+        this.localGame = localGame;
         new Thread(() -> {
             while (connected) {
                 listenCommand();
@@ -71,7 +73,7 @@ public class Client implements CommandHandler {
     private void listenCommand(){
         try {
             Command command = (Command) inputStream.readObject();
-            command.execute(game, null);
+            command.execute(remoteGame, localGame);
         } catch (IOException e) {
             e.printStackTrace();
             setConnected(false);
