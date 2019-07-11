@@ -24,11 +24,10 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
     private TextGUI ipField;
     private TextGUI clientPortField;
     private TextGUI hostPortField;
-    private String ipString;
-    private String clientPortString;
-    private String hostPortString;
-    private String clientErrorMessage;
-    private String hostErrorMessage;
+    private String ipString = "IP Address";
+    private String portString = "Port";
+    private String clientErrorMessage = "Insert Ip address and Port first";
+    private String hostErrorMessage = "Insert Port first";
     private boolean hostError = false;
     private boolean clientError = false;
 
@@ -69,9 +68,6 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
         uniFontMessage.addAsciiGlyphs();
         uniFontMessage.loadGlyphs();
 
-        ipString = "IP Address";
-        clientPortString ="Port";
-        hostPortString = clientPortString;
         deactivate();
 
     }
@@ -82,8 +78,8 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
         renderButtons();
 
         uniFontMessage.drawString(20 * getContainer().getWidth() /100f, 9 * getContainer().getHeight() / 100f, ipString, Color.black);
-        uniFontMessage.drawString(20 * getContainer().getWidth() / 100f, 20 * getContainer().getHeight() / 100f, clientPortString, Color.black);
-        uniFontMessage.drawString(20 * getContainer().getWidth() / 100f, 43 * getContainer().getHeight() / 100f, hostPortString, Color.black);
+        uniFontMessage.drawString(20 * getContainer().getWidth() / 100f, 20 * getContainer().getHeight() / 100f, portString, Color.black);
+        uniFontMessage.drawString(20 * getContainer().getWidth() / 100f, 43 * getContainer().getHeight() / 100f, portString, Color.black);
         if (clientError){
             uniFontMessage.drawString(44 * (getContainer().getWidth() - uniFontMessage.getWidth(clientErrorMessage)) / 100f, 33 * getContainer().getHeight() / 100f, clientErrorMessage, Color.red);
         }
@@ -114,7 +110,7 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
         if(source == hostButton) {
             if (hostPortField.getString().equals("")) {
                 hostError = true;
-                hostErrorMessage = "Inserisci la port, stupido host!";
+                clientError=false;
             }  else {
                 clientError = false;
                 hostError = false;
@@ -125,7 +121,7 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
         if(source == joinButton) {
             if (ipField.getString().equals("") || clientPortField.getString().equals("")) {
                 clientError = true;
-                clientErrorMessage = "Inserisci l'IP e la Port, stupido rassista";
+                hostError= false;
             }
             else {
                 clientError = false;
