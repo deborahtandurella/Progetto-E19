@@ -5,6 +5,8 @@ import game.OnlineLocalGame;
 import game.RemoteGame;
 
 public class RocketPowerUp implements PowerUp{
+    static final long serialVersionUID = -539210512251000001L;
+
     @Override
     public int getPrice() {
         return 2;
