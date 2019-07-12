@@ -41,6 +41,12 @@ public class SingleplayerReplayMenuState extends AbstractMenuState implements Sc
     }
 
     @Override
+    public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+        super.enter(container, game);
+        scoregui.reload();
+    }
+
+    @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         graphics.clearWorldClip();
         scoregui.render();
