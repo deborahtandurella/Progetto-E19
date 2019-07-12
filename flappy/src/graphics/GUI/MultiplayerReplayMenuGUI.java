@@ -2,6 +2,7 @@ package graphics.GUI;
 
 import graphics.Screen;
 import org.newdawn.slick.*;
+import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.MouseOverArea;
 import resources.FileKeys;
@@ -13,8 +14,14 @@ public class MultiplayerReplayMenuGUI extends AbstractMenuGUI {
 
     private MouseOverArea backButton;
     private MultiplayerReplayMenu state;
-
+    private String winString = "Sei grande, hai vinto!";
+    private String loseString = "Peccato, hai perso!";
+    private String pareggioString = "La partita è finita in pareggio";
     private UnicodeFont unicodeMessage;
+    private String localPlayer;
+    private String remotePlayer;
+    private String localPlayerScore;
+    private String remotePlayerScore;
 
     public MultiplayerReplayMenuGUI(GameContainer container, Screen screen, MultiplayerReplayMenu state) throws SlickException {
         super(container, screen);
@@ -26,7 +33,11 @@ public class MultiplayerReplayMenuGUI extends AbstractMenuGUI {
 
         java.awt.Font font = new java.awt.Font("Comic Sans MS", java.awt.Font.PLAIN, 3*getContainer().getWidth()/100);
 
-
+        unicodeMessage= new UnicodeFont(font);
+        unicodeMessage.getEffects().add(new ColorEffect(java.awt.Color.black));
+        unicodeMessage.getEffects().add(new ColorEffect(java.awt.Color.red));
+        unicodeMessage.addAsciiGlyphs();
+        unicodeMessage.loadGlyphs();
         Image backImage = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.BACKTOMENUBUTTON)).getScaledCopy(buttonWidth, buttonHeight);
         backButton = new MouseOverArea(container, backImage, (container.getWidth() - buttonWidth) / 2, container.getHeight()-2*buttonHeight, buttonWidth, buttonHeight, this);
         //singleButton = new MouseOverArea(container, single, 25 * container.getWidth() / 100, 50 * container.getHeight() / 100 , this);
@@ -35,18 +46,20 @@ public class MultiplayerReplayMenuGUI extends AbstractMenuGUI {
     }
 
     @Override
+    public void reload() {
+        super.reload();
+
+        localPlayer = state.getLocalPlayerResult().getName();
+        remotePlayer = state.getRemotePlayerResult().getName();
+        localPlayerScore = String.valueOf(state.getLocalPlayerResult().getScore());
+        remotePlayerScore = String.valueOf(state.getRemotePlayerResult().getScore());
+        System.err.println(remotePlayer);
+    }
+
+    @Override
     public void render() throws SlickException {
         renderBackground();
         renderButtons();
-
-        String winString = "Sei grande, hai vinto!";
-        String loseString = "Peccato, hai perso!";
-        String pareggioString = "La partita è finita in pareggio";
-        String localPlayer = state.getLocalPlayerResult().getName();
-        String remotePlayer = state.getRemotePlayerResult().getName();
-        String localPlayerScore = String.valueOf(state.getLocalPlayerResult().getScore());
-        String remotePlayerScore = String.valueOf(state.getRemotePlayerResult().getScore());
-
         if(state.getLocalPlayerResult().getScore() > state.getRemotePlayerResult().getScore()){
             unicodeMessage.drawString(20 * getContainer().getWidth() /100f, 10 * getContainer().getHeight() / 100f, winString, Color.black);
         }
