@@ -19,7 +19,8 @@ public class MultiplayerReplayMenu extends AbstractMenuState {
     private Result localPlayerResult;
     private Result remotePlayerResult;
 
-    public MultiplayerReplayMenu(){}
+    public MultiplayerReplayMenu(){
+    }
 
     @Override
     public int getID() {

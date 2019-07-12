@@ -11,8 +11,8 @@ public class Result {
     }
 
     public Result(Player player) {
-        playerName= player.getPlayerInfo().getName();
-        score= player.getScore();
+        playerName = player.getPlayerInfo().getName();
+        score = player.getScore();
     }
 
     public void setRecord(Player player){
