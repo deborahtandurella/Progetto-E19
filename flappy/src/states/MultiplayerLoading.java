@@ -65,7 +65,7 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
         Client client = new Client();
         client.addConnectionListener(this);
         setCommandHandler(client);
-        Thread connectionThread = new Thread(() -> client.setConnection(ip,port, playerName));
+        Thread connectionThread = new Thread(() -> client.setConnection(ip,port, giocoAStati.getPlayerInfo().getName()));
         connectionThread.start();
     }
 
@@ -73,7 +73,7 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
         Server server = new Server();
         server.addConnectionListener(this);
         setCommandHandler(server);
-        Thread connectionThread = new Thread(() -> server.setConnection(port, playerName));
+        Thread connectionThread = new Thread(() -> server.setConnection(port, giocoAStati.getPlayerInfo().getName()));
         connectionThread.start();
     }
 
