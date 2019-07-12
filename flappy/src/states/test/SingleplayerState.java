@@ -24,7 +24,6 @@ public class SingleplayerState extends BasicGameState implements GameEventListen
     private LocalGame game;
     private Canvas gameCanvas;
     private DifficultySettings difficulty = new DifficultySettings(1, ObstacleGeneratorType.MEDIUM);
-    private SoundPlayer soundPlayer;
     private ScoreBoard scoreBoard;
     private GiocoAStati stateGame;
 
@@ -39,7 +38,6 @@ public class SingleplayerState extends BasicGameState implements GameEventListen
         this.scoreBoard = stateGame.getScoreBoard();
         Screen screen= new Screen(gameContainer.getWidth()/2, gameContainer.getHeight(), gameContainer.getWidth()/4, 0);
         gameCanvas= new Canvas(screen, gameContainer.getGraphics());
-        soundPlayer= new SoundPlayer();
     }
 
     @Override
@@ -47,7 +45,7 @@ public class SingleplayerState extends BasicGameState implements GameEventListen
         super.enter(container, game);
         SingleModePlayer player = new SingleModePlayer(((GiocoAStati) game).getPlayerInfo());
         this.game= new LocalGame(gameCanvas, difficulty, player);
-        this.game.addListener(soundPlayer);
+        this.game.addListener(new SoundPlayer());
         this.game.addListener(this);
     }
 
@@ -75,9 +73,8 @@ public class SingleplayerState extends BasicGameState implements GameEventListen
     @Override
     public void gameEvent(GameEventType event) {
         if(event==GameEventType.GAMEOVER){
-            if (scoreBoard.compareScore(new Result(game.getPlayer()))){
-                stateGame.enterState(GiocoAStati.SINGLE_REPLAY_MENU);
-            }
+            scoreBoard.compareScore(new Result(game.getPlayer()));
+            stateGame.enterState(GiocoAStati.SINGLE_REPLAY_MENU);
         }
     }
 }
