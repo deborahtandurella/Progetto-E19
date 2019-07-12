@@ -76,7 +76,7 @@ public class SingleplayerState extends BasicGameState implements GameEventListen
     public void gameEvent(GameEventType event) {
         if(event==GameEventType.GAMEOVER){
             if (scoreBoard.compareScore(new Result(game.getPlayer()))){
-                stateGame.enterState(GiocoAStati.SCORE_BOARD_MENU);
+                stateGame.enterState(GiocoAStati.SINGLE_REPLAY_MENU);
             }
         }
     }
