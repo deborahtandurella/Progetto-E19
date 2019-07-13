@@ -43,7 +43,8 @@ public class BirdGraphicComponent extends GameElementGraphicComponent
         return flipped;
     }
     public void flip(){
-        birdImage=birdImage.getFlippedCopy(false, flipped);
+        flipped=!flipped;
+        birdImage=birdImage.getFlippedCopy(false, true);
     }
 
 }
