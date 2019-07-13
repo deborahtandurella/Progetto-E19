@@ -13,6 +13,7 @@ import static logic.gameConstants.GameConstants.*;
 public class BirdGraphicComponent extends GameElementGraphicComponent
 {
     private Image birdImage;
+    private boolean flipped;
 
     public BirdGraphicComponent(Canvas canvas) {
         super(canvas);
@@ -38,7 +39,10 @@ public class BirdGraphicComponent extends GameElementGraphicComponent
                 (float) BIRD_HEIGHT,
                 angle);
     }
-    public void setFlipped(boolean flipped){
+    public boolean isFlipped(){
+        return flipped;
+    }
+    public void flip(){
         birdImage=birdImage.getFlippedCopy(false, flipped);
     }
 

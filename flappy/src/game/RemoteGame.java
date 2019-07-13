@@ -28,6 +28,7 @@ public class RemoteGame extends GameEventDispatcher implements OnlineGame{
     private double gameSpeed;
     private Image background;
     private Hud hud;
+    private long startTime;
 
     public RemoteGame(Canvas canvas, DifficultySettings settings, MultiModePlayer player) {
         this.canvas = canvas;
@@ -37,6 +38,7 @@ public class RemoteGame extends GameEventDispatcher implements OnlineGame{
         Entity birdEntity = EntityFactory.makeBird(0.2, 0.5,canvas);
         entities.add(birdEntity);
         bird = (BirdLogicComponent) birdEntity.getLogicComponent();
+        startTime= System.currentTimeMillis();
         this.player=player;
         try {
             hud = new MultiplayerHud(player, canvas);
@@ -110,6 +112,11 @@ public class RemoteGame extends GameEventDispatcher implements OnlineGame{
     @Override
     public void setBird(BirdLogicComponent bird) {
         this.bird=bird;
+    }
+
+    @Override
+    public long getTimeLeft() {
+        return System.currentTimeMillis()-startTime;
     }
 
     public void obstacleCollision(){

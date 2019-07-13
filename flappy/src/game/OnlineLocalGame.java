@@ -45,6 +45,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     private Hud hud;
     private CommandHandler commandHandler;
     private int IDcount;
+    private long startTime;
 
     public OnlineLocalGame(Canvas canvas, DifficultySettings settings, CommandHandler commandHandler, MultiModePlayer player) {
         this.canvas = canvas;
@@ -62,6 +63,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         obstacleGenerator.addListener(this);
         obstacleGenerator.addListener(coinGenerator);
         coinGenerator.addListener(this);
+        startTime=System.currentTimeMillis();
         try {
             hud= new MultiplayerHud(player, canvas);
             background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND));
@@ -70,8 +72,10 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         }
 
     }
-
-
+    @Override
+    public long getTimeLeft(){
+        return System.currentTimeMillis()-startTime;
+    }
     public void update(int delta){
  //       delta*=gameSpeed;
         updateEntities(delta);
