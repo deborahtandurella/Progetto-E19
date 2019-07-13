@@ -208,4 +208,8 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         obstacles.add((ObstacleLogicComponent) obstacle.getLogicComponent());
         commandHandler.sendCommand(new ObstacleGeneratedCommand(obstacle));
     }
+
+    public MultiModePlayer getPlayer() {
+        return player;
+    }
 }
