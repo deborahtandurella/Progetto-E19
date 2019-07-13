@@ -53,7 +53,7 @@ public class GravityPowerUp implements PowerUp{
 
     }
     private void restoreGravity(OnlineGame game){
-        BirdLogicComponent newBird=new ReversedBirdLogicComponent(game.getBird());
+        BirdLogicComponent newBird=new BirdLogicComponent(game.getBird());
         Entity birdEntity= Objects.requireNonNull(game.getEntity(game.getBird()));
         birdEntity.setLogicComponent(newBird);
         BirdGraphicComponent birdGraphic=(BirdGraphicComponent)birdEntity.getGraphicComponent();

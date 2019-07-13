@@ -14,6 +14,13 @@ public class BirdLogicComponent extends SolidGameElementLogicComponent {
 
     }
 
+    public BirdLogicComponent(BirdLogicComponent logic) {
+        this(logic.getX(), logic.getY());
+        setSpeedX(logic.getSpeedX());
+        if(logic.isImmune())
+            acquireImmunity();
+    }
+
     @Override
     public void update(int delta) {
         super.update(delta);
