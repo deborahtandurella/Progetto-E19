@@ -38,6 +38,9 @@ public class BirdGraphicComponent extends GameElementGraphicComponent
                 (float) BIRD_HEIGHT,
                 angle);
     }
+    public void setFlipped(boolean flipped){
+        birdImage=birdImage.getFlippedCopy(false, flipped);
+    }
 
 }
 

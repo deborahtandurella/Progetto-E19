@@ -13,4 +13,9 @@ public class SpeedPowerUP implements PowerUp{
     public void execute(OnlineLocalGame localGame, RemoteGame remoteGame) {
 
     }
+
+    @Override
+    public int getAffectedGame() {
+        return 0;
+    }
 }

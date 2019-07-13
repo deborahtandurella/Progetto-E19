@@ -19,7 +19,7 @@ import resources.PathKeys;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class RemoteGame extends GameEventDispatcher {
+public class RemoteGame extends GameEventDispatcher implements OnlineGame{
     private CopyOnWriteArrayList<Entity> entities;
     private CopyOnWriteArrayList<ScrollingElement> scrollingElements;
     private BirdLogicComponent bird;
@@ -94,9 +94,24 @@ public class RemoteGame extends GameEventDispatcher {
         notifyEvent(GameEventType.GAMEOVER);
     }
 
+    @Override
+    public Entity getEntity(LogicComponent logicComponent) {
+        for(Entity entity: entities){
+            if (entity.getLogicComponent()==logicComponent)
+                return entity;
+        }
+        return null;
+    }
+
     public BirdLogicComponent getBird() {
         return bird;
     }
+
+    @Override
+    public void setBird(BirdLogicComponent bird) {
+        this.bird=bird;
+    }
+
     public void obstacleCollision(){
         notifyEvent(GameEventType.COLLISION);
         bird.acquireImmunity();

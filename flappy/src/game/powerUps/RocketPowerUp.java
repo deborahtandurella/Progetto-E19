@@ -16,4 +16,9 @@ public class RocketPowerUp implements PowerUp{
     public void execute(OnlineLocalGame localGame, RemoteGame remoteGame) {
         localGame.onObstacleGenerated(EntityFactory.makeRocket(1, remoteGame.getBird().getY(), localGame.getCanvas()));
     }
+
+    @Override
+    public int getAffectedGame() {
+        return PowerUp.LOCAL_GAME;
+    }
 }

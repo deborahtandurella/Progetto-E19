@@ -3,7 +3,9 @@ package game;
 import entityComponent.Entity;
 import entityComponent.EntityFactory;
 import entityComponent.components.LogicComponent;
+import entityComponent.implementations.bird.BirdGraphicComponent;
 import entityComponent.implementations.bird.BirdLogicComponent;
+import entityComponent.implementations.bird.ReversedBirdLogicComponent;
 import entityComponent.implementations.items.coin.CoinLogicComponent;
 import entityComponent.implementations.obstacles.ObstacleLogicComponent;
 import game.gameEvents.GameEventDispatcher;
@@ -30,7 +32,7 @@ import resources.PathKeys;
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class OnlineLocalGame extends GameEventDispatcher implements CoinListener, ObstacleListener {
+public class OnlineLocalGame extends GameEventDispatcher implements CoinListener, ObstacleListener, OnlineGame {
     private CopyOnWriteArrayList<Entity> entities;
     private CopyOnWriteArrayList<ObstacleLogicComponent> obstacles;
     private CopyOnWriteArrayList<CoinLogicComponent> coins;
@@ -152,6 +154,10 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         }
     }
 
+    public void setBird(BirdLogicComponent bird) {
+        this.bird = bird;
+    }
+
     private void updateEntities(int delta){
         for(Entity entity: entities)
             entity.update(delta);
@@ -168,7 +174,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         removeEntity(logic);
     }
 
-    private Entity getEntity(LogicComponent logic){
+    public Entity getEntity(LogicComponent logic){
         for (Entity entity: entities)
             if(entity.getLogicComponent()== logic)
                 return entity;
@@ -201,7 +207,11 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     public Canvas getCanvas() {
         return canvas;
     }
-
+    public void powerUpReceived(PowerUp powerUp){
+        if (powerUp.getAffectedGame()== PowerUp.REMOTE_GAME){
+            commandHandler.sendCommand(new PowerUpCommand(powerUp));
+        }
+    }
     @Override
     public void onObstacleGenerated(Entity obstacle) {
         addEntity(obstacle);

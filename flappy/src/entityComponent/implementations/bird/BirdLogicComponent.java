@@ -17,19 +17,27 @@ public class BirdLogicComponent extends SolidGameElementLogicComponent {
     @Override
     public void update(int delta) {
         super.update(delta);
+        updateImmunity(delta);
+        updateSpeed(delta);
+        checkForBounce(delta);
+    }
+    protected void checkForBounce(int delta){
+        if (getY() > 1){
+            jump();
+        }
+    }
+    protected void updateSpeed(int delta){
+        setSpeedY(getSpeedY() + delta * ACCELERATION_Y);
+    }
+    private void updateImmunity(int delta){
         if(immunity){
             immunityTime-=delta;
             if (immunityTime<0)
                 immunity=false;
         }
-        setSpeedY(getSpeedY() + delta * ACCELERATION_Y);
-        if (getY() > 1){
-            jump();
-        }
-
     }
     public boolean outOfBounds(){
-        return getY() + BIRD_HEIGHT > 0;
+        return getY() + BIRD_HEIGHT < 0;
     }
     public boolean isImmune() {
         return immunity;
