@@ -15,7 +15,9 @@ public class PowerUpCommand extends Command {
     @Override
     public void execute(RemoteGame remoteGame, OnlineLocalGame localGame) {
         powerUp.execute(localGame, remoteGame);
-        MultiModePlayer enemy = remoteGame.getPlayer();
-        enemy.setCoins(enemy.getCoins()-powerUp.getPrice());
+        if(powerUp.getAffectedGame()==PowerUp.LOCAL_GAME) {
+            MultiModePlayer enemy = remoteGame.getPlayer();
+            enemy.setCoins(enemy.getCoins() - powerUp.getPrice());
+        }
     }
 }
