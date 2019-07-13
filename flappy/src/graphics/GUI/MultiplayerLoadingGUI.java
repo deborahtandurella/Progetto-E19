@@ -32,7 +32,7 @@ public class MultiplayerLoadingGUI extends AbstractMenuGUI{
 
         loadingSheet = new SpriteSheet(PathHandler.getInstance().getPath(FileKeys.VARIOUS, PathKeys.LOADINGSHEET),64,64);
         loadingAnimation = new Animation(loadingSheet,100);
-
+        loadingAnimation.stopAt(loadingAnimation.getFrameCount());
         threeTwoOneSheet = new SpriteSheet(PathHandler.getInstance().getPath(FileKeys.VARIOUS, PathKeys.THREETWOONE),288,288);
         threeTwoOneAnimation = new Animation(threeTwoOneSheet,50);
     }
@@ -40,6 +40,7 @@ public class MultiplayerLoadingGUI extends AbstractMenuGUI{
     @Override
     public void reload() {
         connected=false;
+        loadingAnimation.restart();
     }
 
     @Override
