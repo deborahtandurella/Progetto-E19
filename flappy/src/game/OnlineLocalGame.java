@@ -227,6 +227,10 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
             commandHandler.sendCommand(new PowerUpCommand(powerUp));
         }
     }
+    public void changeSpeedLimits(double change){
+        maxSpeed+=change;
+        minSpeed+=change;
+    }
     @Override
     public void onObstacleGenerated(Entity obstacle) {
         addEntity(obstacle);

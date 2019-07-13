@@ -92,6 +92,9 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
             leftGame.powerUpUsed(PowerUpType.ROCKET);
         if (key== Input.KEY_Q)
             leftGame.powerUpUsed(PowerUpType.GRAVITY);
+        if (key==Input.KEY_W)
+            leftGame.powerUpUsed(PowerUpType.SPEED);
+
         if (key== Input.KEY_M){
             gameFinished=true;
             commandHandler.closeConnection();
