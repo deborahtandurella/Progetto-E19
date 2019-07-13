@@ -52,7 +52,6 @@ public class GravityPowerUp implements PowerUp{
             }, duration);
     }
     private void restoreGravity(OnlineGame game){
-        System.err.println("Gravita risistemata!");
         BirdLogicComponent newBird=new BirdLogicComponent(game.getBird());
         Entity birdEntity= Objects.requireNonNull(game.getEntity(game.getBird()));
         birdEntity.setLogicComponent(newBird);

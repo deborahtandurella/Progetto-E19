@@ -122,6 +122,10 @@ public class RemoteGame extends GameEventDispatcher implements OnlineGame{
     public void obstacleCollision(){
         notifyEvent(GameEventType.COLLISION);
         bird.acquireImmunity();
+
+    }
+    public void setSpeed(double speed){
+        gameSpeed=speed;
     }
     public void increaseScore(){
         player.addScore();

@@ -32,6 +32,8 @@ import resources.PathKeys;
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import static logic.gameConstants.GameConstants.BIRD_WIDTH;
+
 public class OnlineLocalGame extends GameEventDispatcher implements CoinListener, ObstacleListener, OnlineGame {
     private CopyOnWriteArrayList<Entity> entities;
     private CopyOnWriteArrayList<ObstacleLogicComponent> obstacles;
@@ -46,6 +48,8 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     private CommandHandler commandHandler;
     private int IDcount;
     private long startTime;
+    private double maxSpeed= 2;
+    private double minSpeed= 0.5;
 
     public OnlineLocalGame(Canvas canvas, DifficultySettings settings, CommandHandler commandHandler, MultiModePlayer player) {
         this.canvas = canvas;
@@ -77,7 +81,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         return System.currentTimeMillis()-startTime;
     }
     public void update(int delta){
- //       delta*=gameSpeed;
+        delta*=gameSpeed;
         updateEntities(delta);
         obstacleGenerator.update(delta);
         if (!bird.isImmune()){
@@ -114,14 +118,22 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         checkCoinCollisions();
         checkObstacleCollisions();
     }
-
+    public void changeSpeed(double change){
+        if (gameSpeed + change > maxSpeed )
+            gameSpeed=maxSpeed;
+        else if (gameSpeed + change < minSpeed)
+            gameSpeed=minSpeed;
+        else
+            gameSpeed+=change;
+        commandHandler.sendCommand(new SpeedChangedCommand(gameSpeed));
+    }
     public BirdLogicComponent getBird() {
         return bird;
     }
 
     private void checkScore(){
         for(ObstacleLogicComponent obstacle: obstacles){
-            if( ( !obstacle.isPassed() ) && (bird.getX() > obstacle.getX()) ){
+            if( ( !obstacle.isPassed() ) && (bird.getX() > obstacle.getX()) && (bird.getX()-obstacle.getX()<BIRD_WIDTH) ){
                 obstacle.setPassed(true);
                 increaseScore();
             }
@@ -129,7 +141,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     }
     private void increaseScore(){
         player.addScore();
-        gameSpeed += 0.05;
+        changeSpeed(+0.025);
         commandHandler.sendCommand(new IncreaseScoreCommand());
     }
     private void checkObstacleCollisions(){
@@ -140,8 +152,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     private void obstacleCollision(ObstacleLogicComponent obstacle){
         notifyEvent(GameEventType.COLLISION);
         bird.acquireImmunity();
-        if (gameSpeed>0.45)
-            gameSpeed-=0.20;
+        changeSpeed(-0.1);
         commandHandler.sendCommand(new ObstacleCollisionCommand(Objects.requireNonNull(getEntity(obstacle))));
         if(obstacle.destroyOnHit())
             removeObstacle(obstacle);

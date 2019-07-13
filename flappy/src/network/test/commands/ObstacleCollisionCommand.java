@@ -22,5 +22,5 @@ public class ObstacleCollisionCommand extends Command {
             if (obstacle.destroyOnHit())
                 remoteGame.removeScrollingElement(obstacle);
         }
- }
+    }
 }

@@ -10,6 +10,8 @@ import game.RemoteGame;
 import static logic.gameConstants.GameConstants.PIPE_SPEED;
 
 public class ObstacleGeneratedCommand extends Command {
+    private static final long serialVersionUID = -539210512249000006L;
+
     private SerializableElement obstacle;
     private int ID;
 

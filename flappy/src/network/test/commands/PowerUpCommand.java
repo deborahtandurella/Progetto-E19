@@ -6,6 +6,8 @@ import game.powerUps.PowerUp;
 import logic.player.MultiModePlayer;
 
 public class PowerUpCommand extends Command {
+    private static final long serialVersionUID = -539210512249000007L;
+
     private PowerUp powerUp;
 
     public PowerUpCommand(PowerUp powerUp) {
