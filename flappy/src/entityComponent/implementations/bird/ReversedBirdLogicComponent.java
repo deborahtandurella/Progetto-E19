@@ -13,7 +13,6 @@ public class ReversedBirdLogicComponent extends BirdLogicComponent {
     protected void checkForBounce(int delta){
         if (getY() < 0){
             jump();
-            System.err.println("jumpato per bounce");
         }
     }
     @Override
@@ -28,6 +27,5 @@ public class ReversedBirdLogicComponent extends BirdLogicComponent {
     @Override
     public void jump(){
         setSpeedY( JUMP_SPEED);
-        System.err.println("Jumpato");
     }
 }
