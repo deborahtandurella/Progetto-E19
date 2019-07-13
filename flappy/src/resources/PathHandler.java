@@ -5,39 +5,31 @@ import java.util.HashMap;
 
 public class PathHandler {
 
-    private static String path= "res/path/fileList.txt";
     private static PathHandler instance;
-    private HashMap<ResourcePacks,String> filePaths;
-    private HashMap<Resources,String> spritePaths;
-    private HashMap<Resources,String> buttonPaths;
-    private HashMap<Resources,String> variousPaths;
-    private HashMap<Resources,String> soundPaths;
-    private HashMap<ResourcePacks,HashMap> superMap;
-    private PathReader reader;
-    private SingletonInizializer inizializer;
+
+    private HashMap<ResourcePack,String> resourcePackIndex;
+    private HashMap<Resource,String> spritePaths;
+    private HashMap<Resource,String> buttonPaths;
+    private HashMap<Resource,String> variousPaths;
+    private HashMap<Resource,String> soundPaths;
+    private HashMap<ResourcePack,HashMap<Resource, String>> resourcePacks;
 
     private PathHandler() throws IOException {
 
-        filePaths = new HashMap<>();
-        spritePaths = new HashMap<>();
-        buttonPaths = new HashMap<>();
-        variousPaths = new HashMap<>();
-        soundPaths = new HashMap<>();
-        superMap = new HashMap<>();
+        resourcePackIndex = new HashMap<>();
+        resourcePacks = new HashMap<>();
 
-        inizializer = new SingletonInizializer();
-        inizializer.init(path,filePaths);
+        resourcePackIndex =PathReader.readResourcePackIndex("res/path/fileList.txt");
 
-        reader = new PathReader();
+        spritePaths= PathReader.readResourcePack(resourcePackIndex.get(ResourcePack.CLASSIC));
+        buttonPaths= PathReader.readResourcePack(resourcePackIndex.get(ResourcePack.BUTTON));
+        soundPaths= PathReader.readResourcePack(resourcePackIndex.get(ResourcePack.SOUND));
+        variousPaths= PathReader.readResourcePack(resourcePackIndex.get(ResourcePack.VARIOUS));
 
-        reader.read(filePaths, ResourcePacks.CLASSIC,spritePaths);
-        reader.read(filePaths, ResourcePacks.BUTTON,buttonPaths);
-        reader.read(filePaths, ResourcePacks.SOUND,soundPaths);
-        reader.read(filePaths, ResourcePacks.VARIOUS,variousPaths);
-        superMap.put(ResourcePacks.SPRITES,spritePaths);
-        superMap.put(ResourcePacks.BUTTON,buttonPaths);
-        superMap.put(ResourcePacks.SOUND,soundPaths);
-        superMap.put(ResourcePacks.VARIOUS,variousPaths);
+        resourcePacks.put(ResourcePack.SPRITES,spritePaths);
+        resourcePacks.put(ResourcePack.BUTTON,buttonPaths);
+        resourcePacks.put(ResourcePack.SOUND,soundPaths);
+        resourcePacks.put(ResourcePack.VARIOUS,variousPaths);
     }
     public static synchronized PathHandler getInstance(){
         if (instance == null)
@@ -49,16 +41,24 @@ public class PathHandler {
         return instance;
     }
 
-    public void changeSprites(ResourcePacks key) throws IOException {
-        spritePaths.clear();
-        reader.read(filePaths,key,spritePaths);
+    public void changeSprites(ResourcePack newTheme) {
+        try {
+            spritePaths= PathReader.readResourcePack(resourcePackIndex.get(newTheme));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
-    public String getPath(ResourcePacks mapKey, Resources pathKey){
-        return superMap.get(mapKey).get(pathKey).toString();
+    public String getPath(ResourcePack mapKey, Resource pathKey){
+        String resourcePath= resourcePacks.get(mapKey).get(pathKey);
+        if (resourcePath!=null)
+            return resourcePath;
+        else
+            throw new InvalidResourceKeyException(mapKey, pathKey);
+
     }
-    public HashMap<Resources,String> getSoundPaths(){
-        return soundPaths;
+    public HashMap<Resource,String> getResourcePackPaths(ResourcePack pack){
+        return resourcePacks.get(pack);
     }
 }

@@ -5,8 +5,8 @@ import graphics.Canvas;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import resources.PathHandler;
-import resources.ResourcePacks;
-import resources.Resources;
+import resources.Resource;
+import resources.ResourcePack;
 
 import static logic.gameConstants.GameConstants.COIN_SIZE;
 
@@ -17,7 +17,7 @@ public class CoinGraphicComponent extends GameElementGraphicComponent {
     public CoinGraphicComponent(Canvas canvas) {
         super(canvas);
         try {
-            coinImage = new Image(PathHandler.getInstance().getPath(ResourcePacks.SPRITES, Resources.COIN));
+            coinImage = new Image(PathHandler.getInstance().getPath(ResourcePack.SPRITES, Resource.COIN));
         } catch (SlickException e){
             e.printStackTrace();
         }

@@ -20,8 +20,8 @@ import logic.player.Player;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import resources.PathHandler;
-import resources.ResourcePacks;
-import resources.Resources;
+import resources.Resource;
+import resources.ResourcePack;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -54,7 +54,7 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
         heartGenerator.addListener(this);
         try {
             hud = new SinglePlayerHud(player, canvas);
-            background = new Image(PathHandler.getInstance().getPath(ResourcePacks.SPRITES, Resources.BACKGROUND));
+            background = new Image(PathHandler.getInstance().getPath(ResourcePack.SPRITES, Resource.BACKGROUND));
         } catch (SlickException e) {
             e.printStackTrace();
         }

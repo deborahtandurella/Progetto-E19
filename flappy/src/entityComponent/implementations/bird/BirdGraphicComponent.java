@@ -5,8 +5,8 @@ import graphics.Canvas;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import resources.PathHandler;
-import resources.ResourcePacks;
-import resources.Resources;
+import resources.Resource;
+import resources.ResourcePack;
 
 import static logic.gameConstants.GameConstants.*;
 
@@ -18,7 +18,7 @@ public class BirdGraphicComponent extends GameElementGraphicComponent
     public BirdGraphicComponent(Canvas canvas) {
         super(canvas);
         try {
-            birdImage = new Image(PathHandler.getInstance().getPath(ResourcePacks.SPRITES, Resources.BIRD));
+            birdImage = new Image(PathHandler.getInstance().getPath(ResourcePack.SPRITES, Resource.BIRD));
         } catch (SlickException e){
             e.printStackTrace();
         }

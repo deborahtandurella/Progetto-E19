@@ -14,8 +14,8 @@ import logic.player.MultiModePlayer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import resources.PathHandler;
-import resources.ResourcePacks;
-import resources.Resources;
+import resources.Resource;
+import resources.ResourcePack;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -42,7 +42,7 @@ public class RemoteGame extends GameEventDispatcher implements OnlineGame{
         this.player=player;
         try {
             hud = new MultiplayerHud(player, canvas);
-            background = new Image(PathHandler.getInstance().getPath(ResourcePacks.SPRITES, Resources.BACKGROUND));
+            background = new Image(PathHandler.getInstance().getPath(ResourcePack.SPRITES, Resource.BACKGROUND));
         } catch (SlickException e) {
             e.printStackTrace();
         }

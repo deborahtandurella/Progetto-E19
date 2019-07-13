@@ -24,8 +24,8 @@ import network.test.commands.*;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import resources.PathHandler;
-import resources.ResourcePacks;
-import resources.Resources;
+import resources.Resource;
+import resources.ResourcePack;
 
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -68,7 +68,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         startTime=System.currentTimeMillis();
         try {
             hud= new MultiplayerHud(player, canvas);
-            background = new Image(PathHandler.getInstance().getPath(ResourcePacks.SPRITES, Resources.BACKGROUND));
+            background = new Image(PathHandler.getInstance().getPath(ResourcePack.SPRITES, Resource.BACKGROUND));
         } catch (SlickException e) {
             e.printStackTrace();
         }

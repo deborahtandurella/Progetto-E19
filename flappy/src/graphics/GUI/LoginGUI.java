@@ -9,8 +9,8 @@ import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.gui.TextField;
 import resources.PathHandler;
-import resources.ResourcePacks;
-import resources.Resources;
+import resources.Resource;
+import resources.ResourcePack;
 import states.Login;
 
 import java.awt.Font;
@@ -36,9 +36,9 @@ public class LoginGUI extends AbstractMenuGUI {
         int buttonHeight = container.getHeight() / 7;
         int buttonWidth = container.getWidth() / 4;
 
-        title = new Image(PathHandler.getInstance().getPath(ResourcePacks.VARIOUS, Resources.TITLE)).getScaledCopy(buttonWidth*3, buttonHeight*2);
+        title = new Image(PathHandler.getInstance().getPath(ResourcePack.VARIOUS, Resource.TITLE)).getScaledCopy(buttonWidth*3, buttonHeight*2);
 
-        Image confirm = new Image(PathHandler.getInstance().getPath(ResourcePacks.BUTTON, Resources.STARTBUTTON)).getScaledCopy(buttonWidth/2, buttonHeight/2);
+        Image confirm = new Image(PathHandler.getInstance().getPath(ResourcePack.BUTTON, Resource.STARTBUTTON)).getScaledCopy(buttonWidth/2, buttonHeight/2);
         startButton = new MouseOverArea(container, confirm, container.getWidth() / 2 - buttonWidth / 4, 50 * getContainer().getHeight() / 100, buttonWidth/2, buttonHeight/2, this);
         addButton(startButton);
 

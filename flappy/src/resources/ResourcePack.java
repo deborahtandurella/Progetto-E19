@@ -1,6 +1,6 @@
 package resources;
 
-public enum ResourcePacks {
+public enum ResourcePack {
     CLASSIC,
     BATMAN,
     SKY,
@@ -9,5 +9,5 @@ public enum ResourcePacks {
     SOUND,
     BUTTON,
     SPRITES,
-    VARIOUS;
+    VARIOUS
 }

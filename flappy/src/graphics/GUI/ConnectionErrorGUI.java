@@ -9,8 +9,8 @@ import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.MouseOverArea;
 import resources.PathHandler;
-import resources.ResourcePacks;
-import resources.Resources;
+import resources.Resource;
+import resources.ResourcePack;
 import states.ConnectionErrorState;
 
 import java.awt.*;
@@ -40,9 +40,9 @@ public class ConnectionErrorGUI extends AbstractMenuGUI {
 
         errorMessage = "CONNECTION ERROR !";
 
-        error = new Image(PathHandler.getInstance().getPath(ResourcePacks.VARIOUS, Resources.CONNECTIONERROR)).getScaledCopy((int) imageDimension,(int) imageDimension);
+        error = new Image(PathHandler.getInstance().getPath(ResourcePack.VARIOUS, Resource.CONNECTIONERROR)).getScaledCopy((int) imageDimension,(int) imageDimension);
 
-        Image returnImage = new Image(PathHandler.getInstance().getPath(ResourcePacks.BUTTON, Resources.BACKTOMENUBUTTON)).getScaledCopy(buttonWidth,8*buttonHeight/10);
+        Image returnImage = new Image(PathHandler.getInstance().getPath(ResourcePack.BUTTON, Resource.BACKTOMENUBUTTON)).getScaledCopy(buttonWidth,8*buttonHeight/10);
         returnButton = new MouseOverArea(container, returnImage, container.getWidth()/2 - buttonWidth/2, container.getHeight() - 20*buttonHeight/10, buttonWidth, buttonHeight, this);
 
         addButton(returnButton);

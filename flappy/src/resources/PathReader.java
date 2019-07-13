@@ -7,20 +7,27 @@ import java.util.HashMap;
 import java.util.StringTokenizer;
 
 public class PathReader {
-    private FileReader fileReader;
-    private BufferedReader bufferedReader;
-    private String path;
 
-    public void read (HashMap<ResourcePacks,String> source, ResourcePacks key, HashMap<Resources,String> destination) throws IOException {
-        path = source.get(key).toString();
-        fileReader = new FileReader(path);
-        bufferedReader = new BufferedReader(fileReader);
+    public static HashMap<Resource,String> readResourcePack(String pathOfResourcePack) throws IOException {
+        HashMap<Resource,String> destination = new HashMap<>();
+        BufferedReader reader = new BufferedReader(new FileReader(pathOfResourcePack));
         String line;
-        StringTokenizer st;
-        while((line = bufferedReader.readLine()) != null) {
-            st = new StringTokenizer(line,",");
-            destination.put(Resources.valueOf(st.nextToken()),st.nextToken());
-
+        while(( line = reader.readLine()) != null) {
+            StringTokenizer st = new StringTokenizer(line,",");
+            destination.put(Resource.valueOf(st.nextToken()),st.nextToken());
         }
+        reader.close();
+        return destination;
+    }
+    public static HashMap<ResourcePack, String> readResourcePackIndex(String pathOfPackIndex) throws IOException {
+        HashMap<ResourcePack, String> result = new HashMap<>();
+        BufferedReader reader = new BufferedReader(new FileReader(pathOfPackIndex));
+        String line;
+        while((line = reader.readLine()) != null) {
+            StringTokenizer st = new StringTokenizer(line,",");
+            result.put(ResourcePack.valueOf(st.nextToken()),st.nextToken());
+        }
+        reader.close();
+        return result;
     }
 }

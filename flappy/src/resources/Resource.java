@@ -1,6 +1,6 @@
 package resources;
 
-public enum Resources {
+public enum Resource {
     BIRD,
     HEART,
     PIPE,

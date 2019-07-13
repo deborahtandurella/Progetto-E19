@@ -6,7 +6,8 @@ import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 import resources.PathHandler;
-import resources.Resources;
+import resources.Resource;
+import resources.ResourcePack;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -18,13 +19,13 @@ public class SoundPlayer implements GameEventListener {
     private Music music;
     public SoundPlayer(){
         sounds=new HashMap<GameEventType, Sound>();
-        HashMap<Resources, String> soundPaths = PathHandler.getInstance().getSoundPaths();
+        HashMap<Resource, String> soundPaths = PathHandler.getInstance().getResourcePackPaths(ResourcePack.SOUND);
         Set<GameEventType> gameEvents= new HashSet<GameEventType>(Arrays.asList(GameEventType.values()));
         Set<String> gameEventsStrings= new HashSet<String>();
         for (GameEventType event: gameEvents) {
             gameEventsStrings.add(event.toString());
         }
-        for(Resources pathkey: soundPaths.keySet()){
+        for(Resource pathkey: soundPaths.keySet()){
             if(gameEventsStrings.contains(pathkey.toString())){
                 try{
                     Sound sound =new Sound(soundPaths.get(pathkey));
