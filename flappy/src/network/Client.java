@@ -10,6 +10,7 @@ import network.test.commands.Command;
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Client implements CommandHandler {
 
@@ -21,11 +22,11 @@ public class Client implements CommandHandler {
     private OnlineLocalGame localGame;
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
-    private ArrayList<ConnectionListener> connectionListeners;
+    private CopyOnWriteArrayList<ConnectionListener> connectionListeners;
     private boolean connected = false;
 
     public Client(){
-        connectionListeners=new ArrayList<>();
+        connectionListeners=new CopyOnWriteArrayList<>();
     }
 
     public void setConnection(String ip, int port, String name) {
