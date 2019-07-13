@@ -15,7 +15,6 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 import states.test.ScoreInterface;
 
 public class SingleplayerReplayMenuState extends AbstractMenuState implements ScoreInterface {
-    private static final int ID = 4;
     private GameContainer container;
     private StateBasedGame stateBasedGame;
     private ScoreBoardMenuGUI scoregui;
@@ -26,7 +25,7 @@ public class SingleplayerReplayMenuState extends AbstractMenuState implements Sc
     }
     @Override
     public int getID() {
-        return ID;
+        return GiocoAStati.SINGLE_REPLAY_MENU;
     }
 
     @Override
@@ -68,19 +67,19 @@ public class SingleplayerReplayMenuState extends AbstractMenuState implements Sc
     }
     public void rematch(){
         try {
-            stateBasedGame.getState(10).init(container,stateBasedGame);
+            stateBasedGame.getState(GiocoAStati.SINGLEPLAYER).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();
         }
-        stateBasedGame.enterState(10,new FadeOutTransition(),new FadeInTransition());
+        stateBasedGame.enterState(GiocoAStati.SINGLEPLAYER,new FadeOutTransition(),new FadeInTransition());
     }
     public void noRematch(){
         try {
-            stateBasedGame.getState(1).init(container,stateBasedGame);
+            stateBasedGame.getState(GiocoAStati.GENERAL_MENU).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();
         }
-        stateBasedGame.enterState(1,new FadeOutTransition(),new FadeInTransition());
+        stateBasedGame.enterState(GiocoAStati.GENERAL_MENU,new FadeOutTransition(),new FadeInTransition());
 
     }
 

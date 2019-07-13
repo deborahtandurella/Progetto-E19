@@ -1,4 +1,4 @@
-package states.test;
+package states;
 
 import GameScore.ScoreBoard;
 import Main.GiocoAStati;
@@ -23,13 +23,13 @@ import org.newdawn.slick.state.StateBasedGame;
 public class SingleplayerState extends BasicGameState implements GameEventListener {
     private LocalGame game;
     private Canvas gameCanvas;
-    private DifficultySettings difficulty = new DifficultySettings(1, ObstacleGeneratorType.MEDIUM);
+    private DifficultySettings difficulty;
     private ScoreBoard scoreBoard;
     private GiocoAStati stateGame;
 
     @Override
     public int getID() {
-        return 10;
+        return GiocoAStati.SINGLEPLAYER;
     }
 
     @Override

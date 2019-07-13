@@ -1,7 +1,6 @@
 package Main;
 
 import GameScore.ScoreBoard;
-import logic.SinglePlayer.Result;
 import logic.player.PlayerInfo;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
@@ -11,24 +10,25 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import states.*;
-import states.test.LocalMultiplayerState;
-import states.test.MultiplayerState;
-import states.test.SingleplayerState;
+import states.MultiplayerState;
+import states.SingleplayerState;
 
 import java.io.IOException;
 
 public class GiocoAStati extends StateBasedGame {
 
     public static final int LOGIN = 0;
-    public static final int MENU = 1;
-    public static final int DIFFICULTY_MENU = 2;
-    public static final int SINGLEPLAYER = 3;
-    public static final int SINGLE_REPLAY_MENU = 4;
-    public static final int MULTI_MENU = 5;
-    public static final int MULTI_LOADING = 6;
-    public static final int MULTIPLAYER = 7;
-    public static final int MULTI_REPLAY_MENU = 8;
-    public static final int SCORE_BOARD_MENU = 9;
+    public static final int GENERAL_MENU = 1;
+    public static final int SCORE_BOARD_MENU = 2;
+    public static final int CUSTOMIZATION_MENU = 3;
+    public static final int DIFFICULTY_MENU = 4;
+    public static final int SINGLEPLAYER = 5;
+    public static final int SINGLE_REPLAY_MENU = 6;
+    public static final int MULTI_MENU = 7;
+    public static final int MULTI_LOADING = 8;
+    public static final int MULTIPLAYER = 9;
+    public static final int MULTI_REPLAY_MENU = 10;
+    public static final int CONNECTION_ERROR_MENU = 11;
     private PlayerInfo playerInfo;
     private ScoreBoard scoreBoard;
 
@@ -55,30 +55,18 @@ public class GiocoAStati extends StateBasedGame {
 
     @Override
     public void initStatesList(GameContainer gameContainer)  {
-        Result result = new Result();
-        try {
-            ScoreBoard scoreBoard = new ScoreBoard();
-            this.addState(new Login());
-            this.addState(new Menu());
-            this.addState(new DifficultyMenu());
-            this.addState(new Singleplayer(result));
-            this.addState(new SingleplayerReplayMenuState());
-            this.addState(new MultiplayerMenu());
-            this.addState(new MultiplayerLoading());
-            this.addState(new Multiplayer());
-            this.addState(new MultiplayerReplayMenu());
-            this.addState(new ScoreBoardState(result));
-            this.addState(new CustomizationMenu());
-            this.addState(new SingleplayerState());
-            this.addState(new LocalMultiplayerState());
-            this.addState(new MultiplayerState());
-            this.addState(new ConnectionErrorState());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-
+        this.addState(new Login());
+        this.addState(new Menu());
+        this.addState(new ScoreBoardState());
+        this.addState(new CustomizationMenu());
+        this.addState(new DifficultyMenu());
+        this.addState(new SingleplayerState());
+        this.addState(new SingleplayerReplayMenuState());
+        this.addState(new MultiplayerMenu());
+        this.addState(new MultiplayerLoading());
+        this.addState(new MultiplayerState());
+        this.addState(new MultiplayerReplayMenu());
+        this.addState(new ConnectionErrorState());
     }
 
     public static void main(String[] argv) {

@@ -1,5 +1,6 @@
 package states;
 
+import Main.GiocoAStati;
 import graphics.GUI.MultiplayerMenuGUI;
 import graphics.Screen;
 import org.newdawn.slick.GameContainer;
@@ -11,12 +12,11 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class MultiplayerMenu extends AbstractMenuState {
-    private static final int ID = 5;
     private StateBasedGame stateBasedGame;
     private boolean initialized = false;
     @Override
     public int getID() {
-        return ID;
+        return GiocoAStati.MULTI_MENU;
     }
 
     @Override
@@ -55,13 +55,13 @@ public class MultiplayerMenu extends AbstractMenuState {
     }
 
     public void join(String ip,int port){
-        stateBasedGame.enterState(6,new FadeOutTransition(),new FadeInTransition());
-        ((MultiplayerLoading)stateBasedGame.getState(6)).join(ip, port);
+        stateBasedGame.enterState(GiocoAStati.MULTI_LOADING,new FadeOutTransition(),new FadeInTransition());
+        ((MultiplayerLoading)stateBasedGame.getState(GiocoAStati.MULTI_LOADING)).join(ip, port);
     }
 
     public void host(int port){
-        stateBasedGame.enterState(6,new FadeOutTransition(),new FadeInTransition());
-        ((MultiplayerLoading)stateBasedGame.getState(6)).host(port);
+        stateBasedGame.enterState(GiocoAStati.MULTI_LOADING,new FadeOutTransition(),new FadeInTransition());
+        ((MultiplayerLoading)stateBasedGame.getState(GiocoAStati.MULTI_LOADING)).host(port);
 
 
     }

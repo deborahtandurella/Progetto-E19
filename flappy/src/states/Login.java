@@ -14,13 +14,12 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class Login extends AbstractMenuState {
 
-    private static final int ID = 0;
     private StateBasedGame stateBasedGame;
 
 
     @Override
     public int getID() {
-        return ID;
+        return GiocoAStati.LOGIN;
     }
 
     @Override
@@ -53,7 +52,7 @@ public class Login extends AbstractMenuState {
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) { }
 
     public void menu(){
-        stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(GiocoAStati.GENERAL_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 
     public void setName(String name) {

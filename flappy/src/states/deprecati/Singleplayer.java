@@ -1,4 +1,4 @@
-package states;
+package states.deprecati;
 
 import GameScore.ScoreBoard;
 import Main.GiocoAStati;

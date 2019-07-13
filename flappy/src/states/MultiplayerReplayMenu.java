@@ -1,5 +1,6 @@
 package states;
 
+import Main.GiocoAStati;
 import graphics.GUI.MultiplayerReplayMenuGUI;
 import graphics.Screen;
 import logic.SinglePlayer.Result;
@@ -13,7 +14,6 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class MultiplayerReplayMenu extends AbstractMenuState {
-    private static final int ID = 8;
     private GameContainer container;
     private StateBasedGame stateBasedGame;
     private Result localPlayerResult;
@@ -24,7 +24,7 @@ public class MultiplayerReplayMenu extends AbstractMenuState {
 
     @Override
     public int getID() {
-        return ID;
+        return GiocoAStati.MULTI_REPLAY_MENU;
     }
 
     @Override
@@ -61,12 +61,7 @@ public class MultiplayerReplayMenu extends AbstractMenuState {
     }
 
     public void backToMenu(){
-        try {
-            stateBasedGame.getState(1).init(container,stateBasedGame);
-        } catch (SlickException e) {
-            e.printStackTrace();
-        }
-        stateBasedGame.enterState(1,new FadeOutTransition(),new FadeInTransition());
+        stateBasedGame.enterState(GiocoAStati.GENERAL_MENU,new FadeOutTransition(),new FadeInTransition());
     }
     public void setResults(Result localPlayerResult, Result remotePlayerResult){
         this.localPlayerResult= localPlayerResult;

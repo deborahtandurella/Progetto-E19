@@ -1,5 +1,6 @@
 package states;
 
+import Main.GiocoAStati;
 import gameMusic.MusicPlayer;
 import graphics.GUI.MenuGUI;
 import graphics.Screen;
@@ -13,7 +14,6 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class Menu extends AbstractMenuState{
-    private static final int ID = 1;
 
     private GameContainer container;
     private StateBasedGame stateBasedGame;
@@ -24,7 +24,7 @@ public class Menu extends AbstractMenuState{
     }
     @Override
     public int getID() {
-        return ID;
+        return GiocoAStati.GENERAL_MENU;
     }
 
     @Override
@@ -48,21 +48,21 @@ public class Menu extends AbstractMenuState{
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) { }
 
     public void single(){
-        stateBasedGame.enterState(2, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(GiocoAStati.DIFFICULTY_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 
     public void multi(){
-        stateBasedGame.enterState(5, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(GiocoAStati.MULTI_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 
 
     public void leaderBoard(){
         try {
-            stateBasedGame.getState(9).init(container,stateBasedGame);
+            stateBasedGame.getState(GiocoAStati.SCORE_BOARD_MENU).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();
         }
-        stateBasedGame.enterState(9, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(GiocoAStati.SCORE_BOARD_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 
 
@@ -73,7 +73,7 @@ public class Menu extends AbstractMenuState{
     }
 
     public void custom(){
-        stateBasedGame.enterState(11, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(GiocoAStati.CUSTOMIZATION_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 
 }

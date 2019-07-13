@@ -1,4 +1,4 @@
-package states.test;
+package states.deprecati;
 
 import Main.GiocoAStati;
 import game.DifficultySettings;

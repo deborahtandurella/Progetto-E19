@@ -1,5 +1,6 @@
 package states;
 
+import Main.GiocoAStati;
 import graphics.GUI.CustomizationMenuGUI;
 import graphics.Screen;
 import org.newdawn.slick.GameContainer;
@@ -16,13 +17,12 @@ import java.awt.*;
 import java.io.IOException;
 
 public class CustomizationMenu extends AbstractMenuState {
-    private static final int ID = 11;
     private GameContainer container;
     private StateBasedGame stateBasedGame;
 
     @Override
     public int getID() {
-        return ID;
+        return GiocoAStati.CUSTOMIZATION_MENU;
     }
 
     @Override
@@ -59,7 +59,7 @@ public class CustomizationMenu extends AbstractMenuState {
         } catch (Exception e ){
             e.printStackTrace();
         }
-        stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(GiocoAStati.GENERAL_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 
     public void themeSelected(FileKeys theme) {
@@ -78,18 +78,18 @@ public class CustomizationMenu extends AbstractMenuState {
             //@Override
            // public void run() {
                 try{
-                    ((AbstractMenuState)stateBasedGame.getState(1)).reloadTheme();
-                    ((AbstractMenuState)stateBasedGame.getState(2)).reloadTheme();
-                    stateBasedGame.getState(3).init(container,stateBasedGame);
-                    ((AbstractMenuState)stateBasedGame.getState(4)).reloadTheme();
-                    ((AbstractMenuState)stateBasedGame.getState(5)).reloadTheme();
-                    ((AbstractMenuState)stateBasedGame.getState(6)).reloadTheme();
-                    stateBasedGame.getState(7).init(container,stateBasedGame);
-                    stateBasedGame.getState(8).init(container,stateBasedGame);
+                    ((AbstractMenuState)stateBasedGame.getState(GiocoAStati.GENERAL_MENU)).reloadTheme();
+                    ((AbstractMenuState)stateBasedGame.getState(GiocoAStati.DIFFICULTY_MENU)).reloadTheme();
+                    stateBasedGame.getState(GiocoAStati.SINGLEPLAYER).init(container,stateBasedGame);
+                    ((AbstractMenuState)stateBasedGame.getState(GiocoAStati.SINGLE_REPLAY_MENU)).reloadTheme();
+                    ((AbstractMenuState)stateBasedGame.getState(GiocoAStati.MULTI_MENU)).reloadTheme();
+                    ((AbstractMenuState)stateBasedGame.getState(GiocoAStati.MULTI_LOADING)).reloadTheme();
+                    stateBasedGame.getState(GiocoAStati.SINGLEPLAYER).init(container,stateBasedGame);
+                    stateBasedGame.getState(GiocoAStati.MULTI_REPLAY_MENU).init(container,stateBasedGame);
                     //((AbstractMenuState)stateBasedGame.getState(8)).reloadTheme();
                     //non esiste ancora la GUI per lo stato 8, finché non è definita, reloadTheme dà exception
                     //per gli stati 3 e 7, che non estendono AbstractMenuState, bisogna fare il metodo reloadTheme apposta
-                    ((AbstractMenuState)stateBasedGame.getState(9)).reloadTheme();
+                    ((AbstractMenuState)stateBasedGame.getState(GiocoAStati.SCORE_BOARD_MENU)).reloadTheme();
                 } catch (SlickException e ){
                     e.printStackTrace();
                 }

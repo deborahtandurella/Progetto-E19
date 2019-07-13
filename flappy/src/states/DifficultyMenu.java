@@ -1,5 +1,6 @@
 package states;
 
+import Main.GiocoAStati;
 import game.DifficultySettings;
 import game.itemGeneration.obstacle.ObstacleGeneratorType;
 import graphics.GUI.DifficultyMenuGUI;
@@ -11,15 +12,13 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
-import states.test.SingleplayerState;
 
 public class DifficultyMenu extends AbstractMenuState {
-    private static final int ID = 2;
     private StateBasedGame stateBasedGame;
 
     @Override
     public int getID() {
-        return ID;
+        return GiocoAStati.DIFFICULTY_MENU;
     }
 
     @Override
@@ -45,23 +44,24 @@ public class DifficultyMenu extends AbstractMenuState {
         }
     }
 
-    private void startGame(){
-        stateBasedGame.enterState(10, new FadeOutTransition(), new FadeInTransition());
+    private void startGame(DifficultySettings settings){
+        ((SingleplayerState) stateBasedGame.getState(GiocoAStati.SINGLEPLAYER)).setDifficulty(settings);
+        stateBasedGame.enterState(GiocoAStati.SINGLEPLAYER, new FadeOutTransition(), new FadeInTransition());
     }
     public void startEasyGame(){
-        ((SingleplayerState) stateBasedGame.getState(10)).setDifficulty(new DifficultySettings(0.7, ObstacleGeneratorType.EASY));
-        startGame();
+        DifficultySettings settings=new DifficultySettings(0.7, ObstacleGeneratorType.EASY);
+        startGame(settings);
     }
     public void startNormalGame(){
-        ((SingleplayerState) stateBasedGame.getState(10)).setDifficulty(new DifficultySettings(1, ObstacleGeneratorType.MEDIUM));
-        startGame();
+        DifficultySettings settings= new DifficultySettings(1, ObstacleGeneratorType.MEDIUM);
+        startGame(settings);
     }
     public void startHardGame(){
-        ((SingleplayerState) stateBasedGame.getState(10)).setDifficulty(new DifficultySettings(1.3, ObstacleGeneratorType.HARD));
-        startGame();
+        DifficultySettings settings= new DifficultySettings(1.3, ObstacleGeneratorType.HARD);
+        startGame(settings);
     }
     public void back(){
-        stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(GiocoAStati.GENERAL_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 
 }

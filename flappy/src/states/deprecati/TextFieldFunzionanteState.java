@@ -1,4 +1,4 @@
-package states.test;
+package states.deprecati;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;

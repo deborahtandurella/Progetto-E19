@@ -1,4 +1,4 @@
-package states.test;
+package states;
 
 import Main.GiocoAStati;
 import game.*;
@@ -39,7 +39,7 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
 
     @Override
     public int getID() {
-        return 13;
+        return GiocoAStati.MULTIPLAYER;
     }
 
     @Override
@@ -99,9 +99,9 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
         if (key== Input.KEY_M){
             gameFinished=true;
             commandHandler.closeConnection();
-            ((MultiplayerReplayMenu)stateBasedGame.getState(8))
+            ((MultiplayerReplayMenu)stateBasedGame.getState(GiocoAStati.MULTI_REPLAY_MENU))
                     .setResults(new Result(leftGame.getPlayer()), new Result(rightGame.getPlayer()));
-            stateBasedGame.enterState(8);
+            stateBasedGame.enterState(GiocoAStati.MULTI_REPLAY_MENU);
         }
     }
 

@@ -11,30 +11,24 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
-import org.newdawn.slick.state.transition.FadeInTransition;
-import org.newdawn.slick.state.transition.FadeOutTransition;
-import states.test.MultiplayerState;
 import Main.GiocoAStati;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class MultiplayerLoading extends AbstractMenuState implements ConnectionListener {
-    private static final int ID = 6;
-    private String playerName;
     private CommandHandler commandHandler;
     private GiocoAStati giocoAStati;
 
     @Override
     public int getID() {
-        return ID;
+        return GiocoAStati.MULTI_LOADING;
     }
 
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         super.enter(container, game);
         getGui().reload();
-        playerName= ((GiocoAStati) game).getPlayerInfo().getName();
     }
 
     @Override
@@ -83,13 +77,13 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
             @Override
             public void run() {
                 ((MultiplayerLoadingGUI)getGui()).connected();
-                ((MultiplayerState) giocoAStati.getState(13)).setCommandHandler(commandHandler);
+                ((MultiplayerState) giocoAStati.getState(GiocoAStati.MULTIPLAYER)).setCommandHandler(commandHandler);
             }
         }, 1000);
         (new Timer()).schedule( new TimerTask(){
             @Override
             public void run() {
-                giocoAStati.enterState(13);
+                giocoAStati.enterState(GiocoAStati.MULTIPLAYER);
             }
         }, 4000);
     }

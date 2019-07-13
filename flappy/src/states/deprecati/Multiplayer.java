@@ -1,4 +1,4 @@
-package states;
+package states.deprecati;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;

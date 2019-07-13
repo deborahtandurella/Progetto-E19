@@ -18,23 +18,17 @@ import states.test.ScoreInterface;
 import java.io.IOException;
 
 public class ScoreBoardState extends AbstractMenuState implements ScoreInterface {
-    private static final int ID = 9;
     private StateBasedGame stateBasedGame;
     public Screen screen;
     private GameContainer container;
     private ScoreBoard scoreBoard;
-    private Result result;
     private ScoreBoardButtons scoreBoardButtons;
 
     @Override
     public int getID() {
-        return ID;
+        return GiocoAStati.SCORE_BOARD_MENU;
     }
 
-    public ScoreBoardState(Result result){
-        super();
-        this.result = result;
-    }
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
@@ -78,7 +72,7 @@ public class ScoreBoardState extends AbstractMenuState implements ScoreInterface
 
 
     public void backToMenu(){
-        stateBasedGame.enterState(1,new FadeOutTransition(),new FadeInTransition());
+        stateBasedGame.enterState(GiocoAStati.GENERAL_MENU,new FadeOutTransition(),new FadeInTransition());
     }
 
     public void deleteLeaderBoard() throws IOException, SlickException {
