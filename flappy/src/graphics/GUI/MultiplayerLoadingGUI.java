@@ -38,6 +38,11 @@ public class MultiplayerLoadingGUI extends AbstractMenuGUI{
     }
 
     @Override
+    public void reload() {
+        connected=false;
+    }
+
+    @Override
     public void render() throws SlickException {
         background.draw();
         if(!connected) {

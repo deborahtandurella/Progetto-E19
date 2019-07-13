@@ -11,5 +11,7 @@ public interface CommandHandler {
     void sendCommand(Command command);
     void startListening(RemoteGame remoteGame, OnlineLocalGame localGame);
     void addConnectionListener(ConnectionListener listener);
+    void removeListener(ConnectionListener listener);
     PlayerInfo getOthersInfo();
+    void closeConnection();
 }

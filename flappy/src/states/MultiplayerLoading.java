@@ -33,6 +33,7 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         super.enter(container, game);
+        getGui().reload();
         playerName= ((GiocoAStati) game).getPlayerInfo().getName();
     }
 
@@ -95,19 +96,17 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
 
     private void setCommandHandler(CommandHandler commandHandler) {
         this.commandHandler = commandHandler;
-        commandHandler.addConnectionListener(this);
-
     }
 
 
     @Override
     public void connectionWorking(boolean connected) {
+        commandHandler.removeListener(this);
         if(connected)
             startLoading();
         else {
-            if (this.isAcceptingInput()){
-                giocoAStati.enterState(GiocoAStati.MENU, new FadeInTransition(), new FadeOutTransition());
-            }
+            giocoAStati.enterState(GiocoAStati.MENU, new FadeInTransition(), new FadeOutTransition());
+
         }
     }
 }

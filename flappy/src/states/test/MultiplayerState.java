@@ -6,6 +6,7 @@ import game.itemGeneration.obstacle.ObstacleGeneratorType;
 import game.powerUps.PowerUpType;
 import graphics.Canvas;
 import graphics.Screen;
+import logic.SinglePlayer.Result;
 import logic.player.MultiModePlayer;
 import logic.player.PlayerInfo;
 import network.ConnectionListener;
@@ -15,6 +16,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
+import states.MultiplayerReplayMenu;
 
 public class MultiplayerState extends BasicGameState implements ConnectionListener {
     private OnlineLocalGame leftGame;
@@ -27,7 +29,7 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
     private Image xPanel;
     private CommandHandler commandHandler;
     private StateBasedGame stateBasedGame;
-
+    private boolean gameFinished=false;
 
     public void setCommandHandler(CommandHandler commandHandler) {
         this.commandHandler = commandHandler;
@@ -53,6 +55,7 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         super.enter(container, game);
+        gameFinished=false;
         PlayerInfo myPlayer= ((GiocoAStati) game).getPlayerInfo();
         leftGame= new OnlineLocalGame(gameCanvas, settings, commandHandler, new MultiModePlayer(myPlayer));
         leftGame.addListener(soundPlayer);
@@ -87,12 +90,21 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
         }
         if (key== Input.KEY_Z)
             leftGame.powerUpUsed(PowerUpType.ROCKET);
+        if (key== Input.KEY_M){
+            gameFinished=true;
+            commandHandler.closeConnection();
+            ((MultiplayerReplayMenu)stateBasedGame.getState(8))
+                    .setResults(new Result(leftGame.getPlayer()), new Result(rightGame.getPlayer()));
+            stateBasedGame.enterState(8);
+        }
     }
 
     @Override
     public void connectionWorking(boolean connected) {
         if (!connected){
-            stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
+            if (isAcceptingInput()&&!gameFinished) {
+                stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
+            }
         }
     }
 }

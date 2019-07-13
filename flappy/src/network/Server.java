@@ -10,6 +10,7 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Server implements CommandHandler {
     private String othersName;
@@ -26,11 +27,11 @@ public class Server implements CommandHandler {
     private ObjectOutputStream outputStream;
     private RemoteGame remoteGame;
     private OnlineLocalGame localGame;
-    private ArrayList<ConnectionListener> connectionListeners;
+    private CopyOnWriteArrayList<ConnectionListener> connectionListeners;
 
     private boolean connected = false;
     public Server(){
-        connectionListeners=new ArrayList<>();
+        connectionListeners=new CopyOnWriteArrayList<>();
     }
 
     public void setConnection(int port, String name) {
@@ -83,7 +84,6 @@ public class Server implements CommandHandler {
         }
     }
 
-
     public void closeConnection() {
         try {
             outputStream.close();
@@ -102,7 +102,9 @@ public class Server implements CommandHandler {
             listener.connectionWorking(connected);
         }
     }
-
+    public void removeListener(ConnectionListener listener){
+        connectionListeners.remove(listener);
+    }
     public void setConnected(boolean connected) {
         this.connected = connected;
         notifyListeners(connected);

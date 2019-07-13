@@ -100,6 +100,9 @@ public class Client implements CommandHandler {
             listener.connectionWorking(connected);
         }
     }
+    public void removeListener(ConnectionListener listener){
+        connectionListeners.remove(listener);
+    }
 
     private void setConnected(boolean connected) {
         this.connected = connected;

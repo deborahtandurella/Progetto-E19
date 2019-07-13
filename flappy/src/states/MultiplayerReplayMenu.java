@@ -54,6 +54,11 @@ public class MultiplayerReplayMenu extends AbstractMenuState {
     }
 
 
+    @Override
+    public void enter(GameContainer container, StateBasedGame game) throws SlickException {
+        super.enter(container, game);
+        getGui().reload();
+    }
 
     public void backToMenu(){
         try {
