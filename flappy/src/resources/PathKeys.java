@@ -35,5 +35,6 @@ public enum PathKeys {
     RANKBACKGROUND,
     LOADINGSHEET,
     THREETWOONE,
+    CONNECTIONERROR,
     BUTTON_BG;
 }

@@ -72,6 +72,7 @@ public class GiocoAStati extends StateBasedGame {
             this.addState(new SingleplayerState());
             this.addState(new LocalMultiplayerState());
             this.addState(new MultiplayerState());
+            this.addState(new ConnectionErrorState());
         } catch (IOException e) {
             e.printStackTrace();
         }

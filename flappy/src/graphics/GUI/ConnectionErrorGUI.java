@@ -1,0 +1,67 @@
+package graphics.GUI;
+
+import graphics.Screen;
+import org.newdawn.slick.*;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.font.effects.ColorEffect;
+import org.newdawn.slick.gui.AbstractComponent;
+import org.newdawn.slick.gui.MouseOverArea;
+import resources.FileKeys;
+import resources.PathHandler;
+import resources.PathKeys;
+import states.ConnectionErrorState;
+
+import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+
+public class ConnectionErrorGUI extends AbstractMenuGUI {
+    private ConnectionErrorState state;
+    private MouseOverArea returnButton;
+    private Image error;
+    private float imageDimension;
+    private String errorMessage;
+    private UnicodeFont uniFontMessage;
+
+    public ConnectionErrorGUI(GameContainer container, Screen screen, ConnectionErrorState state) throws SlickException {
+        super(container, screen);
+        this.state = state;
+
+        imageDimension = container.getWidth()/5f;
+
+        int buttonHeight = container.getHeight()/7;
+        int buttonWidth = container.getWidth()/3;
+
+        Font font = new Font("Comic Sans MS", Font.BOLD, 5*getContainer().getWidth()/100 /*46*/);
+        uniFontMessage = new UnicodeFont(font);
+        uniFontMessage.getEffects().add(new ColorEffect(Color.red));
+        uniFontMessage.addAsciiGlyphs();
+        uniFontMessage.loadGlyphs();
+
+        errorMessage = "CONNECTION ERROR !";
+
+        error = new Image(PathHandler.getInstance().getPath(FileKeys.VARIOUS,PathKeys.CONNECTIONERROR)).getScaledCopy((int) imageDimension,(int) imageDimension);
+
+        Image returnImage = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.BACKTOMENUBUTTON)).getScaledCopy(buttonWidth,8*buttonHeight/10);
+        returnButton = new MouseOverArea(container, returnImage, container.getWidth()/2 - buttonWidth/2, container.getHeight() - 20*buttonHeight/10, buttonWidth, buttonHeight, this);
+
+        addButton(returnButton);
+
+        setBackground();
+    }
+
+    @Override
+    public void render() throws SlickException {
+        renderBackground();
+        uniFontMessage.drawString((getContainer().getWidth() - uniFontMessage.getWidth(errorMessage)) / 2f, 33 * getContainer().getHeight() / 100f, errorMessage);
+        error.draw(getContainer().getWidth()/2f-imageDimension/2f, 3*getContainer().getHeight()/100f);
+        renderButtons();
+    }
+
+    @Override
+    public void componentActivated(AbstractComponent source) {
+        if(source == returnButton){
+            state.backToMenu();
+        }
+    }
+}
