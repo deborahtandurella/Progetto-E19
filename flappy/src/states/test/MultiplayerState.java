@@ -18,6 +18,7 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 import states.MultiplayerReplayMenu;
 
+
 public class MultiplayerState extends BasicGameState implements ConnectionListener {
     private OnlineLocalGame leftGame;
     private RemoteGame rightGame;
@@ -108,7 +109,7 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
     public void connectionWorking(boolean connected) {
         if (!connected){
             if (isAcceptingInput()&&!gameFinished) {
-                stateBasedGame.enterState(1, new FadeOutTransition(), new FadeInTransition());
+                stateBasedGame.enterState(GiocoAStati.CONNECTION_ERROR_MENU);
             }
         }
     }

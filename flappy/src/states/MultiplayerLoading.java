@@ -105,7 +105,7 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
         if(connected)
             startLoading();
         else {
-            giocoAStati.enterState(GiocoAStati.MENU, new FadeInTransition(), new FadeOutTransition());
+            giocoAStati.enterState(GiocoAStati.CONNECTION_ERROR_MENU);
 
         }
     }
