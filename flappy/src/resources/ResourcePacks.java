@@ -1,6 +1,6 @@
 package resources;
 
-public enum  FileKeys {
+public enum ResourcePacks {
     CLASSIC,
     BATMAN,
     SKY,

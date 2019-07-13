@@ -10,8 +10,8 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
-import resources.FileKeys;
 import resources.PathHandler;
+import resources.ResourcePacks;
 
 import java.awt.*;
 import java.io.IOException;
@@ -62,7 +62,7 @@ public class CustomizationMenu extends AbstractMenuState {
         stateBasedGame.enterState(GiocoAStati.GENERAL_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 
-    public void themeSelected(FileKeys theme) {
+    public void themeSelected(ResourcePacks theme) {
         try {
             PathHandler.getInstance().changeSprites(theme);
         } catch (IOException e) {

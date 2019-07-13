@@ -7,9 +7,9 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.MouseOverArea;
-import resources.FileKeys;
 import resources.PathHandler;
-import resources.PathKeys;
+import resources.ResourcePacks;
+import resources.Resources;
 import states.MultiplayerMenu;
 
 import java.awt.Font;
@@ -42,9 +42,9 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
         int buttonHeight = container.getHeight()/10;
         int buttonWidth = container.getWidth()/3;
 
-        Image backImage = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.BACKTOMENUBUTTON1)).getScaledCopy(buttonWidth, buttonHeight);
-        Image hostImage = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.HOSTBUTTON)).getScaledCopy(buttonWidth, buttonHeight);
-        Image joinImage = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.JOINBUTTON)).getScaledCopy(buttonWidth, buttonHeight);
+        Image backImage = new Image(PathHandler.getInstance().getPath(ResourcePacks.BUTTON, Resources.BACKTOMENUBUTTON1)).getScaledCopy(buttonWidth, buttonHeight);
+        Image hostImage = new Image(PathHandler.getInstance().getPath(ResourcePacks.BUTTON, Resources.HOSTBUTTON)).getScaledCopy(buttonWidth, buttonHeight);
+        Image joinImage = new Image(PathHandler.getInstance().getPath(ResourcePacks.BUTTON, Resources.JOINBUTTON)).getScaledCopy(buttonWidth, buttonHeight);
 
         hostButton = new MouseOverArea(container, hostImage, 50*(container.getWidth()-buttonWidth)/100, 66*container.getHeight()/100-2*buttonHeight, buttonWidth, buttonHeight, this);
         joinButton = new MouseOverArea(container, joinImage, 50*(container.getWidth()-buttonWidth)/100, 42*container.getHeight()/100-2*buttonHeight, buttonWidth, buttonHeight, this);

@@ -5,9 +5,9 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.MouseOverArea;
-import resources.FileKeys;
 import resources.PathHandler;
-import resources.PathKeys;
+import resources.ResourcePacks;
+import resources.Resources;
 import states.MultiplayerReplayMenu;
 
 public class MultiplayerReplayMenuGUI extends AbstractMenuGUI {
@@ -38,7 +38,7 @@ public class MultiplayerReplayMenuGUI extends AbstractMenuGUI {
         unicodeMessage.getEffects().add(new ColorEffect(java.awt.Color.red));
         unicodeMessage.addAsciiGlyphs();
         unicodeMessage.loadGlyphs();
-        Image backImage = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.BACKTOMENUBUTTON)).getScaledCopy(buttonWidth, buttonHeight);
+        Image backImage = new Image(PathHandler.getInstance().getPath(ResourcePacks.BUTTON, Resources.BACKTOMENUBUTTON)).getScaledCopy(buttonWidth, buttonHeight);
         backButton = new MouseOverArea(container, backImage, (container.getWidth() - buttonWidth) / 2, container.getHeight()-2*buttonHeight, buttonWidth, buttonHeight, this);
         //singleButton = new MouseOverArea(container, single, 25 * container.getWidth() / 100, 50 * container.getHeight() / 100 , this);
 
@@ -53,7 +53,6 @@ public class MultiplayerReplayMenuGUI extends AbstractMenuGUI {
         remotePlayer = state.getRemotePlayerResult().getName();
         localPlayerScore = String.valueOf(state.getLocalPlayerResult().getScore());
         remotePlayerScore = String.valueOf(state.getRemotePlayerResult().getScore());
-        System.err.println(remotePlayer);
     }
 
     @Override

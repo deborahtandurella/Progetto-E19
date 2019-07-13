@@ -1,6 +1,5 @@
 package game;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader;
 import entityComponent.Entity;
 import entityComponent.EntityFactory;
 import entityComponent.components.LogicComponent;
@@ -20,9 +19,9 @@ import logic.SinglePlayer.SingleModePlayer;
 import logic.player.Player;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import resources.FileKeys;
 import resources.PathHandler;
-import resources.PathKeys;
+import resources.ResourcePacks;
+import resources.Resources;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -55,7 +54,7 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
         heartGenerator.addListener(this);
         try {
             hud = new SinglePlayerHud(player, canvas);
-            background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND));
+            background = new Image(PathHandler.getInstance().getPath(ResourcePacks.SPRITES, Resources.BACKGROUND));
         } catch (SlickException e) {
             e.printStackTrace();
         }

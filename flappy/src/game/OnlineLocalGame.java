@@ -3,9 +3,7 @@ package game;
 import entityComponent.Entity;
 import entityComponent.EntityFactory;
 import entityComponent.components.LogicComponent;
-import entityComponent.implementations.bird.BirdGraphicComponent;
 import entityComponent.implementations.bird.BirdLogicComponent;
-import entityComponent.implementations.bird.ReversedBirdLogicComponent;
 import entityComponent.implementations.items.coin.CoinLogicComponent;
 import entityComponent.implementations.obstacles.ObstacleLogicComponent;
 import game.gameEvents.GameEventDispatcher;
@@ -25,9 +23,9 @@ import network.test.CommandHandler;
 import network.test.commands.*;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import resources.FileKeys;
 import resources.PathHandler;
-import resources.PathKeys;
+import resources.ResourcePacks;
+import resources.Resources;
 
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -70,7 +68,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         startTime=System.currentTimeMillis();
         try {
             hud= new MultiplayerHud(player, canvas);
-            background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND));
+            background = new Image(PathHandler.getInstance().getPath(ResourcePacks.SPRITES, Resources.BACKGROUND));
         } catch (SlickException e) {
             e.printStackTrace();
         }

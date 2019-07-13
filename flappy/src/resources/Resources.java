@@ -1,6 +1,6 @@
 package resources;
 
-public enum PathKeys {
+public enum Resources {
     BIRD,
     HEART,
     PIPE,
@@ -36,5 +36,6 @@ public enum PathKeys {
     LOADINGSHEET,
     THREETWOONE,
     CONNECTIONERROR,
-    BUTTON_BG;
+    BUTTON_BG,
+    FLAPPYFONT
 }

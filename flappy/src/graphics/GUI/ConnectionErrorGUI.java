@@ -1,19 +1,19 @@
 package graphics.GUI;
 
 import graphics.Screen;
-import org.newdawn.slick.*;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.MouseOverArea;
-import resources.FileKeys;
 import resources.PathHandler;
-import resources.PathKeys;
+import resources.ResourcePacks;
+import resources.Resources;
 import states.ConnectionErrorState;
 
 import java.awt.*;
-import java.awt.Color;
-import java.awt.Font;
 
 public class ConnectionErrorGUI extends AbstractMenuGUI {
     private ConnectionErrorState state;
@@ -40,9 +40,9 @@ public class ConnectionErrorGUI extends AbstractMenuGUI {
 
         errorMessage = "CONNECTION ERROR !";
 
-        error = new Image(PathHandler.getInstance().getPath(FileKeys.VARIOUS,PathKeys.CONNECTIONERROR)).getScaledCopy((int) imageDimension,(int) imageDimension);
+        error = new Image(PathHandler.getInstance().getPath(ResourcePacks.VARIOUS, Resources.CONNECTIONERROR)).getScaledCopy((int) imageDimension,(int) imageDimension);
 
-        Image returnImage = new Image(PathHandler.getInstance().getPath(FileKeys.BUTTON, PathKeys.BACKTOMENUBUTTON)).getScaledCopy(buttonWidth,8*buttonHeight/10);
+        Image returnImage = new Image(PathHandler.getInstance().getPath(ResourcePacks.BUTTON, Resources.BACKTOMENUBUTTON)).getScaledCopy(buttonWidth,8*buttonHeight/10);
         returnButton = new MouseOverArea(container, returnImage, container.getWidth()/2 - buttonWidth/2, container.getHeight() - 20*buttonHeight/10, buttonWidth, buttonHeight, this);
 
         addButton(returnButton);

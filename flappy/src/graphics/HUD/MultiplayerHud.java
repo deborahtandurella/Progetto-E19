@@ -4,16 +4,16 @@ import graphics.Canvas;
 import logic.player.MultiModePlayer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import resources.FileKeys;
 import resources.PathHandler;
-import resources.PathKeys;
+import resources.ResourcePacks;
+import resources.Resources;
 
 public class MultiplayerHud extends Hud {
     private Image coinImage;
     private static float COIN_SIZE = 0.065f;
     public MultiplayerHud(MultiModePlayer player, Canvas canvas) throws SlickException {
         super(player, canvas);
-        coinImage= new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.COIN));
+        coinImage= new Image(PathHandler.getInstance().getPath(ResourcePacks.SPRITES, Resources.COIN));
     }
 
     @Override

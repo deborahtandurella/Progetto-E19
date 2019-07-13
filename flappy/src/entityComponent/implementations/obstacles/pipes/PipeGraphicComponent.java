@@ -3,9 +3,9 @@ package entityComponent.implementations.obstacles.pipes;
 import entityComponent.components.gameElements.GameElementGraphicComponent;
 import graphics.Canvas;
 import org.newdawn.slick.Image;
-import resources.FileKeys;
 import resources.PathHandler;
-import resources.PathKeys;
+import resources.ResourcePacks;
+import resources.Resources;
 
 import static logic.gameConstants.GameConstants.*;
 
@@ -15,7 +15,7 @@ public class PipeGraphicComponent extends GameElementGraphicComponent {
     public PipeGraphicComponent(Canvas canvas) {
         super(canvas);
         try{
-            lowerPipeImage = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES,PathKeys.PIPE));
+            lowerPipeImage = new Image(PathHandler.getInstance().getPath(ResourcePacks.SPRITES, Resources.PIPE));
             upperPipeImage= lowerPipeImage.getFlippedCopy(false, true);
         } catch (Exception e){
             e.printStackTrace();

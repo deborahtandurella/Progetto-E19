@@ -3,9 +3,9 @@ package entityComponent.implementations.obstacles.rocket;
 import entityComponent.components.gameElements.GameElementGraphicComponent;
 import graphics.Canvas;
 import org.newdawn.slick.Image;
-import resources.FileKeys;
 import resources.PathHandler;
-import resources.PathKeys;
+import resources.ResourcePacks;
+import resources.Resources;
 
 import static logic.gameConstants.GameConstants.ROCKET_SIZE;
 
@@ -16,7 +16,7 @@ public class RocketGraphicComponent extends GameElementGraphicComponent
     public RocketGraphicComponent(Canvas canvas) {
         super(canvas);
         try {
-            rocketImage = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES,PathKeys.ROCKET));
+            rocketImage = new Image(PathHandler.getInstance().getPath(ResourcePacks.SPRITES, Resources.ROCKET));
         } catch (Exception e){
             e.printStackTrace();
         }

@@ -17,7 +17,7 @@ public class SingletonInizializer {
         StringTokenizer st;
         while((line = bufferedReader.readLine()) != null) {
             st = new StringTokenizer(line,",");
-            map.put(FileKeys.valueOf(st.nextToken()),st.nextToken());
+            map.put(ResourcePacks.valueOf(st.nextToken()),st.nextToken());
 
         }
     }

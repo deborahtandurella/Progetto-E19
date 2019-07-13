@@ -3,9 +3,9 @@ package graphics.GUI;
 import graphics.Screen;
 import org.newdawn.slick.*;
 import org.newdawn.slick.gui.AbstractComponent;
-import resources.FileKeys;
 import resources.PathHandler;
-import resources.PathKeys;
+import resources.ResourcePacks;
+import resources.Resources;
 import states.MultiplayerLoading;
 
 public class MultiplayerLoadingGUI extends AbstractMenuGUI{
@@ -28,12 +28,12 @@ public class MultiplayerLoadingGUI extends AbstractMenuGUI{
 
         buttonDimension = container.getWidth()/5;
 
-        background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES,PathKeys.BACKGROUND)).getScaledCopy(screen.getWidth(), screen.getHeight());
+        background = new Image(PathHandler.getInstance().getPath(ResourcePacks.SPRITES, Resources.BACKGROUND)).getScaledCopy(screen.getWidth(), screen.getHeight());
 
-        loadingSheet = new SpriteSheet(PathHandler.getInstance().getPath(FileKeys.VARIOUS, PathKeys.LOADINGSHEET),64,64);
+        loadingSheet = new SpriteSheet(PathHandler.getInstance().getPath(ResourcePacks.VARIOUS, Resources.LOADINGSHEET),64,64);
         loadingAnimation = new Animation(loadingSheet,100);
         loadingAnimation.stopAt(loadingAnimation.getFrameCount());
-        threeTwoOneSheet = new SpriteSheet(PathHandler.getInstance().getPath(FileKeys.VARIOUS, PathKeys.THREETWOONE),288,288);
+        threeTwoOneSheet = new SpriteSheet(PathHandler.getInstance().getPath(ResourcePacks.VARIOUS, Resources.THREETWOONE),288,288);
         threeTwoOneAnimation = new Animation(threeTwoOneSheet,50);
     }
 

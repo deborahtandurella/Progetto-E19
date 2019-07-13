@@ -4,3 +4,4 @@ BUTTON_BG,res/sprites/backgrounds/buttonBackground.png
 LOADINGSHEET,res/sprites/backgrounds/loadingSpriteSheet.png
 THREETWOONE,res/sprites/backgrounds/321spritesheet.png
 CONNECTIONERROR,res/sprites/backgrounds/connectionError.png
+FLAPPYFONT,res/font/FlappyBirdy.ttf

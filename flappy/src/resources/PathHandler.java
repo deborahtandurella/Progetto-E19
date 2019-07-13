@@ -7,12 +7,12 @@ public class PathHandler {
 
     private static String path= "res/path/fileList.txt";
     private static PathHandler instance;
-    private HashMap<FileKeys,String> filePaths;
-    private HashMap<PathKeys,String> spritePaths;
-    private HashMap<PathKeys,String> buttonPaths;
-    private HashMap<PathKeys,String> variousPaths;
-    private HashMap<PathKeys,String> soundPaths;
-    private HashMap<FileKeys,HashMap> superMap;
+    private HashMap<ResourcePacks,String> filePaths;
+    private HashMap<Resources,String> spritePaths;
+    private HashMap<Resources,String> buttonPaths;
+    private HashMap<Resources,String> variousPaths;
+    private HashMap<Resources,String> soundPaths;
+    private HashMap<ResourcePacks,HashMap> superMap;
     private PathReader reader;
     private SingletonInizializer inizializer;
 
@@ -30,14 +30,14 @@ public class PathHandler {
 
         reader = new PathReader();
 
-        reader.read(filePaths,FileKeys.CLASSIC,spritePaths);
-        reader.read(filePaths,FileKeys.BUTTON,buttonPaths);
-        reader.read(filePaths,FileKeys.SOUND,soundPaths);
-        reader.read(filePaths,FileKeys.VARIOUS,variousPaths);
-        superMap.put(FileKeys.SPRITES,spritePaths);
-        superMap.put(FileKeys.BUTTON,buttonPaths);
-        superMap.put(FileKeys.SOUND,soundPaths);
-        superMap.put(FileKeys.VARIOUS,variousPaths);
+        reader.read(filePaths, ResourcePacks.CLASSIC,spritePaths);
+        reader.read(filePaths, ResourcePacks.BUTTON,buttonPaths);
+        reader.read(filePaths, ResourcePacks.SOUND,soundPaths);
+        reader.read(filePaths, ResourcePacks.VARIOUS,variousPaths);
+        superMap.put(ResourcePacks.SPRITES,spritePaths);
+        superMap.put(ResourcePacks.BUTTON,buttonPaths);
+        superMap.put(ResourcePacks.SOUND,soundPaths);
+        superMap.put(ResourcePacks.VARIOUS,variousPaths);
     }
     public static synchronized PathHandler getInstance(){
         if (instance == null)
@@ -49,16 +49,16 @@ public class PathHandler {
         return instance;
     }
 
-    public void changeSprites(FileKeys key) throws IOException {
+    public void changeSprites(ResourcePacks key) throws IOException {
         spritePaths.clear();
         reader.read(filePaths,key,spritePaths);
 
     }
 
-    public String getPath(FileKeys mapKey, PathKeys pathKey){
+    public String getPath(ResourcePacks mapKey, Resources pathKey){
         return superMap.get(mapKey).get(pathKey).toString();
     }
-    public HashMap<PathKeys,String> getSoundPaths(){
+    public HashMap<Resources,String> getSoundPaths(){
         return soundPaths;
     }
 }

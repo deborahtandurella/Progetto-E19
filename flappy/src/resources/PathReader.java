@@ -11,7 +11,7 @@ public class PathReader {
     private BufferedReader bufferedReader;
     private String path;
 
-    public void read (HashMap<FileKeys,String> source,FileKeys key,HashMap<PathKeys,String> destination) throws IOException {
+    public void read (HashMap<ResourcePacks,String> source, ResourcePacks key, HashMap<Resources,String> destination) throws IOException {
         path = source.get(key).toString();
         fileReader = new FileReader(path);
         bufferedReader = new BufferedReader(fileReader);
@@ -19,7 +19,7 @@ public class PathReader {
         StringTokenizer st;
         while((line = bufferedReader.readLine()) != null) {
             st = new StringTokenizer(line,",");
-            destination.put(PathKeys.valueOf(st.nextToken()),st.nextToken());
+            destination.put(Resources.valueOf(st.nextToken()),st.nextToken());
 
         }
     }

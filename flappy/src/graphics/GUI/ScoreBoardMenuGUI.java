@@ -7,9 +7,9 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.gui.AbstractComponent;
-import resources.FileKeys;
 import resources.PathHandler;
-import resources.PathKeys;
+import resources.ResourcePacks;
+import resources.Resources;
 import states.test.ScoreInterface;
 
 import java.awt.*;
@@ -31,7 +31,7 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
         this.state=state;
 
         setBackground();
-        pergamena = new Image(PathHandler.getInstance().getPath(FileKeys.VARIOUS, PathKeys.RANKBACKGROUND)).getScaledCopy(container.getWidth()/100*43, container.getHeight()/100*80);
+        pergamena = new Image(PathHandler.getInstance().getPath(ResourcePacks.VARIOUS, Resources.RANKBACKGROUND)).getScaledCopy(container.getWidth()/100*43, container.getHeight()/100*80);
         Font font = new Font("Comic Sans MS", Font.BOLD, 27*getContainer().getWidth()/1000);
         uniFontMessage = new UnicodeFont(font);
         uniFontMessage.getEffects().add(new ColorEffect(Color.black));
@@ -41,7 +41,7 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
         scoreName = state.getScoreBoard().printName();
         points = state.getScoreBoard().printPoint();
 
-        versionFont = new UnicodeFont("res/font/FlappyBirdy.ttf", getContainer().getHeight()/10, false, false);
+        versionFont = new UnicodeFont(PathHandler.getInstance().getPath(ResourcePacks.VARIOUS, Resources.FLAPPYFONT), getContainer().getHeight()/10, false, false);
         versionFont.addAsciiGlyphs();
         versionFont.getEffects().add(new ColorEffect(Color.RED));
         versionFont.loadGlyphs();

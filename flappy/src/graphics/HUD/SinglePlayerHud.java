@@ -4,16 +4,16 @@ import graphics.Canvas;
 import logic.SinglePlayer.SingleModePlayer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import resources.FileKeys;
 import resources.PathHandler;
-import resources.PathKeys;
+import resources.ResourcePacks;
+import resources.Resources;
 
 public class SinglePlayerHud extends Hud {
     private Image heartImage;
     private static float HEART_SIZE = 0.05f;
     public SinglePlayerHud(SingleModePlayer player, Canvas canvas) throws SlickException {
         super(player, canvas);
-        heartImage= new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.LIFE));
+        heartImage= new Image(PathHandler.getInstance().getPath(ResourcePacks.SPRITES, Resources.LIFE));
     }
 
     @Override

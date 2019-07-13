@@ -6,9 +6,9 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.gui.ComponentListener;
 import org.newdawn.slick.gui.MouseOverArea;
-import resources.FileKeys;
 import resources.PathHandler;
-import resources.PathKeys;
+import resources.ResourcePacks;
+import resources.Resources;
 
 import java.util.ArrayList;
 
@@ -41,7 +41,7 @@ public abstract class AbstractMenuGUI implements ComponentListener {
     }
 
     public void setBackground() throws SlickException {
-        background = new Image(PathHandler.getInstance().getPath(FileKeys.SPRITES, PathKeys.BACKGROUND)).getScaledCopy(screen.getWidth(),screen.getHeight());
+        background = new Image(PathHandler.getInstance().getPath(ResourcePacks.SPRITES, Resources.BACKGROUND)).getScaledCopy(screen.getWidth(),screen.getHeight());
 
     }
 
