@@ -16,6 +16,7 @@ public class MultiplayerLoadingGUI extends AbstractMenuGUI{
     private int animationDimension;
     private boolean connected;
     private MouseOverArea backButton;
+    private boolean connectionHappening;
 
 
     public MultiplayerLoadingGUI(GameContainer container, Screen screen, MultiplayerLoading state) throws SlickException {
@@ -37,22 +38,22 @@ public class MultiplayerLoadingGUI extends AbstractMenuGUI{
 
         SpriteSheet threeTwoOneSheet = new SpriteSheet(PathHandler.getInstance().getPath(ResourcePack.VARIOUS, Resource.THREETWOONE),288,288);
         threeTwoOneAnimation = new Animation(threeTwoOneSheet,50);
-
-        loadingAnimation.stopAt(threeTwoOneAnimation.getFrameCount()-1);
     }
 
     @Override
     public void reload() {
-        connected=false;
-        loadingAnimation.restart();
-        loadingAnimation.stopAt(threeTwoOneAnimation.getFrameCount()-1);
+        connectionHappening=false;
     }
 
     @Override
     public void render() {
         renderBackground();
-        connected= state.isConnecting();
-        if(!connected) {
+        if (state.isConnecting() && !connectionHappening){
+            connectionHappening=true;
+            threeTwoOneAnimation.restart();
+            threeTwoOneAnimation.stopAt(threeTwoOneAnimation.getFrameCount()-1);
+        }
+        if(!connectionHappening) {
             loadingAnimation.draw((getContainer().getWidth() - animationDimension) / 2f, (getContainer().getHeight() - animationDimension) / 2f, animationDimension, animationDimension);
             renderButtons();
         }else{
@@ -63,8 +64,7 @@ public class MultiplayerLoadingGUI extends AbstractMenuGUI{
     @Override
     public void componentActivated(AbstractComponent source) {
         if(source == backButton){
-            if(connected)
-                state.back();
+            state.back();
         }
     }
 
