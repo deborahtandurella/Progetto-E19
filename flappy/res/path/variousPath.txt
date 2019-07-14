@@ -5,3 +5,4 @@ LOADINGSHEET,res/sprites/backgrounds/loadingSpriteSheet.png
 THREETWOONE,res/sprites/backgrounds/321spritesheet.png
 CONNECTIONERROR,res/sprites/backgrounds/connectionError.png
 FLAPPYFONT,res/font/FlappyBirdy.ttf
+GOLDCUP,res/sprites/leaderboard/goldcup.png
