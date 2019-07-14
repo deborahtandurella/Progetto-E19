@@ -18,7 +18,6 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import java.awt.Font;
-import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -162,7 +161,7 @@ public class Singleplayer extends BasicGameState {
                 spriteDrawer.setBirdAlpha(0.5f);
                 immunityTimer = System.currentTimeMillis();
             }
-            if(rocket.getX()<0-ROCKET_SIZE){
+            if(rocket.getX()<0- ROCKET_WIDTH){
                 rockets.remove(rocket);
             }
         }
