@@ -85,7 +85,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         if(!gameOver) {
             double delta = (double)i * gameSpeed;
             delta *= gameSpeed;
-            System.out.println("Local: " +delta);
+            System.out.println("Local: delta: " +delta + " i: "+ i + " gamespeed: " + gameSpeed);
             updateEntities(delta);
             obstacleGenerator.update(delta);
             if (!bird.isImmune()) {
