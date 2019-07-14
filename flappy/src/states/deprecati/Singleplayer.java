@@ -144,7 +144,6 @@ public class Singleplayer extends BasicGameState {
                 rockets.remove(rocket);
                 if(player.getHearts()==0){
                     musicPlayer.gameOverMusic();
-                    result.setRecord(player);
 
                     scoreboard.compareScore(result);
 
@@ -181,7 +180,6 @@ public class Singleplayer extends BasicGameState {
                 player.loseHeart();
                 if(player.getHearts()==0){
                     musicPlayer.gameOverMusic();
-                    result.setRecord(player);
 
                     scoreboard.compareScore(result);
 

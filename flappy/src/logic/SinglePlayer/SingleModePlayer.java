@@ -9,7 +9,6 @@ public class SingleModePlayer implements Player {
     private PlayerInfo playerInfo;
     public SingleModePlayer(PlayerInfo playerInfo) {
         this.hearts = 3;
-        this.score = 0;
         this.playerInfo=playerInfo;
     }
 
