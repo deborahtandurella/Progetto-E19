@@ -43,11 +43,11 @@ public class SpriteDrawer{
             lowerPipeImage= new Image(PathHandler.getInstance().getPath(ResourcePack.SPRITES, Resource.PIPE)).getScaledCopy((int)(PIPE_WIDTH*screenWidth), (int)(PIPE_HEIGHT*screenHeight));
             upperPipeImage= lowerPipeImage.getFlippedCopy(false, true);
 
-            coinSheet = new SpriteSheet("res/sprites/perks/Coin.png",32,32);
-            coinAnimation = new Animation(coinSheet,100);
+            //coinSheet = new SpriteSheet("res/sprites/perks/Coin.png",32,32);
+//            coinAnimation = new Animation(coinSheet,100);
 
-            birdSheet = new SpriteSheet("res/sprites/player/piccioneSheet.png",20,17);
-            birdAnimation = new Animation(birdSheet,200);
+            //birdSheet = new SpriteSheet("res/sprites/player/piccioneSheet.png",20,17);
+            //birdAnimation = new Animation(birdSheet,200);
 
             heartSheet = new SpriteSheet(PathHandler.getInstance().getPath(ResourcePack.SPRITES, Resource.HEART), 16, 16);
             heartAnimation = new Animation(heartSheet, 200);
