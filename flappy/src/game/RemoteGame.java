@@ -52,8 +52,6 @@ public class RemoteGame extends GameEventDispatcher implements OnlineGame{
     public void update(int i){
         if(!gameOver){
             double delta= (double)i*gameSpeed;
-            System.out.println("Local: delta: " +delta + " i: "+ i + " gamespeed: " + gameSpeed);
-
             updateEntities(delta);
             checkOutOfBounds();
         }
