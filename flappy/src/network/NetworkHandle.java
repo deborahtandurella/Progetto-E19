@@ -71,8 +71,10 @@ public class NetworkHandle implements CommandHandler {
             udpSocket.send(packet); */
 
         } catch (IOException | ClassNotFoundException ex) {
-            setConnected(false);
-            closeConnection();
+            if (!closingRequested){
+                setConnected(false);
+                closeConnection();
+            }
         }
     }
 
@@ -109,8 +111,9 @@ public class NetworkHandle implements CommandHandler {
     }
 
     public void closeConnection() {
-        if (!connected && serverSocket!=null){
+        if (!connected){
             closingRequested=true;
+            if (serverSocket!=null && !serverSocket.isClosed())
             try {
                 serverSocket.close();
             } catch (IOException e) {
