@@ -99,9 +99,9 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
         if (key== Input.KEY_M){
             gameFinished=true;
             commandHandler.closeConnection();
-            ((MultiplayerEndMenu)stateBasedGame.getState(GiocoAStati.MULTI_REPLAY_MENU))
+            ((MultiplayerEndMenu)stateBasedGame.getState(GiocoAStati.MULTI_END_MENU))
                     .setResults(new Result(leftGame.getPlayer()), new Result(rightGame.getPlayer()));
-            stateBasedGame.enterState(GiocoAStati.MULTI_REPLAY_MENU);
+            stateBasedGame.enterState(GiocoAStati.MULTI_END_MENU);
         }
     }
 

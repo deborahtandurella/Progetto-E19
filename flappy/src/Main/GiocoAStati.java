@@ -27,7 +27,7 @@ public class GiocoAStati extends StateBasedGame {
     public static final int MULTI_MENU = 7;
     public static final int MULTI_LOADING = 8;
     public static final int MULTIPLAYER = 9;
-    public static final int MULTI_REPLAY_MENU = 10;
+    public static final int MULTI_END_MENU = 10;
     public static final int CONNECTION_ERROR_MENU = 11;
     private PlayerInfo playerInfo;
     private ScoreBoard scoreBoard;

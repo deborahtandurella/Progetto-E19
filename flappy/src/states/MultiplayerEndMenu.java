@@ -23,7 +23,7 @@ public class MultiplayerEndMenu extends AbstractMenuState {
 
     @Override
     public int getID() {
-        return GiocoAStati.MULTI_REPLAY_MENU;
+        return GiocoAStati.MULTI_END_MENU;
     }
 
     @Override
@@ -33,6 +33,7 @@ public class MultiplayerEndMenu extends AbstractMenuState {
         Screen screen = new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
         setGui(new MultiplayerEndMenuGUI(gameContainer, screen, this));
         container.getGraphics().clearWorldClip();
+        setResults(new Result("an", 3), new Result("0123456789", 5));
     }
 
     @Override

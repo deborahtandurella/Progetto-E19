@@ -67,6 +67,8 @@ public class CustomizationMenu extends AbstractMenuState {
             ((AbstractMenuState)stateBasedGame.getState(GiocoAStati.MULTI_MENU)).reloadTheme();
             ((AbstractMenuState)stateBasedGame.getState(GiocoAStati.MULTI_LOADING)).reloadTheme();
             ((AbstractMenuState)stateBasedGame.getState(GiocoAStati.SCORE_BOARD_MENU)).reloadTheme();
+            ((AbstractMenuState)stateBasedGame.getState(GiocoAStati.CONNECTION_ERROR_MENU)).reloadTheme();
+            ((AbstractMenuState)stateBasedGame.getState(GiocoAStati.MULTI_END_MENU)).reloadTheme();
         } catch (SlickException e ){
             e.printStackTrace();
         }
