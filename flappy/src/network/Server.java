@@ -6,10 +6,11 @@ import logic.player.PlayerInfo;
 import network.test.CommandHandler;
 import network.test.commands.Command;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Server implements CommandHandler {
@@ -17,11 +18,6 @@ public class Server implements CommandHandler {
     // Sockets
     private Socket clientSocket;
     private ServerSocket serverSocket;
-
-
-
-    private DataOutputStream outputData;
-    private DataInputStream inputData;
 
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
@@ -40,6 +36,7 @@ public class Server implements CommandHandler {
             serverSocket = new ServerSocket(port);
             System.out.println("Server connected on port " + port);
             clientSocket = serverSocket.accept();
+            serverSocket.close();
             inputStream = new ObjectInputStream(clientSocket.getInputStream());
             outputStream = new ObjectOutputStream(clientSocket.getOutputStream());
             outputStream.writeObject(name);
@@ -88,7 +85,6 @@ public class Server implements CommandHandler {
         try {
             outputStream.close();
             inputStream.close();
-            serverSocket.close();
             clientSocket.close();
         } catch (IOException ex) {
             System.err.println("ERROR: error closing connection");
