@@ -1,7 +1,10 @@
 package states;
 
 import Main.GiocoAStati;
-import game.*;
+import game.DifficultySettings;
+import game.OnlineLocalGame;
+import game.RemoteGame;
+import game.SoundPlayer;
 import game.itemGeneration.obstacle.ObstacleGeneratorType;
 import game.powerUps.PowerUpType;
 import graphics.Canvas;
@@ -103,7 +106,7 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
     }
 
     @Override
-    public void connectionWorking(boolean connected) {
+    public void connectionStatus(boolean connected) {
         if (!connected){
             if (isAcceptingInput()&&!gameFinished) {
                 stateBasedGame.enterState(GiocoAStati.CONNECTION_ERROR_MENU);

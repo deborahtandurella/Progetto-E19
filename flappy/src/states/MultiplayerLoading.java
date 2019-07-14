@@ -18,7 +18,7 @@ import java.util.TimerTask;
 public class MultiplayerLoading extends AbstractMenuState implements ConnectionListener {
     private CommandHandler commandHandler;
     private GiocoAStati giocoAStati;
-
+    private boolean connecting;
     @Override
     public int getID() {
         return GiocoAStati.MULTI_LOADING;
@@ -50,7 +50,6 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
     public void keyPressed(int key, char c){
         if( key == Input.KEY_ESCAPE){
             System.exit(0);
-
         }
 
     }
@@ -75,14 +74,16 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
         (new Timer()).schedule( new TimerTask(){
             @Override
             public void run() {
-                ((MultiplayerLoadingGUI)getGui()).connected();
+ //               ((MultiplayerLoadingGUI)getGui()).connected();
                 ((MultiplayerState) giocoAStati.getState(GiocoAStati.MULTIPLAYER)).setCommandHandler(commandHandler);
+                connecting=true;
             }
         }, 1000);
         (new Timer()).schedule( new TimerTask(){
             @Override
             public void run() {
                 giocoAStati.enterState(GiocoAStati.MULTIPLAYER);
+                connecting=false;
             }
         }, 4000);
     }
@@ -93,7 +94,7 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
 
 
     @Override
-    public void connectionWorking(boolean connected) {
+    public void connectionStatus(boolean connected) {
         commandHandler.removeListener(this);
         if(connected)
             startLoading();
@@ -101,5 +102,9 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
             giocoAStati.enterState(GiocoAStati.CONNECTION_ERROR_MENU);
 
         }
+    }
+
+    public boolean isConnecting() {
+        return connecting;
     }
 }
