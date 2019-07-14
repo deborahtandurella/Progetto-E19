@@ -22,7 +22,7 @@ public abstract class SolidGameElementLogicComponent extends GameElementLogicCom
     }
 
     @Override
-    public void update(int i) {
+    public void update(double i) {
         super.update(i);
         hitbox.shift(getSpeedX()*i, getSpeedY()*i);
     }

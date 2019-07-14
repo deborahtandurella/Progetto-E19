@@ -11,7 +11,7 @@ public class MovingPipeLogicComponent extends PipeLogicComponent {
     }
 
     @Override
-    public void update(int i) {
+    public void update(double i) {
         super.update(i);
         if (getY()<0.25){
             setSpeedY(Math.abs(getSpeedY()));

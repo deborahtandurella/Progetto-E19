@@ -27,7 +27,7 @@ public abstract class Entity {
     public void setLogicComponent(LogicComponent logicComponent) {
         this.logicComponent = logicComponent;
     }
-    public void update(int delta){
+    public void update(double delta){
         if (logicComponent != null) {
             logicComponent.update(delta);
         }

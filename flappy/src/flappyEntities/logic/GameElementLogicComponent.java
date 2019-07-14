@@ -46,7 +46,7 @@ public abstract class GameElementLogicComponent implements LogicComponent {
         this.speedY = speedY;
     }
     @Override
-    public void update(int i) {
+    public void update(double i) {
         x += speedX*i;
         y += speedY*i;
     }

@@ -79,7 +79,8 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     public long getTimeLeft(){
         return GAME_DURATION - (System.currentTimeMillis()-startTime);
     }
-    public void update(int delta){
+    public void update(int i){
+        double delta = i*gameSpeed;
         delta*=gameSpeed;
         updateEntities(delta);
         obstacleGenerator.update(delta);
@@ -140,7 +141,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     }
     private void increaseScore(){
         player.addScore();
-        changeSpeed(+0.025);
+        changeSpeed(+0.012);
         commandHandler.sendCommand(new IncreaseScoreCommand());
     }
     private void checkObstacleCollisions(){
@@ -151,7 +152,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     private void obstacleCollision(ObstacleLogicComponent obstacle){
         notifyEvent(GameEventType.COLLISION);
         bird.acquireImmunity();
-        changeSpeed(-0.1);
+        changeSpeed(-0.07);
         commandHandler.sendCommand(new ObstacleCollisionCommand(Objects.requireNonNull(getEntity(obstacle))));
         if(obstacle.destroyOnHit())
             removeObstacle(obstacle);
@@ -172,7 +173,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         this.bird = bird;
     }
 
-    private void updateEntities(int delta){
+    private void updateEntities(double delta){
         for(Entity entity: entities)
             entity.update(delta);
     }

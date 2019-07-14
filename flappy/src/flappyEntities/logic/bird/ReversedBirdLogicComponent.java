@@ -10,13 +10,13 @@ public class ReversedBirdLogicComponent extends BirdLogicComponent {
         setSpeedY(birdLogicComponent.getSpeedY());
     }
     @Override
-    protected void checkForBounce(int delta){
+    protected void checkForBounce(){
         if (getY() < 0){
             jump();
         }
     }
     @Override
-    protected void updateSpeed(int delta){
+    protected void updateSpeed(double delta){
         setSpeedY(getSpeedY() + delta * -ACCELERATION_Y);
     }
 

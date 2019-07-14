@@ -48,8 +48,9 @@ public class RemoteGame extends GameEventDispatcher implements OnlineGame{
         }
 
     }
-    public void update(int delta){
-        delta*=gameSpeed;
+    public void update(int i){
+
+        Double delta= i*gameSpeed;
         updateEntities(delta);
         checkOutOfBounds();
 
@@ -79,7 +80,7 @@ public class RemoteGame extends GameEventDispatcher implements OnlineGame{
         scrollingElements.add((ScrollingElement)scrollingElement.getLogicComponent());
         entities.add(scrollingElement);
     }
-    private void updateEntities(int delta){
+    private void updateEntities(double delta){
         for(Entity entity: entities){
             entity.update(delta);
         }

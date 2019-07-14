@@ -15,7 +15,7 @@ public class HardObstacleGenerator extends NormalObstacleGenerator {
     }
 
     @Override
-    public void update(int delta) {
+    public void update(double delta) {
         super.update(delta);
         rocketTime+=delta;
         if ( rocketTime > ROCKET_PERIOD){

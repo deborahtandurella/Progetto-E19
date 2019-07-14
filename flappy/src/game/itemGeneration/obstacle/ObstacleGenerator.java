@@ -10,7 +10,7 @@ import static logic.gameConstants.GameConstants.PIPE_WIDTH;
 
 public abstract class ObstacleGenerator  {
     public static final double PIPE_PERIOD =( PIPE_WIDTH*0.5 + 0.5 ) / (PIPE_SPEED);
-    private int time=0;
+    private double time=0;
     private ArrayList<ObstacleListener> listeners;
     private Canvas canvas;
 
@@ -27,7 +27,7 @@ public abstract class ObstacleGenerator  {
             listener.onObstacleGenerated(obstacle);
         }
     }
-    public void update(int delta){
+    public void update(double delta){
         time+=delta;
         if (time > PIPE_PERIOD) {
             time -= PIPE_PERIOD;
@@ -41,7 +41,7 @@ public abstract class ObstacleGenerator  {
         return canvas;
     }
 
-    public int getTime() {
+    public double getTime() {
         return time;
     }
 }
