@@ -27,7 +27,6 @@ public class MultiplayerEndMenuGUI extends AbstractMenuGUI {
     public MultiplayerEndMenuGUI(GameContainer container, Screen screen, MultiplayerEndMenu state) throws SlickException {
         super(container, screen);
         this.state = state;
-        setBackground();
 
         int buttonHeight = container.getHeight()/10;
         int buttonWidth = container.getWidth()/3;
@@ -61,9 +60,9 @@ public class MultiplayerEndMenuGUI extends AbstractMenuGUI {
     }
 
     @Override
-    public void render() throws SlickException {
-        renderBackground();
-        renderButtons();
+    public void render() {
+        super.render();
+
         if(state.getLocalPlayerResult().getScore() > state.getRemotePlayerResult().getScore()){
             unicodeMessage.drawString(30 * getContainer().getWidth() /100f, 20 * getContainer().getHeight() / 100f, winString, Color.white);
             goldcup.draw(26 * getContainer().getWidth() /100f, 40 * getContainer().getHeight() / 100f);

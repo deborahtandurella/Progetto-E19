@@ -20,7 +20,6 @@ public class MultiplayerLoadingGUI extends AbstractMenuGUI{
 
     public MultiplayerLoadingGUI(GameContainer container, Screen screen, MultiplayerLoading state) throws SlickException {
         super(container, screen);
-        setBackground();
         this.state=state;
 
         connected = false;

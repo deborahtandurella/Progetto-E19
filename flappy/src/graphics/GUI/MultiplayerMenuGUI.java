@@ -34,9 +34,6 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
     public MultiplayerMenuGUI(GameContainer container, Screen screen, MultiplayerMenu state) throws SlickException {
         super(container, screen);
         this.state = state;
-
-        setBackground();
-
         Font font = new java.awt.Font("Comic Sans MS", java.awt.Font.PLAIN, 3*getContainer().getWidth()/100);
 
         int buttonHeight = container.getHeight()/10;
@@ -74,9 +71,7 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
 
     @Override
     public void render() {
-        renderBackground();
-        renderButtons();
-
+        super.render();
         uniFontMessage.drawString(20 * getContainer().getWidth() /100f, 9 * getContainer().getHeight() / 100f, ipString, Color.black);
         uniFontMessage.drawString(20 * getContainer().getWidth() / 100f, 20 * getContainer().getHeight() / 100f, portString, Color.black);
         uniFontMessage.drawString(20 * getContainer().getWidth() / 100f, 43 * getContainer().getHeight() / 100f, portString, Color.black);

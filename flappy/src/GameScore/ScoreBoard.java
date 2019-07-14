@@ -9,14 +9,14 @@ import java.util.Collections;
 public class ScoreBoard {
 
   private ArrayList<Result> results;
-  private ScoreFacade scoreFacade;
+  private ScoreBoardPersistencyFacade persistencyFacade;
   private static final int N_PLAYERS = 10;
   private boolean newRecord;
 
 
   public ScoreBoard() throws IOException {
-      this.scoreFacade = new ScoreFacade();
-      results= scoreFacade.readScoreBoard(N_PLAYERS);
+      this.persistencyFacade = new ScoreBoardPersistencyFacade();
+      results= persistencyFacade.readScoreBoard();
       newRecord = false;
   }
 
@@ -34,15 +34,16 @@ public class ScoreBoard {
   }
 
   private void newRecord(){
+    newRecord=true;
     try {
-      scoreFacade.writePlayers(results, N_PLAYERS);
+      persistencyFacade.writePlayers(results);
     } catch (IOException e) {
       e.printStackTrace();
     }
   }
 
 
-    public boolean getnewRecord(){
+  public boolean getnewRecord(){
     return newRecord;
   }
 
@@ -72,6 +73,6 @@ public class ScoreBoard {
       result.setName("-------------");
       result.setScore(0);
     }
-    scoreFacade.writePlayers(results, N_PLAYERS);
+    persistencyFacade.writePlayers(results);
   }
 }

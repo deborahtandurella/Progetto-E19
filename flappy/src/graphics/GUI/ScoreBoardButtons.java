@@ -13,7 +13,7 @@ import states.ScoreBoardState;
 
 import java.io.IOException;
 
-public class ScoreBoardButtons extends AbstractMenuGUI {
+public class ScoreBoardButtons  extends AbstractMenuGUI {
 
     private MouseOverArea deleteButton;
     private MouseOverArea backButton;

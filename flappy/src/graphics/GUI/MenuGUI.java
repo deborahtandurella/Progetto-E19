@@ -21,7 +21,6 @@ public class MenuGUI extends AbstractMenuGUI {
     public MenuGUI(GameContainer container, Screen screen, Menu state) throws SlickException {
         super(container, screen);
         this.state = state;
-        setBackground();
 
         int buttonHeight = container.getHeight()/6;
         int buttonWidth = container.getWidth()/3;
@@ -45,8 +44,7 @@ public class MenuGUI extends AbstractMenuGUI {
     }
 
     public void render(){
-        renderBackground();
-        renderButtons();
+        super.render();
     }
 
     @Override

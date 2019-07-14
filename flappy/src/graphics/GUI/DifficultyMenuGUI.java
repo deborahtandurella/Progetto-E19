@@ -42,13 +42,11 @@ public class DifficultyMenuGUI extends AbstractMenuGUI {
         addButton(hardButton);
         addButton(backButton);
 
-        setBackground();
     }
 
     @Override
     public void render() {
-        renderBackground();
-        renderButtons();
+        super.render();
     }
 
     @Override

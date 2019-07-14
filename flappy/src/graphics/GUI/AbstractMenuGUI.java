@@ -22,9 +22,13 @@ public abstract class AbstractMenuGUI implements ComponentListener {
         this.container = container;
         this.screen = screen;
         this.buttons = new ArrayList<>();
+        setBackground();
     }
 
-    public abstract void render() throws SlickException;
+    public void render() {
+       renderBackground();
+       renderButtons();
+    }
 
     public GameContainer getContainer() {
         return container;

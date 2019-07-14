@@ -38,7 +38,6 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         super(container, screen);
         this.state = state;
 
-        setBackground();
         pergamena = new Image(PathHandler.getInstance().getPath(ResourcePack.VARIOUS, Resource.RANKBACKGROUND)).getScaledCopy(container.getWidth()/100*86, container.getHeight()/100*30);
         title = "CHOOSE YOUR THEME";
         Font font = new Font("Comic Sans MS", Font.BOLD, 27*getContainer().getWidth()/1000);
@@ -97,7 +96,6 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         getContainer().getGraphics().drawString(title, 7*getContainer().getWidth()/100f , 9 * getContainer().getHeight() / 100f);
 
         uniFontMessage.drawString(getContainer().getWidth()/2f-uniFontMessage.getWidth(name)/2f, 46*getContainer().getHeight()/100f, name, org.newdawn.slick.Color.black);
-
         renderButtons();
     }
 

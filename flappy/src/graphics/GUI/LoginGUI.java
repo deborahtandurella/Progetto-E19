@@ -29,7 +29,6 @@ public class LoginGUI extends AbstractMenuGUI {
     public LoginGUI(GameContainer container, Screen screen, Login state) throws SlickException {
         super(container, screen);
         this.state = state;
-        setBackground();
         Font font = new Font("Comic Sans MS", Font.BOLD, 3*getContainer().getWidth()/100 /*46*/);
         TrueTypeFont ttf = new TrueTypeFont(font, true);
 
@@ -63,8 +62,7 @@ public class LoginGUI extends AbstractMenuGUI {
 
     @Override
     public void render() {
-        renderBackground();
-        renderButtons();
+        super.render();
         title.draw((getContainer().getWidth()-title.getWidth()) / 2f,5 * getContainer().getHeight() / 100f);
         uniFontMessage.drawString((getContainer().getWidth() - uniFontMessage.getWidth(nameString)) / 2f, 33 * getContainer().getHeight() / 100f, nameString);
         nameField.render(getContainer(), getContainer().getGraphics());

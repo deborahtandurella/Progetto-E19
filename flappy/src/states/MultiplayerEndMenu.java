@@ -13,7 +13,6 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
 public class MultiplayerEndMenu extends AbstractMenuState {
-    private GameContainer container;
     private StateBasedGame stateBasedGame;
     private Result localPlayerResult;
     private Result remotePlayerResult;
@@ -28,12 +27,10 @@ public class MultiplayerEndMenu extends AbstractMenuState {
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        this.container = gameContainer;
         this.stateBasedGame = stateBasedGame;
         Screen screen = new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
         setGui(new MultiplayerEndMenuGUI(gameContainer, screen, this));
-        container.getGraphics().clearWorldClip();
-        setResults(new Result("an", 3), new Result("0123456789", 5));
+        gameContainer.getGraphics().clearWorldClip();
     }
 
     @Override

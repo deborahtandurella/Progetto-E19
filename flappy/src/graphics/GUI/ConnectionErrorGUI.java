@@ -47,15 +47,13 @@ public class ConnectionErrorGUI extends AbstractMenuGUI {
 
         addButton(returnButton);
 
-        setBackground();
     }
 
     @Override
-    public void render() throws SlickException {
-        renderBackground();
+    public void render()  {
+        super.render();
         uniFontMessage.drawString((getContainer().getWidth() - uniFontMessage.getWidth(errorMessage)) / 2f, 33 * getContainer().getHeight() / 100f, errorMessage);
         error.draw(getContainer().getWidth()/2f-imageDimension/2f, 3*getContainer().getHeight()/100f);
-        renderButtons();
     }
 
     @Override

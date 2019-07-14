@@ -30,7 +30,6 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
         super(container, screen);
         this.state=state;
 
-        setBackground();
         pergamena = new Image(PathHandler.getInstance().getPath(ResourcePack.VARIOUS, Resource.RANKBACKGROUND)).getScaledCopy(container.getWidth()/100*43, container.getHeight()/100*80);
         Font font = new Font("Comic Sans MS", Font.BOLD, 27*getContainer().getWidth()/1000);
         uniFontMessage = new UnicodeFont(font);
@@ -56,8 +55,7 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
 
     @Override
     public void render() {
-
-        renderBackground();
+        super.render();
 
         pergamena.draw(getContainer().getWidth()/2f-pergamena.getWidth()/2f, 3*getContainer().getHeight()/100f);
         uniFontMessage.drawString(37*getContainer().getWidth()/100f, 18*getContainer().getHeight()/100f, scoreName, org.newdawn.slick.Color.black);
