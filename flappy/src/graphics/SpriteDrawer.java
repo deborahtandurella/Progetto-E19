@@ -83,7 +83,7 @@ public class SpriteDrawer{
     }
 
     public void drawRocket(float x, float y, Graphics graphics){
-        rocketImage.draw(offsetX + x*screenWidth, y*screenHeight + offsetY, (float) ROCKET_SIZE*screenWidth, (float) ROCKET_SIZE*screenHeight);
+        rocketImage.draw(offsetX + x*screenWidth, y*screenHeight + offsetY, (float) ROCKET_WIDTH *screenWidth, (float) ROCKET_WIDTH *screenHeight);
     }
 
     public void drawHeart(float x, float y, Graphics graphics){
