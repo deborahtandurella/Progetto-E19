@@ -42,6 +42,6 @@ public class Result implements Comparable{
 
     @Override
     public int compareTo(Object o) {
-        return getScore()-((Result)o).getScore();
+        return ((Result)o).getScore()-getScore();
     }
 }
