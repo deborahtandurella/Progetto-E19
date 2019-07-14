@@ -15,7 +15,6 @@ public class TimerGUI {
 
     private Canvas canvas;
     private Image background;
-    private String timer;
     private UnicodeFont uniFontMessage;
     private float imageWidth;
     private float imageHeight;
@@ -38,8 +37,8 @@ public class TimerGUI {
     }
 
     public void render(int time){
-        timer = Integer.toString(time);
+
         canvas.drawImage(background,0.5f - imageWidth/2f, 0,imageWidth,imageHeight);
-        canvas.drawString(timer,uniFontMessage,0.5f - ((float)uniFontMessage.getWidth(timer)/canvas.getScreen().getWidth())/2f, 0.03f);
+        canvas.drawStringCentered(Integer.toString(time),uniFontMessage,0.5f , 0.03f);
     }
 }

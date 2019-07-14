@@ -63,7 +63,8 @@ public class MultiplayerLoadingGUI extends AbstractMenuGUI{
     @Override
     public void componentActivated(AbstractComponent source) {
         if(source == backButton){
-            state.back();
+            if(connected)
+                state.back();
         }
     }
 

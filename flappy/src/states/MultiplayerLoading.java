@@ -21,6 +21,7 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
     private CommandHandler commandHandler;
     private GiocoAStati giocoAStati;
     private boolean connecting;
+    private NetworkHandle networkHandle;
     @Override
     public int getID() {
         return GiocoAStati.MULTI_LOADING;
@@ -57,18 +58,18 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
     }
 
     public void join(String ip, int port){
-        NetworkHandle client = new NetworkHandle();
-        client.addConnectionListener(this);
-        setCommandHandler(client);
-        Thread connectionThread = new Thread(() -> client.setConnection(ip,port, giocoAStati.getPlayerInfo().getName()));
+        networkHandle= new NetworkHandle();
+        networkHandle.addConnectionListener(this);
+        setCommandHandler(networkHandle);
+        Thread connectionThread = new Thread(() -> networkHandle.setConnection(ip,port, giocoAStati.getPlayerInfo().getName()));
         connectionThread.start();
     }
 
     public void host(int port){
-        NetworkHandle server = new NetworkHandle();
-        server.addConnectionListener(this);
-        setCommandHandler(server);
-        Thread connectionThread = new Thread(() -> server.setConnection(port, giocoAStati.getPlayerInfo().getName()));
+        networkHandle = new NetworkHandle();
+        networkHandle.addConnectionListener(this);
+        setCommandHandler(networkHandle);
+        Thread connectionThread = new Thread(() -> networkHandle.setConnection(port, giocoAStati.getPlayerInfo().getName()));
         connectionThread.start();
     }
 
@@ -111,6 +112,8 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
     }
 
     public void back(){
+        if (networkHandle!=null)
+            networkHandle.closeConnection();
         giocoAStati.enterState(GiocoAStati.MULTI_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 }

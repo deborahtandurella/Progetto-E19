@@ -8,6 +8,7 @@ import game.SoundPlayer;
 import game.itemGeneration.obstacle.ObstacleGeneratorType;
 import game.powerUps.PowerUpType;
 import graphics.Canvas;
+import graphics.GUI.TimerGUI;
 import graphics.Screen;
 import logic.SinglePlayer.Result;
 import logic.player.MultiModePlayer;
@@ -31,6 +32,7 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
     private CommandHandler commandHandler;
     private StateBasedGame stateBasedGame;
     private boolean gameFinished=false;
+    private TimerGUI timer;
 
     public void setCommandHandler(CommandHandler commandHandler) {
         this.commandHandler = commandHandler;
@@ -51,6 +53,7 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
         yPanel = new Image("res/sprites/backgrounds/nero.jpg").getScaledCopy((int)(gameContainer.getWidth()*0.1), gameContainer.getHeight());
         xPanel = new Image("res/sprites/backgrounds/nero.jpg").getScaledCopy( gameContainer.getWidth(),(int)(gameContainer.getHeight()*0.08)); //sovradimensionata per compensare imprecisioni date dalle troncature
         this.stateBasedGame= stateBasedGame;
+        timer= new TimerGUI(new Canvas(new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0), gameContainer.getGraphics()));
     }
 
     @Override
@@ -68,7 +71,6 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) {
         rightGame.render();
-
         graphics.copyArea(leftScreenCopy, 0, 0);
 
         leftGame.render();
@@ -76,6 +78,8 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
 
         yPanel.draw(gameContainer.getWidth()*0.45f, 0);
         xPanel.draw(0,gameCanvas.getScreen().getHeight());
+        timer.render((int) leftGame.getTimeLeft()/1000);
+
     }
 
     @Override
