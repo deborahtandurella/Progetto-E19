@@ -82,8 +82,9 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         return GAME_DURATION - (System.currentTimeMillis()-startTime);
     }
     public void update(int i){
+        System.out.println(gameSpeed);
         if(!gameOver) {
-            double delta = i * gameSpeed;
+            double delta = (double)i * gameSpeed;
             delta *= gameSpeed;
             updateEntities(delta);
             obstacleGenerator.update(delta);
@@ -125,8 +126,9 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         checkObstacleCollisions();
     }
     public void changeSpeed(double change){
-        if (gameSpeed + change > maxSpeed )
-            gameSpeed=maxSpeed;
+        if (gameSpeed + change > maxSpeed ) {
+            gameSpeed = maxSpeed;
+        }
         else if (gameSpeed + change < minSpeed)
             gameSpeed=minSpeed;
         else
