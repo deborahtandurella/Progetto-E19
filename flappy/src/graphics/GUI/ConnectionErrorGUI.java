@@ -29,7 +29,7 @@ public class ConnectionErrorGUI extends AbstractMenuGUI {
 
         imageDimension = container.getWidth()/5f;
 
-        int buttonHeight = container.getHeight()/7;
+        int buttonHeight = container.getHeight()/10;
         int buttonWidth = container.getWidth()/3;
 
         Font font = new Font("Comic Sans MS", Font.BOLD, 5*getContainer().getWidth()/100 /*46*/);

@@ -43,6 +43,6 @@ public class ConnectionErrorState extends AbstractMenuState{
     }
 
     public void backToMenu(){
-        stateBasedGame.enterState(GiocoAStati.GENERAL_MENU, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(GiocoAStati.MULTI_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 }

@@ -11,6 +11,8 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -106,5 +108,9 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
 
     public boolean isConnecting() {
         return connecting;
+    }
+
+    public void back(){
+        giocoAStati.enterState(GiocoAStati.MULTI_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 }

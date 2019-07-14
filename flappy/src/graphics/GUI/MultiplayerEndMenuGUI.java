@@ -32,7 +32,7 @@ public class MultiplayerEndMenuGUI extends AbstractMenuGUI {
         int buttonHeight = container.getHeight()/10;
         int buttonWidth = container.getWidth()/3;
 
-        java.awt.Font font = new java.awt.Font("Comic Sans MS", java.awt.Font.PLAIN, 10*getContainer().getWidth()/100);
+        java.awt.Font font = new java.awt.Font("Comic Sans MS", java.awt.Font.PLAIN, 5*getContainer().getWidth()/100);
 
 
         unicodeMessage= new UnicodeFont(font);
@@ -40,7 +40,7 @@ public class MultiplayerEndMenuGUI extends AbstractMenuGUI {
         unicodeMessage.addAsciiGlyphs();
         unicodeMessage.loadGlyphs();
 
-        goldcup = new Image(PathHandler.getInstance().getPath(ResourcePack.VARIOUS, Resource.GOLDCUP)).getScaledCopy(buttonWidth, buttonHeight);
+        goldcup = new Image(PathHandler.getInstance().getPath(ResourcePack.VARIOUS, Resource.GOLDCUP)).getScaledCopy(15 * container.getWidth() / 100, 15 * buttonHeight / 100);
 
         Image backImage = new Image(PathHandler.getInstance().getPath(ResourcePack.BUTTON, Resource.BACKTOMENUBUTTON)).getScaledCopy(buttonWidth, buttonHeight);
         backButton = new MouseOverArea(container, backImage, (container.getWidth() - buttonWidth) / 2, container.getHeight()-2*buttonHeight, buttonWidth, buttonHeight, this);
