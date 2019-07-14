@@ -49,6 +49,8 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     private long startTime;
     private double maxSpeed= 2;
     private double minSpeed= 0.5;
+    private boolean gameOver = false;
+
 
     public OnlineLocalGame(Canvas canvas, DifficultySettings settings, CommandHandler commandHandler, MultiModePlayer player) {
         this.canvas = canvas;
@@ -80,15 +82,19 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         return GAME_DURATION - (System.currentTimeMillis()-startTime);
     }
     public void update(int i){
-        double delta = i*gameSpeed;
-        delta*=gameSpeed;
-        updateEntities(delta);
-        obstacleGenerator.update(delta);
-        if (!bird.isImmune()){
-            checkCollisions();
-            checkScore();
+        if(!gameOver) {
+            double delta = i * gameSpeed;
+            delta *= gameSpeed;
+            updateEntities(delta);
+            obstacleGenerator.update(delta);
+            if (!bird.isImmune()) {
+                checkCollisions();
+                checkScore();
+            }
+            checkOutOfBounds();
+            if(getTimeLeft()<=0)
+                gameOver();
         }
-        checkOutOfBounds();
 
     }
     public void render(){
@@ -204,7 +210,9 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         for(Entity entity: entities)
             entity.render();
     }
-    private void gameover(){
+    private void gameOver(){
+        gameOver=true;
+        commandHandler.sendCommand(new GameOverCommand());
         notifyEvent(GameEventType.GAMEOVER);
     }
     @Override
@@ -237,7 +245,9 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         obstacles.add((ObstacleLogicComponent) obstacle.getLogicComponent());
         commandHandler.sendCommand(new ObstacleGeneratedCommand(obstacle));
     }
-
+    public boolean isOver(){
+        return gameOver;
+    }
     public MultiModePlayer getPlayer() {
         return player;
     }

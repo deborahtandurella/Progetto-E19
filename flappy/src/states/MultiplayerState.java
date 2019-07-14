@@ -5,6 +5,8 @@ import game.DifficultySettings;
 import game.OnlineLocalGame;
 import game.RemoteGame;
 import game.SoundPlayer;
+import game.gameEvents.GameEventListener;
+import game.gameEvents.GameEventType;
 import game.itemGeneration.obstacle.ObstacleGeneratorType;
 import game.powerUps.PowerUpType;
 import graphics.Canvas;
@@ -20,7 +22,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 
-public class MultiplayerState extends BasicGameState implements ConnectionListener {
+public class MultiplayerState extends BasicGameState implements ConnectionListener, GameEventListener {
     private OnlineLocalGame leftGame;
     private RemoteGame rightGame;
     private Canvas gameCanvas;
@@ -90,9 +92,8 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
 
     @Override
     public void keyPressed(int key, char c) {
-        if (key== Input.KEY_SPACE){
+        if (key== Input.KEY_SPACE)
             leftGame.playerJump();
-        }
         if (key== Input.KEY_Z)
             leftGame.powerUpUsed(PowerUpType.ROCKET);
         if (key== Input.KEY_Q)
@@ -100,13 +101,6 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
         if (key==Input.KEY_W)
             leftGame.powerUpUsed(PowerUpType.SPEED);
 
-        if (key== Input.KEY_M){
-            gameFinished=true;
-            commandHandler.closeConnection();
-            ((MultiplayerEndMenu)stateBasedGame.getState(GiocoAStati.MULTI_END_MENU))
-                    .setResults(new Result(leftGame.getPlayer()), new Result(rightGame.getPlayer()));
-            stateBasedGame.enterState(GiocoAStati.MULTI_END_MENU);
-        }
     }
 
     @Override
@@ -114,6 +108,19 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
         if (!connected){
             if (isAcceptingInput()&&!gameFinished) {
                 stateBasedGame.enterState(GiocoAStati.CONNECTION_ERROR_MENU);
+            }
+        }
+    }
+
+    @Override
+    public void gameEvent(GameEventType event) {
+        if (event==GameEventType.GAMEOVER){
+            if (leftGame.isOver() && rightGame.isOver()){
+                gameFinished=true;
+                commandHandler.closeConnection();
+                ((MultiplayerEndMenu)stateBasedGame.getState(GiocoAStati.MULTI_END_MENU))
+                        .setResults(new Result(leftGame.getPlayer()), new Result(rightGame.getPlayer()));
+                stateBasedGame.enterState(GiocoAStati.MULTI_END_MENU);
             }
         }
     }

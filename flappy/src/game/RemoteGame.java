@@ -29,6 +29,7 @@ public class RemoteGame extends GameEventDispatcher implements OnlineGame{
     private Image background;
     private Hud hud;
     private long startTime;
+    private boolean gameOver;
 
     public RemoteGame(Canvas canvas, DifficultySettings settings, MultiModePlayer player) {
         this.canvas = canvas;
@@ -49,11 +50,11 @@ public class RemoteGame extends GameEventDispatcher implements OnlineGame{
 
     }
     public void update(int i){
-
-        Double delta= i*gameSpeed;
-        updateEntities(delta);
-        checkOutOfBounds();
-
+        if(!gameOver){
+            double delta= i*gameSpeed;
+            updateEntities(delta);
+            checkOutOfBounds();
+        }
     }
     public void render(){
         canvas.drawImage(background, 0, 0, 1, 1);
@@ -93,7 +94,8 @@ public class RemoteGame extends GameEventDispatcher implements OnlineGame{
         for(Entity entity: entities)
             entity.render();
     }
-    private void gameover(){
+    public void gameOver(){
+        gameOver=true;
         notifyEvent(GameEventType.GAMEOVER);
     }
 
@@ -142,6 +144,10 @@ public class RemoteGame extends GameEventDispatcher implements OnlineGame{
     }
     public Canvas getCanvas() {
         return canvas;
+    }
+
+    public boolean isOver() {
+        return gameOver;
     }
 
     public MultiModePlayer getPlayer() {
