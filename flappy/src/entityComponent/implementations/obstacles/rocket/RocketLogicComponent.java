@@ -4,13 +4,12 @@ import entityComponent.implementations.SerializableElement;
 import entityComponent.implementations.obstacles.ObstacleLogicComponent;
 import org.newdawn.slick.geom.Rectangle;
 
-import static logic.gameConstants.GameConstants.ROCKET_SIZE;
-import static logic.gameConstants.GameConstants.ROCKET_SPEED;
+import static logic.gameConstants.GameConstants.*;
 
 public class RocketLogicComponent extends ObstacleLogicComponent {
     public RocketLogicComponent(double x, double y) {
         super(x, y, -ROCKET_SPEED, 0);
-        addHitboxShape(new Rectangle( (float)(x+ROCKET_SIZE/8), (float)(y+ROCKET_SIZE/5), (float) (ROCKET_SIZE/8), (float)(ROCKET_SIZE/5)) );
+        addHitboxShape(new Rectangle( (float)(x+ ROCKET_WIDTH), (float)(y+ ROCKET_HEIGHT), (float) (ROCKET_WIDTH), (float)(ROCKET_HEIGHT )) );
 
     }
 
@@ -21,7 +20,7 @@ public class RocketLogicComponent extends ObstacleLogicComponent {
 
     @Override
     public boolean outOfBounds() {
-        return (getX()+ROCKET_SIZE < 0);
+        return (getX()+ ROCKET_WIDTH < 0);
     }
 
     @Override

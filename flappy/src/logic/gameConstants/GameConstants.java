@@ -8,7 +8,8 @@ public class GameConstants {
 
     public static final double COIN_SIZE = 0.05;
     public static final double HEART_SIZE = 0.05;
-    public static final double ROCKET_SIZE = 0.2;
+    public static final double ROCKET_WIDTH = 0.1;
+    public static final double ROCKET_HEIGHT = ROCKET_WIDTH/2;
 
     public static final double PIPE_FREE_SPACE = 0.35;
     public static final double PIPE_WIDTH = 1/6d;
@@ -18,15 +19,5 @@ public class GameConstants {
 
     public static final double ROCKET_SPEED = 0.00078;
 
-
-    public static final int MENU = 0;
-    public static final int DIFFICULTY_MENU = 1;
-    public static final int SINGLEPLAYER = 2;
-    public static final int SINGLE_REPLAY_MENU = 3;
-    public static final int MULTI_MENU = 4;
-    public static final int MULTI_LOADING = 5;
-    public static final int MULTIPLAYER = 6;
-    public static final int MULTI_REPLAY_MENU = 7;
-    public static final int SCORE_BOARD_MENU = 8;
 
 }

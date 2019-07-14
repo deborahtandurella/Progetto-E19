@@ -7,7 +7,8 @@ import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
 
-import static logic.gameConstants.GameConstants.ROCKET_SIZE;
+import static logic.gameConstants.GameConstants.ROCKET_HEIGHT;
+import static logic.gameConstants.GameConstants.ROCKET_WIDTH;
 
 public class RocketGraphicComponent extends GameElementGraphicComponent
 {
@@ -27,7 +28,7 @@ public class RocketGraphicComponent extends GameElementGraphicComponent
         getCanvas().drawImage(rocketImage,
                 (float) getLogicComponent().getX(),
                 (float) getLogicComponent().getY(),
-                (float) ROCKET_SIZE,
-                (float) ROCKET_SIZE);
+                (float) ROCKET_WIDTH,
+                (float) ROCKET_HEIGHT);
     }
 }
