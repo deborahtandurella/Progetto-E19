@@ -15,11 +15,13 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class NetworkHandle implements CommandHandler {
     private Socket socket;
+    private ServerSocket serverSocket;
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
 
     private CopyOnWriteArrayList<ConnectionListener> connectionListeners;
     private boolean connected = false;
+    private boolean closingRequested = false;
 
     private RemoteGame remoteGame;
     private OnlineLocalGame localGame;
@@ -32,7 +34,7 @@ public class NetworkHandle implements CommandHandler {
     public void setConnection(int port, String name) {
 
         try {
-            ServerSocket serverSocket = new ServerSocket(port);
+            serverSocket = new ServerSocket(port);
             System.out.println("Connection opened on port " + port);
             socket = serverSocket.accept();
             serverSocket.close();
@@ -43,7 +45,10 @@ public class NetworkHandle implements CommandHandler {
             setConnected(true);
             System.out.println("Successfully connected");
         } catch (IOException | ClassNotFoundException ex) {
-            setConnected(false);
+            if (!closingRequested){
+                setConnected(false);
+                closeConnection();
+            }
         }
     }
     public void setConnection(String ip, int port, String name) {
@@ -67,6 +72,7 @@ public class NetworkHandle implements CommandHandler {
 
         } catch (IOException | ClassNotFoundException ex) {
             setConnected(false);
+            closeConnection();
         }
     }
 
@@ -76,6 +82,7 @@ public class NetworkHandle implements CommandHandler {
             command.execute(remoteGame, localGame);
         } catch (IOException e) {
             setConnected(false);
+            closeConnection();
         } catch (ClassNotFoundException | ClassCastException e) {
             e.printStackTrace();
         }
@@ -97,17 +104,27 @@ public class NetworkHandle implements CommandHandler {
             outputStream.writeObject(command);
         } catch (IOException e) {
            setConnected(false);
+           closeConnection();
         }
     }
 
     public void closeConnection() {
-        try {
-            outputStream.close();
-            inputStream.close();
-            socket.close();
-        } catch (IOException ex) {
-            System.err.println("ERROR: error closing connection");
+        if (!connected && serverSocket!=null){
+            closingRequested=true;
+            try {
+                serverSocket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+        if (connected)
+            try {
+                outputStream.close();
+                inputStream.close();
+                socket.close();
+            } catch (IOException ex ) {
+                System.err.println("ERROR: error closing connection");
+            }
     }
     public void addConnectionListener(ConnectionListener listener){
         connectionListeners.add(listener);
@@ -122,6 +139,7 @@ public class NetworkHandle implements CommandHandler {
     }
     private void setConnected(boolean connected) {
         this.connected = connected;
+        System.err.println(connected);
         notifyListeners(connected);
     }
     public PlayerInfo getOthersInfo(){
