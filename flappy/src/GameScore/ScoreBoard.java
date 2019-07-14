@@ -3,73 +3,64 @@ package GameScore;
 import logic.SinglePlayer.Result;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class ScoreBoard {
 
-  private Result[] results;
+  private ArrayList<Result> results;
   private ScoreFacade scoreFacade;
   private static final int N_PLAYERS = 10;
   private boolean newRecord;
-  private int currentRecord;
 
 
   public ScoreBoard() throws IOException {
-      this.results = new Result[N_PLAYERS];
       this.scoreFacade = new ScoreFacade();
-      scoreFacade.readScoreBoard(results, N_PLAYERS);
+      results= scoreFacade.readScoreBoard(N_PLAYERS);
       newRecord = false;
-      currentRecord = results[0].getScore();
   }
 
   public int getCurrentRecord(){
-    return currentRecord;
+    return results.get(0).getScore();
   }
 
-  public boolean compareScore(Result p)  {
-    for(int i=0; i<N_PLAYERS; i++){
-      if( p.getScore() > results[i].getScore()){
-        shiftPlayers(i);
-        results[i].setName(p.getName());
-        results[i].setScore(p.getScore());
-        newRecord();
-        return newRecord = true;
-      }
+  public void compareScore(Result newResult)  {
+    results.add(newResult);
+    Collections.sort(results);
+    if (results.indexOf(newResult)<N_PLAYERS){
+      results.remove(results.size()-1);
+      newRecord();
     }
-    return newRecord = false;
   }
+
   private void newRecord(){
     try {
       scoreFacade.writePlayers(results, N_PLAYERS);
     } catch (IOException e) {
       e.printStackTrace();
     }
-    currentRecord = results[0].getScore();
-  };
-
-
-  public boolean getnewRecord(){
-    return newRecord;
   }
-  private void shiftPlayers(int i){
-    for(int j=N_PLAYERS-1; j>i; j--){
-      results[j].setScore(results[j-1].getScore());
-      results[j].setName(results[j-1].getName());
-    }
+
+
+    public boolean getnewRecord(){
+    return newRecord;
   }
 
 
     public String printName(){
-    String s = "";
-    for (int i=0; i<N_PLAYERS;i++){
-      s += results[i].getName() +"\n";
-    } return s;
+    StringBuilder sb = new StringBuilder();
+    for (Result result : results){
+      sb.append(result.getName()).append("\n");
+    }
+    return sb.toString();
   }
 
-  public String printPoint(){
-      String s = "";
-      for (int i=0; i<N_PLAYERS;i++){
-          s += results[i].getScore()+"\n";
-      } return s;
+  public String printScores(){
+    StringBuilder s = new StringBuilder();
+    for (Result result : results){
+      s.append(result.getScore()).append("\n");
+    }
+    return s.toString();
   }
 
   public void setNewRecord(){
@@ -77,13 +68,10 @@ public class ScoreBoard {
   }
 
   public void deleteScoreBoard() throws IOException {
-    currentRecord = 0;
-
-    for(int j=0; j<N_PLAYERS; j++){
-      results[j].setScore(0);
-      results[j].setName("-------------");
+    for (Result result : results){
+      result.setName("-------------");
+      result.setScore(0);
     }
     scoreFacade.writePlayers(results, N_PLAYERS);
   }
-
 }

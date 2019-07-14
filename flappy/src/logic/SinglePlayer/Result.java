@@ -2,12 +2,17 @@ package logic.SinglePlayer;
 
 import logic.player.Player;
 
-public class Result {
+public class Result implements Comparable{
 
     private String playerName;
     private int score;
 
     public Result() {
+    }
+
+    public Result(String playerName, int score) {
+        this.playerName = playerName;
+        this.score = score;
     }
 
     public Result(Player player) {
@@ -33,5 +38,10 @@ public class Result {
 
     public int getScore(){
         return score;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return getScore()-((Result)o).getScore();
     }
 }

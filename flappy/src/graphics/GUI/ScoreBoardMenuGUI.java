@@ -39,7 +39,7 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
         uniFontMessage.addAsciiGlyphs();
         uniFontMessage.loadGlyphs();
         scoreName = state.getScoreBoard().printName();
-        points = state.getScoreBoard().printPoint();
+        points = state.getScoreBoard().printScores();
 
         versionFont = new UnicodeFont(PathHandler.getInstance().getPath(ResourcePack.VARIOUS, Resource.FLAPPYFONT), getContainer().getHeight()/10, false, false);
         versionFont.addAsciiGlyphs();
@@ -51,7 +51,7 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
     @Override
     public void reload() {
         scoreName = state.getScoreBoard().printName();
-        points = state.getScoreBoard().printPoint();
+        points = state.getScoreBoard().printScores();
     }
 
     @Override
