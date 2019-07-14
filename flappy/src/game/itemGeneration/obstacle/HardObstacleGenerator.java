@@ -1,7 +1,7 @@
 package game.itemGeneration.obstacle;
 
-import entityComponent.Entity;
-import entityComponent.EntityFactory;
+import flappyEntities.Entity;
+import flappyEntities.EntityFactory;
 import graphics.Canvas;
 
 import java.util.Random;

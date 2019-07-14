@@ -1,7 +1,7 @@
 package network.test.commands;
 
-import entityComponent.Entity;
-import entityComponent.implementations.obstacles.ObstacleLogicComponent;
+import flappyEntities.Entity;
+import flappyEntities.logic.obstacles.ObstacleLogicComponent;
 import game.OnlineLocalGame;
 import game.RemoteGame;
 

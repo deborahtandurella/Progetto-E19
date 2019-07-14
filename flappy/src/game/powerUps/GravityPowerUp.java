@@ -1,9 +1,9 @@
 package game.powerUps;
 
-import entityComponent.Entity;
-import entityComponent.implementations.bird.BirdGraphicComponent;
-import entityComponent.implementations.bird.BirdLogicComponent;
-import entityComponent.implementations.bird.ReversedBirdLogicComponent;
+import flappyEntities.Entity;
+import flappyEntities.graphic.BirdGraphicComponent;
+import flappyEntities.logic.bird.BirdLogicComponent;
+import flappyEntities.logic.bird.ReversedBirdLogicComponent;
 import game.OnlineGame;
 import game.OnlineLocalGame;
 import game.RemoteGame;

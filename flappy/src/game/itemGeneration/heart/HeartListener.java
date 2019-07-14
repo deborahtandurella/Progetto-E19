@@ -1,6 +1,6 @@
 package game.itemGeneration.heart;
 
-import entityComponent.Entity;
+import flappyEntities.Entity;
 
 public interface HeartListener {
     void onHeartGenerated(Entity heart);

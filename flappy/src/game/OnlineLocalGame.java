@@ -1,11 +1,11 @@
 package game;
 
-import entityComponent.Entity;
-import entityComponent.EntityFactory;
-import entityComponent.components.LogicComponent;
-import entityComponent.implementations.bird.BirdLogicComponent;
-import entityComponent.implementations.items.coin.CoinLogicComponent;
-import entityComponent.implementations.obstacles.ObstacleLogicComponent;
+import flappyEntities.Entity;
+import flappyEntities.EntityFactory;
+import flappyEntities.logic.LogicComponent;
+import flappyEntities.logic.bird.BirdLogicComponent;
+import flappyEntities.logic.items.CoinLogicComponent;
+import flappyEntities.logic.obstacles.ObstacleLogicComponent;
 import game.gameEvents.GameEventDispatcher;
 import game.gameEvents.GameEventType;
 import game.itemGeneration.coin.CoinGenerator;

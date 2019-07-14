@@ -1,22 +1,19 @@
 package network.test.commands;
 
-import entityComponent.Entity;
-import entityComponent.EntityFactory;
-import entityComponent.implementations.SerializableElement;
-import entityComponent.implementations.obstacles.ObstacleLogicComponent;
+import flappyEntities.Entity;
+import flappyEntities.logic.SerializableEntity;
+import flappyEntities.logic.obstacles.ObstacleLogicComponent;
 import game.OnlineLocalGame;
 import game.RemoteGame;
-
-import static logic.gameConstants.GameConstants.PIPE_SPEED;
 
 public class ObstacleGeneratedCommand extends Command {
     private static final long serialVersionUID = -539210512249000006L;
 
-    private SerializableElement obstacle;
+    private SerializableEntity obstacle;
     private int ID;
 
     public ObstacleGeneratedCommand(Entity obstacleEntity) {
-        obstacle= ((ObstacleLogicComponent) obstacleEntity.getLogicComponent()).getTransmittableVersion();
+        obstacle= ((ObstacleLogicComponent) obstacleEntity.getLogicComponent()).getSerializableVersion();
         ID= obstacleEntity.getID();
     }
 

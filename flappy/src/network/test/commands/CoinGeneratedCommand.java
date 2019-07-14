@@ -1,8 +1,8 @@
 package network.test.commands;
 
-import entityComponent.Entity;
-import entityComponent.EntityFactory;
-import entityComponent.implementations.items.coin.CoinLogicComponent;
+import flappyEntities.Entity;
+import flappyEntities.EntityFactory;
+import flappyEntities.logic.items.CoinLogicComponent;
 import game.OnlineLocalGame;
 import game.RemoteGame;
 

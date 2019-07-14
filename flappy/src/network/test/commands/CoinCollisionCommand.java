@@ -1,7 +1,7 @@
 package network.test.commands;
 
-import entityComponent.Entity;
-import entityComponent.implementations.ScrollingElement;
+import flappyEntities.Entity;
+import flappyEntities.logic.ScrollingElement;
 import game.OnlineLocalGame;
 import game.RemoteGame;
 

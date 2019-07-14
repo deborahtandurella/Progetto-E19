@@ -1,6 +1,6 @@
 package game.itemGeneration.obstacle;
 
-import entityComponent.Entity;
+import flappyEntities.Entity;
 import graphics.Canvas;
 
 import java.util.ArrayList;
@@ -33,7 +33,8 @@ public abstract class ObstacleGenerator  {
             time -= PIPE_PERIOD;
             generatePeriodicObstacle();
         }
-    };
+    }
+
     protected abstract void generatePeriodicObstacle();
 
     public Canvas getCanvas() {

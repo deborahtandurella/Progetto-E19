@@ -1,6 +1,6 @@
 package game.powerUps;
 
-import entityComponent.EntityFactory;
+import flappyEntities.EntityFactory;
 import game.OnlineLocalGame;
 import game.RemoteGame;
 

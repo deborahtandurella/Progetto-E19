@@ -1,10 +1,10 @@
 package game;
 
-import entityComponent.Entity;
-import entityComponent.EntityFactory;
-import entityComponent.components.LogicComponent;
-import entityComponent.implementations.ScrollingElement;
-import entityComponent.implementations.bird.BirdLogicComponent;
+import flappyEntities.Entity;
+import flappyEntities.EntityFactory;
+import flappyEntities.logic.LogicComponent;
+import flappyEntities.logic.ScrollingElement;
+import flappyEntities.logic.bird.BirdLogicComponent;
 import game.gameEvents.GameEventDispatcher;
 import game.gameEvents.GameEventType;
 import graphics.Canvas;

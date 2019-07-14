@@ -1,8 +1,8 @@
 package game.itemGeneration.heart;
 
-import entityComponent.Entity;
-import entityComponent.EntityFactory;
-import entityComponent.implementations.obstacles.ObstacleLogicComponent;
+import flappyEntities.Entity;
+import flappyEntities.EntityFactory;
+import flappyEntities.logic.obstacles.ObstacleLogicComponent;
 import game.itemGeneration.obstacle.ObstacleListener;
 import graphics.Canvas;
 

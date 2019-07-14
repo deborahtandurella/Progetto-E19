@@ -1,7 +1,7 @@
 package game.itemGeneration.obstacle;
 
-import entityComponent.Entity;
+import flappyEntities.Entity;
 
 public interface ObstacleListener {
-    public void onObstacleGenerated(Entity obstacle);
+    void onObstacleGenerated(Entity obstacle);
 }
