@@ -44,6 +44,8 @@ public class PathHandler {
     public void changeSprites(ResourcePack newTheme) {
         try {
             spritePaths= PathReader.readResourcePack(resourcePackIndex.get(newTheme));
+            resourcePacks.remove(ResourcePack.SPRITES);
+            resourcePacks.put(ResourcePack.SPRITES, spritePaths);
         } catch (IOException e) {
             e.printStackTrace();
         }

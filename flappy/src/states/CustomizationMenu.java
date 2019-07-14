@@ -56,6 +56,7 @@ public class CustomizationMenu extends AbstractMenuState {
 
     public void themeSelected(ResourcePack theme) {
         PathHandler.getInstance().changeSprites(theme);
+        initStates();
     }
 
     private void initStates() {
