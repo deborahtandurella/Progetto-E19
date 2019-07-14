@@ -37,5 +37,6 @@ public enum Resource {
     THREETWOONE,
     CONNECTIONERROR,
     BUTTON_BG,
-    FLAPPYFONT
+    FLAPPYFONT,
+    GOLDCUP
 }

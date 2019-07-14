@@ -22,6 +22,7 @@ public class MultiplayerEndMenuGUI extends AbstractMenuGUI {
     private String remotePlayer;
     private String localPlayerScore;
     private String remotePlayerScore;
+    private Image goldcup;
 
     public MultiplayerEndMenuGUI(GameContainer container, Screen screen, MultiplayerEndMenu state) throws SlickException {
         super(container, screen);
@@ -31,13 +32,16 @@ public class MultiplayerEndMenuGUI extends AbstractMenuGUI {
         int buttonHeight = container.getHeight()/10;
         int buttonWidth = container.getWidth()/3;
 
-        java.awt.Font font = new java.awt.Font("Comic Sans MS", java.awt.Font.PLAIN, 3*getContainer().getWidth()/100);
+        java.awt.Font font = new java.awt.Font("Comic Sans MS", java.awt.Font.PLAIN, 10*getContainer().getWidth()/100);
+
 
         unicodeMessage= new UnicodeFont(font);
-        unicodeMessage.getEffects().add(new ColorEffect(java.awt.Color.black));
-        unicodeMessage.getEffects().add(new ColorEffect(java.awt.Color.red));
+        unicodeMessage.getEffects().add(new ColorEffect(java.awt.Color.white));
         unicodeMessage.addAsciiGlyphs();
         unicodeMessage.loadGlyphs();
+
+        goldcup = new Image(PathHandler.getInstance().getPath(ResourcePack.VARIOUS, Resource.GOLDCUP)).getScaledCopy(buttonWidth, buttonHeight);
+
         Image backImage = new Image(PathHandler.getInstance().getPath(ResourcePack.BUTTON, Resource.BACKTOMENUBUTTON)).getScaledCopy(buttonWidth, buttonHeight);
         backButton = new MouseOverArea(container, backImage, (container.getWidth() - buttonWidth) / 2, container.getHeight()-2*buttonHeight, buttonWidth, buttonHeight, this);
 
@@ -59,18 +63,20 @@ public class MultiplayerEndMenuGUI extends AbstractMenuGUI {
         renderBackground();
         renderButtons();
         if(state.getLocalPlayerResult().getScore() > state.getRemotePlayerResult().getScore()){
-            unicodeMessage.drawString(20 * getContainer().getWidth() /100f, 10 * getContainer().getHeight() / 100f, winString, Color.black);
+            unicodeMessage.drawString(40 * getContainer().getWidth() /100f, 20 * getContainer().getHeight() / 100f, winString, Color.white);
+            goldcup.draw(48 * getContainer().getWidth() /100f, 40 * getContainer().getHeight() / 100f);
         }
         else if(state.getLocalPlayerResult().getScore() < state.getRemotePlayerResult().getScore()){
-            unicodeMessage.drawString(20 * getContainer().getWidth() /100f, 20 * getContainer().getHeight() / 100f, loseString, Color.black);
+            unicodeMessage.drawString(40 * getContainer().getWidth() /100f, 20 * getContainer().getHeight() / 100f, loseString, Color.white);
+            goldcup.draw(48 * getContainer().getWidth() /100f, 50 * getContainer().getHeight() / 100f);
         }
         else{
-            unicodeMessage.drawString(20 * getContainer().getWidth() /100f, 40 * getContainer().getHeight() / 100f, pareggioString, Color.black);
+            unicodeMessage.drawString(40 * getContainer().getWidth() /100f, 20 * getContainer().getHeight() / 100f, pareggioString, Color.white);
         }
-        unicodeMessage.drawString(20 * getContainer().getWidth() /100f, 60 * getContainer().getHeight() / 100f, localPlayer, Color.black);
-        unicodeMessage.drawString(20 * getContainer().getWidth() /100f, 70 * getContainer().getHeight() / 100f, remotePlayer, Color.black);
-        unicodeMessage.drawString(35 * getContainer().getWidth() /100f, 60 * getContainer().getHeight() / 100f, localPlayerScore, Color.black);
-        unicodeMessage.drawString(35 * getContainer().getWidth() /100f, 70 * getContainer().getHeight() / 100f, remotePlayerScore, Color.black);
+        unicodeMessage.drawString(40 * getContainer().getWidth() /100f, 40 * getContainer().getHeight() / 100f, localPlayer, Color.white);
+        unicodeMessage.drawString(45 * getContainer().getWidth() /100f, 40 * getContainer().getHeight() / 100f, localPlayerScore, Color.white);
+        unicodeMessage.drawString(40 * getContainer().getWidth() /100f, 50 * getContainer().getHeight() / 100f, remotePlayer, Color.white);
+        unicodeMessage.drawString(45 * getContainer().getWidth() /100f, 50 * getContainer().getHeight() / 100f, remotePlayerScore, Color.white);
     }
 
     @Override
