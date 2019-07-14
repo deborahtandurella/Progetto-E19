@@ -25,6 +25,8 @@ import resources.ResourcePack;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import static logic.gameConstants.GameConstants.BIRD_WIDTH;
+
 public class LocalGame extends GameEventDispatcher implements HeartListener, ObstacleListener {
     private CopyOnWriteArrayList<Entity> entities;
     private CopyOnWriteArrayList<ObstacleLogicComponent> obstacles;
@@ -73,7 +75,6 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
             checkScore();
         }
         checkOutOfBounds();
-
     }
     public void render(){
         canvas.drawImage(background, 0, 0, 1, 1);
@@ -98,7 +99,7 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
     }
     private void checkScore(){
         for(ObstacleLogicComponent obstacle: obstacles){
-            if( ( !obstacle.isPassed() ) && (bird.getX() > obstacle.getX()) ){
+            if( ( !obstacle.isPassed() ) && (Math.abs(bird.getX()-obstacle.getX())<BIRD_WIDTH/4)) {
                 obstacle.setPassed(true);
                 player.addScore();
             }

@@ -131,7 +131,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
 
     private void checkScore(){
         for(ObstacleLogicComponent obstacle: obstacles){
-            if( ( !obstacle.isPassed() ) && (bird.getX() > obstacle.getX()) && (bird.getX()-obstacle.getX()<BIRD_WIDTH) ){
+            if( ( !obstacle.isPassed() ) && (Math.abs(bird.getX()-obstacle.getX())<BIRD_WIDTH/4) ){
                 obstacle.setPassed(true);
                 increaseScore();
             }
