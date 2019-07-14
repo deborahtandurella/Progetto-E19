@@ -1,5 +1,5 @@
 package network;
 
 public interface ConnectionListener {
-    void connectionWorking(boolean connected);
+    void connectionStatus(boolean connected);
 }

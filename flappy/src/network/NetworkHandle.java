@@ -14,17 +14,17 @@ import java.net.Socket;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class NetworkHandle implements CommandHandler {
-    private String othersName;
-    // Sockets
-    private Socket clientSocket;
-
+    private Socket socket;
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
+
+    private CopyOnWriteArrayList<ConnectionListener> connectionListeners;
+    private boolean connected = false;
+
     private RemoteGame remoteGame;
     private OnlineLocalGame localGame;
-    private CopyOnWriteArrayList<ConnectionListener> connectionListeners;
+    private String othersName;
 
-    private boolean connected = false;
     public NetworkHandle(){
         connectionListeners=new CopyOnWriteArrayList<>();
     }
@@ -33,28 +33,28 @@ public class NetworkHandle implements CommandHandler {
 
         try {
             ServerSocket serverSocket = new ServerSocket(port);
-            System.out.println("NetworkHandle connected on port " + port);
-            clientSocket = serverSocket.accept();
+            System.out.println("Connection opened on port " + port);
+            socket = serverSocket.accept();
             serverSocket.close();
-            inputStream = new ObjectInputStream(clientSocket.getInputStream());
-            outputStream = new ObjectOutputStream(clientSocket.getOutputStream());
+            inputStream = new ObjectInputStream(socket.getInputStream());
+            outputStream = new ObjectOutputStream(socket.getOutputStream());
             outputStream.writeObject(name);
             othersName=(String)inputStream.readObject();
             setConnected(true);
             System.out.println("Successfully connected");
-        } catch (IOException ex) {
-            System.err.println("ERROR: connection error");
-            System.exit(0);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (IOException | ClassNotFoundException ex) {
+            setConnected(false);
         }
     }
     public void setConnection(String ip, int port, String name) {
         try {
-            clientSocket = new Socket(ip, port);
-            outputStream = new ObjectOutputStream(clientSocket.getOutputStream());
-            inputStream = new ObjectInputStream(clientSocket.getInputStream());
+            socket = new Socket(ip, port);
+            outputStream = new ObjectOutputStream(socket.getOutputStream());
+            inputStream = new ObjectInputStream(socket.getInputStream());
             outputStream.writeObject(name);
+            othersName=(String) inputStream.readObject();
+            setConnected(true);
+            System.out.println("Successfully connected to " + ip + ":" + port);
             /*DatagramSocket udpSocket = new DatagramSocket(port);
             Command comando= new JumpCommand(0.4, 0.2);
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -62,13 +62,10 @@ public class NetworkHandle implements CommandHandler {
             oos.writeObject(comando);
             oos.flush();
             byte[] sndData= bos.toByteArray();
-            DatagramPacket packet = new DatagramPacket(sndData, sndData.length, clientSocket.getInetAddress(), port );
+            DatagramPacket packet = new DatagramPacket(sndData, sndData.length, socket.getInetAddress(), port );
             udpSocket.send(packet); */
-            othersName=(String) inputStream.readObject();
-            setConnected(true);
-            System.out.println("Successfully connected to " + ip + ":" + port);
+
         } catch (IOException | ClassNotFoundException ex) {
-            System.err.println("ERROR: connection error");
             setConnected(false);
         }
     }
@@ -107,7 +104,7 @@ public class NetworkHandle implements CommandHandler {
         try {
             outputStream.close();
             inputStream.close();
-            clientSocket.close();
+            socket.close();
         } catch (IOException ex) {
             System.err.println("ERROR: error closing connection");
         }
@@ -115,15 +112,15 @@ public class NetworkHandle implements CommandHandler {
     public void addConnectionListener(ConnectionListener listener){
         connectionListeners.add(listener);
     }
-    protected void notifyListeners(boolean connected){
+    private void notifyListeners(boolean connected){
         for(ConnectionListener listener: connectionListeners){
-            listener.connectionWorking(connected);
+            listener.connectionStatus(connected);
         }
     }
     public void removeListener(ConnectionListener listener){
         connectionListeners.remove(listener);
     }
-    public void setConnected(boolean connected) {
+    private void setConnected(boolean connected) {
         this.connected = connected;
         notifyListeners(connected);
     }
