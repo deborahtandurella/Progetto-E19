@@ -29,7 +29,6 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
     private String name;
     private UnicodeFont uniFontMessage;
     private Image pergamena;
-    private Image background;
     private Image buttonBg;
     private int buttonHeight;
     private int buttonWidth;

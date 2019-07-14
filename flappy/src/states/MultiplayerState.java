@@ -14,9 +14,6 @@ import network.test.CommandHandler;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-import org.newdawn.slick.state.transition.FadeInTransition;
-import org.newdawn.slick.state.transition.FadeOutTransition;
-import states.MultiplayerReplayMenu;
 
 
 public class MultiplayerState extends BasicGameState implements ConnectionListener {
@@ -99,7 +96,7 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
         if (key== Input.KEY_M){
             gameFinished=true;
             commandHandler.closeConnection();
-            ((MultiplayerReplayMenu)stateBasedGame.getState(GiocoAStati.MULTI_REPLAY_MENU))
+            ((MultiplayerEndMenu)stateBasedGame.getState(GiocoAStati.MULTI_REPLAY_MENU))
                     .setResults(new Result(leftGame.getPlayer()), new Result(rightGame.getPlayer()));
             stateBasedGame.enterState(GiocoAStati.MULTI_REPLAY_MENU);
         }

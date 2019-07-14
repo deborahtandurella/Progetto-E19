@@ -1,10 +1,9 @@
 package states;
 
 import Main.GiocoAStati;
-import graphics.GUI.MultiplayerReplayMenuGUI;
+import graphics.GUI.MultiplayerEndMenuGUI;
 import graphics.Screen;
 import logic.SinglePlayer.Result;
-import logic.player.Player;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -13,13 +12,13 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
-public class MultiplayerReplayMenu extends AbstractMenuState {
+public class MultiplayerEndMenu extends AbstractMenuState {
     private GameContainer container;
     private StateBasedGame stateBasedGame;
     private Result localPlayerResult;
     private Result remotePlayerResult;
 
-    public MultiplayerReplayMenu(){
+    public MultiplayerEndMenu(){
     }
 
     @Override
@@ -32,7 +31,7 @@ public class MultiplayerReplayMenu extends AbstractMenuState {
         this.container = gameContainer;
         this.stateBasedGame = stateBasedGame;
         Screen screen = new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
-        setGui(new MultiplayerReplayMenuGUI(gameContainer, screen, this));
+        setGui(new MultiplayerEndMenuGUI(gameContainer, screen, this));
         container.getGraphics().clearWorldClip();
     }
 

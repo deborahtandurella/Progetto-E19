@@ -8,12 +8,12 @@ import org.newdawn.slick.gui.MouseOverArea;
 import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
-import states.MultiplayerReplayMenu;
+import states.MultiplayerEndMenu;
 
-public class MultiplayerReplayMenuGUI extends AbstractMenuGUI {
+public class MultiplayerEndMenuGUI extends AbstractMenuGUI {
 
     private MouseOverArea backButton;
-    private MultiplayerReplayMenu state;
+    private MultiplayerEndMenu state;
     private String winString = "Sei grande, hai vinto!";
     private String loseString = "Peccato, hai perso!";
     private String pareggioString = "La partita è finita in pareggio";
@@ -23,7 +23,7 @@ public class MultiplayerReplayMenuGUI extends AbstractMenuGUI {
     private String localPlayerScore;
     private String remotePlayerScore;
 
-    public MultiplayerReplayMenuGUI(GameContainer container, Screen screen, MultiplayerReplayMenu state) throws SlickException {
+    public MultiplayerEndMenuGUI(GameContainer container, Screen screen, MultiplayerEndMenu state) throws SlickException {
         super(container, screen);
         this.state = state;
         setBackground();
@@ -40,7 +40,6 @@ public class MultiplayerReplayMenuGUI extends AbstractMenuGUI {
         unicodeMessage.loadGlyphs();
         Image backImage = new Image(PathHandler.getInstance().getPath(ResourcePack.BUTTON, Resource.BACKTOMENUBUTTON)).getScaledCopy(buttonWidth, buttonHeight);
         backButton = new MouseOverArea(container, backImage, (container.getWidth() - buttonWidth) / 2, container.getHeight()-2*buttonHeight, buttonWidth, buttonHeight, this);
-        //singleButton = new MouseOverArea(container, single, 25 * container.getWidth() / 100, 50 * container.getHeight() / 100 , this);
 
         addButton(backButton);
     }
