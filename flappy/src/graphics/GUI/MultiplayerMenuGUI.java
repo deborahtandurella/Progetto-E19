@@ -24,10 +24,10 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
     private TextGUI ipField;
     private TextGUI clientPortField;
     private TextGUI hostPortField;
-    private String ipString = "IP Address";
-    private String portString = "Port";
-    private String clientErrorMessage = "Insert Ip address and Port first";
-    private String hostErrorMessage = "Insert Port first";
+    private static final String ipString = "IP Address";
+    private static final String portString = "Port";
+    private static final String clientErrorMessage = "Insert valid Ip address and Port first";
+    private static final String hostErrorMessage = "Insert valid Port first";
     private boolean hostError = false;
     private boolean clientError = false;
 
@@ -108,7 +108,7 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
     @Override
     public void componentActivated(AbstractComponent source) {
         if(source == hostButton) {
-            if (hostPortField.getString().equals("")) {
+            if (hostPortField.getString().replaceAll("[\\D]", "").equals("")) {
                 hostError = true;
                 clientError=false;
             }  else {
@@ -119,7 +119,7 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
         }
 
         if(source == joinButton) {
-            if (ipField.getString().equals("") || clientPortField.getString().equals("")) {
+            if (ipField.getString().equals("") || clientPortField.getString().replaceAll("[\\D]", "").equals("")) {
                 clientError = true;
                 hostError= false;
             }
