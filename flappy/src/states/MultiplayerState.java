@@ -65,9 +65,10 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
         PlayerInfo myPlayer= ((GiocoAStati) game).getPlayerInfo();
         leftGame= new OnlineLocalGame(gameCanvas, settings, commandHandler, new MultiModePlayer(myPlayer));
         leftGame.addListener(soundPlayer);
+        leftGame.addListener(this);
+        rightGame.addListener(this);
         rightGame= new RemoteGame(gameCanvas, settings, new MultiModePlayer(commandHandler.getOthersInfo()));
         commandHandler.startListening(rightGame, leftGame);
-        rightGame.addListener(soundPlayer);
     }
 
     @Override
