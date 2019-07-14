@@ -13,11 +13,10 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class Server implements CommandHandler {
+public class NetworkHandle implements CommandHandler {
     private String othersName;
     // Sockets
     private Socket clientSocket;
-    private ServerSocket serverSocket;
 
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
@@ -26,15 +25,15 @@ public class Server implements CommandHandler {
     private CopyOnWriteArrayList<ConnectionListener> connectionListeners;
 
     private boolean connected = false;
-    public Server(){
+    public NetworkHandle(){
         connectionListeners=new CopyOnWriteArrayList<>();
     }
 
     public void setConnection(int port, String name) {
 
         try {
-            serverSocket = new ServerSocket(port);
-            System.out.println("Server connected on port " + port);
+            ServerSocket serverSocket = new ServerSocket(port);
+            System.out.println("NetworkHandle connected on port " + port);
             clientSocket = serverSocket.accept();
             serverSocket.close();
             inputStream = new ObjectInputStream(clientSocket.getInputStream());
@@ -48,6 +47,29 @@ public class Server implements CommandHandler {
             System.exit(0);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        }
+    }
+    public void setConnection(String ip, int port, String name) {
+        try {
+            clientSocket = new Socket(ip, port);
+            outputStream = new ObjectOutputStream(clientSocket.getOutputStream());
+            inputStream = new ObjectInputStream(clientSocket.getInputStream());
+            outputStream.writeObject(name);
+            /*DatagramSocket udpSocket = new DatagramSocket(port);
+            Command comando= new JumpCommand(0.4, 0.2);
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(bos);
+            oos.writeObject(comando);
+            oos.flush();
+            byte[] sndData= bos.toByteArray();
+            DatagramPacket packet = new DatagramPacket(sndData, sndData.length, clientSocket.getInetAddress(), port );
+            udpSocket.send(packet); */
+            othersName=(String) inputStream.readObject();
+            setConnected(true);
+            System.out.println("Successfully connected to " + ip + ":" + port);
+        } catch (IOException | ClassNotFoundException ex) {
+            System.err.println("ERROR: connection error");
+            setConnected(false);
         }
     }
 

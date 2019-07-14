@@ -1,17 +1,16 @@
 package states;
 
+import Main.GiocoAStati;
 import graphics.GUI.MultiplayerLoadingGUI;
 import graphics.Screen;
-import network.Client;
 import network.ConnectionListener;
-import network.Server;
+import network.NetworkHandle;
 import network.test.CommandHandler;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
-import Main.GiocoAStati;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -57,7 +56,7 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
     }
 
     public void join(String ip, int port){
-        Client client = new Client();
+        NetworkHandle client = new NetworkHandle();
         client.addConnectionListener(this);
         setCommandHandler(client);
         Thread connectionThread = new Thread(() -> client.setConnection(ip,port, giocoAStati.getPlayerInfo().getName()));
@@ -65,7 +64,7 @@ public class MultiplayerLoading extends AbstractMenuState implements ConnectionL
     }
 
     public void host(int port){
-        Server server = new Server();
+        NetworkHandle server = new NetworkHandle();
         server.addConnectionListener(this);
         setCommandHandler(server);
         Thread connectionThread = new Thread(() -> server.setConnection(port, giocoAStati.getPlayerInfo().getName()));
