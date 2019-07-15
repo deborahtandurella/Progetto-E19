@@ -1,4 +1,4 @@
-package states.deprecati.gameElements;
+package states.gameElements;
 
 import java.util.Random;
 
