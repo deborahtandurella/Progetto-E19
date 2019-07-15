@@ -6,6 +6,9 @@ import graphics.Canvas;
 
 import java.util.Random;
 
+/**
+ *  Genera solo pipe periodicamente
+ */
 public class EasyObstacleGenerator extends ObstacleGenerator{
 
     EasyObstacleGenerator(Canvas canvas) {

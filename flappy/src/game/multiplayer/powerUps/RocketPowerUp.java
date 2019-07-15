@@ -4,6 +4,9 @@ import flappyEntities.EntityFactory;
 import game.multiplayer.OnlineLocalGame;
 import game.multiplayer.OnlineRemoteGame;
 
+/**
+ * RocketPowerUp genera per il nemico un Rocket in corrispondenza dell'altezza del giocatore che ha attivato il PowerUp
+ */
 public class RocketPowerUp implements PowerUp{
     static final long serialVersionUID = -539210512251000001L;
 

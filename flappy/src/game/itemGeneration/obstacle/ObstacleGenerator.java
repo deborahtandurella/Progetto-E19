@@ -18,15 +18,28 @@ public abstract class ObstacleGenerator  {
         this.canvas=canvas;
         listeners = new ArrayList<>();
     }
-
+    /**
+     * Aggiunge un listener
+     * @param listener
+     */
     public void addListener(ObstacleListener listener){
         listeners.add(listener);
     }
+
+    /**
+     * Notifica la creazione di un ostacolo ai listener
+     * @param obstacle l'ostacolo generato
+     */
     protected void notifyListeners(Entity obstacle){
         for(ObstacleListener listener: listeners){
             listener.onObstacleGenerated(obstacle);
         }
     }
+
+    /**
+     * Periodicamente genera un ostacolo periodico
+     * @param delta
+     */
     public void update(double delta){
         time+=delta;
         if (time > PIPE_PERIOD) {
@@ -35,6 +48,9 @@ public abstract class ObstacleGenerator  {
         }
     }
 
+    /**
+     *  Genera un ostacolo di tipo periodico
+     */
     protected abstract void generatePeriodicObstacle();
 
     public Canvas getCanvas() {

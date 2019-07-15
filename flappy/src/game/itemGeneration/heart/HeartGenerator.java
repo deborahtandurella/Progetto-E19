@@ -16,14 +16,19 @@ public class HeartGenerator implements ObstacleListener {
     private ArrayList<HeartListener> listeners;
     private Canvas canvas;
 
+
     public HeartGenerator(Canvas canvas) {
         this.canvas = canvas;
         listeners= new ArrayList<>();
     }
-
+    /**
+     * Aggiunge un listener
+     * @param listener
+     */
     public void addListener(HeartListener listener){
         listeners.add(listener);
     }
+
     private void notifyListeners(Entity heart){
         for(HeartListener listener: listeners){
             listener.onHeartGenerated(heart);

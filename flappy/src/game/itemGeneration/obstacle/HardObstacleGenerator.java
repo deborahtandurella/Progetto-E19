@@ -6,6 +6,9 @@ import graphics.Canvas;
 
 import java.util.Random;
 
+/**
+ *  Genera periodicamente  Pipe e MovingPipe, inoltre genera in modo indipendente anche Rocket
+ */
 public class HardObstacleGenerator extends NormalObstacleGenerator {
     private int rocketTime=0;
     private static final int ROCKET_PERIOD = (int) PIPE_PERIOD/2;

@@ -12,10 +12,18 @@ import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ *  PowerUp che inverte la gravità del giocatore avversario per un certo intervallo di tempo
+ */
 public class GravityPowerUp implements PowerUp{
     static final long serialVersionUID = -539210512251000002L;
-    private long duration = 10000; // millisecondi
+    /**
+     *  Il tempo in millisecondi per il quale la gravità rimane invertita
+     */
+    private long duration = 10000;
     private int affectedGame;
+
+
     public GravityPowerUp() {
         affectedGame=PowerUp.LOCAL_GAME;
     }
@@ -35,6 +43,11 @@ public class GravityPowerUp implements PowerUp{
             changeGravity(remoteGame);
         }
     }
+
+    /**
+     * Inverte la gravità della partita
+     * @param game la partita per la quale invertire la gravità
+     */
     private void changeGravity(OnlineGame game){
         BirdLogicComponent newBird=new ReversedBirdLogicComponent(game.getBird());
         Entity birdEntity= Objects.requireNonNull(game.getEntity(game.getBird()));
@@ -51,6 +64,11 @@ public class GravityPowerUp implements PowerUp{
                 }
             }, duration);
     }
+
+    /**
+     * Raddrizza la gravità della partita
+     * @param game la partita per la quale raddrizzare la gravità
+     */
     private void restoreGravity(OnlineGame game){
         BirdLogicComponent newBird=new BirdLogicComponent(game.getBird());
         Entity birdEntity= Objects.requireNonNull(game.getEntity(game.getBird()));

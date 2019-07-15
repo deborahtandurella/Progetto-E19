@@ -16,7 +16,7 @@ public abstract class Entity {
     }
 
     /**
-     * @return
+     * @return la componente grafica dell'Entity
      */
     public GraphicComponent getGraphicComponent() {
         return graphicComponent;
@@ -26,6 +26,9 @@ public abstract class Entity {
         this.graphicComponent = graphicComponent;
     }
 
+    /**
+     * @return la componente logica dell'Entity
+     */
     public LogicComponent getLogicComponent() {
         return logicComponent;
     }
@@ -53,6 +56,9 @@ public abstract class Entity {
         }
     }
 
+    /**
+     * @return l'ID univoco dell'Entity
+     */
     public int getID() {
         return ID;
     }

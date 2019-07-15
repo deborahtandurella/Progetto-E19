@@ -7,6 +7,9 @@ import graphics.Canvas;
 
 import java.util.Random;
 
+/**
+ *  Genera Pipe e MovingPipe periodicamente
+ */
 public class NormalObstacleGenerator extends ObstacleGenerator {
 
 

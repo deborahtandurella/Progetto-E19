@@ -6,10 +6,16 @@ import game.multiplayer.OnlineRemoteGame;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ *  SpeedPowerUp agisce sulla partità dell'avversario aumentando velocità e limiti di velocità per una certa durata di tempo
+ */
 public class SpeedPowerUP implements PowerUp{
     static final long serialVersionUID = -539210512251000003L;
 
-    private long duration = 20000; //durata del powerup in millisecondi
+    /**
+     * durata del powerup in millisecondi
+     */
+    private long duration = 20000;
     @Override
     public int getPrice() {
         return 4;

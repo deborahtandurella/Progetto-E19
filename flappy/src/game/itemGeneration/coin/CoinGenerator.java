@@ -21,14 +21,25 @@ public class CoinGenerator implements ObstacleListener {
         listeners= new ArrayList<>();
     }
 
+    /**
+     * Aggiunge un listener
+     * @param listener
+     */
     public void addListener(CoinListener listener){
         listeners.add(listener);
     }
+
+    /**
+     * La moneta generata viene inviata ai listeners
+     * @param coin la moneta generata
+     */
     private void notifyListeners(Entity coin){
         for(CoinListener listener: listeners){
             listener.onCoinGenerated(coin);
         }
     }
+
+
     @Override
     public void onObstacleGenerated(Entity obstacle) {
         if ( ((ObstacleLogicComponent) obstacle.getLogicComponent()).isPeriodic()) {

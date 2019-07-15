@@ -1,5 +1,8 @@
 package game.multiplayer.powerUps;
 
+/**
+ * Tipologie di PowerUp, classe utilizzata anche come Factory per generare i PowerUp
+ */
 public enum PowerUpType {
     ROCKET {
         public PowerUp create() {
@@ -16,6 +19,11 @@ public enum PowerUpType {
             return new GravityPowerUp();
         }
     };
+
+    /**
+     * Crea un PowerUp del tipo scelto
+     * @return
+     */
     public abstract PowerUp create();
 }
 

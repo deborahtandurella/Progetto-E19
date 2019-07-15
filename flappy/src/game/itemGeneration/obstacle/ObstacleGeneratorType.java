@@ -2,6 +2,9 @@ package game.itemGeneration.obstacle;
 
 import graphics.Canvas;
 
+/**
+ *  Tipi di ObstacleGenerator disponibili, utilizzata anche come Factory per generarli
+ */
 public enum ObstacleGeneratorType {
     EASY {
         public ObstacleGenerator create(Canvas canvas){
@@ -19,5 +22,10 @@ public enum ObstacleGeneratorType {
         }
     };
 
+    /**
+     * Crea un ObstacleGenerator
+     * @param canvas il contesto grafico che l'OstacleGenerator utilizzerà per genearre gli ostacoli
+     * @return il generatore di ostacoli
+     */
     public abstract ObstacleGenerator create(Canvas canvas);
 }
