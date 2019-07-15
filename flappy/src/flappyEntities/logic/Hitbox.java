@@ -1,4 +1,4 @@
-package states.gameElements;
+package flappyEntities.logic;
 
 import org.newdawn.slick.geom.Shape;
 
