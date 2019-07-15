@@ -1,10 +1,18 @@
 package game.player;
 
 public class MultiModePlayer implements  Player{
-    private int score;
+    /**
+     * Le monete del giocatore
+     */
     private int coins;
+    /**
+     * Il punteggio del giocatore
+     */
+    private int score;
+    /**
+     * Le informazioni non mutevoli sul giocatore
+     */
     private PlayerInfo playerInfo;
-
     public MultiModePlayer(PlayerInfo playerInfo) {
         this.playerInfo = playerInfo;
         score= 0;

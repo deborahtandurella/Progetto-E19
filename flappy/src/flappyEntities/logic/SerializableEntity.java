@@ -11,5 +11,10 @@ import java.io.Serializable;
 public interface SerializableEntity extends Serializable {
     long serialVersionUID = -539210512250000000L;
 
+    /**
+     * Genera l'entità corrispondente
+     * @param canvas il Canvas da utilizzare per la parte grafica dell'entità
+     * @return
+     */
     Entity instantiate(Canvas canvas);
 }

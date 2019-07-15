@@ -1,5 +1,8 @@
 package game.player;
 
+/**
+ *  Informazioni non mutevoli sul giocatore
+ */
 public class PlayerInfo {
     private String name;
 

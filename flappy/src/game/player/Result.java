@@ -1,8 +1,17 @@
 package game.player;
 
+/**
+ *  Risultato di una partita
+ */
 public class Result implements Comparable{
 
+    /**
+     * Nome del giocatore
+     */
     private String playerName;
+    /**
+     * Risultato
+     */
     private int score;
 
     public Result(String playerName, int score) {

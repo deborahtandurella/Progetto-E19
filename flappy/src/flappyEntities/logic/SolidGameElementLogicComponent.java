@@ -29,13 +29,19 @@ public abstract class SolidGameElementLogicComponent extends GameElementLogicCom
         hitbox.shift(getSpeedX()*i, getSpeedY()*i);
     }
 
-    public void addHitboxShape(Shape shape){
+    protected void addHitboxShape(Shape shape){
         hitbox.addShape(shape);
     }
 
     public Hitbox getHitbox() {
         return hitbox;
     }
+
+    /**
+     *
+     * @param other l'oggetto con il quale verificare la collisione
+     * @return se la collisione fra i due oggetti si è verificata
+     */
     public boolean collide(SolidGameElementLogicComponent other) {
         return hitbox.collides(other.getHitbox());
     }
