@@ -5,5 +5,3 @@ public enum GameEventType {
     JUMP,
     GAMEOVER
 }
-
-/*TODO altri eventi di gioco*/

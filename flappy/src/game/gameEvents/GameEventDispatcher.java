@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 public class GameEventDispatcher {
     private ArrayList<GameEventListener> listeners;
-    public GameEventDispatcher(){
-        listeners= new ArrayList<GameEventListener>();
+    protected GameEventDispatcher(){
+        listeners= new ArrayList<>();
     }
-    public void notifyEvent(GameEventType event){
+    protected void notifyEvent(GameEventType event){
         for(GameEventListener listener: listeners){
             listener.gameEvent(event);
         }

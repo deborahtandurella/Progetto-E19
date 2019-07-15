@@ -34,7 +34,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import static game.GameConstants.BIRD_WIDTH;
 
 public class OnlineLocalGame extends GameEventDispatcher implements CoinListener, ObstacleListener, OnlineGame {
-    private static final long GAME_DURATION = 60000;
     private CopyOnWriteArrayList<Entity> entities;
     private CopyOnWriteArrayList<ObstacleLogicComponent> obstacles;
     private CopyOnWriteArrayList<CoinLogicComponent> coins;
@@ -80,7 +79,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     }
     @Override
     public long getTimeLeft(){
-        return GAME_DURATION - (System.currentTimeMillis()-startTime);
+        return ONLINE_GAME_DURATION - (System.currentTimeMillis()-startTime);
     }
     public void update(int i){
         if(!gameOver) {
