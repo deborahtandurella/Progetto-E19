@@ -8,6 +8,9 @@ import resources.ResourcePack;
 
 import static game.GameConstants.*;
 
+/**
+ *  Componente grafica dei tubi
+ */
 public class PipeGraphicComponent extends GameElementGraphicComponent {
     private Image upperPipeImage;
     private Image lowerPipeImage;

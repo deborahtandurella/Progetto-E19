@@ -5,6 +5,9 @@ import flappyEntities.EntityFactory;
 import flappyEntities.logic.SerializableEntity;
 import graphics.Canvas;
 
+/**
+ *  Versione serializzabile del tubo mobile
+ */
 public class SerializableMovingPipe implements SerializableEntity {
     private static final long serialVersionUID = -539210512250000003L;
 

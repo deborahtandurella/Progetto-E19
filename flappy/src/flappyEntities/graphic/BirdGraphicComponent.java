@@ -10,6 +10,9 @@ import resources.ResourcePack;
 
 import static game.GameConstants.*;
 
+/**
+ *  Componente grafica del Bird
+ */
 public class BirdGraphicComponent extends GameElementGraphicComponent
 {
     private Image birdImage;
@@ -31,7 +34,6 @@ public class BirdGraphicComponent extends GameElementGraphicComponent
             birdImage.setImageColor(1f, 0.f , 0.2f);
         else
             birdImage.setImageColor(255, 255, 255);
-
         getCanvas().drawRotatedImage(birdImage,
                 (float) getLogicComponent().getX(),
                 (float) getLogicComponent().getY(),
@@ -39,9 +41,17 @@ public class BirdGraphicComponent extends GameElementGraphicComponent
                 (float) BIRD_HEIGHT,
                 angle);
     }
+
+    /**
+     * @return true se l'immagine è invertita verticalmente
+     */
     public boolean isFlipped(){
         return flipped;
     }
+
+    /**
+     *  Inverte verticalmente l'imamgine
+     */
     public void flip(){
         flipped=!flipped;
         birdImage=birdImage.getFlippedCopy(false, true);

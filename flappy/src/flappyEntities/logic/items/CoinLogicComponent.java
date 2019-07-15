@@ -7,6 +7,9 @@ import org.newdawn.slick.geom.Ellipse;
 import static game.GameConstants.COIN_SIZE;
 import static game.GameConstants.PIPE_SPEED;
 
+/**
+ *  Componente logica della moneta
+ */
 public class CoinLogicComponent extends SolidGameElementLogicComponent implements ScrollingElement {
     private double size= COIN_SIZE;
     public CoinLogicComponent(double x, double y) {

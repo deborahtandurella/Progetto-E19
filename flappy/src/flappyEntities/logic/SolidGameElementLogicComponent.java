@@ -3,6 +3,9 @@ package flappyEntities.logic;
 import org.newdawn.slick.geom.Shape;
 import states.deprecati.gameElements.Hitbox;
 
+/**
+ *  Componente logica dotata di hitbox e meccanismo di collisione
+ */
 public abstract class SolidGameElementLogicComponent extends GameElementLogicComponent {
     private Hitbox hitbox;
 

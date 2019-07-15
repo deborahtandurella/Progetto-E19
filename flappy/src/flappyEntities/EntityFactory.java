@@ -9,6 +9,9 @@ import flappyEntities.logic.obstacles.pipes.PipeLogicComponent;
 import flappyEntities.logic.obstacles.rocket.RocketLogicComponent;
 import graphics.Canvas;
 
+/**
+ *  Factory per creare tutte le entity
+ */
 public class EntityFactory {
     public static Entity makeBird(double x, double y, Canvas canvas){
         return new GameElementEntity(new BirdLogicComponent(x,y), new BirdGraphicComponent(canvas));
