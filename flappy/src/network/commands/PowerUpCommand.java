@@ -1,7 +1,7 @@
 package network.commands;
 
 import game.multiplayer.OnlineLocalGame;
-import game.multiplayer.RemoteGame;
+import game.multiplayer.OnlineRemoteGame;
 import game.multiplayer.powerUps.PowerUp;
 import game.player.MultiModePlayer;
 import network.Command;
@@ -16,7 +16,7 @@ public class PowerUpCommand extends Command {
     }
 
     @Override
-    public void execute(RemoteGame remoteGame, OnlineLocalGame localGame) {
+    public void execute(OnlineRemoteGame remoteGame, OnlineLocalGame localGame) {
         if(powerUp.getAffectedGame()==PowerUp.LOCAL_GAME) {
             MultiModePlayer enemy = remoteGame.getPlayer();
             enemy.setCoins(enemy.getCoins() - powerUp.getPrice());

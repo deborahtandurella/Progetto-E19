@@ -1,7 +1,7 @@
 package network.commands;
 
 import game.multiplayer.OnlineLocalGame;
-import game.multiplayer.RemoteGame;
+import game.multiplayer.OnlineRemoteGame;
 import network.Command;
 
 public class SpeedChangedCommand extends Command {
@@ -13,7 +13,7 @@ public class SpeedChangedCommand extends Command {
     }
 
     @Override
-    public void execute(RemoteGame remoteGame, OnlineLocalGame localGame) {
+    public void execute(OnlineRemoteGame remoteGame, OnlineLocalGame localGame) {
         remoteGame.setSpeed(newSpeed);
     }
 }

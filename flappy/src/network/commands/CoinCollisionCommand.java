@@ -3,7 +3,7 @@ package network.commands;
 import flappyEntities.Entity;
 import flappyEntities.logic.ScrollingElement;
 import game.multiplayer.OnlineLocalGame;
-import game.multiplayer.RemoteGame;
+import game.multiplayer.OnlineRemoteGame;
 import network.Command;
 
 public class CoinCollisionCommand extends Command {
@@ -14,7 +14,7 @@ public class CoinCollisionCommand extends Command {
         ID= coin.getID();
     }
     @Override
-    public void execute(RemoteGame remoteGame, OnlineLocalGame localGame) {
+    public void execute(OnlineRemoteGame remoteGame, OnlineLocalGame localGame) {
         remoteGame.increaseCoins();
         Entity coin = remoteGame.getEntityByID(ID);
         if (coin!=null)

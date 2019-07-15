@@ -1,7 +1,7 @@
 package network;
 
 import game.multiplayer.OnlineLocalGame;
-import game.multiplayer.RemoteGame;
+import game.multiplayer.OnlineRemoteGame;
 import game.player.PlayerInfo;
 
 import java.io.IOException;
@@ -21,7 +21,7 @@ public class NetworkHandle implements CommandHandler {
     private boolean connected = false;
     private boolean closingRequested = false;
 
-    private RemoteGame remoteGame;
+    private OnlineRemoteGame remoteGame;
     private OnlineLocalGame localGame;
     private String othersName;
 
@@ -87,7 +87,7 @@ public class NetworkHandle implements CommandHandler {
             e.printStackTrace();
         }
     }
-    public void startListening(RemoteGame remoteGame, OnlineLocalGame localGame){
+    public void startListening(OnlineRemoteGame remoteGame, OnlineLocalGame localGame){
         if (connected){
             this.localGame= localGame;
             this.remoteGame = remoteGame;

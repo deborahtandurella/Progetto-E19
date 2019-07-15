@@ -2,7 +2,7 @@ package game.multiplayer.powerUps;
 
 import flappyEntities.EntityFactory;
 import game.multiplayer.OnlineLocalGame;
-import game.multiplayer.RemoteGame;
+import game.multiplayer.OnlineRemoteGame;
 
 public class RocketPowerUp implements PowerUp{
     static final long serialVersionUID = -539210512251000001L;
@@ -13,7 +13,7 @@ public class RocketPowerUp implements PowerUp{
     }
 
     @Override
-    public void execute(OnlineLocalGame localGame, RemoteGame remoteGame) {
+    public void execute(OnlineLocalGame localGame, OnlineRemoteGame remoteGame) {
         localGame.onObstacleGenerated(EntityFactory.makeRocket(1, remoteGame.getBird().getY(), localGame.getCanvas()));
     }
 

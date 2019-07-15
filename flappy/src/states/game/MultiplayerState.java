@@ -6,7 +6,7 @@ import game.gameEvents.GameEventListener;
 import game.gameEvents.GameEventType;
 import game.itemGeneration.obstacle.ObstacleGeneratorType;
 import game.multiplayer.OnlineLocalGame;
-import game.multiplayer.RemoteGame;
+import game.multiplayer.OnlineRemoteGame;
 import game.multiplayer.powerUps.PowerUpType;
 import game.player.MultiModePlayer;
 import game.player.PlayerInfo;
@@ -25,7 +25,7 @@ import states.menu.MultiplayerEndMenu;
 
 public class MultiplayerState extends BasicGameState implements ConnectionListener, GameEventListener {
     private OnlineLocalGame leftGame;
-    private RemoteGame rightGame;
+    private OnlineRemoteGame rightGame;
     private Canvas gameCanvas;
     private DifficultySettings settings = new DifficultySettings(1, ObstacleGeneratorType.MEDIUM);
     private SoundPlayer soundPlayer;
@@ -67,7 +67,7 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
         leftGame= new OnlineLocalGame(gameCanvas, settings, commandHandler, new MultiModePlayer(myPlayer));
         leftGame.addListener(soundPlayer);
         leftGame.addListener(this);
-        rightGame= new RemoteGame(gameCanvas, settings, new MultiModePlayer(commandHandler.getOthersInfo()));
+        rightGame= new OnlineRemoteGame(gameCanvas, settings, new MultiModePlayer(commandHandler.getOthersInfo()));
         rightGame.addListener(this);
         commandHandler.startListening(rightGame, leftGame);
     }

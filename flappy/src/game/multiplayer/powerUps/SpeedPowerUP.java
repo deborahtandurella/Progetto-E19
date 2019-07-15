@@ -1,7 +1,7 @@
 package game.multiplayer.powerUps;
 
 import game.multiplayer.OnlineLocalGame;
-import game.multiplayer.RemoteGame;
+import game.multiplayer.OnlineRemoteGame;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -16,7 +16,7 @@ public class SpeedPowerUP implements PowerUp{
     }
 
     @Override
-    public void execute(OnlineLocalGame localGame, RemoteGame remoteGame) {
+    public void execute(OnlineLocalGame localGame, OnlineRemoteGame remoteGame) {
         localGame.changeSpeedLimits(+0.4);
         localGame.changeSpeed(+0.4);
         if(localGame.getTimeLeft()-duration>0)

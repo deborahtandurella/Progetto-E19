@@ -6,7 +6,7 @@ import flappyEntities.logic.bird.BirdLogicComponent;
 import flappyEntities.logic.bird.ReversedBirdLogicComponent;
 import game.multiplayer.OnlineGame;
 import game.multiplayer.OnlineLocalGame;
-import game.multiplayer.RemoteGame;
+import game.multiplayer.OnlineRemoteGame;
 
 import java.util.Objects;
 import java.util.Timer;
@@ -26,7 +26,7 @@ public class GravityPowerUp implements PowerUp{
     }
 
     @Override
-    public void execute(OnlineLocalGame localGame, RemoteGame remoteGame) {
+    public void execute(OnlineLocalGame localGame, OnlineRemoteGame remoteGame) {
         if (affectedGame ==PowerUp.LOCAL_GAME){
             changeGravity(localGame);
             affectedGame=REMOTE_GAME;

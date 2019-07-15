@@ -20,7 +20,7 @@ import resources.ResourcePack;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class RemoteGame extends GameEventDispatcher implements OnlineGame{
+public class OnlineRemoteGame extends GameEventDispatcher implements OnlineGame{
     private CopyOnWriteArrayList<Entity> entities;
     private CopyOnWriteArrayList<ScrollingElement> scrollingElements;
     private BirdLogicComponent bird;
@@ -32,7 +32,7 @@ public class RemoteGame extends GameEventDispatcher implements OnlineGame{
     private long startTime;
     private boolean gameOver;
 
-    public RemoteGame(Canvas canvas, DifficultySettings settings, MultiModePlayer player) {
+    public OnlineRemoteGame(Canvas canvas, DifficultySettings settings, MultiModePlayer player) {
         this.canvas = canvas;
         this.gameSpeed = settings.getSpeed();
         entities = new CopyOnWriteArrayList<>();
