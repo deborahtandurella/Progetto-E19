@@ -107,9 +107,11 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         entities.add(entity);
     }
     public void playerJump(){
-        bird.jump();
-        notifyEvent(GameEventType.JUMP);
-        commandHandler.sendCommand(new JumpCommand(bird.getX(), bird.getY()));
+        if (!bird.outOfBounds()){
+            bird.jump();
+            notifyEvent(GameEventType.JUMP);
+            commandHandler.sendCommand(new JumpCommand(bird.getX(), bird.getY()));
+        }
     }
     private void checkOutOfBounds(){
         for( ObstacleLogicComponent obstacle : obstacles)

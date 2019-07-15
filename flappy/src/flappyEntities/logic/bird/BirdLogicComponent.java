@@ -62,7 +62,7 @@ public class BirdLogicComponent extends SolidGameElementLogicComponent {
     }
 
     /**
-     * @return true se il bird è uscito dallo schermo (ha saltato troppo in alto
+     * @return true se il bird è uscito dallo schermo (ha saltato troppo in alto)
      */
     public boolean outOfBounds(){
         return getY() + BIRD_HEIGHT < 0;

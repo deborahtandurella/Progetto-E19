@@ -83,8 +83,10 @@ public class LocalGame extends GameEventDispatcher implements HeartListener, Obs
         hud.render();
     }
     public void playerJump(){
-        bird.jump();
-        notifyEvent(GameEventType.JUMP);
+        if (!bird.outOfBounds()){
+            bird.jump();
+            notifyEvent(GameEventType.JUMP);
+        }
     }
     private void checkOutOfBounds(){
         for( ObstacleLogicComponent obstacle : obstacles)

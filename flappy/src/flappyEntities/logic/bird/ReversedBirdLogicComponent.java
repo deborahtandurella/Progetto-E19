@@ -29,7 +29,7 @@ public class ReversedBirdLogicComponent extends BirdLogicComponent {
 
     @Override
     public boolean outOfBounds(){
-        return getY() + BIRD_HEIGHT > 1;
+        return getY()  > 1;
     }
     @Override
     public void jump(){
