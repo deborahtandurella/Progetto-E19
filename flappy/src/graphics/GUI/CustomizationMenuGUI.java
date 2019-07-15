@@ -48,7 +48,7 @@ public class CustomizationMenuGUI extends AbstractMenuGUI {
         uniFontMessage.addAsciiGlyphs();
         uniFontMessage.loadGlyphs();
         versionFont.addAsciiGlyphs();
-        versionFont.getEffects().add(new ColorEffect(java.awt.Color.BLACK));
+        versionFont.getEffects().add(new ColorEffect(java.awt.Color.WHITE));
         versionFont.loadGlyphs();
 
         buttonHeight = container.getHeight()/9;

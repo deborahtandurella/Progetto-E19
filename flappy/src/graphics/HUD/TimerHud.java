@@ -24,13 +24,13 @@ public class TimerHud {
         this.canvas = canvas;
 
         imageWidth = 0.125f;
-        imageHeight = 0.07f;
+        imageHeight = 0.09f;
 
-        background = new Image(PathHandler.getInstance().getPath(ResourcePack.VARIOUS, Resource.BUTTON_BG));
+        background = new Image(PathHandler.getInstance().getPath(ResourcePack.VARIOUS, Resource.TIMER));
 
-        Font font = new Font("Comic Sans MS", Font.BOLD, 3*canvas.getScreen().getWidth()/100 /*46*/);
+        Font font = new Font("Comic Sans MS", Font.BOLD, (int) (canvas.getScreen().getWidth()*0.04) /*46*/);
         uniFontMessage = new UnicodeFont(font);
-        uniFontMessage.getEffects().add(new ColorEffect(Color.green));
+        uniFontMessage.getEffects().add(new ColorEffect(Color.white));
         uniFontMessage.addAsciiGlyphs();
         uniFontMessage.loadGlyphs();
 
@@ -38,7 +38,7 @@ public class TimerHud {
 
     public void render(int time){
 
-        canvas.drawImage(background,0.5f - imageWidth/2f, 0,imageWidth,imageHeight);
-        canvas.drawStringCentered(Integer.toString(time),uniFontMessage,0.5f , 0.03f);
+        canvas.drawImage(background,0.5f - imageWidth/2f, 0.003f,imageWidth,imageHeight);
+        canvas.drawStringCentered(Integer.toString(time),uniFontMessage,0.52f , 0.04f);
     }
 }

@@ -38,5 +38,6 @@ public enum Resource {
     CONNECTIONERROR,
     BUTTON_BG,
     FLAPPYFONT,
-    GOLDCUP
+    GOLDCUP,
+    TIMER
 }
