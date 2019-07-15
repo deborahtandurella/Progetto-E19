@@ -7,7 +7,7 @@ import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
 
-import static logic.gameConstants.GameConstants.HEART_SIZE;
+import static game.GameConstants.HEART_SIZE;
 
 public class HeartGraphicComponent extends GameElementGraphicComponent {
     private Animation heartAnimation;

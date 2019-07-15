@@ -1,9 +1,9 @@
 package states;
 
 import Main.GiocoAStati;
+import game.player.Result;
 import graphics.GUI.MultiplayerEndMenuGUI;
 import graphics.Screen;
-import logic.SinglePlayer.Result;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;

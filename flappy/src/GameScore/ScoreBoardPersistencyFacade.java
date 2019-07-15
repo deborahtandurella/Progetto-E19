@@ -1,6 +1,6 @@
 package GameScore;
 
-import logic.SinglePlayer.Result;
+import game.player.Result;
 
 import java.io.*;
 import java.util.ArrayList;

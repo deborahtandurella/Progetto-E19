@@ -9,8 +9,8 @@ import graphics.Canvas;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static logic.gameConstants.GameConstants.COIN_SIZE;
-import static logic.gameConstants.GameConstants.PIPE_WIDTH;
+import static game.GameConstants.COIN_SIZE;
+import static game.GameConstants.PIPE_WIDTH;
 
 public class CoinGenerator implements ObstacleListener {
     private ArrayList<CoinListener> listeners;

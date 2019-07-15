@@ -1,13 +1,13 @@
 package states.deprecati;
 
+import game.player.SingleModePlayer;
 import graphics.Screen;
-import logic.SinglePlayer.SingleModePlayer;
 import org.newdawn.slick.*;
 import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
 
-import static logic.gameConstants.GameConstants.*;
+import static game.GameConstants.*;
 
 
 public class SpriteDrawer{

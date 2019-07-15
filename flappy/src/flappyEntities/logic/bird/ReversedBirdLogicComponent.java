@@ -1,6 +1,6 @@
 package flappyEntities.logic.bird;
 
-import static logic.gameConstants.GameConstants.*;
+import static game.GameConstants.*;
 
 public class ReversedBirdLogicComponent extends BirdLogicComponent {
     public ReversedBirdLogicComponent(BirdLogicComponent birdLogicComponent) {

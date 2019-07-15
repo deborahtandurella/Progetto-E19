@@ -4,8 +4,8 @@ import flappyEntities.logic.ScrollingElement;
 import flappyEntities.logic.SolidGameElementLogicComponent;
 import org.newdawn.slick.geom.Ellipse;
 
-import static logic.gameConstants.GameConstants.HEART_SIZE;
-import static logic.gameConstants.GameConstants.PIPE_SPEED;
+import static game.GameConstants.HEART_SIZE;
+import static game.GameConstants.PIPE_SPEED;
 
 public class HeartLogicComponent extends SolidGameElementLogicComponent implements ScrollingElement {
     public HeartLogicComponent(double x, double y) {

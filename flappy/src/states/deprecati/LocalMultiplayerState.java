@@ -2,15 +2,15 @@ package states.deprecati;
 
 import Main.GiocoAStati;
 import game.DifficultySettings;
-import game.LocalGame;
 import game.itemGeneration.obstacle.ObstacleGeneratorType;
-import game.SoundPlayer;
+import game.player.SingleModePlayer;
+import game.singleplayer.LocalGame;
 import graphics.Canvas;
 import graphics.Screen;
-import logic.SinglePlayer.SingleModePlayer;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import sounds.SoundPlayer;
 
 public class LocalMultiplayerState extends BasicGameState {
     private LocalGame leftGame;

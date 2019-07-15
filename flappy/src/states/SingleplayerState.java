@@ -3,22 +3,20 @@ package states;
 import GameScore.ScoreBoard;
 import Main.GiocoAStati;
 import game.DifficultySettings;
-import game.LocalGame;
 import game.gameEvents.GameEventListener;
 import game.gameEvents.GameEventType;
-import game.itemGeneration.obstacle.ObstacleGeneratorType;
-import game.SoundPlayer;
+import game.player.Result;
+import game.player.SingleModePlayer;
+import game.singleplayer.LocalGame;
 import graphics.Canvas;
-import graphics.HUD.SinglePlayerHud;
 import graphics.Screen;
-import logic.SinglePlayer.Result;
-import logic.SinglePlayer.SingleModePlayer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import sounds.SoundPlayer;
 
 public class SingleplayerState extends BasicGameState implements GameEventListener {
     private LocalGame game;

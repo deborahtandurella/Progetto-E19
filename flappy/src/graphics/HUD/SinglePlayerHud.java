@@ -1,14 +1,14 @@
 package graphics.HUD;
 
+import game.player.SingleModePlayer;
 import graphics.Canvas;
-import logic.SinglePlayer.SingleModePlayer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
 
-public class SinglePlayerHud extends Hud {
+public class SinglePlayerHud extends PlayerHud {
     private Image heartImage;
     private static float HEART_SIZE = 0.05f;
     public SinglePlayerHud(SingleModePlayer player, Canvas canvas) throws SlickException {

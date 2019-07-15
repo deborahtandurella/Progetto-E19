@@ -5,7 +5,7 @@ import flappyEntities.logic.SerializableEntity;
 import flappyEntities.logic.obstacles.ObstacleLogicComponent;
 import org.newdawn.slick.geom.Rectangle;
 
-import static logic.gameConstants.GameConstants.*;
+import static game.GameConstants.*;
 
 public class PipeLogicComponent extends ObstacleLogicComponent {
     public PipeLogicComponent(double x, double centerY) {

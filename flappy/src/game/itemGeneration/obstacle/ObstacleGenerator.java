@@ -5,8 +5,8 @@ import graphics.Canvas;
 
 import java.util.ArrayList;
 
-import static logic.gameConstants.GameConstants.PIPE_SPEED;
-import static logic.gameConstants.GameConstants.PIPE_WIDTH;
+import static game.GameConstants.PIPE_SPEED;
+import static game.GameConstants.PIPE_WIDTH;
 
 public abstract class ObstacleGenerator  {
     public static final double PIPE_PERIOD =( PIPE_WIDTH*0.5 + 0.5 ) / (PIPE_SPEED);

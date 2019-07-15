@@ -2,12 +2,10 @@ package states.deprecati;
 
 import GameScore.ScoreBoard;
 import Main.GiocoAStati;
-import gameMusic.MusicPlayer;
+import game.player.PlayerInfo;
+import game.player.Result;
+import game.player.SingleModePlayer;
 import graphics.Screen;
-import logic.SinglePlayer.Result;
-import logic.SinglePlayer.SingleModePlayer;
-import logic.gameElements.*;
-import logic.player.PlayerInfo;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.*;
 import org.newdawn.slick.font.effects.ColorEffect;
@@ -15,13 +13,15 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
+import sounds.MusicPlayer;
+import states.deprecati.gameElements.*;
 
 import java.awt.Font;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import static logic.gameConstants.GameConstants.*;
+import static game.GameConstants.*;
 
 public class Singleplayer extends BasicGameState {
     private static final int ID = 3;

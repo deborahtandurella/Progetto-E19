@@ -1,10 +1,8 @@
 package network;
 
-import game.OnlineLocalGame;
-import game.RemoteGame;
-import logic.player.PlayerInfo;
-import network.test.CommandHandler;
-import network.test.commands.Command;
+import game.multiplayer.OnlineLocalGame;
+import game.multiplayer.RemoteGame;
+import game.player.PlayerInfo;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

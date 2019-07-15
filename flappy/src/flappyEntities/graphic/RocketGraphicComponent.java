@@ -6,8 +6,8 @@ import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
 
-import static logic.gameConstants.GameConstants.ROCKET_HEIGHT;
-import static logic.gameConstants.GameConstants.ROCKET_WIDTH;
+import static game.GameConstants.ROCKET_HEIGHT;
+import static game.GameConstants.ROCKET_WIDTH;
 
 public class RocketGraphicComponent extends GameElementGraphicComponent
 {

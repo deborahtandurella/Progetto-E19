@@ -2,24 +2,24 @@ package states;
 
 import Main.GiocoAStati;
 import game.DifficultySettings;
-import game.OnlineLocalGame;
-import game.RemoteGame;
-import game.SoundPlayer;
 import game.gameEvents.GameEventListener;
 import game.gameEvents.GameEventType;
 import game.itemGeneration.obstacle.ObstacleGeneratorType;
-import game.powerUps.PowerUpType;
+import game.multiplayer.OnlineLocalGame;
+import game.multiplayer.RemoteGame;
+import game.multiplayer.powerUps.PowerUpType;
+import game.player.MultiModePlayer;
+import game.player.PlayerInfo;
+import game.player.Result;
 import graphics.Canvas;
-import graphics.GUI.TimerGUI;
+import graphics.HUD.TimerHud;
 import graphics.Screen;
-import logic.SinglePlayer.Result;
-import logic.player.MultiModePlayer;
-import logic.player.PlayerInfo;
+import network.CommandHandler;
 import network.ConnectionListener;
-import network.test.CommandHandler;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import sounds.SoundPlayer;
 
 
 public class MultiplayerState extends BasicGameState implements ConnectionListener, GameEventListener {
@@ -34,7 +34,7 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
     private CommandHandler commandHandler;
     private StateBasedGame stateBasedGame;
     private boolean gameFinished=false;
-    private TimerGUI timer;
+    private TimerHud timer;
 
     public void setCommandHandler(CommandHandler commandHandler) {
         this.commandHandler = commandHandler;
@@ -55,7 +55,7 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
         yPanel = new Image("res/sprites/backgrounds/nero.jpg").getScaledCopy((int)(gameContainer.getWidth()*0.1), gameContainer.getHeight());
         xPanel = new Image("res/sprites/backgrounds/nero.jpg").getScaledCopy( gameContainer.getWidth(),(int)(gameContainer.getHeight()*0.08)); //sovradimensionata per compensare imprecisioni date dalle troncature
         this.stateBasedGame= stateBasedGame;
-        timer= new TimerGUI(new Canvas(new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0), gameContainer.getGraphics()));
+        timer= new TimerHud(new Canvas(new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0), gameContainer.getGraphics()));
     }
 
     @Override

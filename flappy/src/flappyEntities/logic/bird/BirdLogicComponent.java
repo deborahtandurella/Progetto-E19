@@ -3,7 +3,7 @@ package flappyEntities.logic.bird;
 import flappyEntities.logic.SolidGameElementLogicComponent;
 import org.newdawn.slick.geom.Ellipse;
 
-import static logic.gameConstants.GameConstants.*;
+import static game.GameConstants.*;
 
 public class BirdLogicComponent extends SolidGameElementLogicComponent {
     private boolean immunity;

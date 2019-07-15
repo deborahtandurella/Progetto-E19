@@ -2,17 +2,17 @@ package states.deprecati;
 
 import Main.GiocoAStati;
 import game.DifficultySettings;
-import game.LocalGame;
-import game.SoundPlayer;
+import game.player.SingleModePlayer;
+import game.singleplayer.LocalGame;
 import graphics.Canvas;
 import graphics.Screen;
-import logic.SinglePlayer.SingleModePlayer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import sounds.SoundPlayer;
 
 public class SinglePlayerGameState extends BasicGameState {
     private LocalGame game;

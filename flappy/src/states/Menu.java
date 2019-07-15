@@ -1,7 +1,6 @@
 package states;
 
 import Main.GiocoAStati;
-import gameMusic.MusicPlayer;
 import graphics.GUI.MenuGUI;
 import graphics.Screen;
 import org.newdawn.slick.GameContainer;
@@ -11,6 +10,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
+import sounds.MusicPlayer;
 import states.deprecati.SpriteDrawer;
 
 public class Menu extends AbstractMenuState{

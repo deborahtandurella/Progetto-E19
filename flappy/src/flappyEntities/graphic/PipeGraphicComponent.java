@@ -6,7 +6,7 @@ import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
 
-import static logic.gameConstants.GameConstants.*;
+import static game.GameConstants.*;
 
 public class PipeGraphicComponent extends GameElementGraphicComponent {
     private Image upperPipeImage;

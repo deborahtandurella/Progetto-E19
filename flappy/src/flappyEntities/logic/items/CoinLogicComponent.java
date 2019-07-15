@@ -4,8 +4,8 @@ import flappyEntities.logic.ScrollingElement;
 import flappyEntities.logic.SolidGameElementLogicComponent;
 import org.newdawn.slick.geom.Ellipse;
 
-import static logic.gameConstants.GameConstants.COIN_SIZE;
-import static logic.gameConstants.GameConstants.PIPE_SPEED;
+import static game.GameConstants.COIN_SIZE;
+import static game.GameConstants.PIPE_SPEED;
 
 public class CoinLogicComponent extends SolidGameElementLogicComponent implements ScrollingElement {
     private double size= COIN_SIZE;

@@ -7,7 +7,7 @@ import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
 
-import static logic.gameConstants.GameConstants.COIN_SIZE;
+import static game.GameConstants.COIN_SIZE;
 
 public class CoinGraphicComponent extends GameElementGraphicComponent {
 

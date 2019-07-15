@@ -2,8 +2,8 @@ package game.itemGeneration.obstacle;
 
 import flappyEntities.Entity;
 import flappyEntities.EntityFactory;
+import game.GameConstants;
 import graphics.Canvas;
-import logic.gameConstants.GameConstants;
 
 import java.util.Random;
 
