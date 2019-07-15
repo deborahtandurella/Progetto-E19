@@ -9,6 +9,9 @@ import resources.ResourcePack;
 import static game.GameConstants.ROCKET_HEIGHT;
 import static game.GameConstants.ROCKET_WIDTH;
 
+/**
+ *  Componente grafica dei razzi
+ */
 public class RocketGraphicComponent extends GameElementGraphicComponent
 {
     private Image rocketImage;
@@ -16,7 +19,7 @@ public class RocketGraphicComponent extends GameElementGraphicComponent
     public RocketGraphicComponent(Canvas canvas) {
         super(canvas);
         try {
-            rocketImage = new Image(PathHandler.getInstance().getPath(ResourcePack.SPRITES, Resource.ROCKET ));
+            rocketImage = new Image(PathHandler.getInstance().getPath(ResourcePack.SPRITES, Resource.ROCKET));
         } catch (Exception e){
             e.printStackTrace();
         }

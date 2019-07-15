@@ -9,6 +9,9 @@ import resources.ResourcePack;
 
 import static game.GameConstants.COIN_SIZE;
 
+/**
+ * Componente grafica delle monete
+ */
 public class CoinGraphicComponent extends GameElementGraphicComponent {
 
     private Image coinImage;
