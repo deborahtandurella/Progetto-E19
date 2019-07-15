@@ -140,7 +140,6 @@ public class NetworkHandle implements CommandHandler {
     }
     private void setConnected(boolean connected) {
         this.connected = connected;
-        System.err.println(connected);
         notifyListeners(connected);
     }
     public PlayerInfo getOthersInfo(){

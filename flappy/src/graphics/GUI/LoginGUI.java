@@ -24,6 +24,7 @@ public class LoginGUI extends AbstractMenuGUI {
     private UnicodeFont uniFontMessage;
     private String errorMessage;
     private String nameString;
+    private Image rocket;
     private boolean error = false;
 
     public LoginGUI(GameContainer container, Screen screen, LoginMenu state) throws SlickException {
@@ -36,7 +37,7 @@ public class LoginGUI extends AbstractMenuGUI {
         int buttonWidth = container.getWidth() / 4;
 
         title = new Image(PathHandler.getInstance().getPath(ResourcePack.VARIOUS, Resource.TITLE)).getScaledCopy(buttonWidth*3, buttonHeight*2);
-
+        rocket = new Image(PathHandler.getInstance().getPath(ResourcePack.SPRITES, Resource.ROCKET)).getFlippedCopy(true, false);
         Image confirm = new Image(PathHandler.getInstance().getPath(ResourcePack.BUTTON, Resource.STARTBUTTON)).getScaledCopy(buttonWidth/2, buttonHeight/2);
         startButton = new MouseOverArea(container, confirm, container.getWidth() / 2 - buttonWidth / 4, 50 * getContainer().getHeight() / 100, buttonWidth/2, buttonHeight/2, this);
         addButton(startButton);
@@ -69,6 +70,8 @@ public class LoginGUI extends AbstractMenuGUI {
         if (error) {
             uniFontMessage.drawString((getContainer().getWidth() - uniFontMessage.getWidth(errorMessage)) / 2f, 60 * getContainer().getHeight() / 100f, errorMessage, Color.red);
         }
+        rocket.draw(startButton.getX() -getContainer().getWidth()/12, startButton.getY(), getContainer().getWidth()/16, getContainer().getWidth()/16);
+
     }
 
     @Override
