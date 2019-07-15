@@ -7,9 +7,6 @@ import org.newdawn.slick.geom.Rectangle;
 
 import static game.GameConstants.*;
 
-/**
- *  Componente logica del tubo
- */
 public class PipeLogicComponent extends ObstacleLogicComponent {
     public PipeLogicComponent(double x, double centerY) {
         super(x, centerY, -PIPE_SPEED, 0);

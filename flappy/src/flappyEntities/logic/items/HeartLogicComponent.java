@@ -7,9 +7,6 @@ import org.newdawn.slick.geom.Ellipse;
 import static game.GameConstants.HEART_SIZE;
 import static game.GameConstants.PIPE_SPEED;
 
-/**
- *  Componente logica del cuore
- */
 public class HeartLogicComponent extends SolidGameElementLogicComponent implements ScrollingElement {
     public HeartLogicComponent(double x, double y) {
         super(x, y, -PIPE_SPEED, 0);

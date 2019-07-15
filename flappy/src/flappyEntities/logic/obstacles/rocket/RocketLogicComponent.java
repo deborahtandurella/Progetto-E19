@@ -6,9 +6,6 @@ import org.newdawn.slick.geom.Rectangle;
 
 import static game.GameConstants.*;
 
-/**
- *  Componente logica del razzo
- */
 public class RocketLogicComponent extends ObstacleLogicComponent {
     public RocketLogicComponent(double x, double y) {
         super(x, y, -ROCKET_SPEED, 0);

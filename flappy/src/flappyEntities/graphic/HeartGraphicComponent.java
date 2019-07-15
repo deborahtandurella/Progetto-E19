@@ -9,9 +9,6 @@ import resources.ResourcePack;
 
 import static game.GameConstants.HEART_SIZE;
 
-/**
- *  Componente grafica del cuore
- */
 public class HeartGraphicComponent extends GameElementGraphicComponent {
     private Animation heartAnimation;
 

@@ -5,9 +5,6 @@ import flappyEntities.EntityFactory;
 import flappyEntities.logic.SerializableEntity;
 import graphics.Canvas;
 
-/**
- *  Versione serializzabile del razzo
- */
 public class SerializableRocket implements SerializableEntity {
     private static final long serialVersionUID = -539210512250000001L;
 

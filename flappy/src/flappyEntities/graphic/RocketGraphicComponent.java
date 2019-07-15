@@ -9,9 +9,6 @@ import resources.ResourcePack;
 import static game.GameConstants.ROCKET_HEIGHT;
 import static game.GameConstants.ROCKET_WIDTH;
 
-/**
- *  Componente grafica dei razzi
- */
 public class RocketGraphicComponent extends GameElementGraphicComponent
 {
     private Image rocketImage;
