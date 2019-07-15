@@ -4,7 +4,6 @@ import GameScore.ScoreBoard;
 import Main.GiocoAStati;
 import gameMusic.MusicPlayer;
 import graphics.Screen;
-import graphics.SpriteDrawer;
 import logic.SinglePlayer.Result;
 import logic.SinglePlayer.SingleModePlayer;
 import logic.gameElements.*;

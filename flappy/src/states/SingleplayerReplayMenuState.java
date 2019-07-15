@@ -1,6 +1,7 @@
 package states;
 
 import GameScore.ScoreBoard;
+import GameScore.ScoreInterface;
 import Main.GiocoAStati;
 import graphics.GUI.ScoreBoardMenuGUI;
 import graphics.GUI.SingleplayerReplayMenuGUI;
@@ -12,7 +13,6 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
-import states.test.ScoreInterface;
 
 public class SingleplayerReplayMenuState extends AbstractMenuState implements ScoreInterface {
     private GameContainer container;

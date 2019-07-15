@@ -1,6 +1,9 @@
-package game;
+package states.deprecati;
 
 import Main.GiocoAStati;
+import game.DifficultySettings;
+import game.LocalGame;
+import game.SoundPlayer;
 import graphics.Canvas;
 import graphics.Screen;
 import logic.SinglePlayer.SingleModePlayer;

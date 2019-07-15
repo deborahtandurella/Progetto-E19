@@ -1,5 +1,6 @@
-package graphics;
+package states.deprecati;
 
+import graphics.Screen;
 import logic.SinglePlayer.SingleModePlayer;
 import org.newdawn.slick.*;
 import resources.PathHandler;

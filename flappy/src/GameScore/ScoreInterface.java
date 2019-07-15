@@ -1,6 +1,4 @@
-package states.test;
-
-import GameScore.ScoreBoard;
+package GameScore;
 
 public interface ScoreInterface {
     ScoreBoard getScoreBoard();

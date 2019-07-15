@@ -1,11 +1,11 @@
 package states;
 
 import GameScore.ScoreBoard;
+import GameScore.ScoreInterface;
 import Main.GiocoAStati;
 import graphics.GUI.ScoreBoardButtons;
 import graphics.GUI.ScoreBoardMenuGUI;
 import graphics.Screen;
-import logic.SinglePlayer.Result;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -13,7 +13,6 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
-import states.test.ScoreInterface;
 
 import java.io.IOException;
 
