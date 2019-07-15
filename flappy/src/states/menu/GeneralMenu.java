@@ -11,13 +11,11 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 import sounds.MusicPlayer;
-import states.deprecati.SpriteDrawer;
 
 public class GeneralMenu extends AbstractMenuState{
 
     private GameContainer container;
     private StateBasedGame stateBasedGame;
-    private SpriteDrawer drawer;
 
     public GeneralMenu(){
         super();
@@ -33,14 +31,12 @@ public class GeneralMenu extends AbstractMenuState{
         this.stateBasedGame= stateBasedGame;
         MusicPlayer musicPlayer = new MusicPlayer();
         Screen screen = new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
-        drawer = new SpriteDrawer(screen);
         setGui(new MenuGUI(gameContainer, screen, this));
         musicPlayer.backgroundMusic();
     }
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
-        drawer.drawBackgroundSingle(graphics);
         renderGui();
     }
 
