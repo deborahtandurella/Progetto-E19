@@ -1,6 +1,5 @@
 package states.deprecati;
 
-import GameScore.ScoreBoard;
 import Main.GiocoAStati;
 import game.player.PlayerInfo;
 import game.player.Result;
@@ -13,6 +12,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
+import scoreboard.ScoreBoard;
 import sounds.MusicPlayer;
 import states.deprecati.gameElements.*;
 

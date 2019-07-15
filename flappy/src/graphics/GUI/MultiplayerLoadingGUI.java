@@ -7,19 +7,19 @@ import org.newdawn.slick.gui.MouseOverArea;
 import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
-import states.MultiplayerLoading;
+import states.menu.MultiplayerLoadingMenu;
 
 public class MultiplayerLoadingGUI extends AbstractMenuGUI{
     private Animation loadingAnimation;
     private Animation threeTwoOneAnimation;
-    private MultiplayerLoading state;
+    private MultiplayerLoadingMenu state;
     private int animationDimension;
     private boolean connected;
     private MouseOverArea backButton;
     private boolean connectionHappening;
 
 
-    public MultiplayerLoadingGUI(GameContainer container, Screen screen, MultiplayerLoading state) throws SlickException {
+    public MultiplayerLoadingGUI(GameContainer container, Screen screen, MultiplayerLoadingMenu state) throws SlickException {
         super(container, screen);
         this.state=state;
 

@@ -1,4 +1,4 @@
-package states;
+package states.menu;
 
 import Main.GiocoAStati;
 import graphics.GUI.MultiplayerLoadingGUI;
@@ -13,11 +13,12 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
+import states.game.MultiplayerState;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MultiplayerLoading extends AbstractMenuState implements ConnectionListener {
+public class MultiplayerLoadingMenu extends AbstractMenuState implements ConnectionListener {
     private CommandHandler commandHandler;
     private GiocoAStati giocoAStati;
     private boolean connecting;

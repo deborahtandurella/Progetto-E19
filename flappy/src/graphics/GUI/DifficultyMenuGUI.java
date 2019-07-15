@@ -9,7 +9,7 @@ import org.newdawn.slick.gui.MouseOverArea;
 import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
-import states.DifficultyMenu;
+import states.menu.DifficultyMenu;
 
 public class DifficultyMenuGUI extends AbstractMenuGUI {
     private DifficultyMenu state;

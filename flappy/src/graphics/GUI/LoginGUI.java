@@ -11,14 +11,14 @@ import org.newdawn.slick.gui.TextField;
 import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
-import states.Login;
+import states.menu.LoginMenu;
 
 import java.awt.Font;
 
 public class LoginGUI extends AbstractMenuGUI {
 
     private Image title;
-    private Login state;
+    private LoginMenu state;
     private TextField nameField;
     private MouseOverArea startButton;
     private UnicodeFont uniFontMessage;
@@ -26,7 +26,7 @@ public class LoginGUI extends AbstractMenuGUI {
     private String nameString;
     private boolean error = false;
 
-    public LoginGUI(GameContainer container, Screen screen, Login state) throws SlickException {
+    public LoginGUI(GameContainer container, Screen screen, LoginMenu state) throws SlickException {
         super(container, screen);
         this.state = state;
         Font font = new Font("Comic Sans MS", Font.BOLD, 3*getContainer().getWidth()/100 /*46*/);

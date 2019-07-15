@@ -9,7 +9,7 @@ import org.newdawn.slick.gui.MouseOverArea;
 import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
-import states.ScoreBoardState;
+import states.menu.ScoreBoardMenu;
 
 import java.io.IOException;
 
@@ -17,9 +17,9 @@ public class ScoreBoardButtons  extends AbstractMenuGUI {
 
     private MouseOverArea deleteButton;
     private MouseOverArea backButton;
-    private ScoreBoardState state;
+    private ScoreBoardMenu state;
 
-    public ScoreBoardButtons(GameContainer container, Screen screen, ScoreBoardState state) throws SlickException {
+    public ScoreBoardButtons(GameContainer container, Screen screen, ScoreBoardMenu state) throws SlickException {
         super(container, screen);
         this.state=state;
 

@@ -1,4 +1,4 @@
-package states;
+package states.game;
 
 import Main.GiocoAStati;
 import game.DifficultySettings;
@@ -20,6 +20,7 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import sounds.SoundPlayer;
+import states.menu.MultiplayerEndMenu;
 
 
 public class MultiplayerState extends BasicGameState implements ConnectionListener, GameEventListener {

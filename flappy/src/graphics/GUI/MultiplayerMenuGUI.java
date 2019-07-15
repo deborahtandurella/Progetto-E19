@@ -10,7 +10,7 @@ import org.newdawn.slick.gui.MouseOverArea;
 import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
-import states.MultiplayerMenu;
+import states.menu.MultiplayerMenu;
 
 import java.awt.Font;
 

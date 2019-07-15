@@ -1,4 +1,4 @@
-package states;
+package states.menu;
 
 import Main.GiocoAStati;
 import graphics.GUI.ConnectionErrorGUI;
@@ -11,7 +11,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
-public class ConnectionErrorState extends AbstractMenuState{
+public class ConnectionErrorMenu extends AbstractMenuState{
     private StateBasedGame stateBasedGame;
 
     @Override

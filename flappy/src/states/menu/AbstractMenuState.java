@@ -1,4 +1,4 @@
-package states;
+package states.menu;
 
 import graphics.GUI.AbstractMenuGUI;
 import org.newdawn.slick.SlickException;

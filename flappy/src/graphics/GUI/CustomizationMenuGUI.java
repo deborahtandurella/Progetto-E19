@@ -11,7 +11,7 @@ import org.newdawn.slick.gui.MouseOverArea;
 import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
-import states.CustomizationMenu;
+import states.menu.CustomizationMenu;
 
 import java.awt.*;
 import java.io.IOException;

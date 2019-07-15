@@ -1,4 +1,4 @@
-package states;
+package states.menu;
 
 import Main.GiocoAStati;
 import graphics.GUI.MultiplayerMenuGUI;
@@ -56,12 +56,12 @@ public class MultiplayerMenu extends AbstractMenuState {
 
     public void join(String ip,int port){
         stateBasedGame.enterState(GiocoAStati.MULTI_LOADING,new FadeOutTransition(),new FadeInTransition());
-        ((MultiplayerLoading)stateBasedGame.getState(GiocoAStati.MULTI_LOADING)).join(ip, port);
+        ((MultiplayerLoadingMenu)stateBasedGame.getState(GiocoAStati.MULTI_LOADING)).join(ip, port);
     }
 
     public void host(int port){
         stateBasedGame.enterState(GiocoAStati.MULTI_LOADING,new FadeOutTransition(),new FadeInTransition());
-        ((MultiplayerLoading)stateBasedGame.getState(GiocoAStati.MULTI_LOADING)).host(port);
+        ((MultiplayerLoadingMenu)stateBasedGame.getState(GiocoAStati.MULTI_LOADING)).host(port);
 
 
     }

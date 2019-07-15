@@ -1,6 +1,5 @@
 package Main;
 
-import GameScore.ScoreBoard;
 import game.player.PlayerInfo;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
@@ -9,7 +8,11 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
-import states.*;
+import scoreboard.ScoreBoard;
+import states.game.MultiplayerState;
+import states.game.SingleplayerState;
+import states.menu.*;
+import utilities.DisplayModeManager;
 
 import java.io.IOException;
 
@@ -53,18 +56,18 @@ public class GiocoAStati extends StateBasedGame {
 
     @Override
     public void initStatesList(GameContainer gameContainer)  {
-        this.addState(new Login());
-        this.addState(new Menu());
-        this.addState(new ScoreBoardState());
+        this.addState(new LoginMenu());
+        this.addState(new GeneralMenu());
+        this.addState(new ScoreBoardMenu());
         this.addState(new CustomizationMenu());
         this.addState(new DifficultyMenu());
         this.addState(new SingleplayerState());
-        this.addState(new SingleplayerReplayMenuState());
+        this.addState(new SingleplayerReplayMenu());
         this.addState(new MultiplayerMenu());
-        this.addState(new MultiplayerLoading());
+        this.addState(new MultiplayerLoadingMenu());
         this.addState(new MultiplayerState());
         this.addState(new MultiplayerEndMenu());
-        this.addState(new ConnectionErrorState());
+        this.addState(new ConnectionErrorMenu());
     }
 
     public static void main(String[] argv) {

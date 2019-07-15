@@ -1,4 +1,4 @@
-package states;
+package states.menu;
 
 import Main.GiocoAStati;
 import game.DifficultySettings;
@@ -12,6 +12,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
+import states.game.SingleplayerState;
 
 public class DifficultyMenu extends AbstractMenuState {
     private StateBasedGame stateBasedGame;

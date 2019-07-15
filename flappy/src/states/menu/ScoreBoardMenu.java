@@ -1,7 +1,5 @@
-package states;
+package states.menu;
 
-import GameScore.ScoreBoard;
-import GameScore.ScoreInterface;
 import Main.GiocoAStati;
 import graphics.GUI.ScoreBoardButtons;
 import graphics.GUI.ScoreBoardMenuGUI;
@@ -13,10 +11,12 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
+import scoreboard.ScoreBoard;
+import scoreboard.ScoreInterface;
 
 import java.io.IOException;
 
-public class ScoreBoardState extends AbstractMenuState implements ScoreInterface {
+public class ScoreBoardMenu extends AbstractMenuState implements ScoreInterface {
     private StateBasedGame stateBasedGame;
     public Screen screen;
     private GameContainer container;

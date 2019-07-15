@@ -1,6 +1,5 @@
 package graphics.GUI;
 
-import GameScore.ScoreInterface;
 import graphics.Screen;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
@@ -11,6 +10,7 @@ import org.newdawn.slick.gui.AbstractComponent;
 import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
+import scoreboard.ScoreInterface;
 
 import java.awt.*;
 

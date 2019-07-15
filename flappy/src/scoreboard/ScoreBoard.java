@@ -1,4 +1,4 @@
-package GameScore;
+package scoreboard;
 
 import game.player.Result;
 

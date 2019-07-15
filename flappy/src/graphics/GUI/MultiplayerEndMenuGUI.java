@@ -8,7 +8,7 @@ import org.newdawn.slick.gui.MouseOverArea;
 import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
-import states.MultiplayerEndMenu;
+import states.menu.MultiplayerEndMenu;
 
 public class MultiplayerEndMenuGUI extends AbstractMenuGUI {
 

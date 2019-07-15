@@ -1,4 +1,4 @@
-package states;
+package states.menu;
 
 import Main.GiocoAStati;
 import graphics.GUI.MenuGUI;
@@ -13,13 +13,13 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 import sounds.MusicPlayer;
 import states.deprecati.SpriteDrawer;
 
-public class Menu extends AbstractMenuState{
+public class GeneralMenu extends AbstractMenuState{
 
     private GameContainer container;
     private StateBasedGame stateBasedGame;
     private SpriteDrawer drawer;
 
-    public Menu(){
+    public GeneralMenu(){
         super();
     }
     @Override

@@ -9,16 +9,16 @@ import org.newdawn.slick.gui.MouseOverArea;
 import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
-import states.Menu;
+import states.menu.GeneralMenu;
 
 public class MenuGUI extends AbstractMenuGUI {
-    private Menu state;
+    private GeneralMenu state;
     private MouseOverArea singleButton;
     private MouseOverArea multiButton;
     private MouseOverArea customButton;
     private MouseOverArea leaderboardButton;
 
-    public MenuGUI(GameContainer container, Screen screen, Menu state) throws SlickException {
+    public MenuGUI(GameContainer container, Screen screen, GeneralMenu state) throws SlickException {
         super(container, screen);
         this.state = state;
 

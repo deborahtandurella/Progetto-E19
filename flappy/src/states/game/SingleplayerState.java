@@ -1,6 +1,5 @@
-package states;
+package states.game;
 
-import GameScore.ScoreBoard;
 import Main.GiocoAStati;
 import game.DifficultySettings;
 import game.gameEvents.GameEventListener;
@@ -16,6 +15,7 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import scoreboard.ScoreBoard;
 import sounds.SoundPlayer;
 
 public class SingleplayerState extends BasicGameState implements GameEventListener {

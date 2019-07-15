@@ -11,19 +11,19 @@ import org.newdawn.slick.gui.MouseOverArea;
 import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
-import states.ConnectionErrorState;
+import states.menu.ConnectionErrorMenu;
 
 import java.awt.*;
 
 public class ConnectionErrorGUI extends AbstractMenuGUI {
-    private ConnectionErrorState state;
+    private ConnectionErrorMenu state;
     private MouseOverArea returnButton;
     private Image error;
     private float imageDimension;
     private String errorMessage;
     private UnicodeFont uniFontMessage;
 
-    public ConnectionErrorGUI(GameContainer container, Screen screen, ConnectionErrorState state) throws SlickException {
+    public ConnectionErrorGUI(GameContainer container, Screen screen, ConnectionErrorMenu state) throws SlickException {
         super(container, screen);
         this.state = state;
 

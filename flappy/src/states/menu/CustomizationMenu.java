@@ -1,4 +1,4 @@
-package states;
+package states.menu;
 
 import Main.GiocoAStati;
 import graphics.GUI.CustomizationMenuGUI;

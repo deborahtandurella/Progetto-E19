@@ -1,4 +1,4 @@
-package states;
+package states.menu;
 
 import Main.GiocoAStati;
 import game.player.PlayerInfo;
@@ -12,7 +12,7 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 import sounds.MusicPlayer;
 
-public class Login extends AbstractMenuState {
+public class LoginMenu extends AbstractMenuState {
 
     private StateBasedGame stateBasedGame;
 
