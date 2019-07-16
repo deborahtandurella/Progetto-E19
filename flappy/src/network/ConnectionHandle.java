@@ -1,8 +1,5 @@
 package network;
 
-import game.multiplayer.OnlineLocalGame;
-import game.multiplayer.OnlineRemoteGame;
-import game.player.PlayerInfo;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -11,24 +8,34 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class NetworkHandle  {
+/**
+ *  ConnectionHandle permette di aprire ad una connessione TCP o di connettersi ad una connessione TCP già aperta.
+ *  Perche i messaggi ricevuti vengano reindirizzati al receiver è necessario avviare prima l'ascolto con il metodo startListening()
+ *  Implementa di default lo scambio di nomi dei due soggetti in connessione per facilitare l'identificazione. Il nome della controparte può essere ottenuto tramite il metodo getOthersInfo()
+ *
+ */
+public class ConnectionHandle {
     private Socket socket;
     private ServerSocket serverSocket;
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
     private NetworkReceiver receiver;
+
+    private String othersName;
+
     private CopyOnWriteArrayList<ConnectionListener> connectionListeners;
     private boolean connected = false;
     private boolean closingRequested = false;
 
-    private OnlineRemoteGame remoteGame;
-    private OnlineLocalGame localGame;
-    private String othersName;
-
-    public NetworkHandle(){
+    public ConnectionHandle(){
         connectionListeners=new CopyOnWriteArrayList<>();
     }
 
+    /**
+     * Apre ad una connessione sulla porta specificata
+     * @param port la porta
+     * @param name il nome con il quale il soggetto desidera essere identificato
+     */
     public void setConnection(int port, String name) {
 
         try {
@@ -49,6 +56,13 @@ public class NetworkHandle  {
             }
         }
     }
+
+    /**
+     * Si connette all'indirizzo specificato
+     * @param ip indirizzo ip
+     * @param port porta
+     * @param name il nome con il quale il soggetto desidera essere identificato
+     */
     public void setConnection(String ip, int port, String name) {
         try {
             socket = new Socket(ip, port);
@@ -85,6 +99,10 @@ public class NetworkHandle  {
             e.printStackTrace();
         }
     }
+
+    /**
+     *  Inizia ad ascoltare i messaggi della controparte, i quali vengono trasferiti al receiver
+     */
     public void startListening(){
             new Thread(() -> {
                 while (connected) {
@@ -95,6 +113,11 @@ public class NetworkHandle  {
             }).start();
 
     }
+
+    /**
+     * Invia alla controparte un oggetto
+     * @param object oggetto da inviare
+     */
     public void sendObject(Object object) {
         try {
             outputStream.writeObject(object);
@@ -104,6 +127,9 @@ public class NetworkHandle  {
         }
     }
 
+    /**
+     *  Chiude la connessione
+     */
     public void closeConnection() {
         if (!connected){
             closingRequested=true;
@@ -138,10 +164,18 @@ public class NetworkHandle  {
         this.connected = connected;
         notifyListeners(connected);
     }
-    public PlayerInfo getOthersInfo(){
-        return new PlayerInfo(othersName);
+
+    /**
+     * @return il nome con cui si identifica la controparte
+     */
+    public String getOthersInfo(){
+        return othersName;
     }
 
+    /**
+     * Imposta il soggetto destinatario dei messaggi ricevuti tramite la rete dalla controparte
+     * @param receiver il destinatario
+     */
     public void setReceiver(NetworkReceiver receiver) {
         this.receiver = receiver;
     }

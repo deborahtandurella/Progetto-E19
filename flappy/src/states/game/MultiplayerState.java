@@ -16,8 +16,8 @@ import graphics.HUD.TimerHud;
 import graphics.Screen;
 import network.CommandReceiver;
 import network.CommandTransmitter;
+import network.ConnectionHandle;
 import network.ConnectionListener;
-import network.NetworkHandle;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -34,14 +34,14 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
     private Image leftScreenCopy;
     private Image yPanel;
     private Image xPanel;
-    private NetworkHandle networkHandle;
+    private ConnectionHandle connectionHandle;
     private StateBasedGame stateBasedGame;
     private boolean gameFinished=false;
     private TimerHud timer;
 
-    public void setNetworkHandle(NetworkHandle networkHandle) {
-        this.networkHandle = networkHandle;
-        networkHandle.addConnectionListener(this);
+    public void setConnectionHandle(ConnectionHandle connectionHandle) {
+        this.connectionHandle = connectionHandle;
+        connectionHandle.addConnectionListener(this);
     }
 
     @Override
@@ -66,13 +66,13 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
         super.enter(container, game);
         gameFinished=false;
         PlayerInfo myPlayer= ((GiocoAStati) game).getPlayerInfo();
-        leftGame= new OnlineLocalGame(gameCanvas, settings, new CommandTransmitter(networkHandle), new MultiModePlayer(myPlayer));
+        leftGame= new OnlineLocalGame(gameCanvas, settings, new CommandTransmitter(connectionHandle), new MultiModePlayer(myPlayer));
         leftGame.addListener(soundPlayer);
         leftGame.addListener(this);
-        rightGame= new OnlineRemoteGame(gameCanvas, settings, new MultiModePlayer(networkHandle.getOthersInfo()));
+        rightGame= new OnlineRemoteGame(gameCanvas, settings, new MultiModePlayer(new PlayerInfo(connectionHandle.getOthersInfo())));
         rightGame.addListener(this);
-        networkHandle.setReceiver( new CommandReceiver(leftGame, rightGame));
-        networkHandle.startListening();
+        connectionHandle.setReceiver( new CommandReceiver(leftGame, rightGame));
+        connectionHandle.startListening();
     }
 
     @Override
@@ -122,7 +122,7 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
         if (event==GameEventType.GAMEOVER){
             if (leftGame.isOver() && rightGame.isOver()){
                 gameFinished=true;
-                networkHandle.closeConnection();
+                connectionHandle.closeConnection();
                 ((MultiplayerEndMenu)stateBasedGame.getState(GiocoAStati.MULTI_END_MENU))
                         .setResults(new Result(leftGame.getPlayer()), new Result(rightGame.getPlayer()));
                 stateBasedGame.enterState(GiocoAStati.MULTI_END_MENU);

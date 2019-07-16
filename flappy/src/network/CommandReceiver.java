@@ -3,6 +3,9 @@ package network;
 import game.multiplayer.OnlineLocalGame;
 import game.multiplayer.OnlineRemoteGame;
 
+/**
+ *  Esegue i comandi ricevuti sulla partita locale e remota
+ */
 public class CommandReceiver implements NetworkReceiver{
     private OnlineLocalGame localGame;
     private OnlineRemoteGame remoteGame;
@@ -11,10 +14,11 @@ public class CommandReceiver implements NetworkReceiver{
         this.localGame = localGame;
         this.remoteGame = remoteGame;
     }
-    public void startListening(NetworkHandle network){
-        network.setReceiver(this);
-    }
 
+    /**
+     * Converte il messaggio in Command e lo esegue
+     * @param message il messaggio ricevuto
+     */
     @Override
     public void receive(Object message) {
         try {

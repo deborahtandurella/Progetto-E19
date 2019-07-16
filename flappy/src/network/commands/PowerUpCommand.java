@@ -6,6 +6,9 @@ import game.multiplayer.powerUps.PowerUp;
 import game.player.MultiModePlayer;
 import network.Command;
 
+/**
+ *  Comunica l'attivazione di un powerup
+ */
 public class PowerUpCommand extends Command {
     private static final long serialVersionUID = -539210512249000007L;
 

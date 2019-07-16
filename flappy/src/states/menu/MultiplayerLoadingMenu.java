@@ -3,8 +3,8 @@ package states.menu;
 import Main.GiocoAStati;
 import graphics.GUI.MultiplayerLoadingGUI;
 import graphics.Screen;
+import network.ConnectionHandle;
 import network.ConnectionListener;
-import network.NetworkHandle;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -18,7 +18,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MultiplayerLoadingMenu extends AbstractMenuState implements ConnectionListener {
-    private NetworkHandle networkHandle;
+    private ConnectionHandle connectionHandle;
     private GiocoAStati giocoAStati;
     private boolean connecting;
     @Override
@@ -57,16 +57,16 @@ public class MultiplayerLoadingMenu extends AbstractMenuState implements Connect
     }
 
     public void join(String ip, int port){
-        networkHandle= new NetworkHandle();
-        networkHandle.addConnectionListener(this);
-        Thread connectionThread = new Thread(() -> networkHandle.setConnection(ip,port, giocoAStati.getPlayerInfo().getName()));
+        connectionHandle = new ConnectionHandle();
+        connectionHandle.addConnectionListener(this);
+        Thread connectionThread = new Thread(() -> connectionHandle.setConnection(ip,port, giocoAStati.getPlayerInfo().getName()));
         connectionThread.start();
     }
 
     public void host(int port){
-        networkHandle = new NetworkHandle();
-        networkHandle.addConnectionListener(this);
-        Thread connectionThread = new Thread(() -> networkHandle.setConnection(port, giocoAStati.getPlayerInfo().getName()));
+        connectionHandle = new ConnectionHandle();
+        connectionHandle.addConnectionListener(this);
+        Thread connectionThread = new Thread(() -> connectionHandle.setConnection(port, giocoAStati.getPlayerInfo().getName()));
         connectionThread.start();
     }
 
@@ -75,7 +75,7 @@ public class MultiplayerLoadingMenu extends AbstractMenuState implements Connect
             @Override
             public void run() {
  //               ((MultiplayerLoadingGUI)getGui()).connected();
-                ((MultiplayerState) giocoAStati.getState(GiocoAStati.MULTIPLAYER)).setNetworkHandle(networkHandle);
+                ((MultiplayerState) giocoAStati.getState(GiocoAStati.MULTIPLAYER)).setConnectionHandle(connectionHandle);
                 connecting=true;
             }
         }, 1000);
@@ -91,7 +91,7 @@ public class MultiplayerLoadingMenu extends AbstractMenuState implements Connect
 
     @Override
     public void connectionStatus(boolean connected) {
-        networkHandle.removeListener(this);
+        connectionHandle.removeListener(this);
         if(connected)
             startLoading();
         else {
@@ -105,8 +105,8 @@ public class MultiplayerLoadingMenu extends AbstractMenuState implements Connect
     }
 
     public void back(){
-        if (networkHandle!=null)
-            networkHandle.closeConnection();
+        if (connectionHandle !=null)
+            connectionHandle.closeConnection();
         giocoAStati.enterState(GiocoAStati.MULTI_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 }

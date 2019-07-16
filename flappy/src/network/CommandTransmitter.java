@@ -1,9 +1,9 @@
 package network;
 
 public class CommandTransmitter {
-    private NetworkHandle network;
+    private ConnectionHandle network;
 
-    public CommandTransmitter(NetworkHandle network) {
+    public CommandTransmitter(ConnectionHandle network) {
         this.network = network;
     }
     public void sendCommand(Command command){

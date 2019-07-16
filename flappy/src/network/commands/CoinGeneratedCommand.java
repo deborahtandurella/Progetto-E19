@@ -7,6 +7,9 @@ import game.multiplayer.OnlineLocalGame;
 import game.multiplayer.OnlineRemoteGame;
 import network.Command;
 
+/**
+ *  Comunica l'evento di generazione di una moneta
+ */
 public class CoinGeneratedCommand extends Command {
     private static final long serialVersionUID = -539210512249000004L;
 
