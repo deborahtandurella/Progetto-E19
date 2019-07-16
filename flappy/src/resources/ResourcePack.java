@@ -1,5 +1,8 @@
 package resources;
 
+/**
+ *  Pacchetti di risorse
+ */
 public enum ResourcePack {
     CLASSIC,
     BATMAN,

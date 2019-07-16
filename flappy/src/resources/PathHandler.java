@@ -3,6 +3,9 @@ package resources;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ *  Classe Singleton utilizzata per accedere ai path delle risorse
+ */
 public class PathHandler {
 
     private static PathHandler instance;
@@ -41,6 +44,10 @@ public class PathHandler {
         return instance;
     }
 
+    /**
+     * Cambia il tema del ResourcePack delle Sprites
+     * @param newTheme il nuovo tema
+     */
     public void changeSprites(ResourcePack newTheme) {
         try {
             spritePaths= PathReader.readResourcePack(resourcePackIndex.get(newTheme));
@@ -52,14 +59,25 @@ public class PathHandler {
 
     }
 
-    public String getPath(ResourcePack mapKey, Resource pathKey){
-        String resourcePath= resourcePacks.get(mapKey).get(pathKey);
+    /**
+     *
+     * @param pack il pacchetto di risorse
+     * @param resource la risorsa contenuta in quel pacchetto
+     * @return il path della risorsa
+     */
+    public String getPath(ResourcePack pack, Resource resource){
+        String resourcePath= resourcePacks.get(pack).get(resource);
         if (resourcePath!=null)
             return resourcePath;
         else
-            throw new InvalidResourceKeyException(mapKey, pathKey);
+            throw new InvalidResourceKeyException(pack, resource);
 
     }
+
+    /**
+     * @param pack il ResourcePack del quale si vogliono conoscere i Path
+     * @return le coppie chiave valore delle Resource del ResourcePack specificato con il relativo path
+     */
     public HashMap<Resource,String> getResourcePackPaths(ResourcePack pack){
         return resourcePacks.get(pack);
     }

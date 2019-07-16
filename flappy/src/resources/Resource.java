@@ -1,5 +1,8 @@
 package resources;
 
+/**
+ * Chiavi delle risorse del gioco
+ */
 public enum Resource {
     BIRD,
     HEART,
