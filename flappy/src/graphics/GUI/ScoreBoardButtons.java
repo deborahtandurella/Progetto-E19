@@ -11,8 +11,6 @@ import resources.Resource;
 import resources.ResourcePack;
 import states.menu.ScoreBoardMenu;
 
-import java.io.IOException;
-
 public class ScoreBoardButtons  extends AbstractMenuGUI {
 
     private MouseOverArea deleteButton;
@@ -27,16 +25,16 @@ public class ScoreBoardButtons  extends AbstractMenuGUI {
         int buttonWidth = container.getWidth()/3;
 
         Image deleteImage = new Image(PathHandler.getInstance().getPath(ResourcePack.BUTTON, Resource.RESETRANKBUTTON)).getScaledCopy(buttonWidth, buttonHeight);
-        deleteButton = new MouseOverArea(container, deleteImage, container.getWidth()-3*buttonWidth, container.getHeight()-2*buttonHeight, buttonWidth, buttonHeight, this);
+        deleteButton = new MouseOverArea(container, deleteImage, container.getWidth() - 3 * buttonWidth, container.getHeight() - 2 * buttonHeight, buttonWidth, buttonHeight, this);
 
         Image backImage = new Image(PathHandler.getInstance().getPath(ResourcePack.BUTTON, Resource.BACKTOMENUBUTTON)).getScaledCopy(buttonWidth, buttonHeight);
-        backButton = new MouseOverArea(container, backImage, container.getWidth()-buttonWidth, container.getHeight()-2*buttonHeight, buttonWidth, buttonHeight, this);
+        backButton = new MouseOverArea(container, backImage, container.getWidth() - buttonWidth, container.getHeight() - 2 * buttonHeight, buttonWidth, buttonHeight, this);
 
         addButton(deleteButton);
         addButton(backButton);
     }
 
-    public void render(){
+    public void render() {
         renderButtons();
     }
 
@@ -44,15 +42,8 @@ public class ScoreBoardButtons  extends AbstractMenuGUI {
     public void componentActivated(AbstractComponent source) {
         if (source == backButton)
             state.backToMenu();
-
-        else if (source == deleteButton){
-       try {
+        else if (source == deleteButton)
             state.deleteLeaderBoard();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SlickException e) {
-           e.printStackTrace();
-       }}
     }
 }
 

@@ -48,9 +48,6 @@ public class LoginMenu extends AbstractMenuState {
         ((LoginGUI) getGui()).deactivate();
     }
 
-    @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) { }
-
     public void menu(){
         stateBasedGame.enterState(GiocoAStati.GENERAL_MENU, new FadeOutTransition(), new FadeInTransition());
     }

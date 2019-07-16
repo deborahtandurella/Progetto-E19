@@ -9,3 +9,4 @@ GOLDCUP,res/sprites/leaderboard/goldcup.png
 TIMER,res/sprites/buttons/timerGUI.png
 ICON16,res/sprites/icons/icon16.tga
 ICON32,res/sprites/icons/icon32.tga
+POWERUPS,res/sprites/powerups/powerups.png

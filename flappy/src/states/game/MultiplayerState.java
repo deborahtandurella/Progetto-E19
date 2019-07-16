@@ -19,26 +19,31 @@ import network.CommandTransmitter;
 import network.ConnectionHandle;
 import network.ConnectionListener;
 import org.newdawn.slick.*;
-import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import resources.PathHandler;
+import resources.Resource;
+import resources.ResourcePack;
 import sounds.SoundPlayer;
+import states.FlappyGameState;
 import states.menu.MultiplayerEndMenu;
+import utilities.FontUtility;
+
+import static game.GameConstants.BIRD_WIDTH;
 
 
-public class MultiplayerState extends BasicGameState implements ConnectionListener, GameEventListener {
+public class MultiplayerState extends FlappyGameState implements ConnectionListener, GameEventListener {
     private OnlineLocalGame leftGame;
     private OnlineRemoteGame rightGame;
     private Canvas gameCanvas;
     private DifficultySettings settings = new DifficultySettings(1, ObstacleGeneratorType.MEDIUM);
     private SoundPlayer soundPlayer;
     private Image leftScreenCopy;
-    private Image yPanel;
-    private Image xPanel;
     private ConnectionHandle connectionHandle;
     private StateBasedGame stateBasedGame;
     private boolean gameFinished=false;
     private TimerHud timer;
-
+    private Image powerups;
+    private UnicodeFont font;
     public void setConnectionHandle(ConnectionHandle connectionHandle) {
         this.connectionHandle = connectionHandle;
         connectionHandle.addConnectionListener(this);
@@ -51,14 +56,14 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        Screen screen = new Screen((int) (gameContainer.getWidth()*0.45), (int) (gameContainer.getHeight()*0.95), 0, 0);
+        this.stateBasedGame= stateBasedGame;
+        Screen screen = new Screen((int) (gameContainer.getWidth()*0.45), (int) (gameContainer.getHeight()*0.95), 0, (int) (gameContainer.getHeight()*0.025));
         leftScreenCopy = new Image(screen.getWidth(), screen.getHeight());
         gameCanvas = new Canvas(screen, gameContainer.getGraphics());
         soundPlayer= new SoundPlayer();
-        yPanel = new Image("res/sprites/backgrounds/nero.jpg").getScaledCopy((int)(gameContainer.getWidth()*0.1), gameContainer.getHeight());
-        xPanel = new Image("res/sprites/backgrounds/nero.jpg").getScaledCopy( gameContainer.getWidth(),(int)(gameContainer.getHeight()*0.08)); //sovradimensionata per compensare imprecisioni date dalle troncature
-        this.stateBasedGame= stateBasedGame;
+        powerups = new Image(PathHandler.getInstance().getPath(ResourcePack.VARIOUS, Resource.POWERUPS)).getScaledCopy(gameContainer.getWidth(), gameContainer.getHeight());
         timer= new TimerHud(new Canvas(new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0), gameContainer.getGraphics()));
+        font =  FontUtility.makeFont((int) (gameCanvas.getScreen().getWidth()*0.04));
     }
 
     @Override
@@ -78,15 +83,13 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) {
         rightGame.render();
-        graphics.copyArea(leftScreenCopy, 0, 0);
-
+        gameCanvas.drawStringCentered(rightGame.getPlayer().getPlayerInfo().getName(),font, (float)(rightGame.getBird().getX()+BIRD_WIDTH/2), (float) rightGame.getBird().getY()-0.02f);
+        graphics.copyArea(leftScreenCopy, 0, (int) (gameContainer.getHeight()*0.025));
         leftGame.render();
-        leftScreenCopy.draw(gameContainer.getWidth()*0.55f, 0);
-
-        yPanel.draw(gameContainer.getWidth()*0.45f, 0);
-        xPanel.draw(0,gameCanvas.getScreen().getHeight());
+        gameCanvas.drawStringCentered(leftGame.getPlayer().getPlayerInfo().getName(),font, (float)(leftGame.getBird().getX()+BIRD_WIDTH/2), (float) leftGame.getBird().getY()-0.02f);
+        leftScreenCopy.draw(gameContainer.getWidth()*0.55f, gameCanvas.getScreen().getOffsetY());
+        powerups.draw(0, 0);
         timer.render((int) leftGame.getTimeLeft()/1000);
-
     }
 
     @Override
@@ -97,13 +100,14 @@ public class MultiplayerState extends BasicGameState implements ConnectionListen
 
     @Override
     public void keyPressed(int key, char c) {
+        super.keyPressed(key, c);
         if (key== Input.KEY_SPACE)
             leftGame.playerJump();
-        if (key== Input.KEY_Z)
+        if (key== Input.KEY_E)
             leftGame.powerUpUsed(PowerUpType.ROCKET);
-        if (key== Input.KEY_Q)
+        if (key== Input.KEY_W)
             leftGame.powerUpUsed(PowerUpType.GRAVITY);
-        if (key==Input.KEY_W)
+        if (key==Input.KEY_Q)
             leftGame.powerUpUsed(PowerUpType.SPEED);
 
     }

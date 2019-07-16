@@ -11,15 +11,14 @@ import graphics.Canvas;
 import graphics.Screen;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import scoreboard.ScoreBoard;
 import sounds.SoundPlayer;
+import states.FlappyGameState;
 import states.menu.SingleplayerReplayMenu;
 
-public class SingleplayerState extends BasicGameState implements GameEventListener {
+public class SingleplayerState extends FlappyGameState implements GameEventListener {
     private LocalGame game;
     private Canvas gameCanvas;
     private DifficultySettings difficulty;
@@ -61,9 +60,7 @@ public class SingleplayerState extends BasicGameState implements GameEventListen
 
     @Override
     public void keyPressed(int key, char c) {
-        if (key==Input.KEY_SPACE){
-            game.playerJump();
-        }
+        super.keyPressed(key, c);
     }
     public void setDifficulty(DifficultySettings difficulty){
         this.difficulty=difficulty;

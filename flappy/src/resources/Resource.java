@@ -44,5 +44,6 @@ public enum Resource {
     GOLDCUP,
     TIMER,
     ICON16,
-    ICON32
+    ICON32,
+    POWERUPS
 }

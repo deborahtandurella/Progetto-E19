@@ -7,7 +7,6 @@ import graphics.GUI.DifficultyMenuGUI;
 import graphics.Screen;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
@@ -32,17 +31,6 @@ public class DifficultyMenu extends AbstractMenuState {
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         renderGui();
-    }
-
-    @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) {
-
-    }
-
-    public void keyPressed(int key, char c){
-        if( key == Input.KEY_ESCAPE){
-            System.exit(0);
-        }
     }
 
     private void startGame(DifficultySettings settings){

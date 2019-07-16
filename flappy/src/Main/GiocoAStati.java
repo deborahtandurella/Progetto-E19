@@ -90,7 +90,7 @@ public class GiocoAStati extends StateBasedGame {
             container.setTargetFrameRate(200);
             container.setVSync(false);
             DisplayMode bestMode = DisplayModeManager.getBiggestWithRatio(4, 3, 60);
-            container.setDisplayMode(bestMode.getWidth(),bestMode.getHeight(),false);
+            container.setDisplayMode(bestMode.getWidth(),bestMode.getHeight(),true);
             PathHandler pathHandler= PathHandler.getInstance();
             container.setIcons(new String[]{pathHandler.getPath(ResourcePack.VARIOUS, Resource.ICON32),pathHandler.getPath(ResourcePack.VARIOUS, Resource.ICON16)});
             container.start();

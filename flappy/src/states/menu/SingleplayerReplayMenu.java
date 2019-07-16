@@ -6,7 +6,6 @@ import graphics.GUI.SingleplayerReplayMenuGUI;
 import graphics.Screen;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
@@ -59,10 +58,6 @@ public class SingleplayerReplayMenu extends AbstractMenuState implements ScoreBo
         renderGui();
     }
 
-    @Override
-    public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i){
-    }
-
    public ScoreBoard getScoreBoard(){
         return scoreBoard;
     }
@@ -72,11 +67,6 @@ public class SingleplayerReplayMenu extends AbstractMenuState implements ScoreBo
         return newRecord;
     }
 
-    public void keyPressed(int key, char c){
-        if( key == Input.KEY_ESCAPE){
-            System.exit(0);
-        }
-    }
     public void rematch(){
         try {
             stateBasedGame.getState(GiocoAStati.SINGLEPLAYER).init(container,stateBasedGame);
