@@ -14,14 +14,35 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ *  Reagisce agli eventi di gioco emettendo un suono corrispondente, se presente
+ */
 public class SoundPlayer implements GameEventListener {
     private HashMap<GameEventType, Sound> sounds;
-    private Music music;
+
     public SoundPlayer(){
-        sounds=new HashMap<GameEventType, Sound>();
+        sounds=new HashMap<>();
+        initializeSounds();
+    }
+
+    /**
+     * Emette un suono corrispondente all'evento segnalato
+     * @param event evento segnalato
+     */
+    @Override
+    public void gameEvent(GameEventType event) {
+        if(sounds.containsKey(event)){
+            sounds.get(event).play();
+        }
+    }
+
+    /**
+     *  Il ResourcePack dei suoni viene confrontando con GameEvents per individuare i suoni che corrispondono ad aventi di gioco
+     */
+    private void initializeSounds(){
         HashMap<Resource, String> soundPaths = PathHandler.getInstance().getResourcePackPaths(ResourcePack.SOUND);
-        Set<GameEventType> gameEvents= new HashSet<GameEventType>(Arrays.asList(GameEventType.values()));
-        Set<String> gameEventsStrings= new HashSet<String>();
+        Set<GameEventType> gameEvents= new HashSet<>(Arrays.asList(GameEventType.values()));
+        Set<String> gameEventsStrings= new HashSet<>();
         for (GameEventType event: gameEvents) {
             gameEventsStrings.add(event.toString());
         }
@@ -34,12 +55,6 @@ public class SoundPlayer implements GameEventListener {
                     e.printStackTrace();
                 }
             }
-        }
-    }
-    @Override
-    public void gameEvent(GameEventType event) {
-        if(sounds.containsKey(event)){
-            sounds.get(event).play();
         }
     }
 }

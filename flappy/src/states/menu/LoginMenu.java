@@ -28,7 +28,7 @@ public class LoginMenu extends AbstractMenuState {
         MusicPlayer musicPlayer = new MusicPlayer();
         Screen screen = new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
         setGui(new LoginGUI(gameContainer, screen, this));
-        musicPlayer.backgroundMusic();
+        musicPlayer.playBackgroundMusic();
     }
 
     @Override
