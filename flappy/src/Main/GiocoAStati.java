@@ -2,12 +2,14 @@ package Main;
 
 import game.player.PlayerInfo;
 import org.lwjgl.LWJGLException;
-import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+import resources.PathHandler;
+import resources.Resource;
+import resources.ResourcePack;
 import scoreboard.ScoreBoard;
 import states.game.MultiplayerState;
 import states.game.SingleplayerState;
@@ -87,10 +89,11 @@ public class GiocoAStati extends StateBasedGame {
             container.setSmoothDeltas(false);
             container.setTargetFrameRate(200);
             container.setVSync(false);
-            DisplayMode[] modes = Display.getAvailableDisplayModes();
-
-            DisplayMode bestMode = DisplayModeManager.getBiggestWithRatio(4, 3);
+            DisplayMode bestMode = DisplayModeManager.getBiggestWithRatio(4, 3, 60);
             container.setDisplayMode(bestMode.getWidth(),bestMode.getHeight(),false);
+            //container.setIcon("bird16.tga");
+            PathHandler pathHandler= PathHandler.getInstance();
+            container.setIcons(new String[]{pathHandler.getPath(ResourcePack.VARIOUS, Resource.ICON32),pathHandler.getPath(ResourcePack.VARIOUS, Resource.ICON16)});
             container.start();
         } catch (SlickException | LWJGLException e) {
             e.printStackTrace();
