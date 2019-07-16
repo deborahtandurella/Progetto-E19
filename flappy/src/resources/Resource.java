@@ -42,5 +42,7 @@ public enum Resource {
     BUTTON_BG,
     FLAPPYFONT,
     GOLDCUP,
-    TIMER
+    TIMER,
+    ICON16,
+    ICON32
 }
