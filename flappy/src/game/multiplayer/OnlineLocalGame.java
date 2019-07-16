@@ -20,7 +20,7 @@ import game.player.MultiModePlayer;
 import graphics.Canvas;
 import graphics.HUD.MultiplayerHud;
 import graphics.HUD.PlayerHud;
-import network.CommandHandler;
+import network.CommandTransmitter;
 import network.commands.*;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -44,7 +44,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     private ObstacleGenerator obstacleGenerator;
     private Image background;
     private PlayerHud hud;
-    private CommandHandler commandHandler;
+    private CommandTransmitter transmitter;
     private int IDcount;
     private long startTime;
     private double maxSpeed= 2;
@@ -52,11 +52,11 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     private boolean gameOver = false;
 
 
-    public OnlineLocalGame(Canvas canvas, DifficultySettings settings, CommandHandler commandHandler, MultiModePlayer player) {
+    public OnlineLocalGame(Canvas canvas, DifficultySettings settings, CommandTransmitter transmitter, MultiModePlayer player) {
         this.canvas = canvas;
         this.gameSpeed = settings.getSpeed();
         this.obstacleGenerator = settings.getObstacleGenerator().create(canvas);
-        this.commandHandler= commandHandler;
+        this.transmitter= transmitter;
         this.player= player;
         entities = new CopyOnWriteArrayList<>();
         coins = new CopyOnWriteArrayList<>();
@@ -110,7 +110,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         if (!bird.outOfBounds()){
             bird.jump();
             notifyEvent(GameEventType.JUMP);
-            commandHandler.sendCommand(new JumpCommand(bird.getX(), bird.getY()));
+            transmitter.sendCommand(new JumpCommand(bird.getX(), bird.getY()));
         }
     }
     private void checkOutOfBounds(){
@@ -133,7 +133,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
             gameSpeed=minSpeed;
         else
             gameSpeed+=change;
-        commandHandler.sendCommand(new SpeedChangedCommand(gameSpeed));
+        transmitter.sendCommand(new SpeedChangedCommand(gameSpeed));
     }
     public BirdLogicComponent getBird() {
         return bird;
@@ -150,7 +150,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     private void increaseScore(){
         player.addScore();
         changeSpeed(+0.012);
-        commandHandler.sendCommand(new IncreaseScoreCommand());
+        transmitter.sendCommand(new IncreaseScoreCommand());
     }
     private void checkObstacleCollisions(){
         for(ObstacleLogicComponent obstacle : obstacles)
@@ -161,7 +161,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         notifyEvent(GameEventType.COLLISION);
         bird.acquireImmunity();
         changeSpeed(-0.07);
-        commandHandler.sendCommand(new ObstacleCollisionCommand(Objects.requireNonNull(getEntity(obstacle))));
+        transmitter.sendCommand(new ObstacleCollisionCommand(Objects.requireNonNull(getEntity(obstacle))));
         if(obstacle.destroyOnHit())
             removeObstacle(obstacle);
 
@@ -170,7 +170,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     private void checkCoinCollisions(){
         for(CoinLogicComponent coin: coins){
             if(coin.collide(bird)){
-                commandHandler.sendCommand(new CoinCollisionCommand(Objects.requireNonNull(getEntity(coin))));
+                transmitter.sendCommand(new CoinCollisionCommand(Objects.requireNonNull(getEntity(coin))));
                 removeCoin(coin);
                 player.addCoin();
             }
@@ -214,27 +214,27 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     }
     private void gameOver(){
         gameOver=true;
-        commandHandler.sendCommand(new GameOverCommand());
+        transmitter.sendCommand(new GameOverCommand());
         notifyEvent(GameEventType.GAMEOVER);
     }
     @Override
     public void onCoinGenerated(Entity coin) {
         addEntity(coin);
         coins.add((CoinLogicComponent) coin.getLogicComponent());
-        commandHandler.sendCommand(new CoinGeneratedCommand(coin));
+        transmitter.sendCommand(new CoinGeneratedCommand(coin));
 
     }
     public void powerUpUsed(PowerUpType powerUpType){
         PowerUp powerUp= PowerUpShop.buy(powerUpType, player);
         if (powerUp!=null)
-            commandHandler.sendCommand(new PowerUpCommand(powerUp));
+            transmitter.sendCommand(new PowerUpCommand(powerUp));
     }
     public Canvas getCanvas() {
         return canvas;
     }
     public void powerUpReceived(PowerUp powerUp){
         if (powerUp.getAffectedGame()== PowerUp.REMOTE_GAME){
-            commandHandler.sendCommand(new PowerUpCommand(powerUp));
+            transmitter.sendCommand(new PowerUpCommand(powerUp));
         }
     }
     public void changeSpeedLimits(double change){
@@ -245,7 +245,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     public void onObstacleGenerated(Entity obstacle) {
         addEntity(obstacle);
         obstacles.add((ObstacleLogicComponent) obstacle.getLogicComponent());
-        commandHandler.sendCommand(new ObstacleGeneratedCommand(obstacle));
+        transmitter.sendCommand(new ObstacleGeneratedCommand(obstacle));
     }
     public boolean isOver(){
         return gameOver;

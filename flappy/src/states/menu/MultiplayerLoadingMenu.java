@@ -3,7 +3,6 @@ package states.menu;
 import Main.GiocoAStati;
 import graphics.GUI.MultiplayerLoadingGUI;
 import graphics.Screen;
-import network.CommandHandler;
 import network.ConnectionListener;
 import network.NetworkHandle;
 import org.newdawn.slick.GameContainer;
@@ -19,10 +18,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MultiplayerLoadingMenu extends AbstractMenuState implements ConnectionListener {
-    private CommandHandler commandHandler;
+    private NetworkHandle networkHandle;
     private GiocoAStati giocoAStati;
     private boolean connecting;
-    private NetworkHandle networkHandle;
     @Override
     public int getID() {
         return GiocoAStati.MULTI_LOADING;
@@ -61,7 +59,6 @@ public class MultiplayerLoadingMenu extends AbstractMenuState implements Connect
     public void join(String ip, int port){
         networkHandle= new NetworkHandle();
         networkHandle.addConnectionListener(this);
-        setCommandHandler(networkHandle);
         Thread connectionThread = new Thread(() -> networkHandle.setConnection(ip,port, giocoAStati.getPlayerInfo().getName()));
         connectionThread.start();
     }
@@ -69,7 +66,6 @@ public class MultiplayerLoadingMenu extends AbstractMenuState implements Connect
     public void host(int port){
         networkHandle = new NetworkHandle();
         networkHandle.addConnectionListener(this);
-        setCommandHandler(networkHandle);
         Thread connectionThread = new Thread(() -> networkHandle.setConnection(port, giocoAStati.getPlayerInfo().getName()));
         connectionThread.start();
     }
@@ -79,7 +75,7 @@ public class MultiplayerLoadingMenu extends AbstractMenuState implements Connect
             @Override
             public void run() {
  //               ((MultiplayerLoadingGUI)getGui()).connected();
-                ((MultiplayerState) giocoAStati.getState(GiocoAStati.MULTIPLAYER)).setCommandHandler(commandHandler);
+                ((MultiplayerState) giocoAStati.getState(GiocoAStati.MULTIPLAYER)).setNetworkHandle(networkHandle);
                 connecting=true;
             }
         }, 1000);
@@ -92,14 +88,10 @@ public class MultiplayerLoadingMenu extends AbstractMenuState implements Connect
         }, 4000);
     }
 
-    private void setCommandHandler(CommandHandler commandHandler) {
-        this.commandHandler = commandHandler;
-    }
-
 
     @Override
     public void connectionStatus(boolean connected) {
-        commandHandler.removeListener(this);
+        networkHandle.removeListener(this);
         if(connected)
             startLoading();
         else {

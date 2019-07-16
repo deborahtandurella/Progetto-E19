@@ -91,7 +91,6 @@ public class GiocoAStati extends StateBasedGame {
             container.setVSync(false);
             DisplayMode bestMode = DisplayModeManager.getBiggestWithRatio(4, 3, 60);
             container.setDisplayMode(bestMode.getWidth(),bestMode.getHeight(),false);
-            //container.setIcon("bird16.tga");
             PathHandler pathHandler= PathHandler.getInstance();
             container.setIcons(new String[]{pathHandler.getPath(ResourcePack.VARIOUS, Resource.ICON32),pathHandler.getPath(ResourcePack.VARIOUS, Resource.ICON16)});
             container.start();

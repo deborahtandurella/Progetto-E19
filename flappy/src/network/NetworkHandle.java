@@ -11,12 +11,12 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class NetworkHandle implements CommandHandler {
+public class NetworkHandle  {
     private Socket socket;
     private ServerSocket serverSocket;
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;
-
+    private NetworkReceiver receiver;
     private CopyOnWriteArrayList<ConnectionListener> connectionListeners;
     private boolean connected = false;
     private boolean closingRequested = false;
@@ -75,33 +75,29 @@ public class NetworkHandle implements CommandHandler {
             }
         }
     }
-
-    private void listenCommand() {
+    private void listen() {
         try {
-            Command command = (Command) inputStream.readObject();
-            command.execute(remoteGame, localGame);
+            receiver.receive(inputStream.readObject());
         } catch (IOException e) {
             setConnected(false);
             closeConnection();
-        } catch (ClassNotFoundException | ClassCastException e) {
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
-    public void startListening(OnlineRemoteGame remoteGame, OnlineLocalGame localGame){
-        if (connected){
-            this.localGame= localGame;
-            this.remoteGame = remoteGame;
+    public void startListening(){
             new Thread(() -> {
                 while (connected) {
-                    listenCommand();
+                    if (receiver!=null)
+                        listen();
                 }
                 closeConnection();
             }).start();
-        }
+
     }
-    public void sendCommand(Command command) {
+    public void sendObject(Object object) {
         try {
-            outputStream.writeObject(command);
+            outputStream.writeObject(object);
         } catch (IOException e) {
            setConnected(false);
            closeConnection();
@@ -144,5 +140,9 @@ public class NetworkHandle implements CommandHandler {
     }
     public PlayerInfo getOthersInfo(){
         return new PlayerInfo(othersName);
+    }
+
+    public void setReceiver(NetworkReceiver receiver) {
+        this.receiver = receiver;
     }
 }
