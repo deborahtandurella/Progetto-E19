@@ -3,14 +3,14 @@ package game.player;
 /**
  *  Risultato di una partita
  */
-public class Result implements Comparable{
+public class Result implements Comparable<Result>{
 
     /**
      * Nome del giocatore
      */
     private String playerName;
     /**
-     * Risultato
+     * Punteggio
      */
     private int score;
 
@@ -41,7 +41,7 @@ public class Result implements Comparable{
     }
 
     @Override
-    public int compareTo(Object o) {
-        return ((Result)o).getScore()-getScore();
+    public int compareTo(Result result) {
+        return result.getScore()-this.score;
     }
 }

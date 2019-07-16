@@ -10,13 +10,13 @@ import org.newdawn.slick.gui.AbstractComponent;
 import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
-import scoreboard.ScoreInterface;
+import scoreboard.ScoreBoardMenu;
 
 import java.awt.*;
 
 public class ScoreBoardMenuGUI extends AbstractMenuGUI {
 
-    private ScoreInterface state;
+    private ScoreBoardMenu state;
     private Image pergamena;
     private String scoreName;
     private String points;
@@ -26,7 +26,7 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
     private UnicodeFont versionFont;
 
 
-    public ScoreBoardMenuGUI(GameContainer container, Screen screen, ScoreInterface state) throws SlickException {
+    public ScoreBoardMenuGUI(GameContainer container, Screen screen, ScoreBoardMenu state) throws SlickException {
         super(container, screen);
         this.state=state;
 
@@ -60,8 +60,7 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
         pergamena.draw(getContainer().getWidth()/2f-pergamena.getWidth()/2f, 3*getContainer().getHeight()/100f);
         uniFontMessage.drawString(37*getContainer().getWidth()/100f, 18*getContainer().getHeight()/100f, scoreName, org.newdawn.slick.Color.black);
         uniFontMessage.drawString(61*getContainer().getWidth()/100f, 18*getContainer().getHeight()/100f, points, org.newdawn.slick.Color.black);
-        if(state.getScoreBoard().getnewRecord()){
-
+        if(state.hasNewRecord()){
             getContainer().getGraphics().setFont(versionFont);
             getContainer().getGraphics().drawString(newRecord, 37*getContainer().getWidth()/100f , 11 * getContainer().getHeight() / 100f);
         }

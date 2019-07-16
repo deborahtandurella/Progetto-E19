@@ -6,7 +6,10 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
 
-public class PlayerHud {
+/**
+ *  HUD d
+ */
+public abstract class PlayerHud {
     private Player player;
     private Canvas canvas;
     private UnicodeFont font;

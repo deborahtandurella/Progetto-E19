@@ -12,11 +12,8 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 import scoreboard.ScoreBoard;
-import scoreboard.ScoreInterface;
 
-import java.io.IOException;
-
-public class ScoreBoardMenu extends AbstractMenuState implements ScoreInterface {
+public class ScoreBoardMenu extends AbstractMenuState implements scoreboard.ScoreBoardMenu {
     private StateBasedGame stateBasedGame;
     public Screen screen;
     private GameContainer container;
@@ -61,6 +58,10 @@ public class ScoreBoardMenu extends AbstractMenuState implements ScoreInterface 
         return scoreBoard;
     }
 
+    @Override
+    public boolean hasNewRecord() {
+        return false;
+    }
 
 
     public void keyPressed(int key, char c){
@@ -74,9 +75,10 @@ public class ScoreBoardMenu extends AbstractMenuState implements ScoreInterface 
         stateBasedGame.enterState(GiocoAStati.GENERAL_MENU,new FadeOutTransition(),new FadeInTransition());
     }
 
-    public void deleteLeaderBoard() throws IOException, SlickException {
-        scoreBoard.deleteScoreBoard();
+    public void deleteLeaderBoard() throws SlickException {
+        scoreBoard.clearScoreBoard();
         setGui(new ScoreBoardMenuGUI(container, screen, this));
     }
+
 
 }

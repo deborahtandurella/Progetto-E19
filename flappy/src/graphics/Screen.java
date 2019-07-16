@@ -2,7 +2,7 @@ package graphics;
 
 
 /**
- * Questa classe rappresenta uno schermo di gioco
+ * Questa classe rappresenta uno schermo, inteso come un'area rettangolare della finestra dell'applicazione
  *
  * width: larghezza dello schermo
  * height: altezza dello schermo
@@ -15,6 +15,12 @@ public class Screen {
     private int offsetX;
     private int offsetY;
 
+    /**
+     * @param width larghezza dello schermo
+     * @param height altezza dello schermo
+     * @param offsetX offset sull'asse delle ascisse dello schermo
+     * @param offsetY offset sull'asse delle ordinate dello schermo
+     */
     public Screen(int width, int height, int offsetX, int offsetY) {
         this.width = width;
         this.height = height;

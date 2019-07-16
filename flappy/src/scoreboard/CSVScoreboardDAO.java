@@ -14,6 +14,7 @@ public class CSVScoreboardDAO implements ScoreboardDAO {
 
     }
 
+    @Override
     synchronized public ArrayList<Result> readScoreBoard( ) throws DatabaseException {
         try {
             ArrayList<Result> results = new ArrayList<>();
@@ -30,6 +31,7 @@ public class CSVScoreboardDAO implements ScoreboardDAO {
         }
     }
 
+    @Override
     synchronized public void writePlayers(ArrayList<Result> results) throws DatabaseException {
         try {
             PrintWriter writer = new PrintWriter(new FileWriter(new File("res/records/leaderboard_E.csv")));

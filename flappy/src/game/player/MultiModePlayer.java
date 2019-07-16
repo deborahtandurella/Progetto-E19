@@ -9,10 +9,11 @@ public class MultiModePlayer implements  Player{
      * Il punteggio del giocatore
      */
     private int score;
-    /**
-     * Le informazioni non mutevoli sul giocatore
-     */
     private PlayerInfo playerInfo;
+
+    /**
+     * @param playerInfo le informazioni non mutevoli sul giocatore
+     */
     public MultiModePlayer(PlayerInfo playerInfo) {
         this.playerInfo = playerInfo;
         score= 0;
@@ -37,6 +38,7 @@ public class MultiModePlayer implements  Player{
         return coins;
     }
 
+    @Override
     public PlayerInfo getPlayerInfo() {
         return playerInfo;
     }

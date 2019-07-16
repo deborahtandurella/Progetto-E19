@@ -12,13 +12,14 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 import scoreboard.ScoreBoard;
-import scoreboard.ScoreInterface;
+import scoreboard.ScoreBoardMenu;
 
-public class SingleplayerReplayMenu extends AbstractMenuState implements ScoreInterface {
+public class SingleplayerReplayMenu extends AbstractMenuState implements ScoreBoardMenu {
     private GameContainer container;
     private StateBasedGame stateBasedGame;
     private ScoreBoardMenuGUI scoregui;
     private ScoreBoard scoreBoard;
+    private boolean newRecord;
 
     public SingleplayerReplayMenu( ){
 
@@ -46,6 +47,12 @@ public class SingleplayerReplayMenu extends AbstractMenuState implements ScoreIn
     }
 
     @Override
+    public void leave(GameContainer container, StateBasedGame game) throws SlickException {
+        super.leave(container, game);
+        newRecord=false;
+    }
+
+    @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         graphics.clearWorldClip();
         scoregui.render();
@@ -58,6 +65,11 @@ public class SingleplayerReplayMenu extends AbstractMenuState implements ScoreIn
 
    public ScoreBoard getScoreBoard(){
         return scoreBoard;
+    }
+
+    @Override
+    public boolean hasNewRecord() {
+        return newRecord;
     }
 
     public void keyPressed(int key, char c){
@@ -83,4 +95,7 @@ public class SingleplayerReplayMenu extends AbstractMenuState implements ScoreIn
 
     }
 
+    public void newRecord() {
+        newRecord=true;
+    }
 }

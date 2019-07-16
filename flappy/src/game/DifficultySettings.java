@@ -19,10 +19,16 @@ public class DifficultySettings {
         this.obstacleGenerator = obstacleGenerator;
     }
 
+    /**
+     * @return la velocità di gioco
+     */
     public double getSpeed() {
         return speed;
     }
 
+    /**
+     * @return la tipologia di generatoe di ostacoli
+     */
     public ObstacleGeneratorType getObstacleGenerator() {
         return obstacleGenerator;
     }

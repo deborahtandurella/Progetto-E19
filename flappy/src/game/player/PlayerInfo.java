@@ -10,6 +10,9 @@ public class PlayerInfo {
         this.name = name;
     }
 
+    /**
+     * @return il nome del giocatore
+     */
     public String getName() {
         return name;
     }

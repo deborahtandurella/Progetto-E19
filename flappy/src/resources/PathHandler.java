@@ -34,6 +34,7 @@ public class PathHandler {
         resourcePacks.put(ResourcePack.SOUND,soundPaths);
         resourcePacks.put(ResourcePack.VARIOUS,variousPaths);
     }
+
     public static synchronized PathHandler getInstance(){
         if (instance == null)
             try {

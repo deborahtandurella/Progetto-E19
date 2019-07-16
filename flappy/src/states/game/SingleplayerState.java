@@ -17,6 +17,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import scoreboard.ScoreBoard;
 import sounds.SoundPlayer;
+import states.menu.SingleplayerReplayMenu;
 
 public class SingleplayerState extends BasicGameState implements GameEventListener {
     private LocalGame game;
@@ -71,7 +72,9 @@ public class SingleplayerState extends BasicGameState implements GameEventListen
     @Override
     public void gameEvent(GameEventType event) {
         if(event==GameEventType.GAMEOVER){
-            scoreBoard.compareScore(new Result(game.getPlayer()));
+            if (scoreBoard.addResult(new Result(game.getPlayer()))){
+                ((SingleplayerReplayMenu)stateGame.getState(GiocoAStati.SINGLE_REPLAY_MENU)).newRecord();
+            }
             stateGame.enterState(GiocoAStati.SINGLE_REPLAY_MENU);
         }
     }
