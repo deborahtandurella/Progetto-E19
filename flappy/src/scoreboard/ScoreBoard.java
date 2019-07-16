@@ -9,14 +9,14 @@ import java.util.Collections;
 public class ScoreBoard {
 
   private ArrayList<Result> results;
-  private ScoreBoardPersistencyFacade persistencyFacade;
+  private ScoreboardDAO scoreboardDAO;
   private static final int N_PLAYERS = 10;
   private boolean newRecord;
 
 
   public ScoreBoard() throws IOException {
-      this.persistencyFacade = new ScoreBoardPersistencyFacade();
-      results= persistencyFacade.readScoreBoard();
+      this.scoreboardDAO = CSVScoreboardDAO.getInstance();
+      results= scoreboardDAO.readScoreBoard();
       newRecord = false;
   }
 
@@ -36,7 +36,7 @@ public class ScoreBoard {
   private void newRecord(){
     newRecord=true;
     try {
-      persistencyFacade.writePlayers(results);
+      scoreboardDAO.writePlayers(results);
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -68,11 +68,15 @@ public class ScoreBoard {
     newRecord = false;
   }
 
-  public void deleteScoreBoard() throws IOException {
+  public void deleteScoreBoard() {
     for (Result result : results){
       result.setName("-------------");
       result.setScore(0);
     }
-    persistencyFacade.writePlayers(results);
+    try {
+      scoreboardDAO.writePlayers(results);
+    } catch (DatabaseException e){
+      e.printStackTrace();
+    }
   }
 }
