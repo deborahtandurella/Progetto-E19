@@ -12,6 +12,9 @@ import java.util.Random;
 import static game.GameConstants.COIN_SIZE;
 import static game.GameConstants.PIPE_WIDTH;
 
+/**
+ *  Generatore di monete. E' necessario che ascolti un ObstacleGenerator perchè possa produrre monete in modo sincronizzato
+ */
 public class CoinGenerator implements ObstacleListener {
     private ArrayList<CoinListener> listeners;
     private Canvas canvas;

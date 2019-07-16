@@ -11,7 +11,9 @@ import java.util.Random;
 
 import static game.GameConstants.HEART_SIZE;
 import static game.GameConstants.PIPE_WIDTH;
-
+/**
+ *  Generatore di cuori. E' necessario che ascolti un ObstacleGenerator perchè possa generare cuori in modo sincronizzato
+ */
 public class HeartGenerator implements ObstacleListener {
     private ArrayList<HeartListener> listeners;
     private Canvas canvas;

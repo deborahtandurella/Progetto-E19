@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import static game.GameConstants.PIPE_SPEED;
 import static game.GameConstants.PIPE_WIDTH;
 
+/**
+ *  Astrazione di un generatore di ostacoli.
+ */
 public abstract class ObstacleGenerator  {
     public static final double PIPE_PERIOD =( PIPE_WIDTH*0.5 + 0.5 ) / (PIPE_SPEED);
     private double time=0;

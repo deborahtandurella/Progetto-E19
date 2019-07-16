@@ -3,7 +3,7 @@ package game.itemGeneration.obstacle;
 import graphics.Canvas;
 
 /**
- *  Tipi di ObstacleGenerator disponibili, utilizzata anche come Factory per generarli
+ *  Tipi di ObstacleGenerator disponibili, utilizzata anche come Factory per crearli
  */
 public enum ObstacleGeneratorType {
     EASY {
