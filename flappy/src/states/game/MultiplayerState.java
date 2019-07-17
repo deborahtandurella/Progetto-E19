@@ -1,6 +1,6 @@
 package states.game;
 
-import Main.GiocoAStati;
+import Main.FlappyGameState;
 import game.DifficultySettings;
 import game.gameEvents.GameEventListener;
 import game.gameEvents.GameEventType;
@@ -24,14 +24,13 @@ import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
 import sounds.SoundPlayer;
-import states.FlappyGameState;
 import states.menu.MultiplayerEndMenu;
 import utilities.FontUtility;
 
 import static game.GameConstants.BIRD_WIDTH;
 
 
-public class MultiplayerState extends FlappyGameState implements ConnectionListener, GameEventListener {
+public class MultiplayerState extends states.FlappyGameState implements ConnectionListener, GameEventListener {
     private OnlineLocalGame leftGame;
     private OnlineRemoteGame rightGame;
     private Canvas gameCanvas;
@@ -51,7 +50,7 @@ public class MultiplayerState extends FlappyGameState implements ConnectionListe
 
     @Override
     public int getID() {
-        return GiocoAStati.MULTIPLAYER;
+        return FlappyGameState.MULTIPLAYER;
     }
 
     @Override
@@ -70,7 +69,7 @@ public class MultiplayerState extends FlappyGameState implements ConnectionListe
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         super.enter(container, game);
         gameFinished=false;
-        PlayerInfo myPlayer= ((GiocoAStati) game).getPlayerInfo();
+        PlayerInfo myPlayer= ((FlappyGameState) game).getPlayerInfo();
         leftGame= new OnlineLocalGame(gameCanvas, settings, new CommandTransmitter(connectionHandle), new MultiModePlayer(myPlayer));
         leftGame.addListener(soundPlayer);
         leftGame.addListener(this);
@@ -116,7 +115,7 @@ public class MultiplayerState extends FlappyGameState implements ConnectionListe
     public void connectionStatus(boolean connected) {
         if (!connected){
             if (isAcceptingInput()&&!gameFinished) {
-                stateBasedGame.enterState(GiocoAStati.CONNECTION_ERROR_MENU);
+                stateBasedGame.enterState(FlappyGameState.CONNECTION_ERROR_MENU);
             }
         }
     }
@@ -127,9 +126,9 @@ public class MultiplayerState extends FlappyGameState implements ConnectionListe
             if (leftGame.isOver() && rightGame.isOver()){
                 gameFinished=true;
                 connectionHandle.closeConnection();
-                ((MultiplayerEndMenu)stateBasedGame.getState(GiocoAStati.MULTI_END_MENU))
+                ((MultiplayerEndMenu)stateBasedGame.getState(FlappyGameState.MULTI_END_MENU))
                         .setResults(new Result(leftGame.getPlayer()), new Result(rightGame.getPlayer()));
-                stateBasedGame.enterState(GiocoAStati.MULTI_END_MENU);
+                stateBasedGame.enterState(FlappyGameState.MULTI_END_MENU);
             }
         }
     }

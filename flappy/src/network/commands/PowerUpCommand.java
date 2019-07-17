@@ -14,6 +14,9 @@ public class PowerUpCommand extends Command {
 
     private PowerUp powerUp;
 
+    /**
+     * @param powerUp  il powerUp attivato
+     */
     public PowerUpCommand(PowerUp powerUp) {
         this.powerUp = powerUp;
     }

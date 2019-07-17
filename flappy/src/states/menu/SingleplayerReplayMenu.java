@@ -1,6 +1,6 @@
 package states.menu;
 
-import Main.GiocoAStati;
+import Main.FlappyGameState;
 import graphics.GUI.ScoreBoardMenuGUI;
 import graphics.GUI.SingleplayerReplayMenuGUI;
 import graphics.Screen;
@@ -25,12 +25,12 @@ public class SingleplayerReplayMenu extends AbstractMenuState implements ScoreBo
     }
     @Override
     public int getID() {
-        return GiocoAStati.SINGLE_REPLAY_MENU;
+        return FlappyGameState.SINGLE_REPLAY_MENU;
     }
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        scoreBoard= ((GiocoAStati)stateBasedGame).getScoreBoard();
+        scoreBoard= ((FlappyGameState)stateBasedGame).getScoreBoard();
         this.container = gameContainer;
         this.stateBasedGame = stateBasedGame;
         Screen screen = new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
@@ -69,19 +69,19 @@ public class SingleplayerReplayMenu extends AbstractMenuState implements ScoreBo
 
     public void rematch(){
         try {
-            stateBasedGame.getState(GiocoAStati.SINGLEPLAYER).init(container,stateBasedGame);
+            stateBasedGame.getState(FlappyGameState.SINGLEPLAYER).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();
         }
-        stateBasedGame.enterState(GiocoAStati.SINGLEPLAYER,new FadeOutTransition(),new FadeInTransition());
+        stateBasedGame.enterState(FlappyGameState.SINGLEPLAYER,new FadeOutTransition(),new FadeInTransition());
     }
     public void noRematch(){
         try {
-            stateBasedGame.getState(GiocoAStati.GENERAL_MENU).init(container,stateBasedGame);
+            stateBasedGame.getState(FlappyGameState.GENERAL_MENU).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();
         }
-        stateBasedGame.enterState(GiocoAStati.GENERAL_MENU,new FadeOutTransition(),new FadeInTransition());
+        stateBasedGame.enterState(FlappyGameState.GENERAL_MENU,new FadeOutTransition(),new FadeInTransition());
 
     }
 

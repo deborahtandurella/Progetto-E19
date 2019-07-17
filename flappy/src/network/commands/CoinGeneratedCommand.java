@@ -17,6 +17,9 @@ public class CoinGeneratedCommand extends Command {
     private Double y;
     private Integer ID;
 
+    /**
+     * @param coinEntity la moneta generata
+     */
     public CoinGeneratedCommand(Entity coinEntity) {
         CoinLogicComponent coin = (CoinLogicComponent) coinEntity.getLogicComponent();
         x= coin.getX();

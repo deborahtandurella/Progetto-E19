@@ -1,6 +1,6 @@
 package states.menu;
 
-import Main.GiocoAStati;
+import Main.FlappyGameState;
 import game.player.Result;
 import graphics.GUI.MultiplayerEndMenuGUI;
 import graphics.Screen;
@@ -21,7 +21,7 @@ public class MultiplayerEndMenu extends AbstractMenuState {
 
     @Override
     public int getID() {
-        return GiocoAStati.MULTI_END_MENU;
+        return FlappyGameState.MULTI_END_MENU;
     }
 
     @Override
@@ -46,7 +46,7 @@ public class MultiplayerEndMenu extends AbstractMenuState {
     }
 
     public void backToMenu(){
-        stateBasedGame.enterState(GiocoAStati.GENERAL_MENU,new FadeOutTransition(),new FadeInTransition());
+        stateBasedGame.enterState(FlappyGameState.GENERAL_MENU,new FadeOutTransition(),new FadeInTransition());
     }
     public void setResults(Result localPlayerResult, Result remotePlayerResult){
         this.localPlayerResult= localPlayerResult;

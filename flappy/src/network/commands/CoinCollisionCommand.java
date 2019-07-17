@@ -13,6 +13,10 @@ public class CoinCollisionCommand extends Command {
     private static final long serialVersionUID = -539210512249000005L;
 
     private Integer ID;
+
+    /**
+     * @param coin la moneta con cui è avvenuta la collisione
+     */
     public CoinCollisionCommand(Entity coin){
         ID= coin.getID();
     }

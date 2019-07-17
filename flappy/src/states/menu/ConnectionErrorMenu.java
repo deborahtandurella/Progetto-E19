@@ -1,6 +1,6 @@
 package states.menu;
 
-import Main.GiocoAStati;
+import Main.FlappyGameState;
 import graphics.GUI.ConnectionErrorGUI;
 import graphics.Screen;
 import org.newdawn.slick.GameContainer;
@@ -15,7 +15,7 @@ public class ConnectionErrorMenu extends AbstractMenuState{
 
     @Override
     public int getID() {
-        return GiocoAStati.CONNECTION_ERROR_MENU;
+        return FlappyGameState.CONNECTION_ERROR_MENU;
     }
 
     @Override
@@ -31,6 +31,6 @@ public class ConnectionErrorMenu extends AbstractMenuState{
     }
 
     public void backToMenu(){
-        stateBasedGame.enterState(GiocoAStati.MULTI_MENU, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(FlappyGameState.MULTI_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 }

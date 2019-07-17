@@ -16,6 +16,9 @@ public class ObstacleGeneratedCommand extends Command {
     private SerializableEntity obstacle;
     private int ID;
 
+    /**
+     * @param obstacleEntity l'ostacolo generato
+     */
     public ObstacleGeneratedCommand(Entity obstacleEntity) {
         obstacle= ((ObstacleLogicComponent) obstacleEntity.getLogicComponent()).getSerializableVersion();
         ID= obstacleEntity.getID();

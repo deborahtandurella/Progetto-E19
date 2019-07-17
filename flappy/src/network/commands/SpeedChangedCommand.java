@@ -11,6 +11,9 @@ public class SpeedChangedCommand extends Command {
     private static final long serialVersionUID = -539210512249000008L;
     private double newSpeed;
 
+    /**
+     * @param newSpeed la nuova velocità
+     */
     public SpeedChangedCommand(double newSpeed) {
         this.newSpeed = newSpeed;
     }

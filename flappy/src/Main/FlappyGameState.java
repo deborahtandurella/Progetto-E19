@@ -18,7 +18,7 @@ import utilities.DisplayModeManager;
 
 import java.io.IOException;
 
-public class GiocoAStati extends StateBasedGame {
+public class FlappyGameState extends StateBasedGame {
 
     public static final int LOGIN = 0;
     public static final int GENERAL_MENU = 1;
@@ -35,7 +35,7 @@ public class GiocoAStati extends StateBasedGame {
     private PlayerInfo playerInfo;
     private ScoreBoard scoreBoard;
 
-    public GiocoAStati() {
+    public FlappyGameState() {
         super("Flappy Bird");
         try {
             scoreBoard = new ScoreBoard();
@@ -44,10 +44,16 @@ public class GiocoAStati extends StateBasedGame {
         }
     }
 
+    /**
+     * @return le informazioni non mutevoli del giocatore
+     */
     public PlayerInfo getPlayerInfo() {
         return playerInfo;
     }
 
+    /**
+     * @return la classifica
+     */
     public ScoreBoard getScoreBoard() {
         return scoreBoard;
     }
@@ -84,13 +90,13 @@ public class GiocoAStati extends StateBasedGame {
             System.exit(-1);
         }*/
         try {
-            AppGameContainer container = new AppGameContainer(new GiocoAStati());
+            AppGameContainer container = new AppGameContainer(new FlappyGameState());
             container.setUpdateOnlyWhenVisible(false);
             container.setSmoothDeltas(false);
             container.setTargetFrameRate(200);
             container.setVSync(false);
             DisplayMode bestMode = DisplayModeManager.getBiggestWithRatio(4, 3, 60);
-            container.setDisplayMode(bestMode.getWidth(),bestMode.getHeight(),true);
+            container.setDisplayMode(bestMode.getWidth(),bestMode.getHeight(),false);
             PathHandler pathHandler= PathHandler.getInstance();
             container.setIcons(new String[]{pathHandler.getPath(ResourcePack.VARIOUS, Resource.ICON32),pathHandler.getPath(ResourcePack.VARIOUS, Resource.ICON16)});
             container.start();

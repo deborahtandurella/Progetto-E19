@@ -13,6 +13,10 @@ public class JumpCommand extends Command {
     private Double birdX;
     private Double birdY;
 
+    /**
+     * @param x coordinate x del bird
+     * @param y coodrdinate y del bird
+     */
     public JumpCommand(Double x, Double y) {
         birdX = x;
         birdY = y;

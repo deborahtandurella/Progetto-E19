@@ -13,6 +13,10 @@ public class ObstacleCollisionCommand extends Command {
     private static final long serialVersionUID = -539210512249000003L;
 
     private Integer ID;
+
+    /**
+     * @param obstacle l'ostacolo per il quale è avvenuta la collisione
+     */
     public ObstacleCollisionCommand(Entity obstacle) {
         ID= obstacle.getID();
     }

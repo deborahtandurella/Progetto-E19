@@ -1,6 +1,6 @@
 package states.game;
 
-import Main.GiocoAStati;
+import Main.FlappyGameState;
 import game.DifficultySettings;
 import game.gameEvents.GameEventListener;
 import game.gameEvents.GameEventType;
@@ -11,28 +11,28 @@ import graphics.Canvas;
 import graphics.Screen;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import scoreboard.ScoreBoard;
 import sounds.SoundPlayer;
-import states.FlappyGameState;
 import states.menu.SingleplayerReplayMenu;
 
-public class SingleplayerState extends FlappyGameState implements GameEventListener {
+public class SingleplayerState extends states.FlappyGameState implements GameEventListener {
     private LocalGame game;
     private Canvas gameCanvas;
     private DifficultySettings difficulty;
     private ScoreBoard scoreBoard;
-    private GiocoAStati stateGame;
+    private FlappyGameState stateGame;
 
     @Override
     public int getID() {
-        return GiocoAStati.SINGLEPLAYER;
+        return FlappyGameState.SINGLEPLAYER;
     }
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) {
-        stateGame=(GiocoAStati) stateBasedGame;
+        stateGame=(FlappyGameState) stateBasedGame;
         this.scoreBoard = stateGame.getScoreBoard();
         Screen screen= new Screen(gameContainer.getWidth()/2, gameContainer.getHeight(), gameContainer.getWidth()/4, 0);
         gameCanvas= new Canvas(screen, gameContainer.getGraphics());
@@ -41,7 +41,7 @@ public class SingleplayerState extends FlappyGameState implements GameEventListe
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         super.enter(container, game);
-        SingleModePlayer player = new SingleModePlayer(((GiocoAStati) game).getPlayerInfo());
+        SingleModePlayer player = new SingleModePlayer(((FlappyGameState) game).getPlayerInfo());
         this.game= new LocalGame(gameCanvas, difficulty, player);
         this.game.addListener(new SoundPlayer());
         this.game.addListener(this);
@@ -61,6 +61,9 @@ public class SingleplayerState extends FlappyGameState implements GameEventListe
     @Override
     public void keyPressed(int key, char c) {
         super.keyPressed(key, c);
+        if(key== Input.KEY_SPACE){
+            game.playerJump();
+        }
     }
     public void setDifficulty(DifficultySettings difficulty){
         this.difficulty=difficulty;
@@ -70,9 +73,9 @@ public class SingleplayerState extends FlappyGameState implements GameEventListe
     public void gameEvent(GameEventType event) {
         if(event==GameEventType.GAMEOVER){
             if (scoreBoard.addResult(new Result(game.getPlayer()))){
-                ((SingleplayerReplayMenu)stateGame.getState(GiocoAStati.SINGLE_REPLAY_MENU)).newRecord();
+                ((SingleplayerReplayMenu)stateGame.getState(FlappyGameState.SINGLE_REPLAY_MENU)).newRecord();
             }
-            stateGame.enterState(GiocoAStati.SINGLE_REPLAY_MENU);
+            stateGame.enterState(FlappyGameState.SINGLE_REPLAY_MENU);
         }
     }
 }

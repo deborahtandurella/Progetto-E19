@@ -1,6 +1,6 @@
 package states.menu;
 
-import Main.GiocoAStati;
+import Main.FlappyGameState;
 import game.DifficultySettings;
 import game.itemGeneration.obstacle.ObstacleGeneratorType;
 import graphics.GUI.DifficultyMenuGUI;
@@ -18,7 +18,7 @@ public class DifficultyMenu extends AbstractMenuState {
 
     @Override
     public int getID() {
-        return GiocoAStati.DIFFICULTY_MENU;
+        return FlappyGameState.DIFFICULTY_MENU;
     }
 
     @Override
@@ -34,8 +34,8 @@ public class DifficultyMenu extends AbstractMenuState {
     }
 
     private void startGame(DifficultySettings settings){
-        ((SingleplayerState) stateBasedGame.getState(GiocoAStati.SINGLEPLAYER)).setDifficulty(settings);
-        stateBasedGame.enterState(GiocoAStati.SINGLEPLAYER, new FadeOutTransition(), new FadeInTransition());
+        ((SingleplayerState) stateBasedGame.getState(FlappyGameState.SINGLEPLAYER)).setDifficulty(settings);
+        stateBasedGame.enterState(FlappyGameState.SINGLEPLAYER, new FadeOutTransition(), new FadeInTransition());
     }
     public void startEasyGame(){
         DifficultySettings settings=new DifficultySettings(0.7, ObstacleGeneratorType.EASY);
@@ -50,7 +50,7 @@ public class DifficultyMenu extends AbstractMenuState {
         startGame(settings);
     }
     public void back(){
-        stateBasedGame.enterState(GiocoAStati.GENERAL_MENU, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(FlappyGameState.GENERAL_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 
 }
