@@ -7,6 +7,7 @@ import flappyEntities.logic.bird.BirdLogicComponent;
 import flappyEntities.logic.items.HeartLogicComponent;
 import flappyEntities.logic.obstacles.ObstacleLogicComponent;
 import game.DifficultySettings;
+import game.Game;
 import game.gameEvents.GameEventDispatcher;
 import game.gameEvents.GameEventType;
 import game.itemGeneration.heart.HeartGenerator;
@@ -28,7 +29,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import static game.GameConstants.BIRD_WIDTH;
 
-public class LocalGame extends GameEventDispatcher implements HeartListener, ObstacleListener {
+public class LocalGame extends GameEventDispatcher implements Game, HeartListener, ObstacleListener {
     private CopyOnWriteArrayList<Entity> entities;
     private CopyOnWriteArrayList<ObstacleLogicComponent> obstacles;
     private CopyOnWriteArrayList<HeartLogicComponent> hearts;

@@ -1,6 +1,6 @@
 package states.menu;
 
-import Main.FlappyGameState;
+import Main.FlappyStateGame;
 import graphics.GUI.ScoreBoardButtons;
 import graphics.GUI.ScoreBoardMenuGUI;
 import graphics.Screen;
@@ -21,7 +21,7 @@ public class ScoreBoardMenu extends AbstractMenuState implements scoreboard.Scor
 
     @Override
     public int getID() {
-        return FlappyGameState.SCORE_BOARD_MENU;
+        return FlappyStateGame.SCORE_BOARD_MENU;
     }
 
 
@@ -29,7 +29,7 @@ public class ScoreBoardMenu extends AbstractMenuState implements scoreboard.Scor
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.stateBasedGame = stateBasedGame;
         this.container = gameContainer;
-        this.scoreBoard = ((FlappyGameState) stateBasedGame).getScoreBoard();
+        this.scoreBoard = ((FlappyStateGame) stateBasedGame).getScoreBoard();
         screen = new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0,0);
         scoreBoardButtons = new ScoreBoardButtons(gameContainer, screen, this);
         setGui(new ScoreBoardMenuGUI(gameContainer, screen, this));
@@ -59,7 +59,7 @@ public class ScoreBoardMenu extends AbstractMenuState implements scoreboard.Scor
     }
 
     public void backToMenu(){
-        stateBasedGame.enterState(FlappyGameState.GENERAL_MENU,new FadeOutTransition(),new FadeInTransition());
+        stateBasedGame.enterState(FlappyStateGame.GENERAL_MENU,new FadeOutTransition(),new FadeInTransition());
     }
 
     public void deleteLeaderBoard()  {

@@ -4,6 +4,7 @@ package network;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -118,7 +119,7 @@ public class ConnectionHandle {
      * Invia alla controparte un oggetto
      * @param object oggetto da inviare
      */
-    public void sendObject(Object object) {
+    public void sendObject(Serializable object) {
         try {
             outputStream.writeObject(object);
         } catch (IOException e) {

@@ -1,6 +1,6 @@
 package states.menu;
 
-import Main.FlappyGameState;
+import Main.FlappyStateGame;
 import graphics.GUI.ScoreBoardMenuGUI;
 import graphics.GUI.SingleplayerReplayMenuGUI;
 import graphics.Screen;
@@ -25,12 +25,12 @@ public class SingleplayerReplayMenu extends AbstractMenuState implements ScoreBo
     }
     @Override
     public int getID() {
-        return FlappyGameState.SINGLE_REPLAY_MENU;
+        return FlappyStateGame.SINGLE_REPLAY_MENU;
     }
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        scoreBoard= ((FlappyGameState)stateBasedGame).getScoreBoard();
+        scoreBoard= ((FlappyStateGame)stateBasedGame).getScoreBoard();
         this.container = gameContainer;
         this.stateBasedGame = stateBasedGame;
         Screen screen = new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
@@ -69,19 +69,19 @@ public class SingleplayerReplayMenu extends AbstractMenuState implements ScoreBo
 
     public void rematch(){
         try {
-            stateBasedGame.getState(FlappyGameState.SINGLEPLAYER).init(container,stateBasedGame);
+            stateBasedGame.getState(FlappyStateGame.SINGLEPLAYER).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();
         }
-        stateBasedGame.enterState(FlappyGameState.SINGLEPLAYER,new FadeOutTransition(),new FadeInTransition());
+        stateBasedGame.enterState(FlappyStateGame.SINGLEPLAYER,new FadeOutTransition(),new FadeInTransition());
     }
     public void noRematch(){
         try {
-            stateBasedGame.getState(FlappyGameState.GENERAL_MENU).init(container,stateBasedGame);
+            stateBasedGame.getState(FlappyStateGame.GENERAL_MENU).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();
         }
-        stateBasedGame.enterState(FlappyGameState.GENERAL_MENU,new FadeOutTransition(),new FadeInTransition());
+        stateBasedGame.enterState(FlappyStateGame.GENERAL_MENU,new FadeOutTransition(),new FadeInTransition());
 
     }
 

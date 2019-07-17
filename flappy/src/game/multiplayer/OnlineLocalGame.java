@@ -17,6 +17,7 @@ import game.multiplayer.powerUps.PowerUp;
 import game.multiplayer.powerUps.PowerUpShop;
 import game.multiplayer.powerUps.PowerUpType;
 import game.player.MultiModePlayer;
+import game.player.Player;
 import graphics.Canvas;
 import graphics.HUD.MultiplayerHud;
 import graphics.HUD.PlayerHud;
@@ -250,7 +251,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     public boolean isOver(){
         return gameOver;
     }
-    public MultiModePlayer getPlayer() {
+    public Player getPlayer() {
         return player;
     }
 }

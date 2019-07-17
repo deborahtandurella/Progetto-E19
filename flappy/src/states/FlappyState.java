@@ -3,7 +3,7 @@ package states;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.state.BasicGameState;
 
-public abstract class FlappyGameState extends BasicGameState {
+public abstract class FlappyState extends BasicGameState {
     @Override
     public void keyPressed(int key, char c) {
         if (key== Input.KEY_ESCAPE)

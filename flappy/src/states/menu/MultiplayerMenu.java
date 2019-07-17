@@ -1,6 +1,6 @@
 package states.menu;
 
-import Main.FlappyGameState;
+import Main.FlappyStateGame;
 import graphics.GUI.MultiplayerMenuGUI;
 import graphics.Screen;
 import org.newdawn.slick.GameContainer;
@@ -15,7 +15,7 @@ public class MultiplayerMenu extends AbstractMenuState {
     private boolean initialized = false;
     @Override
     public int getID() {
-        return FlappyGameState.MULTI_MENU;
+        return FlappyStateGame.MULTI_MENU;
     }
 
     @Override
@@ -48,13 +48,13 @@ public class MultiplayerMenu extends AbstractMenuState {
     }
 
     public void join(String ip,int port){
-        stateBasedGame.enterState(FlappyGameState.MULTI_LOADING,new FadeOutTransition(),new FadeInTransition());
-        ((MultiplayerLoadingMenu)stateBasedGame.getState(FlappyGameState.MULTI_LOADING)).join(ip, port);
+        stateBasedGame.enterState(FlappyStateGame.MULTI_LOADING,new FadeOutTransition(),new FadeInTransition());
+        ((MultiplayerLoadingMenu)stateBasedGame.getState(FlappyStateGame.MULTI_LOADING)).join(ip, port);
     }
 
     public void host(int port){
-        stateBasedGame.enterState(FlappyGameState.MULTI_LOADING,new FadeOutTransition(),new FadeInTransition());
-        ((MultiplayerLoadingMenu)stateBasedGame.getState(FlappyGameState.MULTI_LOADING)).host(port);
+        stateBasedGame.enterState(FlappyStateGame.MULTI_LOADING,new FadeOutTransition(),new FadeInTransition());
+        ((MultiplayerLoadingMenu)stateBasedGame.getState(FlappyStateGame.MULTI_LOADING)).host(port);
 
 
     }

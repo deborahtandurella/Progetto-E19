@@ -10,7 +10,7 @@ import resources.ResourcePack;
 
 public class SinglePlayerHud extends PlayerHud {
     private Image heartImage;
-    private static float HEART_SIZE = 0.05f;
+    private static final float HEART_SIZE = 0.05f;
     public SinglePlayerHud(SingleModePlayer player, Canvas canvas) throws SlickException {
         super(player, canvas);
         heartImage= new Image(PathHandler.getInstance().getPath(ResourcePack.SPRITES, Resource.LIFE));

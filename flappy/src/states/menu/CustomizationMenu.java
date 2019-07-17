@@ -1,6 +1,6 @@
 package states.menu;
 
-import Main.FlappyGameState;
+import Main.FlappyStateGame;
 import graphics.GUI.CustomizationMenuGUI;
 import graphics.Screen;
 import org.newdawn.slick.GameContainer;
@@ -20,7 +20,7 @@ public class CustomizationMenu extends AbstractMenuState {
 
     @Override
     public int getID() {
-        return FlappyGameState.CUSTOMIZATION_MENU;
+        return FlappyStateGame.CUSTOMIZATION_MENU;
     }
 
     @Override
@@ -41,7 +41,7 @@ public class CustomizationMenu extends AbstractMenuState {
 
     public void goBack(){
         initStates();
-        stateBasedGame.enterState(FlappyGameState.GENERAL_MENU, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(FlappyStateGame.GENERAL_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 
     public void themeSelected(ResourcePack theme) {
@@ -51,14 +51,14 @@ public class CustomizationMenu extends AbstractMenuState {
 
     private void initStates() {
         try{
-            ((AbstractMenuState)stateBasedGame.getState(FlappyGameState.GENERAL_MENU)).reloadTheme();
-            ((AbstractMenuState)stateBasedGame.getState(FlappyGameState.DIFFICULTY_MENU)).reloadTheme();
-            ((AbstractMenuState)stateBasedGame.getState(FlappyGameState.SINGLE_REPLAY_MENU)).reloadTheme();
-            ((AbstractMenuState)stateBasedGame.getState(FlappyGameState.MULTI_MENU)).reloadTheme();
-            ((AbstractMenuState)stateBasedGame.getState(FlappyGameState.MULTI_LOADING)).reloadTheme();
-            ((AbstractMenuState)stateBasedGame.getState(FlappyGameState.SCORE_BOARD_MENU)).reloadTheme();
-            ((AbstractMenuState)stateBasedGame.getState(FlappyGameState.CONNECTION_ERROR_MENU)).reloadTheme();
-            ((AbstractMenuState)stateBasedGame.getState(FlappyGameState.MULTI_END_MENU)).reloadTheme();
+            ((AbstractMenuState)stateBasedGame.getState(FlappyStateGame.GENERAL_MENU)).reloadTheme();
+            ((AbstractMenuState)stateBasedGame.getState(FlappyStateGame.DIFFICULTY_MENU)).reloadTheme();
+            ((AbstractMenuState)stateBasedGame.getState(FlappyStateGame.SINGLE_REPLAY_MENU)).reloadTheme();
+            ((AbstractMenuState)stateBasedGame.getState(FlappyStateGame.MULTI_MENU)).reloadTheme();
+            ((AbstractMenuState)stateBasedGame.getState(FlappyStateGame.MULTI_LOADING)).reloadTheme();
+            ((AbstractMenuState)stateBasedGame.getState(FlappyStateGame.SCORE_BOARD_MENU)).reloadTheme();
+            ((AbstractMenuState)stateBasedGame.getState(FlappyStateGame.CONNECTION_ERROR_MENU)).reloadTheme();
+            ((AbstractMenuState)stateBasedGame.getState(FlappyStateGame.MULTI_END_MENU)).reloadTheme();
         } catch (SlickException e ){
             e.printStackTrace();
         }

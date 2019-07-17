@@ -1,6 +1,6 @@
 package states.menu;
 
-import Main.FlappyGameState;
+import Main.FlappyStateGame;
 import game.player.PlayerInfo;
 import graphics.GUI.LoginGUI;
 import graphics.Screen;
@@ -19,7 +19,7 @@ public class LoginMenu extends AbstractMenuState {
 
     @Override
     public int getID() {
-        return FlappyGameState.LOGIN;
+        return FlappyStateGame.LOGIN;
     }
 
     @Override
@@ -49,10 +49,10 @@ public class LoginMenu extends AbstractMenuState {
     }
 
     public void menu(){
-        stateBasedGame.enterState(FlappyGameState.GENERAL_MENU, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(FlappyStateGame.GENERAL_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 
     public void setName(String name) {
-        ((FlappyGameState) stateBasedGame).setPlayerInfo( new PlayerInfo(name));
+        ((FlappyStateGame) stateBasedGame).setPlayerInfo( new PlayerInfo(name));
     }
 }

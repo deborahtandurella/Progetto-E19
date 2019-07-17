@@ -1,6 +1,6 @@
 package states.menu;
 
-import Main.FlappyGameState;
+import Main.FlappyStateGame;
 import graphics.GUI.MultiplayerLoadingGUI;
 import graphics.Screen;
 import network.ConnectionHandle;
@@ -18,11 +18,11 @@ import java.util.TimerTask;
 
 public class MultiplayerLoadingMenu extends AbstractMenuState implements ConnectionListener {
     private ConnectionHandle connectionHandle;
-    private FlappyGameState flappyGameState;
+    private FlappyStateGame flappyStateGame;
     private boolean connecting;
     @Override
     public int getID() {
-        return FlappyGameState.MULTI_LOADING;
+        return FlappyStateGame.MULTI_LOADING;
     }
 
     @Override
@@ -33,7 +33,7 @@ public class MultiplayerLoadingMenu extends AbstractMenuState implements Connect
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
-        flappyGameState = (FlappyGameState) stateBasedGame;
+        flappyStateGame = (FlappyStateGame) stateBasedGame;
         Screen screen = new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
         setGui(new MultiplayerLoadingGUI(gameContainer, screen,this));
 
@@ -48,14 +48,14 @@ public class MultiplayerLoadingMenu extends AbstractMenuState implements Connect
     public void join(String ip, int port){
         connectionHandle = new ConnectionHandle();
         connectionHandle.addConnectionListener(this);
-        Thread connectionThread = new Thread(() -> connectionHandle.setConnection(ip,port, flappyGameState.getPlayerInfo().getName()));
+        Thread connectionThread = new Thread(() -> connectionHandle.setConnection(ip,port, flappyStateGame.getPlayerInfo().getName()));
         connectionThread.start();
     }
 
     public void host(int port){
         connectionHandle = new ConnectionHandle();
         connectionHandle.addConnectionListener(this);
-        Thread connectionThread = new Thread(() -> connectionHandle.setConnection(port, flappyGameState.getPlayerInfo().getName()));
+        Thread connectionThread = new Thread(() -> connectionHandle.setConnection(port, flappyStateGame.getPlayerInfo().getName()));
         connectionThread.start();
     }
 
@@ -63,14 +63,14 @@ public class MultiplayerLoadingMenu extends AbstractMenuState implements Connect
         (new Timer()).schedule( new TimerTask(){
             @Override
             public void run() {
-                ((MultiplayerState) flappyGameState.getState(FlappyGameState.MULTIPLAYER)).setConnectionHandle(connectionHandle);
+                ((MultiplayerState) flappyStateGame.getState(FlappyStateGame.MULTIPLAYER)).setConnectionHandle(connectionHandle);
                 connecting=true;
             }
         }, 1000);
         (new Timer()).schedule( new TimerTask(){
             @Override
             public void run() {
-                flappyGameState.enterState(FlappyGameState.MULTIPLAYER);
+                flappyStateGame.enterState(FlappyStateGame.MULTIPLAYER);
                 connecting=false;
             }
         }, 4000);
@@ -83,7 +83,7 @@ public class MultiplayerLoadingMenu extends AbstractMenuState implements Connect
         if(connected)
             startLoading();
         else {
-            flappyGameState.enterState(FlappyGameState.CONNECTION_ERROR_MENU);
+            flappyStateGame.enterState(FlappyStateGame.CONNECTION_ERROR_MENU);
 
         }
     }
@@ -95,6 +95,6 @@ public class MultiplayerLoadingMenu extends AbstractMenuState implements Connect
     public void back(){
         if (connectionHandle !=null)
             connectionHandle.closeConnection();
-        flappyGameState.enterState(FlappyGameState.MULTI_MENU, new FadeOutTransition(), new FadeInTransition());
+        flappyStateGame.enterState(FlappyStateGame.MULTI_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 }

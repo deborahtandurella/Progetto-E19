@@ -15,10 +15,10 @@ public class SpeedPowerUP implements PowerUp{
     /**
      * durata del powerup in millisecondi
      */
-    private long duration = 20000;
+    private static final long duration = 20000;
     @Override
     public int getPrice() {
-        return 4;
+        return 2;
     }
 
     @Override

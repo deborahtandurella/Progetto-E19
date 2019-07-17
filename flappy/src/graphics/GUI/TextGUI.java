@@ -23,7 +23,7 @@ public class TextGUI {
         this.height = height;
     }
 
-    public void init(GameContainer gc) throws SlickException
+    public void init(GameContainer gc)
     {
         font = getNewFont("Verdana" ,  3*gc.getWidth()/100);
         text = new TextField(gc , font , x*gc.getWidth()/100 , y*gc.getHeight()/100 , width*gc.getWidth()/100 , height*gc.getHeight()/100);
@@ -39,7 +39,7 @@ public class TextGUI {
         return font;
     }
 
-    public void render(GameContainer gc ,  org.newdawn.slick.Graphics g) throws SlickException
+    public void render(GameContainer gc ,  org.newdawn.slick.Graphics g)
     {
         text.render(gc , g);
         g.setFont(font);

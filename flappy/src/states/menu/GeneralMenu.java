@@ -1,6 +1,6 @@
 package states.menu;
 
-import Main.FlappyGameState;
+import Main.FlappyStateGame;
 import graphics.GUI.MenuGUI;
 import graphics.Screen;
 import org.newdawn.slick.GameContainer;
@@ -21,7 +21,7 @@ public class GeneralMenu extends AbstractMenuState{
     }
     @Override
     public int getID() {
-        return FlappyGameState.GENERAL_MENU;
+        return FlappyStateGame.GENERAL_MENU;
     }
 
     @Override
@@ -40,25 +40,25 @@ public class GeneralMenu extends AbstractMenuState{
     }
 
     public void single(){
-        stateBasedGame.enterState(FlappyGameState.DIFFICULTY_MENU, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(FlappyStateGame.DIFFICULTY_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 
     public void multi(){
-        stateBasedGame.enterState(FlappyGameState.MULTI_MENU, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(FlappyStateGame.MULTI_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 
 
     public void leaderBoard(){
         try {
-            stateBasedGame.getState(FlappyGameState.SCORE_BOARD_MENU).init(container,stateBasedGame);
+            stateBasedGame.getState(FlappyStateGame.SCORE_BOARD_MENU).init(container,stateBasedGame);
         } catch (SlickException e) {
             e.printStackTrace();
         }
-        stateBasedGame.enterState(FlappyGameState.SCORE_BOARD_MENU, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(FlappyStateGame.SCORE_BOARD_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 
     public void custom(){
-        stateBasedGame.enterState(FlappyGameState.CUSTOMIZATION_MENU, new FadeOutTransition(), new FadeInTransition());
+        stateBasedGame.enterState(FlappyStateGame.CUSTOMIZATION_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 
 }

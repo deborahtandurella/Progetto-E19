@@ -82,13 +82,10 @@ public class MultiplayerMenuGUI extends AbstractMenuGUI {
             uniFontMessage.drawString(34 * (getContainer().getWidth() - uniFontMessage.getWidth(hostErrorMessage)) / 100f, 57 * getContainer().getHeight() / 100f, hostErrorMessage, Color.red);
         }
 
-        try {
-            ipField.render(getContainer(), getContainer().getGraphics());
-            clientPortField.render(getContainer(), getContainer().getGraphics());
-            hostPortField.render(getContainer(), getContainer().getGraphics());
-        } catch (SlickException e) {
-            e.printStackTrace();
-        }
+        ipField.render(getContainer(), getContainer().getGraphics());
+        clientPortField.render(getContainer(), getContainer().getGraphics());
+        hostPortField.render(getContainer(), getContainer().getGraphics());
+
     }
     public void activate(){
         ipField.setConsumeEvents(true);

@@ -20,7 +20,7 @@ public class GravityPowerUp implements PowerUp{
     /**
      *  Il tempo in millisecondi per il quale la gravità rimane invertita
      */
-    private long duration = 10000;
+    private static final long duration = 10000;
     private int affectedGame;
 
 

@@ -1,6 +1,6 @@
 package states.game;
 
-import Main.FlappyGameState;
+import Main.FlappyStateGame;
 import game.DifficultySettings;
 import game.gameEvents.GameEventListener;
 import game.gameEvents.GameEventType;
@@ -16,23 +16,24 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import scoreboard.ScoreBoard;
 import sounds.SoundPlayer;
+import states.FlappyState;
 import states.menu.SingleplayerReplayMenu;
 
-public class SingleplayerState extends states.FlappyGameState implements GameEventListener {
+public class SingleplayerState extends FlappyState implements GameEventListener {
     private LocalGame game;
     private Canvas gameCanvas;
     private DifficultySettings difficulty;
     private ScoreBoard scoreBoard;
-    private FlappyGameState stateGame;
+    private FlappyStateGame stateGame;
 
     @Override
     public int getID() {
-        return FlappyGameState.SINGLEPLAYER;
+        return FlappyStateGame.SINGLEPLAYER;
     }
 
     @Override
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) {
-        stateGame=(FlappyGameState) stateBasedGame;
+        stateGame=(FlappyStateGame) stateBasedGame;
         this.scoreBoard = stateGame.getScoreBoard();
         Screen screen= new Screen(gameContainer.getWidth()/2, gameContainer.getHeight(), gameContainer.getWidth()/4, 0);
         gameCanvas= new Canvas(screen, gameContainer.getGraphics());
@@ -41,7 +42,7 @@ public class SingleplayerState extends states.FlappyGameState implements GameEve
     @Override
     public void enter(GameContainer container, StateBasedGame game) throws SlickException {
         super.enter(container, game);
-        SingleModePlayer player = new SingleModePlayer(((FlappyGameState) game).getPlayerInfo());
+        SingleModePlayer player = new SingleModePlayer(((FlappyStateGame) game).getPlayerInfo());
         this.game= new LocalGame(gameCanvas, difficulty, player);
         this.game.addListener(new SoundPlayer());
         this.game.addListener(this);
@@ -73,9 +74,9 @@ public class SingleplayerState extends states.FlappyGameState implements GameEve
     public void gameEvent(GameEventType event) {
         if(event==GameEventType.GAMEOVER){
             if (scoreBoard.addResult(new Result(game.getPlayer()))){
-                ((SingleplayerReplayMenu)stateGame.getState(FlappyGameState.SINGLE_REPLAY_MENU)).newRecord();
+                ((SingleplayerReplayMenu)stateGame.getState(FlappyStateGame.SINGLE_REPLAY_MENU)).newRecord();
             }
-            stateGame.enterState(FlappyGameState.SINGLE_REPLAY_MENU);
+            stateGame.enterState(FlappyStateGame.SINGLE_REPLAY_MENU);
         }
     }
 }

@@ -4,9 +4,9 @@ import graphics.GUI.AbstractMenuGUI;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
-import states.FlappyGameState;
+import states.FlappyState;
 
-public abstract class AbstractMenuState extends FlappyGameState {
+public abstract class AbstractMenuState extends FlappyState {
    private AbstractMenuGUI gui;
     void reloadTheme() throws SlickException {
         gui.setBackground();

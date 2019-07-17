@@ -18,7 +18,7 @@ import utilities.DisplayModeManager;
 
 import java.io.IOException;
 
-public class FlappyGameState extends StateBasedGame {
+public class FlappyStateGame extends StateBasedGame {
 
     public static final int LOGIN = 0;
     public static final int GENERAL_MENU = 1;
@@ -35,7 +35,7 @@ public class FlappyGameState extends StateBasedGame {
     private PlayerInfo playerInfo;
     private ScoreBoard scoreBoard;
 
-    public FlappyGameState() {
+    public FlappyStateGame() {
         super("Flappy Bird");
         try {
             scoreBoard = new ScoreBoard();
@@ -90,7 +90,7 @@ public class FlappyGameState extends StateBasedGame {
             System.exit(-1);
         }*/
         try {
-            AppGameContainer container = new AppGameContainer(new FlappyGameState());
+            AppGameContainer container = new AppGameContainer(new FlappyStateGame());
             container.setUpdateOnlyWhenVisible(false);
             container.setSmoothDeltas(false);
             container.setTargetFrameRate(200);

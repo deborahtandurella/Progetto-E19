@@ -12,7 +12,7 @@ public class RocketPowerUp implements PowerUp{
 
     @Override
     public int getPrice() {
-        return 2;
+        return 1;
     }
 
     @Override
