@@ -14,6 +14,8 @@ Istruzioni per l' uso:
 - click su + -> selezionare Java -> selezionare la cartella "slick2d"  -> ok
 - sempre su Project structure nella sezione Modules, selezionare la cartella src all' interno della directory"flappy" selezionare mark directory as source.
 - all' interno di src, nel package "main" fare click destro sulla classe "Launcher" e selezionare l' opzione "create Launcher.main..."
-- nel pannello apertosi nella riga "VM OPTIONS" incollare la stringa seguente:  "-Djava.library.path=natives/"
+- nel pannello apertosi nella riga "VM OPTIONS" incollare la stringa seguente:  
+ Per Windows: "-Djava.library.path=nativesWindows/"
+ Per Linux: "-Djava.library.path=nativesLinux/"
 - sempre nello stesso pannello nella riga "Working directory" al termine del path già inserito aggiungere "\flappy"
 - eseguire il programma
