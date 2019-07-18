@@ -70,8 +70,8 @@ public class LocalGame extends GameEventDispatcher implements Game, HeartListene
     }
     public void update(int delta){
         delta*=gameSpeed;
-        updateEntities(delta);
         obstacleGenerator.update(delta);
+        updateEntities(delta);
         if (!bird.isImmune()){
             checkCollisions();
             checkScore();
