@@ -1,5 +1,8 @@
 package game.player;
 
+/**
+ *  Giocatore del Multiplayer
+ */
 public class MultiModePlayer implements  Player{
     /**
      * Le monete del giocatore

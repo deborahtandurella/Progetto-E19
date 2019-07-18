@@ -29,6 +29,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import static game.GameConstants.BIRD_WIDTH;
 
+/**
+ * Gestore della partita in singleplayer. Si occupa di eseguire render e update delle sue componenti e di gestirne le interazioni
+ */
 public class LocalGame extends GameEventDispatcher implements Game, HeartListener, ObstacleListener {
     private CopyOnWriteArrayList<Entity> entities;
     private CopyOnWriteArrayList<ObstacleLogicComponent> obstacles;
@@ -68,6 +71,11 @@ public class LocalGame extends GameEventDispatcher implements Game, HeartListene
     private void addEntity(Entity entity){
         entities.add(entity);
     }
+
+    /**
+     * Esegue l'update delle componenti
+     * @param delta l'intervallo di tempo dall'ultimo frame
+     */
     public void update(int delta){
         delta*=gameSpeed;
         obstacleGenerator.update(delta);
@@ -78,6 +86,10 @@ public class LocalGame extends GameEventDispatcher implements Game, HeartListene
         }
         checkOutOfBounds();
     }
+
+    /**
+     * Esegue il render delle componenti
+     */
     public void render(){
         canvas.drawImage(background, 0, 0, 1, 1);
         renderEntities();
