@@ -2,12 +2,13 @@ package scoreboard;
 
 import game.player.Result;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- *  La classifica di gioco, rappresenta
+ *  La classifica di gioco, mantiene in cache la classifica ed è in grado di leggerla e scriverla servendosi di uno ScoreboardDAO
  */
 public class ScoreBoard {
 
@@ -16,14 +17,26 @@ public class ScoreBoard {
     private static final int N_PLAYERS = 10;
 
 
-    public ScoreBoard() throws IOException {
+    /**
+     * Inizializza la classifica leggendola dal database
+     *
+     */
+    public ScoreBoard()  {
         this.scoreboardDAO = CSVScoreboardDAO.getInstance();
-        results = scoreboardDAO.readScoreBoard();
-        results = new ArrayList<>(results.subList(0, N_PLAYERS));
+        try{
+            results = scoreboardDAO.readScoreBoard();
+            results = new ArrayList<>(results.subList(0, N_PLAYERS));
+        } catch (DatabaseException e){
+            e.printStackTrace();
+        }
     }
 
 
-
+    /**
+     * Prova ad aggiungere un risultato alla classifica
+     * @param newResult il nuovo risultato
+     * @return true se il nuovo risultato è tale da piazzarsi nella classifica
+     */
     public boolean addResult(Result newResult) {
         results.add(newResult);
         Collections.sort(results);
@@ -46,6 +59,9 @@ public class ScoreBoard {
     }
 
 
+    /**
+     * @return i nomi in ordine dei giocatori in classifica
+     */
     public String printName() {
         StringBuilder sb = new StringBuilder();
         for (Result result : results) {
@@ -54,6 +70,9 @@ public class ScoreBoard {
         return sb.toString();
     }
 
+    /**
+     * @return i punteggi in ordine dei risultati della classifica
+     */
     public String printScores() {
         StringBuilder s = new StringBuilder();
         for (Result result : results) {
@@ -63,6 +82,9 @@ public class ScoreBoard {
     }
 
 
+    /**
+     *  Svuota la classifica
+     */
     public void clearScoreBoard() {
         for (Result result : results) {
             result.setName("-------------");
