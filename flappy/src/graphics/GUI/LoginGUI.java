@@ -70,7 +70,7 @@ public class LoginGUI extends AbstractMenuGUI {
         if (error) {
             uniFontMessage.drawString((getContainer().getWidth() - uniFontMessage.getWidth(errorMessage)) / 2f, 60 * getContainer().getHeight() / 100f, errorMessage, Color.red);
         }
-        rocket.draw(startButton.getX() -getContainer().getWidth()/12, startButton.getY(), getContainer().getWidth()/16, getContainer().getWidth()/16);
+        rocket.draw(startButton.getX() -getContainer().getWidth()/12f, startButton.getY(), getContainer().getWidth()/16f, getContainer().getWidth()/16f);
 
     }
 

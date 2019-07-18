@@ -116,6 +116,11 @@ public class MultiplayerState extends FlappyState implements ConnectionListener,
 
     }
 
+    /**
+     *
+     * @param connected : stato della connessione
+     */
+
     @Override
     public void connectionStatus(boolean connected) {
         if (!connected){

@@ -19,6 +19,11 @@ import sounds.SoundPlayer;
 import states.FlappyState;
 import states.menu.SingleplayerReplayMenu;
 
+/**
+ * stato che si occupa di gestire la partita Singleplayer. La velocità di gioco e il tipo di ostacoli generati
+ * variano a seconda del livello di difficoltà selezionato.
+ */
+
 public class SingleplayerState extends FlappyState implements GameEventListener {
     private LocalGame game;
     private Canvas gameCanvas;
