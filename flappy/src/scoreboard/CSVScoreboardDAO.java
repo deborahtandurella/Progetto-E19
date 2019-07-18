@@ -18,7 +18,7 @@ public class CSVScoreboardDAO implements ScoreboardDAO {
     synchronized public ArrayList<Result> readScoreBoard( ) throws DatabaseException {
         try {
             ArrayList<Result> results = new ArrayList<>();
-            BufferedReader reader = new BufferedReader(new FileReader(new File("res/records/leaderboard_E.csv")));
+            BufferedReader reader = new BufferedReader(new FileReader(new File("res/records/leaderboard.csv")));
             String riga;
             while((riga = reader.readLine())!=null){
                 String[] resultString = riga.split("\\t");
@@ -34,7 +34,7 @@ public class CSVScoreboardDAO implements ScoreboardDAO {
     @Override
     synchronized public void writePlayers(ArrayList<Result> results) throws DatabaseException {
         try {
-            PrintWriter writer = new PrintWriter(new FileWriter(new File("res/records/leaderboard_E.csv")));
+            PrintWriter writer = new PrintWriter(new FileWriter(new File("res/records/leaderboard.csv")));
             for(Result result: results){
                 String line =  result.getName() + "\t" + result.getScore();
                 writer.println(line);
