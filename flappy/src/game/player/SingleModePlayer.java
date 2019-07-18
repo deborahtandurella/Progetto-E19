@@ -4,6 +4,7 @@ package game.player;
  *  Giogatore del SinglePlayer
  */
 public class SingleModePlayer implements Player {
+    private static final int MAX_HEARTS = 5;
     /**
      * Le vite del giocatore
      */
@@ -20,7 +21,7 @@ public class SingleModePlayer implements Player {
         this.hearts = 3;
         this.playerInfo=playerInfo;
     }
-
+    @Override
     public void addScore(){
         score++;
     }
@@ -39,7 +40,7 @@ public class SingleModePlayer implements Player {
     }
 
     public void addHeart() {
-        if(hearts<5){
+        if(hearts< MAX_HEARTS){
             this.hearts++;
         }
     }

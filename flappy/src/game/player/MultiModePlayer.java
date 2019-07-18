@@ -26,7 +26,7 @@ public class MultiModePlayer implements  Player{
     public void setCoins(int coins) {
         this.coins = coins;
     }
-
+    @Override
     public void addScore(){
         score++;
     }
