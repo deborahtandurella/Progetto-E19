@@ -10,13 +10,13 @@ import org.newdawn.slick.gui.AbstractComponent;
 import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
-import scoreboard.ScoreBoardMenu;
+import states.menu.ScoreBoardUsingMenu;
 
 import java.awt.*;
 
 public class ScoreBoardMenuGUI extends AbstractMenuGUI {
 
-    private ScoreBoardMenu state;
+    private ScoreBoardUsingMenu state;
     private Image pergamena;
     private String scoreName;
     private String points;
@@ -26,7 +26,7 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
     private UnicodeFont versionFont;
 
 
-    public ScoreBoardMenuGUI(GameContainer container, Screen screen, ScoreBoardMenu state) throws SlickException {
+    public ScoreBoardMenuGUI(GameContainer container, Screen screen, ScoreBoardUsingMenu state) throws SlickException {
         super(container, screen);
         this.state=state;
 
