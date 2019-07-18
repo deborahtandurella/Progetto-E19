@@ -9,6 +9,10 @@ import resources.Resource;
 import resources.ResourcePack;
 import states.menu.MultiplayerLoadingMenu;
 
+/**
+ * GUI che si occupa della parte grafica dell'attesa prepartita del Multiplayer
+ */
+
 public class MultiplayerLoadingGUI extends AbstractMenuGUI {
     private Animation loadingAnimation;
     private Animation threeTwoOneAnimation;

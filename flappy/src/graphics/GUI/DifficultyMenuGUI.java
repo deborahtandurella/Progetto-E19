@@ -11,6 +11,10 @@ import resources.Resource;
 import resources.ResourcePack;
 import states.menu.DifficultyMenu;
 
+/**
+ * GUI dello stato DifficultyMenu
+ */
+
 public class DifficultyMenuGUI extends AbstractMenuGUI {
     private DifficultyMenu state;
     private MouseOverArea easyButton;

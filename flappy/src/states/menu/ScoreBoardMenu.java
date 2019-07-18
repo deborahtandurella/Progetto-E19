@@ -2,7 +2,7 @@ package states.menu;
 
 import states.FlappyStateGame;
 import graphics.GUI.ScoreBoardButtons;
-import graphics.GUI.ScoreBoardMenuGUI;
+import graphics.GUI.ScoreBoardGUI;
 import graphics.Screen;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -36,7 +36,7 @@ public class ScoreBoardMenu extends AbstractMenuState implements ScoreBoardUsing
         this.scoreBoard = ((FlappyStateGame) stateBasedGame).getScoreBoard();
         screen = new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0,0);
         scoreBoardButtons = new ScoreBoardButtons(gameContainer, screen, this);
-        setGui(new ScoreBoardMenuGUI(gameContainer, screen, this));
+        setGui(new ScoreBoardGUI(gameContainer, screen, this));
         container.getGraphics().clearWorldClip();
     }
 
@@ -72,7 +72,7 @@ public class ScoreBoardMenu extends AbstractMenuState implements ScoreBoardUsing
     public void deleteLeaderBoard()  {
         scoreBoard.clearScoreBoard();
         try {
-            setGui(new ScoreBoardMenuGUI(container, screen, this));
+            setGui(new ScoreBoardGUI(container, screen, this));
         } catch (SlickException e) {
             e.printStackTrace();
         }

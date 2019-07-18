@@ -9,8 +9,11 @@ import org.newdawn.slick.gui.MouseOverArea;
 import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
-
 import java.util.ArrayList;
+
+/**
+ * Classe GUI astratta, tutte le GUI di gioco hanno in comune attributi e metodi qui presenti
+ */
 
 public abstract class AbstractMenuGUI implements ComponentListener {
     private GameContainer container;

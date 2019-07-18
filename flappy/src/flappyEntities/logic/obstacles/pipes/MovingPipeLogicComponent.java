@@ -4,7 +4,7 @@ package flappyEntities.logic.obstacles.pipes;
 import flappyEntities.logic.SerializableEntity;
 
 /**
- *  Componente logica del cubo mobile
+ *  Componente logica del tubo mobile
  */
 public class MovingPipeLogicComponent extends PipeLogicComponent {
 
@@ -15,7 +15,7 @@ public class MovingPipeLogicComponent extends PipeLogicComponent {
 
     /**
      * Si occupa anche di invertire la velocità
-     * @param i
+     * @param i : intervallo di tempo
      */
     @Override
     public void update(double i) {

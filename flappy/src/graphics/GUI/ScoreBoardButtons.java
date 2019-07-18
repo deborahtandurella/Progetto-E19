@@ -11,6 +11,10 @@ import resources.Resource;
 import resources.ResourcePack;
 import states.menu.ScoreBoardMenu;
 
+/**
+ * GUI che si occupa dei bottoni dello stato ScoreBoardMenu
+ */
+
 public class ScoreBoardButtons  extends AbstractMenuGUI {
 
     private MouseOverArea deleteButton;

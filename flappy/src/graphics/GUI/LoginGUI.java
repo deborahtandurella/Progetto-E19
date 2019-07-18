@@ -12,8 +12,11 @@ import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
 import states.menu.LoginMenu;
-
 import java.awt.Font;
+
+/**
+ * GUI dello stato LoginMenu
+ */
 
 public class LoginGUI extends AbstractMenuGUI {
 

@@ -1,9 +1,8 @@
 package states.menu;
 
-import graphics.GUI.AbstractMenuGUI;
 import states.FlappyStateGame;
-import graphics.GUI.ScoreBoardMenuGUI;
-import graphics.GUI.SingleplayerReplayMenuGUI;
+import graphics.GUI.ScoreBoardGUI;
+import graphics.GUI.SingleplayerReplayMenuButtons;
 import graphics.Screen;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -21,7 +20,7 @@ import scoreboard.ScoreBoard;
 public class SingleplayerReplayMenu extends AbstractMenuState implements ScoreBoardUsingMenu {
     private GameContainer container;
     private StateBasedGame stateBasedGame;
-    private SingleplayerReplayMenuGUI scoregui;
+    private SingleplayerReplayMenuButtons singleplayerReplayMenuGUI;
     private ScoreBoard scoreBoard;
     private boolean newRecord;
 
@@ -39,8 +38,8 @@ public class SingleplayerReplayMenu extends AbstractMenuState implements ScoreBo
         this.container = gameContainer;
         this.stateBasedGame = stateBasedGame;
         Screen screen = new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
-        setGui(new ScoreBoardMenuGUI(gameContainer, screen, this));
-        scoregui = new SingleplayerReplayMenuGUI(gameContainer, screen, this);
+        setGui(new ScoreBoardGUI(gameContainer, screen, this));
+        singleplayerReplayMenuGUI = new SingleplayerReplayMenuButtons(gameContainer, screen, this);
         container.getGraphics().clearWorldClip();
     }
 
@@ -60,7 +59,7 @@ public class SingleplayerReplayMenu extends AbstractMenuState implements ScoreBo
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
         graphics.clearWorldClip();
         renderGui();
-        scoregui.render();
+        singleplayerReplayMenuGUI.render();
     }
 
    public ScoreBoard getScoreBoard(){

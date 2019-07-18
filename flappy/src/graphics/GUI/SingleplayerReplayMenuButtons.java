@@ -10,13 +10,17 @@ import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
 import states.menu.SingleplayerReplayMenu;
-public class SingleplayerReplayMenuGUI extends AbstractMenuGUI {
+public class SingleplayerReplayMenuButtons extends AbstractMenuGUI {
+
+    /**
+     * GUI che si occupa dei bottoni dello stato SinglePlayerReplayMenu
+     */
 
     private MouseOverArea replayButton;
     private MouseOverArea backButton;
     private SingleplayerReplayMenu state;
 
-    public SingleplayerReplayMenuGUI(GameContainer container, Screen screen, SingleplayerReplayMenu state) throws SlickException {
+    public SingleplayerReplayMenuButtons(GameContainer container, Screen screen, SingleplayerReplayMenu state) throws SlickException {
         super(container, screen);
         this.state=state;
 

@@ -12,8 +12,11 @@ import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
 import states.menu.ConnectionErrorMenu;
-
 import java.awt.*;
+
+/**
+ * GUI dello stato ConnectionErrorMenu
+ */
 
 public class ConnectionErrorGUI extends AbstractMenuGUI {
     private ConnectionErrorMenu state;

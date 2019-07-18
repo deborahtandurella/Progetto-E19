@@ -10,6 +10,10 @@ import resources.Resource;
 import resources.ResourcePack;
 import states.menu.MultiplayerEndMenu;
 
+/**
+ * MultiplayerEndMenuGUI si occupa di mostrare l'esito della partita multiplayer
+ */
+
 public class MultiplayerEndMenuGUI extends AbstractMenuGUI {
 
     private MouseOverArea backButton;
@@ -34,10 +38,8 @@ public class MultiplayerEndMenuGUI extends AbstractMenuGUI {
         java.awt.Font font = new java.awt.Font("Comic Sans MS", java.awt.Font.PLAIN, 4*getContainer().getWidth()/100);
 
 
-        unicodeMessage= new UnicodeFont(font);
+        unicodeMessage = new UnicodeFont(font);
         unicodeMessage.getEffects().add(new ColorEffect(java.awt.Color.white));
-        //unicodeMessage.getEffects().add(new ColorEffect(java.awt.Color.black));
-
         unicodeMessage.addAsciiGlyphs();
         unicodeMessage.loadGlyphs();
 

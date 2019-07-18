@@ -11,10 +11,13 @@ import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
 import states.menu.ScoreBoardUsingMenu;
-
 import java.awt.*;
 
-public class ScoreBoardMenuGUI extends AbstractMenuGUI {
+/**
+ * GUI che si occupa della grafica della classifica
+ */
+
+public class ScoreBoardGUI extends AbstractMenuGUI {
 
     private ScoreBoardUsingMenu state;
     private Image pergamena;
@@ -26,7 +29,7 @@ public class ScoreBoardMenuGUI extends AbstractMenuGUI {
     private UnicodeFont versionFont;
 
 
-    public ScoreBoardMenuGUI(GameContainer container, Screen screen, ScoreBoardUsingMenu state) throws SlickException {
+    public ScoreBoardGUI(GameContainer container, Screen screen, ScoreBoardUsingMenu state) throws SlickException {
         super(container, screen);
         this.state=state;
 

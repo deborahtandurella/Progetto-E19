@@ -11,6 +11,10 @@ import resources.Resource;
 import resources.ResourcePack;
 import states.menu.GeneralMenu;
 
+/**
+ * GUI dello stato GeneralMenu
+ */
+
 public class MenuGUI extends AbstractMenuGUI {
     private GeneralMenu state;
     private MouseOverArea singleButton;

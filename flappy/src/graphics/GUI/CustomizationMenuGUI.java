@@ -12,9 +12,12 @@ import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
 import states.menu.CustomizationMenu;
-
 import java.awt.*;
 import java.io.IOException;
+
+/**
+ * GUI del CustomizationMenu
+ */
 
 public class CustomizationMenuGUI extends AbstractMenuGUI {
     private CustomizationMenu state;
