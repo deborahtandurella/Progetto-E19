@@ -56,9 +56,7 @@ public class CustomizationMenu extends AbstractMenuState {
     }
 
     /**
-     * initStates richiama il metodo reloadTheme() per le gui di tutti gli stati del package ad eccezione di
-     * CustomizationMenu, in cui il tema grafico è già impostato, e LoginMenu, in cui è l'unico accesso si ha
-     * all'esecuzione del Main
+     *  ricarica il tema grafico dove necessario
      */
     private void initStates() {
         try{
