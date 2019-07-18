@@ -10,6 +10,10 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
+/**
+ * stato che permette l'inserimento delle informazioni necessarie per creare o accedere ad una partita Multiplayer
+ */
+
 public class MultiplayerMenu extends AbstractMenuState {
     private StateBasedGame stateBasedGame;
     private boolean initialized = false;
@@ -47,11 +51,18 @@ public class MultiplayerMenu extends AbstractMenuState {
         stateBasedGame.enterState(1,new FadeOutTransition(),new FadeInTransition());
     }
 
+    /**
+     * @param ip: indirizzo IP dell'host
+     * @param port: porta dell'host
+     */
     public void join(String ip,int port){
         stateBasedGame.enterState(FlappyStateGame.MULTI_LOADING,new FadeOutTransition(),new FadeInTransition());
         ((MultiplayerLoadingMenu)stateBasedGame.getState(FlappyStateGame.MULTI_LOADING)).join(ip, port);
     }
 
+    /**
+     * @param port: porta dell'host
+     */
     public void host(int port){
         stateBasedGame.enterState(FlappyStateGame.MULTI_LOADING,new FadeOutTransition(),new FadeInTransition());
         ((MultiplayerLoadingMenu)stateBasedGame.getState(FlappyStateGame.MULTI_LOADING)).host(port);

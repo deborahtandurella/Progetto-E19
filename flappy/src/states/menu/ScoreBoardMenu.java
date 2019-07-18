@@ -12,6 +12,10 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 import scoreboard.ScoreBoard;
 
+/**
+ * stato che si occupa di mostrare la classifica all'utente, da qui è possibile anche resettare la classifica
+ */
+
 public class ScoreBoardMenu extends AbstractMenuState implements scoreboard.ScoreBoardMenu {
     private StateBasedGame stateBasedGame;
     public Screen screen;
@@ -62,6 +66,9 @@ public class ScoreBoardMenu extends AbstractMenuState implements scoreboard.Scor
         stateBasedGame.enterState(FlappyStateGame.GENERAL_MENU,new FadeOutTransition(),new FadeInTransition());
     }
 
+    /**
+     * deleteLeaderBoard() resetta la classifica e ripristina il relativo file
+     */
     public void deleteLeaderBoard()  {
         scoreBoard.clearScoreBoard();
         try {

@@ -10,6 +10,11 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
+/**
+ * ConnectionErrorMenu si occupa di mostrare all'utente la schermata relativa ad un eventuale errore di connessione e
+ * dà la possibilità di tornare al GeneralMenu
+ */
+
 public class ConnectionErrorMenu extends AbstractMenuState{
     private StateBasedGame stateBasedGame;
 

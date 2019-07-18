@@ -11,6 +11,11 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
+/**
+ * Menu post-partita Multiplayer, da qui vengono passati alla gui i risultati della partita, la gui si occupa poi di
+ * mostrare l'esito agli utenti
+ */
+
 public class MultiplayerEndMenu extends AbstractMenuState {
     private StateBasedGame stateBasedGame;
     private Result localPlayerResult;

@@ -12,9 +12,13 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 import states.game.MultiplayerState;
-
 import java.util.Timer;
 import java.util.TimerTask;
+
+/**
+ * menu pre-partita Multiplayer, si rimane in questo stato finché i due giocatori non sono connessi oppure finché
+ * non si decide di tornare al GeneralMenu
+ */
 
 public class MultiplayerLoadingMenu extends AbstractMenuState implements ConnectionListener {
     private ConnectionHandle connectionHandle;
@@ -45,6 +49,10 @@ public class MultiplayerLoadingMenu extends AbstractMenuState implements Connect
     }
 
 
+    /**
+     * @param ip: indirizzo IP dell'host
+     * @param port: porta dell'host
+     */
     public void join(String ip, int port){
         connectionHandle = new ConnectionHandle();
         connectionHandle.addConnectionListener(this);
@@ -52,6 +60,9 @@ public class MultiplayerLoadingMenu extends AbstractMenuState implements Connect
         connectionThread.start();
     }
 
+    /**
+     * @param port: porta dell'host
+     */
     public void host(int port){
         connectionHandle = new ConnectionHandle();
         connectionHandle.addConnectionListener(this);

@@ -11,6 +11,11 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 import sounds.MusicPlayer;
 
+/**
+ * GeneralMenu è il menu principale di gioco, da qui è possibile accedere a ScoreBoardMenu, CustomizationMenu,
+ * MultiplayerMenu e DifficultyMenu per la modalità singleplayer.
+ */
+
 public class GeneralMenu extends AbstractMenuState{
 
     private GameContainer container;

@@ -13,6 +13,11 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 import scoreboard.ScoreBoard;
 import scoreboard.ScoreBoardMenu;
 
+/**
+ * Stato post-partita Singleplayer, qui viene mostrata la classifica e viene data all'utente la possibilità
+ * di tornare al menu o iniziare una nuova partita con la medesima difficoltà della partita terminata
+ */
+
 public class SingleplayerReplayMenu extends AbstractMenuState implements ScoreBoardMenu {
     private GameContainer container;
     private StateBasedGame stateBasedGame;

@@ -11,9 +11,12 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 import resources.PathHandler;
 import resources.ResourcePack;
-
 import java.awt.*;
 import java.io.IOException;
+
+/**
+ * CustomizationMenu si occupa della gestione dei temi di gioco e dell'eventuale ricarica di tutte le gui di gioco
+ */
 
 public class CustomizationMenu extends AbstractMenuState {
     private StateBasedGame stateBasedGame;
@@ -44,11 +47,19 @@ public class CustomizationMenu extends AbstractMenuState {
         stateBasedGame.enterState(FlappyStateGame.GENERAL_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 
+    /**
+     * @param theme : tema grafico selezionato
+     */
     public void themeSelected(ResourcePack theme) {
         PathHandler.getInstance().changeSprites(theme);
         initStates();
     }
 
+    /**
+     * initStates richiama il metodo reloadTheme() per le gui di tutti gli stati del package ad eccezione di
+     * CustomizationMenu, in cui il tema grafico è già impostato, e LoginMenu, in cui è l'unico accesso si ha
+     * all'esecuzione del Main
+     */
     private void initStates() {
         try{
             ((AbstractMenuState)stateBasedGame.getState(FlappyStateGame.GENERAL_MENU)).reloadTheme();

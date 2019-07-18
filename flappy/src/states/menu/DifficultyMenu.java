@@ -13,6 +13,11 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 import states.game.SingleplayerState;
 
+/**
+ * DifficultyMenu fa da tramite tra il GeneralMenu e SinglePlayerState. Da qui viene passato al SinglePlayerState
+ * il livello di difficoltà del gioco.
+ */
+
 public class DifficultyMenu extends AbstractMenuState {
     private StateBasedGame stateBasedGame;
 
@@ -33,10 +38,15 @@ public class DifficultyMenu extends AbstractMenuState {
         renderGui();
     }
 
+    /**
+     * @param settings : velocità di gioco e tipo di ostacoli generati
+     */
     private void startGame(DifficultySettings settings){
         ((SingleplayerState) stateBasedGame.getState(FlappyStateGame.SINGLEPLAYER)).setDifficulty(settings);
         stateBasedGame.enterState(FlappyStateGame.SINGLEPLAYER, new FadeOutTransition(), new FadeInTransition());
     }
+
+
     public void startEasyGame(){
         DifficultySettings settings=new DifficultySettings(0.7, ObstacleGeneratorType.EASY);
         startGame(settings);

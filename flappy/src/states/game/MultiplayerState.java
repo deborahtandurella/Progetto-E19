@@ -27,9 +27,13 @@ import sounds.SoundPlayer;
 import states.FlappyState;
 import states.menu.MultiplayerEndMenu;
 import utilities.FontUtility;
-
 import static game.GameConstants.BIRD_WIDTH;
 
+/**
+ * stato che si occupa di gestire la partita Multiplayer tra due giocatori. Vengono generati due pannelli di gioco;
+ * a sinistra viene mostrato il pannello relativo alla partita dell'utente locale, a destra invece la partita dell'utente remoto.
+ * A inizio partita viene un timer viene caricato a 2 minuti, allo scadere del tempo la partita finisce.
+ */
 
 public class MultiplayerState extends FlappyState implements ConnectionListener, GameEventListener {
     private OnlineLocalGame leftGame;

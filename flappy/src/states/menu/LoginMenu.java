@@ -12,10 +12,13 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 import sounds.MusicPlayer;
 
+/**
+ * stato iniziale di Flappy Bird
+ */
+
 public class LoginMenu extends AbstractMenuState {
 
     private StateBasedGame stateBasedGame;
-
 
     @Override
     public int getID() {
@@ -52,6 +55,10 @@ public class LoginMenu extends AbstractMenuState {
         stateBasedGame.enterState(FlappyStateGame.GENERAL_MENU, new FadeOutTransition(), new FadeInTransition());
     }
 
+    /**
+     *
+     * @param name: nickname inserito dall'utente per poter accedere allo stato GeneralMenu
+     */
     public void setName(String name) {
         ((FlappyStateGame) stateBasedGame).setPlayerInfo( new PlayerInfo(name));
     }
