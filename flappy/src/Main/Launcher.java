@@ -12,16 +12,7 @@ import utilities.DisplayModeManager;
 
 public class Launcher {
     public static void main(String[] argv) {
-     /*   System.setProperty("java.library.path", "natives" );
-        System.setProperty("org.lwjgl.librarypath", new File("natives").getAbsolutePath());
-        try{
-            Field fieldSysPath = ClassLoader.class.getDeclaredField( "sys_paths" );
-            fieldSysPath.setAccessible( true );
-            fieldSysPath.set( null, null );
-        } catch(Exception e){
-            e.printStackTrace();
-            System.exit(-1);
-        }*/
+
         try {
             AppGameContainer container = new AppGameContainer(new FlappyStateGame());
             container.setUpdateOnlyWhenVisible(false);
