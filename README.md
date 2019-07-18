@@ -8,7 +8,7 @@ Realizzazione di un clone del gioco Flappy Bird con alcune modifiche alle meccan
 * Implementazione di una classifica per i punteggi del singleplayer
 * Scelta di temi grafici
 
-Istruzioni per l' uso:
+Istruzioni per l'installazione:
 - Clonare il progetto E19 da GitHub a IntelliJ
 - click su File -> Project Structure -> libraries
 - click su + -> selezionare Java -> selezionare la cartella "slick2d"  -> apply
