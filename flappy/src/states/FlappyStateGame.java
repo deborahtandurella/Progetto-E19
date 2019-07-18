@@ -37,11 +37,7 @@ public class FlappyStateGame extends StateBasedGame {
 
     public FlappyStateGame() {
         super("Flappy Bird");
-        try {
-            scoreBoard = new ScoreBoard();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        scoreBoard = new ScoreBoard();
     }
 
     /**
