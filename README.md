@@ -17,5 +17,5 @@ Istruzioni per l' uso:
 - nel pannello apertosi nella riga "VM OPTIONS" incollare la stringa seguente:  
 - Per piattaforme Windows: "-Djava.library.path=nativesWindows/" (testato)
 - Per piattaforme Linux: "-Djava.library.path=nativesLinux/" (non testato)
-- sempre nello stesso pannello nella riga "Working directory" al termine del path già inserito aggiungere "\flappy" -> Apply -> ok
+- rimanendo nello stesso pannello, nella riga "Working directory" al termine del path già inserito aggiungere "\flappy" -> Apply -> ok
 - eseguire il programma
