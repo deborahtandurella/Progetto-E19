@@ -16,7 +16,7 @@ import scoreboard.ScoreBoard;
  * stato che si occupa di mostrare la classifica all'utente, da qui è possibile anche resettare la classifica
  */
 
-public class ScoreBoardMenu extends AbstractMenuState implements scoreboard.ScoreBoardMenu {
+public class ScoreBoardMenu extends AbstractMenuState implements ScoreBoardUsingMenu {
     private StateBasedGame stateBasedGame;
     public Screen screen;
     private GameContainer container;
