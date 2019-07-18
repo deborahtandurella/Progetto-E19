@@ -197,7 +197,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         obstacles.removeIf(obstacleLogicComponent -> obstacleLogicComponent == logic);
         removeEntity(logic);
     }
-
+    @Override
     public Entity getEntity(LogicComponent logic){
         for (Entity entity: entities)
             if(entity.getLogicComponent()== logic)

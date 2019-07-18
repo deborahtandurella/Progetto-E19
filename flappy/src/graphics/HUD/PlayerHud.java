@@ -7,7 +7,7 @@ import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
 
 /**
- *  HUD d
+ *  Hud del giocatore, mostra il punteggio del giocatore
  */
 public abstract class PlayerHud {
     private Player player;

@@ -8,6 +8,9 @@ import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
 
+/**
+ *  HUD del giocatore in MultiPlayer, mostra anche le monete del giocatore
+ */
 public class MultiplayerHud extends PlayerHud {
     private Image coinImage;
     private static float COIN_SIZE = 0.065f;

@@ -11,6 +11,9 @@ import resources.ResourcePack;
 
 import java.awt.*;
 
+/**
+ *  Mostra un timer
+ */
 public class TimerHud {
 
     private Canvas canvas;

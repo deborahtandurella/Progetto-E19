@@ -8,6 +8,9 @@ import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
 
+/**
+ *  HUD del giocatore in Singleplayer, mostra anche i cuori del giocatore
+ */
 public class SinglePlayerHud extends PlayerHud {
     private Image heartImage;
     private static final float HEART_SIZE = 0.05f;

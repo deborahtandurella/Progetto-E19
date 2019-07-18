@@ -5,6 +5,9 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.UnicodeFont;
 
+/**
+ * Implementazione di GenericGraphicsFacade epr la libreria Slick2d
+ */
 public class SlickGraphicsFacade implements GenericGraphicsFacade {
     private Graphics graphics;
 
