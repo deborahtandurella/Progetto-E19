@@ -1,6 +1,5 @@
 package game.gameEvents;
 
-
 public interface GameEventListener {
     /**
      * Segnalazione di un GameEvent

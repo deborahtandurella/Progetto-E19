@@ -1,6 +1,5 @@
 package flappyEntities.graphic;
 
-
 /**
  *  Coomponente grafico delle Entity
  */

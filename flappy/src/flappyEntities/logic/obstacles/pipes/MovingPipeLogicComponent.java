@@ -1,6 +1,5 @@
 package flappyEntities.logic.obstacles.pipes;
 
-
 import flappyEntities.logic.SerializableEntity;
 
 /**

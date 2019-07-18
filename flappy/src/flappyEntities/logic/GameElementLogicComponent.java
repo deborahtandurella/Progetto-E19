@@ -1,6 +1,5 @@
 package flappyEntities.logic;
 
-
 /**
  *   Componente logica per oggetti che hanno coordinate e velocità
  */
@@ -9,8 +8,6 @@ public abstract class GameElementLogicComponent implements LogicComponent {
     private double y;
     private double speedX;
     private double speedY;
-
-
 
     public GameElementLogicComponent(double x, double y, double speedX, double speedY) {
         this.x = x;

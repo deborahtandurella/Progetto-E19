@@ -11,6 +11,7 @@ import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
 import states.menu.MultiplayerMenu;
+
 import java.awt.Font;
 
 /**

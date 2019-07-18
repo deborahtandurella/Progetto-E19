@@ -12,6 +12,7 @@ import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
 import states.menu.LoginMenu;
+
 import java.awt.Font;
 
 /**
@@ -41,6 +42,7 @@ public class LoginGUI extends AbstractMenuGUI {
 
         title = new Image(PathHandler.getInstance().getPath(ResourcePack.VARIOUS, Resource.TITLE)).getScaledCopy(buttonWidth*3, buttonHeight*2);
         rocket = new Image(PathHandler.getInstance().getPath(ResourcePack.SPRITES, Resource.ROCKET)).getFlippedCopy(true, false);
+
         Image confirm = new Image(PathHandler.getInstance().getPath(ResourcePack.BUTTON, Resource.STARTBUTTON)).getScaledCopy(buttonWidth/2, buttonHeight/2);
         startButton = new MouseOverArea(container, confirm, container.getWidth() / 2 - buttonWidth / 4, 50 * getContainer().getHeight() / 100, buttonWidth/2, buttonHeight/2, this);
         addButton(startButton);
@@ -70,6 +72,7 @@ public class LoginGUI extends AbstractMenuGUI {
         title.draw((getContainer().getWidth()-title.getWidth()) / 2f,5 * getContainer().getHeight() / 100f);
         uniFontMessage.drawString((getContainer().getWidth() - uniFontMessage.getWidth(nameString)) / 2f, 33 * getContainer().getHeight() / 100f, nameString);
         nameField.render(getContainer(), getContainer().getGraphics());
+
         if (error) {
             uniFontMessage.drawString((getContainer().getWidth() - uniFontMessage.getWidth(errorMessage)) / 2f, 60 * getContainer().getHeight() / 100f, errorMessage, Color.red);
         }

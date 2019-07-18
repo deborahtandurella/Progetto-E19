@@ -5,9 +5,11 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
 import org.newdawn.slick.gui.TextField;
+
 import java.awt.*;
 
 public class TextGUI {
+
     private TextField text;
     private UnicodeFont font;
     private int x;

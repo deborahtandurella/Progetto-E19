@@ -1,6 +1,5 @@
 package game.gameEvents;
 
-
 import java.util.ArrayList;
 
 /**

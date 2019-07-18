@@ -22,7 +22,6 @@ public enum PowerUpType {
 
     /**
      * Crea un PowerUp del tipo scelto
-     * @return
      */
     public abstract PowerUp create();
 }

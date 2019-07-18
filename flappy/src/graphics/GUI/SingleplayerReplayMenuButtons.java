@@ -10,11 +10,12 @@ import resources.PathHandler;
 import resources.Resource;
 import resources.ResourcePack;
 import states.menu.SingleplayerReplayMenu;
-public class SingleplayerReplayMenuButtons extends AbstractMenuGUI {
 
-    /**
-     * GUI che si occupa dei bottoni dello stato SinglePlayerReplayMenu
-     */
+/**
+ * GUI che si occupa dei bottoni dello stato SinglePlayerReplayMenu
+ */
+
+public class SingleplayerReplayMenuButtons extends AbstractMenuGUI {
 
     private MouseOverArea replayButton;
     private MouseOverArea backButton;
