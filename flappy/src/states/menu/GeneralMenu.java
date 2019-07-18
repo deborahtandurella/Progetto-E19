@@ -33,10 +33,8 @@ public class GeneralMenu extends AbstractMenuState{
     public void init(GameContainer gameContainer, StateBasedGame stateBasedGame) throws SlickException {
         this.container= gameContainer;
         this.stateBasedGame= stateBasedGame;
-        MusicPlayer musicPlayer = new MusicPlayer();
         Screen screen = new Screen(gameContainer.getWidth(), gameContainer.getHeight(), 0, 0);
         setGui(new MenuGUI(gameContainer, screen, this));
-        musicPlayer.playBackgroundMusic();
     }
 
     @Override
