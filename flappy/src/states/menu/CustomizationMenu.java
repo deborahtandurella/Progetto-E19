@@ -11,6 +11,7 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 import resources.PathHandler;
 import resources.ResourcePack;
+
 import java.awt.*;
 import java.io.IOException;
 

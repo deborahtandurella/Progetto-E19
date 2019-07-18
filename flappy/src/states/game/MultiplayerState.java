@@ -27,6 +27,7 @@ import sounds.SoundPlayer;
 import states.FlappyState;
 import states.menu.MultiplayerEndMenu;
 import utilities.FontUtility;
+
 import static game.GameConstants.BIRD_WIDTH;
 
 /**

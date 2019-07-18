@@ -1,22 +1,12 @@
 package states;
 
 import game.player.PlayerInfo;
-import org.lwjgl.LWJGLException;
-import org.lwjgl.opengl.DisplayMode;
-import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
-import resources.PathHandler;
-import resources.Resource;
-import resources.ResourcePack;
 import scoreboard.ScoreBoard;
 import states.game.MultiplayerState;
 import states.game.SingleplayerState;
 import states.menu.*;
-import utilities.DisplayModeManager;
-
-import java.io.IOException;
 
 public class FlappyStateGame extends StateBasedGame {
 

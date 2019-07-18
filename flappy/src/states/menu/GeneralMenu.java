@@ -9,7 +9,6 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
-import sounds.MusicPlayer;
 
 /**
  * GeneralMenu è il menu principale di gioco, da qui è possibile accedere a ScoreBoardUsingMenu, CustomizationMenu,

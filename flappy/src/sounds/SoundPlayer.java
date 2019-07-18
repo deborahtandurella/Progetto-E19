@@ -2,7 +2,6 @@ package sounds;
 
 import game.gameEvents.GameEventListener;
 import game.gameEvents.GameEventType;
-import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
 import resources.PathHandler;

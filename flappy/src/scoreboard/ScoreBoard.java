@@ -2,8 +2,6 @@ package scoreboard;
 
 import game.player.Result;
 
-import javax.xml.crypto.Data;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -15,7 +13,6 @@ public class ScoreBoard {
     private ArrayList<Result> results;
     private ScoreboardDAO scoreboardDAO;
     private static final int N_PLAYERS = 10;
-
 
     /**
      * Inizializza la classifica leggendola dal database
@@ -30,7 +27,6 @@ public class ScoreBoard {
             e.printStackTrace();
         }
     }
-
 
     /**
      * Prova ad aggiungere un risultato alla classifica
