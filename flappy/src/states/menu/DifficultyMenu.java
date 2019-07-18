@@ -1,6 +1,6 @@
 package states.menu;
 
-import Main.FlappyStateGame;
+import states.FlappyStateGame;
 import game.DifficultySettings;
 import game.itemGeneration.obstacle.ObstacleGeneratorType;
 import graphics.GUI.DifficultyMenuGUI;

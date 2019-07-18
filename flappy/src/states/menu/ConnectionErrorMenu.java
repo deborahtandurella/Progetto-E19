@@ -1,6 +1,6 @@
 package states.menu;
 
-import Main.FlappyStateGame;
+import states.FlappyStateGame;
 import graphics.GUI.ConnectionErrorGUI;
 import graphics.Screen;
 import org.newdawn.slick.GameContainer;

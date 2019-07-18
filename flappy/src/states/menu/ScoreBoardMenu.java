@@ -1,6 +1,6 @@
 package states.menu;
 
-import Main.FlappyStateGame;
+import states.FlappyStateGame;
 import graphics.GUI.ScoreBoardButtons;
 import graphics.GUI.ScoreBoardMenuGUI;
 import graphics.Screen;

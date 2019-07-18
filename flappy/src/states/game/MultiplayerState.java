@@ -1,6 +1,6 @@
 package states.game;
 
-import Main.FlappyStateGame;
+import states.FlappyStateGame;
 import game.DifficultySettings;
 import game.gameEvents.GameEventListener;
 import game.gameEvents.GameEventType;
