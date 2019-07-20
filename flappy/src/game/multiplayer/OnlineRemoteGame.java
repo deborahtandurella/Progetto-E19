@@ -92,7 +92,7 @@ public class OnlineRemoteGame extends GameEventDispatcher implements OnlineGame{
     }
     private void checkOutOfBounds(){
         for (ScrollingElement element: scrollingElements){
-            if (element.outOfBounds()){
+            if (element.outOfHorizontalBounds()){
                 scrollingElements.remove(element);
                 removeEntity(element);
             }

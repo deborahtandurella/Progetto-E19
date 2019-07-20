@@ -6,7 +6,8 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.UnicodeFont;
 
 /**
- *  La Canvas rappresenta il contesto grafico. Una Canvas è costituita da uno Screen, ovvero un rettangolo su cui disegnare ed una GenericGraphicsFacade da utilizzare per compiere le operazioni grafiche
+ *  La Canvas rappresenta il contesto grafico. Una Canvas è costituita da uno Screen, ovvero un rettangolo
+ *  su cui disegnare ed una GenericGraphicsFacade da utilizzare per compiere le operazioni grafiche
  */
 public class Canvas {
 

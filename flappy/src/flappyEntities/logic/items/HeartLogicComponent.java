@@ -17,7 +17,7 @@ public class HeartLogicComponent extends SolidGameElementLogicComponent implemen
     }
 
     @Override
-    public boolean outOfBounds() {
+    public boolean outOfHorizontalBounds() {
         return (getX()+HEART_SIZE < 0);
     }
 }

@@ -22,7 +22,7 @@ public class RocketLogicComponent extends ObstacleLogicComponent {
     }
 
     @Override
-    public boolean outOfBounds() {
+    public boolean outOfHorizontalBounds() {
         return (getX()+ ROCKET_WIDTH < 0);
     }
 

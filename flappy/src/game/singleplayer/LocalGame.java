@@ -96,17 +96,17 @@ public class LocalGame extends GameEventDispatcher implements Game, HeartListene
         hud.render();
     }
     public void playerJump(){
-        if (!bird.outOfBounds()){
+        if (!bird.outOfVerticalBounds()){
             bird.jump();
             notifyEvent(GameEventType.JUMP);
         }
     }
     private void checkOutOfBounds(){
         for( ObstacleLogicComponent obstacle : obstacles)
-            if (obstacle.outOfBounds())
+            if (obstacle.outOfHorizontalBounds())
                 removeObstacle(obstacle);
         for( HeartLogicComponent heart : hearts)
-            if (heart.outOfBounds())
+            if (heart.outOfHorizontalBounds())
                 removeHeart(heart);
     }
     private void checkCollisions(){

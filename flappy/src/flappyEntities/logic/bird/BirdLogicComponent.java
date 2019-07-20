@@ -64,7 +64,7 @@ public class BirdLogicComponent extends SolidGameElementLogicComponent {
     /**
      * @return true se il bird è uscito dallo schermo (ha saltato troppo in alto)
      */
-    public boolean outOfBounds(){
+    public boolean outOfVerticalBounds(){
         return getY() + BIRD_HEIGHT < 0;
     }
     public boolean isImmune() {
@@ -76,7 +76,7 @@ public class BirdLogicComponent extends SolidGameElementLogicComponent {
      */
     public void acquireImmunity() {
         immunity=true;
-        immunityTime = 2000;
+        immunityTime = IMMUNITY_START_TIME;
     }
 
     /**

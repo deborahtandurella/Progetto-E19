@@ -130,7 +130,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
      * Fa eseguire un salto al bird
      */
     public void playerJump(){
-        if (!bird.outOfBounds()){
+        if (!bird.outOfVerticalBounds()){
             bird.jump();
             notifyEvent(GameEventType.JUMP);
             transmitter.sendCommand(new JumpCommand(bird.getX(), bird.getY()));
@@ -138,10 +138,10 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     }
     private void checkOutOfBounds(){
         for( ObstacleLogicComponent obstacle : obstacles)
-            if (obstacle.outOfBounds())
+            if (obstacle.outOfHorizontalBounds())
                 removeObstacle(obstacle);
         for( CoinLogicComponent coin : coins)
-            if (coin.outOfBounds())
+            if (coin.outOfHorizontalBounds())
                 removeCoin(coin);
     }
     private void checkCollisions(){

@@ -13,7 +13,7 @@ public abstract class ObstacleLogicComponent extends SolidGameElementLogicCompon
         super(x, y, speedX, speedY);
         passed = false;
     }
-    abstract public boolean outOfBounds();
+    abstract public boolean outOfHorizontalBounds();
 
     /**
      * @return true se l'ostacolo deve essere distrutto in seguito a una collisione

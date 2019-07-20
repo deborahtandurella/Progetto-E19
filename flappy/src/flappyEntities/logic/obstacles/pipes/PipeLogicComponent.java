@@ -17,7 +17,7 @@ public class PipeLogicComponent extends ObstacleLogicComponent {
     }
 
     @Override
-    public boolean outOfBounds() {
+    public boolean outOfHorizontalBounds() {
         return getX() + PIPE_WIDTH < 0;
     }
 

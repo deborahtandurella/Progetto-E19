@@ -19,5 +19,7 @@ public class GameConstants {
 
     public static final double ROCKET_SPEED = 0.00078;
 
+    public static final int IMMUNITY_START_TIME = 2000;
+
 
 }
