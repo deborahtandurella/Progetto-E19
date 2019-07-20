@@ -6,7 +6,7 @@ import flappyEntities.logic.LogicComponent;
 /**
  *  Entity rappresenta un'entità di gioco, può essere dotata di una parte gragica ed una logica
  */
-public abstract class Entity {
+public class Entity {
     private GraphicComponent graphicComponent;
     private LogicComponent logicComponent;
     private int ID; //ID univoco dell'entità
