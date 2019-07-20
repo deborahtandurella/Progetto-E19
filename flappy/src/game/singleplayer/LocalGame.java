@@ -41,7 +41,6 @@ public class LocalGame extends GameEventDispatcher implements Game, HeartListene
     private Canvas canvas;
     private double gameSpeed;
     private ObstacleGenerator obstacleGenerator;
-    private Image background;
     private PlayerHud hud;
 
     public LocalGame(Canvas canvas, DifficultySettings settings, SingleModePlayer player) {
@@ -52,6 +51,7 @@ public class LocalGame extends GameEventDispatcher implements Game, HeartListene
         entities = new CopyOnWriteArrayList<>();
         hearts = new CopyOnWriteArrayList<>();
         obstacles = new CopyOnWriteArrayList<>();
+        entities.add(EntityFactory.makeBackground(canvas));
         Entity birdEntity = EntityFactory.makeBird(0.2, 0.5,canvas);
         entities.add(birdEntity);
         bird = (BirdLogicComponent) birdEntity.getLogicComponent();
@@ -61,7 +61,6 @@ public class LocalGame extends GameEventDispatcher implements Game, HeartListene
         heartGenerator.addListener(this);
         try {
             hud = new SinglePlayerHud(player, canvas);
-            background = new Image(PathHandler.getInstance().getPath(ResourcePack.SPRITES, Resource.BACKGROUND));
         } catch (SlickException e) {
             e.printStackTrace();
         }
@@ -91,7 +90,7 @@ public class LocalGame extends GameEventDispatcher implements Game, HeartListene
      * Esegue il render delle componenti
      */
     public void render(){
-        canvas.drawImage(background, 0, 0, 1, 1);
+        //canvas.drawImage(background, 0, 0, 1, 1);
         renderEntities();
         hud.render();
     }

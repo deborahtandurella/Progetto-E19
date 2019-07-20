@@ -23,12 +23,8 @@ import graphics.HUD.MultiplayerHud;
 import graphics.HUD.PlayerHud;
 import network.CommandTransmitter;
 import network.commands.*;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.UnicodeFont;
-import resources.PathHandler;
-import resources.Resource;
-import resources.ResourcePack;
 import utilities.FontUtility;
 
 import java.util.Objects;
@@ -49,7 +45,6 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     private Canvas canvas;
     private double gameSpeed;
     private ObstacleGenerator obstacleGenerator;
-    private Image background;
     private PlayerHud hud;
     private CommandTransmitter transmitter;
     private int IDcount;
@@ -71,6 +66,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         coins = new CopyOnWriteArrayList<>();
         obstacles = new CopyOnWriteArrayList<>();
         Entity birdEntity = EntityFactory.makeBird(0.2, 0.5,canvas);
+        addEntity(EntityFactory.makeBackground(canvas));
         addEntity(birdEntity);
         bird = (BirdLogicComponent) birdEntity.getLogicComponent();
         CoinGenerator coinGenerator = new CoinGenerator(canvas);
@@ -80,7 +76,6 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
         startTime=System.currentTimeMillis();
         try {
             hud= new MultiplayerHud(player, canvas);
-            background = new Image(PathHandler.getInstance().getPath(ResourcePack.SPRITES, Resource.BACKGROUND));
         } catch (SlickException e) {
             e.printStackTrace();
         }
@@ -115,7 +110,6 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
      * Renderizza la partita
      */
     public void render(){
-        canvas.drawImage(background, 0, 0, 1, 1);
         renderEntities();
         hud.render();
         canvas.drawStringCentered(player.getPlayerInfo().getName(),font, (float)bird.getX()+(float)BIRD_WIDTH/2f, (float)bird.getY()-0.02f);
@@ -249,7 +243,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     public void onCoinGenerated(Entity coin) {
         addEntity(coin);
         coins.add((CoinLogicComponent) coin.getLogicComponent());
-        transmitter.sendCommand(new CoinGeneratedCommand(coin));
+        transmitter.sendCommand(new ScrollingElementGeneratedCommand(coin));
 
     }
 
@@ -288,7 +282,7 @@ public class OnlineLocalGame extends GameEventDispatcher implements CoinListener
     public void onObstacleGenerated(Entity obstacle) {
         addEntity(obstacle);
         obstacles.add((ObstacleLogicComponent) obstacle.getLogicComponent());
-        transmitter.sendCommand(new ObstacleGeneratedCommand(obstacle));
+        transmitter.sendCommand(new ScrollingElementGeneratedCommand(obstacle));
     }
 
     /**

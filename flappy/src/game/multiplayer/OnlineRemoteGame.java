@@ -35,7 +35,6 @@ public class OnlineRemoteGame extends GameEventDispatcher implements OnlineGame{
     private MultiModePlayer player;
     private Canvas canvas;
     private double gameSpeed;
-    private Image background;
     private PlayerHud hud;
     private long startTime;
     private boolean gameOver;
@@ -48,13 +47,13 @@ public class OnlineRemoteGame extends GameEventDispatcher implements OnlineGame{
         entities = new CopyOnWriteArrayList<>();
         scrollingElements = new CopyOnWriteArrayList<>();
         Entity birdEntity = EntityFactory.makeBird(0.2, 0.5,canvas);
+        entities.add(EntityFactory.makeBackground(canvas));
         entities.add(birdEntity);
         bird = (BirdLogicComponent) birdEntity.getLogicComponent();
         startTime= System.currentTimeMillis();
         this.player=player;
         try {
             hud = new MultiplayerHud(player, canvas);
-            background = new Image(PathHandler.getInstance().getPath(ResourcePack.SPRITES, Resource.BACKGROUND));
         } catch (SlickException e) {
             e.printStackTrace();
         }
@@ -77,7 +76,6 @@ public class OnlineRemoteGame extends GameEventDispatcher implements OnlineGame{
      * Renderizza le componenti
      */
     public void render(){
-        canvas.drawImage(background, 0, 0, 1, 1);
         renderEntities();
         hud.render();
         canvas.drawStringCentered(player.getPlayerInfo().getName(),font, (float)bird.getX()+(float)BIRD_WIDTH/2f, (float)bird.getY()-0.02f);

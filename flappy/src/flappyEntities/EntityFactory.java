@@ -31,4 +31,7 @@ public class EntityFactory {
     public static Entity makeCoin(double x, double y, Canvas canvas){
         return new GameElementEntity(new CoinLogicComponent(x,y), new CoinGraphicComponent(canvas));
     }
+    public static Entity makeBackground(Canvas canvas){
+        return new Entity(null, new BackgroundGraphicComponent(canvas));
+    }
 }
