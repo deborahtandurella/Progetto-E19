@@ -19,3 +19,7 @@ Istruzioni per l'installazione e l'esecuzione:
 - Per piattaforme Linux: "-Djava.library.path=nativesLinux/" (non testato)
 - dallo stesso pannello, nella riga "Working directory" al termine del path già inserito aggiungere "\flappy" -> Apply -> ok
 - eseguire il programma
+
+Istruzioni di gioco:
+- Per saltare premere la barra spaziatrice.
+- nel multiplayer per usare un powerUp premere Q, W o E in base al powerUp desiderato.
