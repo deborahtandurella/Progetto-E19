@@ -12,6 +12,7 @@ Istruzioni per l'installazione e l'esecuzione:
 - Clonare il progetto E19 da GitHub a IntelliJ
 - click su File -> Project Structure -> libraries
 - click su + -> selezionare Java -> selezionare la cartella "slick2d"  -> apply
+- click su + -> selezionare Java -> selezionare la cartella "junit"  -> apply
 - rimanendo su Project structure, nella sezione Modules, selezionare la cartella src all' interno della directory "flappy" e selezionare mark directory as source. ->apply ->ok
 - all' interno di src, nel package "main" fare click destro sulla classe "Launcher" e selezionare l' opzione "create Launcher.main..."
 - nel pannello apertosi nella riga "VM OPTIONS" incollare la stringa seguente:  
