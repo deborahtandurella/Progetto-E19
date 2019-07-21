@@ -22,4 +22,5 @@ Istruzioni per l'installazione e l'esecuzione:
 
 Istruzioni di gioco:
 - Per saltare premere la barra spaziatrice.
-- nel multiplayer per usare un powerUp premere Q, W o E in base al powerUp desiderato.
+- Nel multiplayer per usare un powerUp premere Q, W o E in base al powerUp desiderato.
+- Per uscire dal gioco premere il pulsate "esc" dal menu principale.
