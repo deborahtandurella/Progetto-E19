@@ -7,25 +7,22 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CollisionTest {
-    public CollisionTest(){
-
-    }
+class SolidGameElementTest {
     @Test
-    public void testStaticCollisionDidntHappen(){
+     void testStaticCollisionDidntHappen(){
         BirdLogicComponent bird = new BirdLogicComponent(0, 0.5);
         PipeLogicComponent pipe= new PipeLogicComponent(0, 0.5); //centery è il centro del doppio tubo
         assertFalse(bird.collide(pipe));
     }
     @Test
-    public void testStaticCollisionHappened(){
+     void testStaticCollisionHappened(){
         BirdLogicComponent bird = new BirdLogicComponent(0, 0.8);
         RocketLogicComponent rocket = new RocketLogicComponent(0, 0.8);
         assertTrue(bird.collide(rocket));
     }
 
     @Test
-    public void testDinamicCollisionHappened(){
+     void testDinamicCollisionHappened(){
         boolean collisionHappened=false;
         BirdLogicComponent bird = new BirdLogicComponent(0, 0.5);
         PipeLogicComponent pipe = new PipeLogicComponent(1, 0.5);
@@ -40,7 +37,7 @@ public class CollisionTest {
     }
 
     @Test
-    public void testDinamicCollisionDidntHappen(){
+     void testDinamicCollisionDidntHappen(){
         boolean collisionHappened = false;
         BirdLogicComponent bird = new BirdLogicComponent(0, 0.5);
         PipeLogicComponent pipe = new PipeLogicComponent(1, 0.5);

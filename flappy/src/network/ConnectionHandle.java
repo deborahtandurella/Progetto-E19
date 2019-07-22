@@ -41,7 +41,6 @@ public class ConnectionHandle {
 
         try {
             serverSocket = new ServerSocket(port);
-            System.out.println("Connection opened on port " + port);
             socket = serverSocket.accept();
             serverSocket.close();
             inputStream = new ObjectInputStream(socket.getInputStream());
@@ -49,7 +48,7 @@ public class ConnectionHandle {
             outputStream.writeObject(name);
             othersName=(String)inputStream.readObject();
             setConnected(true);
-            System.out.println("Successfully connected");
+
         } catch (IOException | ClassNotFoundException ex) {
             if (!closingRequested){
                 setConnected(false);
@@ -72,17 +71,6 @@ public class ConnectionHandle {
             outputStream.writeObject(name);
             othersName=(String) inputStream.readObject();
             setConnected(true);
-            System.out.println("Successfully connected to " + ip + ":" + port);
-            /*DatagramSocket udpSocket = new DatagramSocket(port);
-            Command comando= new JumpCommand(0.4, 0.2);
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            ObjectOutputStream oos = new ObjectOutputStream(bos);
-            oos.writeObject(comando);
-            oos.flush();
-            byte[] sndData= bos.toByteArray();
-            DatagramPacket packet = new DatagramPacket(sndData, sndData.length, socket.getInetAddress(), port );
-            udpSocket.send(packet); */
-
         } catch (IOException | ClassNotFoundException ex) {
             if (!closingRequested){
                 setConnected(false);
