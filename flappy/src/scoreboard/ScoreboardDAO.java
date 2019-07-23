@@ -19,5 +19,5 @@ public interface ScoreboardDAO {
      * @param results i risultati da scrivere
      * @throws DatabaseException
      */
-    void writePlayers(ArrayList<Result> results) throws DatabaseException;
+    void writeResults(ArrayList<Result> results) throws DatabaseException;
 }

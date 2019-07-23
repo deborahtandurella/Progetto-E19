@@ -70,7 +70,7 @@ public class ScoreBoardMenu extends AbstractMenuState implements ScoreBoardUsing
      * deleteLeaderBoard() resetta la classifica e ripristina il relativo file
      */
     public void deleteLeaderBoard()  {
-        scoreBoard.clearScoreBoard();
+        scoreBoard.clear();
         try {
             setGui(new ScoreBoardGUI(container, screen, this));
         } catch (SlickException e) {

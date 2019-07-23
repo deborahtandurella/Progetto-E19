@@ -48,46 +48,31 @@ public class ScoreBoard {
 
     private void newRecord() {
         try {
-            scoreboardDAO.writePlayers(results);
+            scoreboardDAO.writeResults(results);
         } catch (DatabaseException e) {
             e.printStackTrace();
         }
     }
 
-
     /**
-     * @return i nomi in ordine dei giocatori in classifica
+     * @return i risultati in classifica
      */
-    public String printName() {
-        StringBuilder sb = new StringBuilder();
-        for (Result result : results) {
-            sb.append(result.getName()).append("\n");
-        }
-        return sb.toString();
+    public ArrayList<Result> getResults(){
+        return results;
     }
 
-    /**
-     * @return i punteggi in ordine dei risultati della classifica
-     */
-    public String printScores() {
-        StringBuilder s = new StringBuilder();
-        for (Result result : results) {
-            s.append(result.getScore()).append("\n");
-        }
-        return s.toString();
-    }
 
 
     /**
      *  Svuota la classifica
      */
-    public void clearScoreBoard() {
+    public void clear() {
         for (Result result : results) {
             result.setName("-------------");
             result.setScore(0);
         }
         try {
-            scoreboardDAO.writePlayers(results);
+            scoreboardDAO.writeResults(results);
         } catch (DatabaseException e) {
             e.printStackTrace();
         }

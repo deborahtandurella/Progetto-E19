@@ -32,7 +32,7 @@ public class CSVScoreboardDAO implements ScoreboardDAO {
     }
 
     @Override
-    synchronized public void writePlayers(ArrayList<Result> results) throws DatabaseException {
+    synchronized public void writeResults(ArrayList<Result> results) throws DatabaseException {
         try {
             PrintWriter writer = new PrintWriter(new FileWriter(new File("res/records/leaderboard.csv")));
             for(Result result: results){
