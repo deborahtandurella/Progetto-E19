@@ -9,7 +9,7 @@ import game.player.Player;
  *  Partita Online, questa interfaccia permette ai PowerUp di essere eseguiti sia sulla partita locale che su quella remota in modo indistinto
  */
 public interface OnlineGame{
-    long ONLINE_GAME_DURATION = 60*1000; //in millisecondi
+    long ONLINE_GAME_DURATION = 120*1000; //in millisecondi
     Entity getEntity(LogicComponent logicComponent);
     BirdLogicComponent getBird();
     void setBird(BirdLogicComponent bird);
